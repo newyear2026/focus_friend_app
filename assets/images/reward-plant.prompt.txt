@@ -1,0 +1,14 @@
+Reward plant illustration
+Generated with: built-in image_gen__imagegen (transparent_background=true)
+Reference: assets/images/home-study-room.png, style and camera reference
+Original generated file: /Users/jaewook/.codex/generated_images/01a118d5-93f4-71d0-940e-8538580ff758/exec-daeab61e-6086-4780-8b2e-39f2a7907088.png
+Project asset: assets/images/reward-plant.png
+
+Final generation prompt:
+Use case: illustration-story
+Asset type: one standalone transparent PNG reward prop for a cozy illustrated focus-timer game.
+Input image is STYLE AND CAMERA REFERENCE ONLY. Match its hand-painted detailed foliage, warm golden upper-right window lighting, crisp illustrated outlines and isometric viewpoint looking slightly downward.
+Primary request: one small, lush leafy green desktop houseplant in a round ORANGE TERRACOTTA flower pot. Short, friendly plant silhouette with about 10 to 14 broad oval leaves in vibrant greens, visible warm highlights, distinct leaves that remain readable when shown just 45 pixels high. Rich ceramic clay rim, tapered orange clay body, tiny terracotta saucer. Camera is isometric from above, consistent with a prop standing on the right side of the desk in the reference.
+Composition: full plant and pot isolated, centered, tightly framed on transparent background with about 3% safe margin. Portrait 3:4 aspect ratio. Object fills nearly all canvas height. Subtle contact shadow directly underneath the pot only.
+Constraints: ONLY plant and pot. No desk, table, floor, room, background, cat, UI, icons, text, watermark, labels, badge, lock, outline frame or border. Preserve genuine transparent alpha surrounding the silhouette.
+

@@ -1,0 +1,11 @@
+All three sound recordings are offered by their original uploaders under CC0 1.0 Universal.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+rain.mp3: rain against window 2 by bastipictures
+https://freesound.org/people/bastipictures/sounds/243781/
+forest.mp3: forest ambience constant breeze.flac by kyles
+https://freesound.org/people/kyles/sounds/637559/
+fire.mp3: fire-crackling.wav by jmehlferber
+https://freesound.org/people/jmehlferber/sounds/370938/
+
+Unmodified public high-quality MP3 previews. Source/license snapshots and checksums are in docs/audio-sources/.

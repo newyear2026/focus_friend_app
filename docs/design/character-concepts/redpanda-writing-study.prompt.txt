@@ -1,0 +1,7 @@
+Generated with built-in image_gen__imagegen, transparent_background=false.
+Concept only: a single motion storyboard, not applied to the Flutter app.
+Reference character: /Users/jaewook/dev_app/routine_app/flutter_app/assets/characters/redpanda_teashop/v1/approved/focus.png
+Reference room: assets/images/room-day-empty.png
+
+undefined
+

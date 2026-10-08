@@ -1,0 +1,26 @@
+[
+  {
+    "file": "rain.mp3",
+    "download": "https://cdn.freesound.org/previews/243/243781_997601-hq.mp3",
+    "sha256": "e75938ab97541cf681fd3bf27acf5de4215c6b22eea88b1d03050eb1e8d28e71",
+    "bytes": 1601866,
+    "license": "CC0-1.0",
+    "verified": "2026-10-08"
+  },
+  {
+    "file": "forest.mp3",
+    "download": "https://cdn.freesound.org/previews/637/637559_612689-hq.mp3",
+    "sha256": "f73046b5ae13c95205b6be66c625bb48c12ee2f05f5e4907ba507f0fe50aa2a7",
+    "bytes": 2605248,
+    "license": "CC0-1.0",
+    "verified": "2026-10-08"
+  },
+  {
+    "file": "fire.mp3",
+    "download": "https://cdn.freesound.org/previews/370/370938_6621799-hq.mp3",
+    "sha256": "1618ec3144c17b6772ae047f531f0a19eee1333ad7e613e86acbab7b33e6d767",
+    "bytes": 666669,
+    "license": "CC0-1.0",
+    "verified": "2026-10-08"
+  }
+]

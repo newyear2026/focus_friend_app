@@ -1,0 +1,16 @@
+Home study room illustration
+Generated with: built-in image_gen__imagegen (transparent_background=true)
+Reference: user-provided codex-clipboard-fe347499-b0c4-4eac-bcf9-bec52ed6df6c.png, first/home panel
+Original generated file: /Users/jaewook/.codex/generated_images/01a118d5-93f4-71d0-940e-8538580ff758/exec-1b390da7-7b9c-4dc4-ac12-fb09e85125fa.png
+Project asset: assets/images/home-study-room.png
+
+Final generation prompt:
+Use case: illustration-story
+Asset type: transparent PNG hero illustration for a mobile focus-timer app.
+Input image 1 is a REFERENCE ONLY: reproduce the visual style, architecture and composition of the room illustration inside the FIRST (leftmost, home) panel; do not reproduce the app screen or any UI.
+Primary request: create one exceptionally polished, richly detailed isometric wooden study-room cutout with a cute NAVY BLUE cat studying an open book behind a wooden desk. Cat has amber/gold eyes, cream muzzle and front paws, small white forehead stripes, pink inner ears, and friendly attentive face. Match reference closely.
+Room: isometric diamond wooden plank floor and two open-top walls; back corner near upper center. Warm left wall with two bookshelves packed with colorful blue, orange and teal books, leafy green plants and trailing vines, small illustrated framed prints. Tall glowing wooden mullioned window on right wall showing blue sky and distant warm city silhouettes. Wooden dresser lower left, richly leafy tall floor plant against right wall. Dark-blue and tan woven cat-pattern rug lies in foreground; round green tufted cat cushion rests at right on the floor. Wide wooden desk centered near front; cat seated BEHIND it, open cream book and small stack of colored books on left desk. Desk right half mostly empty wooden surface for future reward overlays.
+Style: high-end hand-painted cozy children's mobile game illustration with crisp readable contours, warm golden sunlight, textured wood grain, layered foliage and rich illustrated shading. Saturated warm amber wood, vivid natural leaf greens, deep navy cat. Match the provided reference, not flat vector art and not photorealism.
+Composition: complete room in one standalone cutout; target portrait near-square 1024x1152 or close 8:9 aspect ratio. Room occupies nearly whole canvas with only ~2% clear edge margin. Tall room silhouette, rear corner at upper center, entire diamond floor and both wall tops within frame. No broad blank margins. Transparent alpha background surrounding room; no cast shadow outside the room footprint.
+CRITICAL AVOID: NO coffee mug, NO cup, NO desk lamp, NO small terracotta desk plant. Keep bookshelf plants and large floor plants. Do not include any text, lettering, numbers, logos, watermarks, device, screen border, title, chart, button, UI or multiple panels. Only one isolated room illustration.
+

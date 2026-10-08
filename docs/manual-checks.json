@@ -1,0 +1,13 @@
+{
+  "paused_process_restart": "passed",
+  "overdue_process_restart": "passed",
+  "same_session_id": "passed",
+  "completion_once_after_second_restart": "passed",
+  "completed_ms": 300000,
+  "completed_count": 1,
+  "unlocks": [
+    "plant"
+  ],
+  "notification_received": true,
+  "notification_delay_ms": 92135
+}

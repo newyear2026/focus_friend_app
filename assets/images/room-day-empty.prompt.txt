@@ -1,0 +1,16 @@
+Empty day room background
+Generated with: built-in image_gen__imagegen (transparent_background=true)
+Edit source: assets/images/home-study-room.png
+Original generated file: /Users/jaewook/.codex/generated_images/01a118d5-93f4-71d0-940e-8538580ff758/exec-5e624a52-052e-40cd-9cde-270b7753e4f7.png
+Project asset: assets/images/room-day-empty.png
+Output geometry: 1182x1330, RGBA alpha preserved
+
+Final editing prompt:
+Use case: precise-object-edit.
+Asset type: day background layer for the existing mobile game's room, behind a separately animated character.
+Edit target: attached transparent room PNG. THIS IS A CONSERVATIVE INPAINT EDIT, not a new composition.
+REMOVE ONLY these two foreground objects: (1) the navy-blue cat including head, ears, body, paws and collar; (2) the large OPEN BOOK in front of the cat at the middle of the desk.
+Fill the cat's former space with the natural empty wooden chair behind the desk: same existing chair geometry continuing behind removed cat, and natural small background foliage where needed. Fill the removed open book's former space with continuous matching natural warm wooden desktop grain.
+KEEP EXACTLY UNCHANGED: every other room object, stacked CLOSED books on desk left, bookshelf books, plants, posters, window and outdoor skyline, wooden chair position, desk edges and legs, floor, rug, green cushion, all lighting and shadows, the painterly illustrative style. Add no mug, lamp or small reward flowerpot.
+CRITICAL GEOMETRY: preserve the original 1182-pixel-wide by 1330-pixel-tall canvas dimensions, same framing, same room scale, same object coordinates, same isometric camera, same room diamond footprint and outer alpha silhouette. Do not zoom, recenter, crop, widen or redesign. Preserve original transparent background and alpha around room. No new text, UI, border, watermark or artifacts. The only visible difference should be that the navy cat and central open book are absent and the chair and desk naturally continue underneath.
+

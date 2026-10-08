@@ -1,0 +1,36 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{cb88b1c u0 dev.jaewook.prototype.focus_friend_app.verification/dev.jaewook.prototype.focus_friend_app.FocusSoundService c:dev.jaewook.prototype.focus_friend_app.verification}
+    intent={cmp=dev.jaewook.prototype.focus_friend_app.verification/dev.jaewook.prototype.focus_friend_app.FocusSoundService}
+    packageName=dev.jaewook.prototype.focus_friend_app.verification
+    processName=dev.jaewook.prototype.focus_friend_app.verification
+    targetSdkVersion=36
+    baseDir=/data/app/~~DLZmlLh4EIdqEMWeFtyY3A==/dev.jaewook.prototype.focus_friend_app.verification-CJiq_WyivWaQkKJj_diHJA==/base.apk
+    dataDir=/data/user/0/dev.jaewook.prototype.focus_friend_app.verification
+    app=ProcessRecord{6d7f9f2 23095:dev.jaewook.prototype.focus_friend_app.verification/u0a229}
+    useNewWiuLogic_forCapabilities()=true
+    useNewWiuLogic_forStart()=true
+    useNewBfslLogic()=true
+    mAllowWiu_noBinding=PROC_STATE_TOP
+    mAllowWiu_inBindService=DENIED
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=PROC_STATE_TOP
+    getFgsAllowWiu_new=PROC_STATE_TOP
+    getFgsAllowWiu_forStart=PROC_STATE_TOP
+    getFgsAllowWiu_forCapabilities=PROC_STATE_TOP
+    allowUiJobScheduling=true
+    recentCallingPackage=dev.jaewook.prototype.focus_friend_app.verification
+    recentCallingUid=10229
+    mAllowStart_noBinding=PROC_STATE_TOP
+    mAllowStart_inBindService=DENIED
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=PROC_STATE_TOP
+    getFgsAllowStart_new=PROC_STATE_TOP
+    getFgsAllowStart=PROC_STATE_TOP
+    startForegroundCount=1
+    infoAllowStartForeground=[callingPackage: dev.jaewook.prototype.focus_friend_app.verification; callingUid: 10229; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=dev.jaewook.prototype.focus_friend_app.verification/dev.jaewook.prototype.focus_friend_app.FocusSoundService (has extras) }; code:PROC_STATE_TOP; tempAllowListReason:<null>; allowWiu:12; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+    isForeground=true foregroundId=41018 types=0x00000002 foregroundNoti=Notification(channel=focus_ambience shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|NO_CLEAR|FOREGROUND_SERVICE|NO_DISMISS color=0x00000000 category=transport actions=1 vis=PRIVATE)
+    createTime=-6s665ms startingBgTimeout=--
+    lastActivity=-4s647ms restartTime=-6s661ms createdFromFg=true
+    startRequested=true delayedStop=false stopIfKilled=true callStart=true lastStartId=3
+ startCommandResult=2

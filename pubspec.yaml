@@ -1,0 +1,41 @@
+name: focus_friend_app
+description: "An Android-first cozy focus room prototype."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.1
+
+dependencies:
+  flutter_localizations:
+    sdk: flutter
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/audio/
+    - assets/images/companion-portrait.png
+    - assets/images/sound-rain.png
+    - assets/images/sound-forest.png
+    - assets/images/sound-fire.png
+    - assets/images/room-day-empty.png
+    - assets/images/room-morning-empty.png
+    - assets/images/room-evening-empty.png
+    - assets/images/room-night-empty.png
+    - assets/images/redpanda-study-sheet.png
+    - assets/images/reward-plant.png
+    - assets/images/reward-mug.png
+    - assets/images/reward-lamp.png
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/PretendardVariable.ttf

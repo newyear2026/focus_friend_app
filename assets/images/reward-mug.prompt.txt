@@ -1,0 +1,10 @@
+Generated with built-in image_gen, transparent_background=true.
+Source: /Users/jaewook/.codex/generated_images/01a118d7-a64f-7181-a3c2-e1b973aa00f9/exec-4ebd0b8e-5c71-4977-9e6f-746096541f36.png
+
+Use case: stylized-concept
+Asset type: transparent isolated game prop sprite for a cozy illustrated mobile focus timer home screen.
+Primary request: One cream ceramic coffee mug, handle on the right, filled with brown coffee visibly seen from above. A small navy-blue cat face illustration on the front: pointed cat ears, simple golden eyes, cream muzzle. No words.
+Style/medium: polished rich hand-painted cozy isometric mobile game art, subtle ceramic texture, warm golden highlights, smooth dimensional shading and a fine softly painted dark outline. Visually belongs in a sunny wood-paneled reading room with a navy kitten, green plants and golden wood furniture.
+Composition/framing: a single mug only on a tight square canvas, centered, completely visible with small padding. Elevated isometric three-quarter view from above, viewing mug top ellipse and front, matching a desk seen at approximately 30 degrees downward. Right handle clearly visible. The mug will be displayed at about 27 px wide so keep its silhouette and navy cat mark easy to read.
+Lighting/mood: warm afternoon sun from upper right, subtle shaded left side.
+Constraints: actual transparent alpha background, only mug, no surface plane, no floor, no surroundings, no scene, no room, no desk, no other objects, no text, no UI, no watermark. Clean silhouette; no large cast shadow.

@@ -1,0 +1,14 @@
+Morning empty room background
+Generated with: built-in image_gen__imagegen (transparent_background=true)
+Edit source: assets/images/room-day-empty.png
+Original generated file: /Users/jaewook/.codex/generated_images/01a118d5-93f4-71d0-940e-8538580ff758/exec-a3cfbbca-6291-445f-a427-dc6a40a6b775.png
+Project asset: assets/images/room-morning-empty.png
+
+Final editing prompt:
+Use case: lighting-weather.
+Asset type: morning lighting variant of an existing transparent isometric study-room game background.
+Edit target: attached room-day-empty.png. Preserve every object, position and contour; change only the outdoor sky colors and room lighting into EARLY MORNING.
+Outside the existing right-wall window, show a soft pale peach and pink early-morning sky with delicate warm low sunrise light. Keep exactly the same distant skyline silhouettes and foliage. The interior should feel fresh and gently warm gold, softer and paler than the golden daytime original, with soft peach daylight coming through the window. Preserve vivid natural green leaves and identifiable warm wood, no extreme pink wash.
+CRITICAL INVARIANTS: exact same 1182-pixel-wide by 1330-pixel-tall canvas, same room scale, camera, geometry, framing and outer alpha silhouette. Do not crop, recenter or zoom. Keep chair EMPTY; keep desk center EMPTY. Preserve all stacked closed books, plants, shelves, poster art, window frame, desk, chair, floor, rug, cushion in exact same positions. Do not add any furniture, cat, open book, lamp, mug, small desk reward plant, text, UI, border or new objects.
+Preserve the transparent alpha background outside the room. Only lighting, shadows and sky color may change.
+

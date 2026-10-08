@@ -1,0 +1,106 @@
+Red panda study animation sprite sheet
+Generated with: built-in image_gen__imagegen (transparent_background=true)
+References:
+  /Users/jaewook/dev_app/focus_friend_app/docs/design/character-concepts/redpanda-writing-study.png
+  /Users/jaewook/dev_app/routine_app/flutter_app/assets/characters/redpanda_teashop/v1/approved/focus.png
+Original generated file: /Users/jaewook/.codex/generated_images/01a118d5-93f4-71d0-940e-8538580ff758/exec-b8edbaf3-1c41-40d0-9766-0b5459b51542.png
+Project asset: assets/images/redpanda-study-sheet.png
+
+Grid and anchor metadata:
+{
+  "asset": "assets/images/redpanda-study-sheet.png",
+  "dimensions": {
+    "width": 1774,
+    "height": 887
+  },
+  "grid": {
+    "columns": 4,
+    "rows": 2,
+    "logicalCellWidth": 443.5,
+    "logicalCellHeight": 443.5
+  },
+  "sequence": [
+    "review",
+    "write-1",
+    "write-2",
+    "write-3",
+    "review",
+    "page-lift",
+    "page-turn",
+    "resume-writing"
+  ],
+  "sourceRectFormula": "Rect.fromLTWH((frame % 4) * 443.5, floor(frame / 4) * 443.5, 443.5, 443.5)",
+  "registration": "Render the full cell in every pose; do not auto-crop to alpha bounds. Notebook lower edge is already registered within about 1px.",
+  "suggestedFullCellTranslations": [
+    [
+      0,
+      0
+    ],
+    [
+      -0.5,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      -0.5,
+      0
+    ],
+    [
+      0,
+      0.5
+    ],
+    [
+      -0.5,
+      0.5
+    ],
+    [
+      0,
+      0.5
+    ],
+    [
+      -0.5,
+      0.5
+    ]
+  ],
+  "renderAnchor": {
+    "description": "Approximate notebook lower center in each cell",
+    "x": 257,
+    "y": 436
+  },
+  "caveats": [
+    "Tool returned 1774x887 despite requested 2048x1024. Cells are 443.5px square; fractional source rectangles preserve exact geometry.",
+    "Frame 5 starts the page lift rather than merely touching a flat page corner; frame 6 shows the stronger raised curl.",
+    "Normal head movements differ by roughly 7px in review frame4 and 15px in page-turn frame6, intentionally relative to fixed notebook.",
+    "Alpha includes faint fringe/speckles outside opaque bounds; do not normalize/crop separate frames based on the full alpha bbox."
+  ]
+}
+
+Per-frame opaque bounds (alpha > 127), local to each fractional cell:
+0: [18, 80, 417, 437]
+1: [19.5, 81, 417.5, 437]
+2: [19, 81, 417, 437]
+3: [19.5, 80, 417.5, 437]
+4: [18, 72.5, 417, 436.5]
+5: [19.5, 79.5, 417.5, 436.5]
+6: [19, 64.5, 417, 436.5]
+7: [19.5, 80.5, 417.5, 436.5]
+
+Final generation prompt:
+Use case: illustration-story
+Asset type: production animation sprite sheet, transparent RGBA PNG for the selected red panda study character.
+Input reference 1: APPROVED STORYBOARD redpanda-writing-study.png. Its upper-body writing, reviewing and page-turn poses and elevated frontal camera are authoritative. Input reference 2: character identity focus.png, exact face/coat/apron/ringtail identity reference. Create the SAME red panda, not a generic bear or cat.
+FORMAT: exactly EIGHT equal SQUARE frames in a FOUR-column by TWO-row regular grid, reading left to right then top to bottom, on one 2048x1024 canvas (each cell512x512). NO scene, NO labels, NO text, NO gridlines, NO borders. Genuine transparent alpha everywhere outside character/notebook/pencil. Never draw any desk, chair, room, floor or backdrop.
+CHARACTER IDENTITY: soft illustrated orange-red coat, pointy cream-lined ears, cream cheek tufts and muzzle, cream eyebrow dots, round glossy dark brown eyes, pink blush cheeks, dark brown paws, teal-green apron with cream sash, plump orange/cream ringed tail visible on VIEWER LEFT behind body. Same exact proportions/colors in all8 frames. Upper body only: character seated behind an implied desk but do NOT draw desk or chair, no legs or feet visible. Match selected storyboard's drawing style and slightly elevated frontal camera, readable round head.
+REGISTRATION IS CRUCIAL: all8 cells must use EXACT same camera, scale, character shoulder position, tail position and notebook position. Character center x256 in every512 cell; ears near y76; shoulder y310; open notebook width300 across x106–406 and flat bottom edge around y476. Keep10+px gutters. Full silhouette including ringtail fits inside everycell. Notebook horizontal at fixed base, cream pages, green cover, center binding always x266 y437, handwritten short decorative strokes only, no legible text. Pencil yellow with pink eraser. Keep stationary objects at EXACT same coordinates. Do not resize/recenter different poses. Only tiny head, eye, hand motions and changing page/pencil positions as specified.
+FRAME0 row1col1: neutral reviewing eyes gently forward and slightly down toward open notebook, both paws at upper notebook corners; yellow pencil resting on implied surface LEFT beside notebook, tip diagonally down-right, NO surface drawn.
+FRAME1 row1col2: writing, right paw (VIEWER LEFT) holds yellow pencil, tip touching left notebook page; head gently down. Left paw rests atop right page.
+FRAME2 row1col3: same writing pose, tiny writing stroke pencil tip a few pixels right; head and notebook remain registered.
+FRAME3 row1col4: same writing pose, next small stroke pencil and writing hand only slightly shift.
+FRAME4 row2col1: writing stopped, pencil laid down at same place as FRAME0; calmly reviews notes with paws at notebook top corners.
+FRAME5 row2col2: left paw (VIEWER RIGHT) reaches outer upper-right notebook corner preparing page turn; pencil stays resting left; no page raised yet.
+FRAME6 row2col3: visible PAGE TURN, left paw raises right page and curls it clearly from right toward left, single large curled cream page, notebook base remains exactly fixed; pencil still rests left.
+FRAME7 row2col4: page now flat, right paw (VIEWER LEFT) picks up pencil again, ready to write, left paw back on right page. Notebook geometry exactly matches frame0.
+Do not draw unrelated props, captions, desk texture, pedestal, contactshadow outside silhouette, UI, names, watermark or any extra/missing frame. Strict 4x2 equal-cell layout.

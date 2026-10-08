@@ -1,0 +1,58 @@
+Generated with built-in image_gen, transparent_background=true.
+Selected source: /Users/jaewook/.codex/generated_images/01a118d7-a64f-7181-a3c2-e1b973aa00f9/exec-b29e7baa-acac-46c2-9459-0feed3a2c536.png
+Reference: /Users/jaewook/dev_app/focus_friend_app/assets/images/home-study-room.png
+Actual dimensions: 1536 x 1024 pixels, RGBA.
+Grid: 3 columns x 2 rows, 512 x 512 square cells, row-major order.
+Frame source rectangles: (0,0,512,512), (512,0,512,512), (1024,0,512,512), (0,512,512,512), (512,512,512,512), (1024,512,512,512).
+Preserve full equal cells for extraction. No automated crop or pixel modification applied.
+
+Frame 0: attentive neutral, both paws on open book.
+Frame 1: head lowered reading.
+Frame 2: head turned slightly left following text.
+Frame 3: right paw reaches page edge.
+Frame 4: lifted curling page held by right paw.
+Frame 5: book flat and right paw returned.
+
+Registration analysis (local cell alpha >100 bounds, right/bottom exclusive):
+0: (54,59,466,484)
+1: (52,66,464,484)
+2: (51,66,463,484)
+3: (53,56,466,468)
+4: (52,55,464,468)
+5: (53,55,465,469)
+Book centers are about x=259 for frame0,257 for frame1,256 for frame2,259 for frame3,257 for frame4,258 for frame5.
+Recommended render translations in source-cell pixels to register book center at x=256 and book bottom at y=476:
+0: dx=-3 dy=-8
+1: dx=-1 dy=-8
+2: dx=0 dy=-8
+3: dx=-3 dy=8
+4: dx=-1 dy=8
+5: dx=-2 dy=7
+These should be scaled with frame destination size. Original row-to-row 16px baseline drift is known. Imagegen targeted correction did not improve registration, so original stronger rendering is retained.
+Alpha is genuine transparency, max254. Dominant alpha levels: 0 (818256 pixels),253 (582214),252(54753). Faint near-transparent fringe can exist, but sampled gutters alpha=0.
+
+FINAL SELECTED IMAGE PROMPT:
+Use case: identity-preserve
+Asset type: animation sprite sheet for the reference cozy study-room game.
+Transform the supplied reference into a TRANSPARENT PNG SPRITE SHEET of ONLY its navy kitten and open cream book. Exactly SIX frames arranged as a precise 3-column by 2-row grid, landscape 3:2 canvas, ideally 1536x1024, each cell square 512x512. No labels or grid lines.
+
+CHARACTER IDENTITY: preserve the exact kitten in reference: deep navy blue fur, three white forehead stripes, amber golden eyes, coral inner ears, small cream muzzle and cream front paws, green neck kerchief, small round gold bell, round friendly proportions. Preserve painted cozy mobile game style, warm sun from upper right and isometric elevated camera. We see full head/ears, upper torso and both front paws resting behind/on the OPEN cream book, no visible hind legs.
+
+REGISTRATION: book bottom/base center at precisely 50% horizontal, 86% vertical within EACH equal square cell. The navy book cover stays open at the same size, orientation and angle in every frame, same as the reference book. Cat body and shoulders fixed. Cat head occupies approximately same bounds in each frame. All objects fit within each cell with generous transparent gutters. Same scale and same camera across all frames. Only head, eyes, right paw and a page change subtly. Objects must not touch another cell.
+
+EXACT FRAMES reading in row-major order:
+Top left frame 0: attentive neutral looking ahead, both cream paws on book.
+Top middle frame 1: head slightly lowered, eyes reading open pages.
+Top right frame 2: head slightly left, eyes following text lines.
+Bottom left frame 3: right paw reaches upper right page edge, head looking down.
+Bottom middle frame 4: right paw turns one lifted cream page from right to left, clearly visible curling page rising from book center. Left paw stays fixed.
+Bottom right frame 5: page flat, right paw returns to book, head looking down.
+
+Only the kitten with paws and the single open book repeated as SIX consistent animation frames. Transparent alpha background including gutters. Completely remove room, plants, chair, desk, floor, loose books, shadows from surrounding scene and any other props. No scene, no furniture, no UI, no cell borders, no letters, no numerals, no watermarks. Tiny abstract gold strokes on book pages allowed, no readable text. Keep exact camera and book placement consistently anchored.
+
+TARGETED CORRECTION ATTEMPT (not selected):
+Edit this existing sprite sheet with ONLY registration and transparency cleanup. Keep all six poses, illustrated cat identity, colors, details, open book, page-turn frame, canvas size 1536x1024 and 3 columns x 2 rows unchanged.
+Each cell is exactly 512x512. Precisely align the open book bottom-center to local cell x=256,y=476 in ALL SIX CELLS. Books same width and camera. Each cat body/shoulder must stay registered to same book anchor and same scale; preserve intentional small head and paw animation differences. In current sheet top row books end around local y=484 and bottom row end around468: normalize them to476. Center every book at256. Do not add or remove frames.
+All pixels outside cat/book silhouettes MUST be fully alpha=0 with transparent gutters. Remove the dark purple smoky glow, any ambient shadow, stray colored pixels and semi-transparent haze from outside the six silhouettes. Keep clean antialiased object edges only. Actual PNG transparency, no solid colored fill, no grid, no captions, no words. No desk, no chair, no room.
+Correction source: /Users/jaewook/.codex/generated_images/01a118d7-a64f-7181-a3c2-e1b973aa00f9/exec-4ac5cb87-4570-4272-b1c2-0e18eed05ffc.png
+

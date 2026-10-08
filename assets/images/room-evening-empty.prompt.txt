@@ -1,0 +1,21 @@
+Generated with built-in image_gen edit, transparent_background=true.
+Source reference: /Users/jaewook/dev_app/focus_friend_app/assets/images/room-day-empty.png
+Generated source: /Users/jaewook/.codex/generated_images/01a118d7-a64f-7181-a3c2-e1b973aa00f9/exec-394a6711-7b8a-4135-bb0c-e9f088ab2ab8.png
+Final saved asset: assets/images/room-evening-empty.png
+Actual dimensions: 1182 x 1330 pixels, RGBA, alpha extrema 0..255.
+Inspection: exact canvas size preserved. Chair and desk remain empty apart from original desk-left stack of books. Warm amber/copper room light and coral/orange/purple sunset outside window. Same furniture and plant layout and camera.
+Registration: alpha>100 silhouette intersection-over-union with day reference = 0.9974505221526745 (99.745%).
+Day silhouette bounding box: (13,1,1168,1327).
+Evening silhouette bounding box: (14,2,1170,1328).
+Tiny 1-2 px silhouette variation from generative edit; no resizing or cropping applied.
+
+PROMPT:
+Use case: lighting-weather
+Asset type: evening lighting variant of an existing transparent mobile-game isometric room backdrop.
+
+EDIT the reference image. Preserve exact 1182 x 1330 pixel canvas, same alpha silhouette, same room geometry, viewpoint, camera, positioning, object proportions, edges, all furniture and every plant. Change ONLY the outside weather/time of day and associated lighting/colors.
+
+TIME: cozy sunset/early evening. Through the right window show the SAME distant city skyline at dusk, with a luminous coral-orange horizon, peach and pink clouds, muted purple upper sky and distant buildings in soft purple. Outside foliage and window frame keep exact shapes and positions. Sunset light enters from the right window, lower and softer than the day image. Warm amber highlights on wood, rich amber/copper wood tones, subtle muted purple shadows in room. Less bright than day, clearly recognizably evening, but cozy and readable with all plants and furniture visible. No pitch black room.
+
+INVARIANTS: the chair remains completely EMPTY. Keep desk mostly empty and clear: the original stack of three books at the far left remains unchanged, but no open book, no cat, no mug, no lamp or new object. Preserve the precise window grid, shelf books, all vines and plants, picture frames, drawer cabinet, chair slats and armrests, wood table geometry, rug with navy cat motifs, green pet cushion, wood floor and walls. Never add a lamp or light source. Preserve fixed camera and exact object registration: this image crossfades over the reference day version, so every contour must stay in exactly the same place. Do not move, crop, rotate, redraw, enlarge or simplify objects. Genuine transparent alpha outside the isolated room, matching reference outline; no background scene, no text, no UI, no watermark.
+
