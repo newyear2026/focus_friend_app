@@ -1,0 +1,122 @@
+[
+  {
+    "frame": 17,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-tilt-raw.png",
+    "stripSlot": 0,
+    "kind": "tilt",
+    "scale": 0.4060789177001127,
+    "offset": [
+      61,
+      6
+    ],
+    "featureError": 240.158110999095
+  },
+  {
+    "frame": 18,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-tilt-raw.png",
+    "stripSlot": 1,
+    "kind": "tilt",
+    "scale": 0.4060789177001127,
+    "offset": [
+      61,
+      6
+    ],
+    "featureError": 238.67887167752156
+  },
+  {
+    "frame": 19,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-0-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-0",
+    "scale": 0.5169064261555806,
+    "offset": [
+      -12,
+      -17
+    ],
+    "featureError": 117.03015406663005
+  },
+  {
+    "frame": 20,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-0-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-0",
+    "scale": 0.5169064261555806,
+    "offset": [
+      24,
+      -18
+    ],
+    "featureError": 115.39473465512366
+  },
+  {
+    "frame": 21,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-1-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-1",
+    "scale": 0.5352694475760991,
+    "offset": [
+      7,
+      -27
+    ],
+    "featureError": 83.98132851130563
+  },
+  {
+    "frame": 22,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-1-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-1",
+    "scale": 0.533934611048478,
+    "offset": [
+      15,
+      -27
+    ],
+    "featureError": 93.1844476449053
+  },
+  {
+    "frame": 23,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-2-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-2",
+    "scale": 0.55110710259301,
+    "offset": [
+      8,
+      -22
+    ],
+    "featureError": 97.33021935603172
+  },
+  {
+    "frame": 24,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-2-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-2",
+    "scale": 0.5497361894024801,
+    "offset": [
+      12,
+      -21
+    ],
+    "featureError": 106.42663876931611
+  },
+  {
+    "frame": 25,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-3-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-3",
+    "scale": 0.5169064261555806,
+    "offset": [
+      18,
+      -17
+    ],
+    "featureError": 87.69633207626342
+  },
+  {
+    "frame": 26,
+    "source": "docs/design/window-tea-mouth-v4/art/fennec-lift-3-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-3",
+    "scale": 0.5169064261555806,
+    "offset": [
+      29,
+      -17
+    ],
+    "featureError": 90.79612349511663
+  }
+]

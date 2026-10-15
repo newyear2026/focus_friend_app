@@ -1,0 +1,17 @@
+{
+  "before": {
+    "revision": 17,
+    "bodySha256": "d439e6d5bec76a53adf89cd1a5ed815ff5050d106cc3b2f0da6a7e1961c3b154",
+    "historyCount": 3,
+    "active": true
+  },
+  "after": {
+    "revision": 17,
+    "bodySha256": "d439e6d5bec76a53adf89cd1a5ed815ff5050d106cc3b2f0da6a7e1961c3b154",
+    "historyCount": 3,
+    "active": true
+  },
+  "unchanged": true,
+  "device": "emulator-5554",
+  "update": "adb install -r"
+}

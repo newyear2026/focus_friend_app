@@ -1,0 +1,11 @@
+Use case: lighting-weather.
+Asset type: one comparison artwork board for the existing Focus Friend mobile app, preview only.
+Primary request: edit the attached existing penguin scene into a single coherent time-of-day comparison triptych. This is ONE design direction shown at three times, not three alternative room designs.
+Input image 1 is the actual current penguin-scene.png and is the edit target, mandatory identity, composition, room, prop and illustration-style reference.
+Target dimensions: landscape 1536 x 1152. Three equal tall portrait panels left to right, each showing the full same 853:1844 source composition without stretching, with a narrow clean cream label band above them. Exact Korean column labels: "아침" above left, "점심" above middle, "저녁" above right. No other lettering.
+Preserve the exact cute charcoal baby penguin, three white forehead spots, cream face/chest, round brown eyes, orange beak, lavender snowflake scarf, connected writing paws, pencil and open notebook. Preserve character size and exact desk/chair/window/shelves/ivy/book stacks/cup/lamp positions, viewpoint and full-room portrait crop in all three panels. Warm detailed hand-painted 2D animation / storybook artwork matching the input.
+Change only outdoor time and physically consistent indoor illumination, not room design, animal identity, pose, furnishings or season.
+LEFT morning: pale peach-pink sunrise, soft cool snowy mountains and pines, delicate golden early light on snow and desk, no visible stars, very subtle reading lamp.
+MIDDLE noon: clear powder-blue sky with soft white clouds, crisp white and light-blue snowy trees and mountains, bright gentle neutral daylight, warm wood retains natural color, no visible stars; lamp contributes almost no glow.
+RIGHT evening: lavender-indigo dusk sky with the last pink light near snowy mountain horizon, a few delicate early stars, warm distant cabin windows and cozy amber desk lamp/local shelf lantern, cool blue shadows with character and book still readable.
+The exact same landmarks and object placement must register across all panels; no new buildings or props. No app UI, timer, buttons, phone frames, arrows, branding, watermarks, border decorations, added characters or extra paws. Do not apply a uniform colored wash: make changes visible mainly in window sky/snow, directional desk light and lamp contrast.

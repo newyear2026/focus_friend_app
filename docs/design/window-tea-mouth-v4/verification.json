@@ -1,0 +1,15 @@
+{
+  "status": "mouth contact corrected; path and loop verified; minor authored contour variations remain",
+  "wholeAppTests": 98,
+  "targetedTests": 7,
+  "afterCaptureTests": 1,
+  "afterCaptureCycles": 2,
+  "analyze": "No issues found",
+  "apkBuild": "success",
+  "install": "success",
+  "savedDataPreserved": true,
+  "runtimeImageMatchesApk": true,
+  "loopBoundaryPixelsEqual": true,
+  "artTool": "built-in ImageGen",
+  "remainingVisualLimit": "Small head/face contour differences and some uneven drawing spacing remain; no claim of perfect frame identity."
+}

@@ -1,0 +1,151 @@
+{
+  "method": "one uniform scale and translation per connected cel",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceGrid": [
+    4,
+    4
+  ],
+  "stage": [
+    512,
+    512
+  ],
+  "runtimeCel": [
+    384,
+    384
+  ],
+  "fixedPropsFrom": "docs/design/fennec-squirrel-window-tea-v1/squirrel-cel-0.png",
+  "fixedPropsTop": 362,
+  "frames": [
+    {
+      "frame": 0,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 1,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 2,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 3,
+      "scale": 1.0510204081632653,
+      "offset": [
+        45,
+        47
+      ]
+    },
+    {
+      "frame": 4,
+      "scale": 1.0510204081632653,
+      "offset": [
+        45,
+        47
+      ]
+    },
+    {
+      "frame": 5,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 6,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 7,
+      "scale": 1.0510204081632653,
+      "offset": [
+        45,
+        47
+      ]
+    },
+    {
+      "frame": 8,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 9,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 10,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ]
+    },
+    {
+      "frame": 11,
+      "scale": 1.0618556701030928,
+      "offset": [
+        43,
+        46
+      ]
+    },
+    {
+      "frame": 12,
+      "scale": 1.0729166666666667,
+      "offset": [
+        41,
+        46
+      ]
+    },
+    {
+      "frame": 13,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        46
+      ]
+    },
+    {
+      "frame": 14,
+      "scale": 1.0618556701030928,
+      "offset": [
+        44,
+        46
+      ]
+    },
+    {
+      "frame": 15,
+      "scale": 1.0618556701030928,
+      "offset": [
+        43,
+        46
+      ]
+    }
+  ]
+}

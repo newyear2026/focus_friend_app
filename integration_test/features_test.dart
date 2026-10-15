@@ -82,7 +82,7 @@ void main() {
       await tester.pumpWidget(
         RepaintBoundary(
           key: boundaryKey,
-          child: FocusFriendApp(engine: engine),
+          child: FocusFriendApp(engine: engine, locale: const Locale('ko')),
         ),
       );
       await tester.pumpAndSettle();
@@ -132,6 +132,7 @@ void main() {
       expect(engine.state.sound.enabled, true);
       await tester.pumpWidget(const SizedBox.shrink());
 
+      await File('${folder.path}/ui-complete').writeAsString('ready');
       final disk = VerificationStore();
       final old = await disk.load();
       final blank = FocusState(revision: old.revision + 1);

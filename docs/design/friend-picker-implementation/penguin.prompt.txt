@@ -1,0 +1,12 @@
+Generator: built-in image_gen, edit mode
+Source: docs/design/animated-character-scene-set-v1/penguin.png
+Output: assets/images/friends/penguin-scene.png
+Generated source: /Users/jaewook/.codex/generated_images/01a13cba-f947-79e1-8b93-09730fd21cbd/exec-b4d9c9cc-c78f-44c7-924c-597ad519bf25.png
+
+Use case: precise-object-edit.
+Asset type: full-screen static illustrated background asset for a Flutter focus timer app. This is the clean artwork behind real native UI.
+Input image: the provided penguin app mockup is the EDIT TARGET.
+Primary request: Remove every part of the app interface from the image and reconstruct the obscured illustration naturally. Remove the Korean title at top, speaker icon, all text including caption and huge 25:00 timer, today's focus metric, both time-selection pills, large start button including play icon, and all three bottom navigation icons, labels, selection underline. Remove the UI-only dark gradient overlay from the lower third too; let the naturally shadowed room remain.
+Keep the entire underlying scene and composition as close as possible: cozy wooden winter study room, left shelves with books and trailing plant, snowy dusk window with purple-blue sky and warm distant cottage, penguin sitting and writing at an open notebook, desk lamp, books, mug, potted plants, chair, wooden desktop, lower desk legs and floor. The cute charcoal-and-cream penguin with lavender snowflake scarf is the hero, positioned in the lower center around x=0.46 and y=0.54, EXACT same head/body size, face, pose and pencil/hand/notebook relationship. Preserve the tiny white forehead spots, round brown eyes, blush and orange beak, illustration textures, soft 2D animation feel.
+Composition/framing: same tall portrait ratio 853:1844, edge-to-edge art, no borders, no device frame, no cropping or zooming. Window and wall continue behind deleted upper text. Continuous room and floor continue behind deleted lower UI.
+Constraints: no UI, no numbers, no words or letters anywhere, no logos, no watermark, no extra characters, no simplified redraw, no change to the character pose or scene layout. Render the illustration itself only, ready for native UI overlay.

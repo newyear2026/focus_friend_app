@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>랫서팬더 · 연결된 필기 24장</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#211e27;color:#fff4de;font-family:system-ui,sans-serif;line-height:1.6}
+  main{max-width:1040px;margin:auto;padding:36px 24px}h1{font-size:28px;margin:0 0 6px}p{color:#cebfaf;margin:0 0 24px}
+  .layout{display:grid;grid-template-columns:minmax(280px,580px) 1fr;gap:28px;align-items:center}.stage{background:#fff7e6;border-radius:24px;overflow:hidden}canvas{width:100%;height:auto;display:block}
+  .count{font-size:42px;font-weight:750;font-variant-numeric:tabular-nums;color:#ffcc83}.status{min-height:30px;color:#e4d4c3}button,select{font:inherit;border:0;border-radius:12px;padding:11px 16px;background:#3c3541;color:#fff4de;cursor:pointer}button.primary{background:#ffcc83;color:#211e27;font-weight:700}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}label{display:block;margin:18px 0 6px}input[type=range]{width:100%;accent-color:#ffcc83}
+  .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.key{background:#302a35;border-radius:16px;overflow:hidden}.key canvas{background:#fff7e6}.key span{display:block;text-align:center;padding:8px}.note{margin-top:24px;font-size:14px}a{color:#ffcc83}@media(max-width:760px){.layout{grid-template-columns:1fr}.controls{max-width:580px}.count{font-size:32px}main{padding:24px 16px}h1{font-size:24px}}
+</style>
+<main>
+  <h1>연결된 필기 동작 · 24장</h1>
+  <p>준비 → 짧은 필기 → 연필을 들어 복귀. 몸통·어깨·팔·손은 한 그림으로 교체합니다.</p>
+  <div class="layout">
+    <div class="stage"><canvas id="stage" width="580" height="580" aria-label="연결된 랫서팬더 필기 애니메이션"></canvas></div>
+    <div class="controls">
+      <div class="count"><span id="number">01</span> / 24</div>
+      <div class="status" id="status">준비 자세</div>
+      <div class="buttons"><button class="primary" id="play">일시정지</button><button id="previous" aria-label="이전 그림">← 이전</button><button id="next" aria-label="다음 그림">다음 →</button></div>
+      <label for="frame">그림을 한 장씩 확인</label><input id="frame" type="range" min="1" max="24" value="1">
+      <label for="speed">재생 속도</label><select id="speed"><option value="12">12fps · 한 주기 3초</option><option value="6">6fps · 천천히 확인</option></select>
+      <p class="note">그림 24장은 약 2초의 동작입니다. 시작과 끝 자세를 각각 0.5초 더 유지해, 12fps에서 3초마다 반복합니다.</p>
+      <a href="writing-24-frames.zip">24장 PNG 받기</a> · <a href="writing-loop.gif">GIF 미리보기</a>
+    </div>
+  </div>
+  <div class="keys">
+    <div class="key"><canvas id="ready" width="580" height="580"></canvas><span>01 · 준비</span></div>
+    <div class="key"><canvas id="writing" width="580" height="580"></canvas><span>16 · 필기</span></div>
+    <div class="key"><canvas id="returned" width="580" height="580"></canvas><span>24 · 복귀</span></div>
+  </div>
+  <p class="note">원화: built-in Image Gen. 원본 시트에서 24개의 완성된 그림을 잘라 재생하며, 관절 변형이나 그림 간 혼합을 사용하지 않습니다. <a href="final-24.prompt.txt">제작 프롬프트</a></p>
+</main>
+<script src="registration.js"></script>
+<script>
+  const atlas=new Image();atlas.src='final-atlas.png';
+  const timeline=[...Array(6).fill(0),...Array.from({length:24},(_,i)=>i),...Array(6).fill(23)];
+  const stage=document.querySelector('#stage'), slider=document.querySelector('#frame'), play=document.querySelector('#play');
+  let running=true,fps=12,elapsed=0,last=performance.now(),drawing=0;
+  function paint(canvas,frame){const ctx=canvas.getContext('2d'),w=atlas.width/4,h=atlas.height/6,s=spriteRegistration.scales[frame],x=64+(1-s)*500*spriteRegistration.anchorX,y=35+(1-s)*500*spriteRegistration.anchorY;ctx.clearRect(0,0,580,580);ctx.drawImage(atlas,frame%4*w,Math.floor(frame/4)*h,w,h,x,y,500*s,500*s)}
+  function show(frame){drawing=frame;paint(stage,frame);document.querySelector('#number').textContent=String(frame+1).padStart(2,'0');slider.value=frame+1;document.querySelector('#status').textContent=frame<6?'준비 · 종이 위로 연필 내리기':frame<18?'필기 · 손과 연필이 함께 이동':'복귀 · 연필을 들고 돌아오기'}
+  function manual(frame){running=false;play.textContent='재생';elapsed=timeline.indexOf(frame)*1000/fps;show(frame)}
+  play.onclick=()=>{running=!running;play.textContent=running?'일시정지':'재생';last=performance.now()};
+  document.querySelector('#previous').onclick=()=>manual((drawing+23)%24);
+  document.querySelector('#next').onclick=()=>manual((drawing+1)%24);
+  slider.oninput=()=>manual(Number(slider.value)-1);
+  document.querySelector('#speed').onchange=e=>{const old=fps;fps=Number(e.target.value);elapsed*=old/fps;last=performance.now()};
+  document.addEventListener('visibilitychange',()=>{last=performance.now()});
+  function loop(now){if(running&&!document.hidden){elapsed+=now-last;show(timeline[Math.floor(elapsed*fps/1000)%36])}last=now;requestAnimationFrame(loop)}
+  atlas.onload=()=>{show(0);paint(document.querySelector('#ready'),0);paint(document.querySelector('#writing'),15);paint(document.querySelector('#returned'),23);last=performance.now();requestAnimationFrame(loop)};
+</script>
+</html>

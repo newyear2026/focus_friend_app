@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-15",
+  "mode": "built-in ImageGen",
+  "periods": [
+    "morning",
+    "day",
+    "evening",
+    "night"
+  ],
+  "preview_only": true,
+  "images": [
+    {
+      "name": "penguin",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a13cef-bf30-7ec1-93bc-7898af3f86e6/exec-ddd9d4e0-8e41-4021-a341-0efd0a27ae1a.png",
+      "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/penguin.png",
+      "prompt": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/penguin.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/penguin-scene.png",
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v1/penguin.png",
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/immersive/room-night.png"
+      ],
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "otter",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a13cef-bf30-7ec1-93bc-7898af3f86e6/exec-c95d4055-cf4e-49ca-a1cc-c10d46fa5fc6.png",
+      "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/otter.png",
+      "prompt": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/otter.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/otter-scene.png",
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v1/otter.png",
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/immersive/room-night.png"
+      ],
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "squirrel",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a13cef-bf30-7ec1-93bc-7898af3f86e6/exec-151a1d05-1221-488b-a609-8da91fdadce1.png",
+      "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/squirrel.png",
+      "prompt": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/squirrel.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/squirrel-scene.png",
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v1/squirrel.png",
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/immersive/room-night.png"
+      ],
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "name": "fennec",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a13cef-bf30-7ec1-93bc-7898af3f86e6/exec-837e682a-ed3a-4040-a0e0-39d259e4ebca.png",
+      "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/fennec.png",
+      "prompt": "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v2/fennec.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/fennec-scene.png",
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/friend-time-of-day-concepts-v1/fennec.png",
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/immersive/room-night.png"
+      ],
+      "width": 1672,
+      "height": 941
+    }
+  ]
+}

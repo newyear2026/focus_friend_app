@@ -1,0 +1,16 @@
+{
+  "stage": [
+    512,
+    512
+  ],
+  "runtimeCell": 384,
+  "studyCels": 24,
+  "teaCels": 12,
+  "baseStudyTransform": [
+    1.15,
+    0,
+    40
+  ],
+  "studyRegistration": "whole-cel translation by book left/bottom",
+  "restRegistration": "uniform whole-cel scaling/translation by head width/top"
+}

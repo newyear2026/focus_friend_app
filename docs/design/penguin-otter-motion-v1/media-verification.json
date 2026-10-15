@@ -1,0 +1,78 @@
+[
+  {
+    "file": "docs/design/penguin-otter-motion-v1/penguin-study.mp4",
+    "sha256": "44ea44e8781d91ce3f38353db81e0b5f3ff22b9426b3c62e8b730beee29b1189",
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 484,
+          "height": 434,
+          "r_frame_rate": "12/1",
+          "nb_frames": "162"
+        }
+      ],
+      "format": {
+        "duration": "13.500000"
+      }
+    }
+  },
+  {
+    "file": "docs/design/penguin-otter-motion-v1/penguin-rest.mp4",
+    "sha256": "c6986b94335a48c35593039d8c4c76fe10669439a6d09966060b7a7241cb5f04",
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 484,
+          "height": 434,
+          "r_frame_rate": "12/1",
+          "nb_frames": "168"
+        }
+      ],
+      "format": {
+        "duration": "14.000000"
+      }
+    }
+  },
+  {
+    "file": "docs/design/penguin-otter-motion-v1/otter-study.mp4",
+    "sha256": "1a11f46d28d8c813f76c76425fa9daa3c440162c48deb698d5a2f64084654b66",
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 484,
+          "height": 434,
+          "r_frame_rate": "12/1",
+          "nb_frames": "162"
+        }
+      ],
+      "format": {
+        "duration": "13.500000"
+      }
+    }
+  },
+  {
+    "file": "docs/design/penguin-otter-motion-v1/otter-rest.mp4",
+    "sha256": "47909d8503a81a191ae1bad6bb106640a84525b83ea3f397b1d1fd57d5dc5591",
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 484,
+          "height": 434,
+          "r_frame_rate": "12/1",
+          "nb_frames": "168"
+        }
+      ],
+      "format": {
+        "duration": "14.000000"
+      }
+    }
+  }
+]

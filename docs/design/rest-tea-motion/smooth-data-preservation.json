@@ -1,0 +1,12 @@
+{
+  "package": "dev.jaewook.prototype.focus_friend_app",
+  "same_snapshot": true,
+  "before_sha256": "fbe959494dda8e12f17f988778c507eb3ac11956ada6a5fa5563e446eb560c24",
+  "after_sha256": "fbe959494dda8e12f17f988778c507eb3ac11956ada6a5fa5563e446eb560c24",
+  "revision_before": 53,
+  "revision_after": 53,
+  "history_count_before": 11,
+  "history_count_after": 11,
+  "active_preserved": true,
+  "apk_sha256": "5c8b3eb81e44ec3d0e116bdbbcfdddb71ecb93d681169d90d1850a044ec5b8f1"
+}

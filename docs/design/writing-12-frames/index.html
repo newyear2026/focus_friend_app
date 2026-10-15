@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>랫서팬더 필기 · 12프레임</title>
+<style>
+:root{color-scheme:light;--ink:#493425;--green:#2e6652;--muted:#8a7766}
+*{box-sizing:border-box}body{margin:0;background:#f6f1e7;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}
+main{max-width:1080px;margin:auto;padding:38px 24px 60px}header{margin-bottom:26px}.eyebrow{font-size:13px;letter-spacing:.12em;color:var(--green);font-weight:700}
+h1{font-size:30px;letter-spacing:-.04em;margin:10px 0}p{line-height:1.65;color:var(--muted);margin:0}
+.review{display:grid;grid-template-columns:420px 1fr;gap:32px;align-items:start}
+.player{background:#fffdf7;border:1px solid #e7dfd1;border-radius:22px;padding:24px;text-align:center}
+#preview{width:100%;height:auto;max-width:362px;aspect-ratio:1;display:block;margin:auto;border-radius:12px}
+.status{display:flex;justify-content:space-between;margin:18px 0;font-size:14px;font-variant-numeric:tabular-nums}
+.controls{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+button,select{font:inherit;border:1px solid #d5cbbc;border-radius:10px;padding:10px 12px;background:#fffdf8;color:var(--ink);cursor:pointer}
+button:hover,select:hover{border-color:var(--green)}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ca994d;outline-offset:3px}
+#toggle{background:var(--green);color:white;border-color:var(--green);min-width:90px}input{width:100%;accent-color:var(--green);margin:22px 0 6px}
+.help{font-size:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.frame{padding:0;overflow:hidden;border-radius:13px;text-align:left;background:#fffdf8;border:2px solid transparent;box-shadow:0 1px 0 #ded6ca}
+.frame[aria-pressed="true"]{border-color:var(--green)}.frame img{width:100%;height:auto;display:block}.frame span{display:block;font-size:12px;padding:4px 10px 8px;color:var(--muted)}
+.grid-title{font-size:16px;margin:2px 0 16px}footer{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;font-size:13px}a{color:var(--green);text-underline-offset:3px}
+@media(max-width:850px){.review{grid-template-columns:1fr}.player{max-width:430px;width:100%;margin:auto}.grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:480px){main{padding:24px 16px 40px}h1{font-size:25px}.player{padding:16px}.grid{gap:7px;grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">FOCUS FRIEND · MOTION STUDY</div><h1>랫서팬더의 필기 시간</h1><p>12장의 그림으로 만든 필기 동작 시안입니다. 느리게 재생하거나 한 장씩 살펴보세요.</p></header>
+<section class="review" aria-label="필기 동작 미리보기">
+<div class="player">
+<img id="preview" src="frames/frame-01.png" width="362" height="362" alt="랫서팬더 필기 동작 1번 프레임">
+<div class="status"><strong id="counter">01 / 12</strong><span id="timing">12 fps · 1초 반복</span></div>
+<div class="controls"><button id="prev" aria-label="이전 프레임">←</button><button id="toggle">일시정지</button><button id="next" aria-label="다음 프레임">→</button><select id="speed" aria-label="재생 속도"><option value="12">보통 · 12 fps</option><option value="6">느리게 · 6 fps</option></select></div>
+<input id="scrub" type="range" min="1" max="12" value="1" aria-label="프레임 선택">
+<p class="help">스페이스: 재생 / 정지 · 방향키: 한 장씩 보기</p>
+</div>
+<div><h2 class="grid-title">전체 12프레임 <span style="font-weight:400;color:var(--muted)">· 눌러서 확대</span></h2><div class="grid" id="grid">
+<button class="frame" data-index="0" aria-label="1번 프레임 보기" aria-pressed="true"><img src="frames/frame-01.png" width="362" height="362" alt=""><span>01</span></button>
+<button class="frame" data-index="1" aria-label="2번 프레임 보기" aria-pressed="false"><img src="frames/frame-02.png" width="362" height="362" alt=""><span>02</span></button>
+<button class="frame" data-index="2" aria-label="3번 프레임 보기" aria-pressed="false"><img src="frames/frame-03.png" width="362" height="362" alt=""><span>03</span></button>
+<button class="frame" data-index="3" aria-label="4번 프레임 보기" aria-pressed="false"><img src="frames/frame-04.png" width="362" height="362" alt=""><span>04</span></button>
+<button class="frame" data-index="4" aria-label="5번 프레임 보기" aria-pressed="false"><img src="frames/frame-05.png" width="362" height="362" alt=""><span>05</span></button>
+<button class="frame" data-index="5" aria-label="6번 프레임 보기" aria-pressed="false"><img src="frames/frame-06.png" width="362" height="362" alt=""><span>06</span></button>
+<button class="frame" data-index="6" aria-label="7번 프레임 보기" aria-pressed="false"><img src="frames/frame-07.png" width="362" height="362" alt=""><span>07</span></button>
+<button class="frame" data-index="7" aria-label="8번 프레임 보기" aria-pressed="false"><img src="frames/frame-08.png" width="362" height="362" alt=""><span>08</span></button>
+<button class="frame" data-index="8" aria-label="9번 프레임 보기" aria-pressed="false"><img src="frames/frame-09.png" width="362" height="362" alt=""><span>09</span></button>
+<button class="frame" data-index="9" aria-label="10번 프레임 보기" aria-pressed="false"><img src="frames/frame-10.png" width="362" height="362" alt=""><span>10</span></button>
+<button class="frame" data-index="10" aria-label="11번 프레임 보기" aria-pressed="false"><img src="frames/frame-11.png" width="362" height="362" alt=""><span>11</span></button>
+<button class="frame" data-index="11" aria-label="12번 프레임 보기" aria-pressed="false"><img src="frames/frame-12.png" width="362" height="362" alt=""><span>12</span></button>
+</div></div>
+</section>
+<footer><a href="writing-loop-12fps.gif">반복 GIF</a><a href="writing-contact-sheet.png">전체 프레임 이미지</a><a href="writing-12-frames.zip" download>PNG 12장 다운로드</a></footer>
+</main>
+<script>
+const images=Array.from({length:12},(_,i)=>{const im=new Image();im.src='frames/frame-'+String(i+1).padStart(2,'0')+'.png';return im});
+const preview=document.querySelector('#preview'),counter=document.querySelector('#counter'),scrub=document.querySelector('#scrub'),toggle=document.querySelector('#toggle'),speed=document.querySelector('#speed');
+const cards=[...document.querySelectorAll('.frame')];
+let index=0,fps=12,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,epoch=performance.now();
+function show(n){index=(n+12)%12;preview.src=images[index].src;preview.alt='랫서팬더 필기 동작 '+(index+1)+'번 프레임';counter.textContent=String(index+1).padStart(2,'0')+' / 12';scrub.value=index+1;cards.forEach((c,i)=>c.setAttribute('aria-pressed',i===index?'true':'false'))}
+function state(){toggle.textContent=playing?'일시정지':'재생';document.querySelector('#timing').textContent=fps+' fps · '+(12/fps)+'초 반복'}
+function pauseAt(n){playing=false;show(n);state()}
+toggle.onclick=()=>{playing=!playing;epoch=performance.now()-index*1000/fps;state()};
+document.querySelector('#prev').onclick=()=>pauseAt(index-1);
+document.querySelector('#next').onclick=()=>pauseAt(index+1);
+scrub.oninput=()=>pauseAt(Number(scrub.value)-1);
+cards.forEach((card,i)=>card.onclick=()=>pauseAt(i));
+speed.onchange=()=>{fps=Number(speed.value);epoch=performance.now()-index*1000/fps;state()};
+document.addEventListener('keydown',e=>{if(/INPUT|SELECT|BUTTON/.test(e.target.tagName))return;if(e.code==='Space'){e.preventDefault();toggle.click()}if(e.code==='ArrowLeft'){e.preventDefault();pauseAt(index-1)}if(e.code==='ArrowRight'){e.preventDefault();pauseAt(index+1)}});
+function tick(t){if(playing){const n=Math.floor((t-epoch)*fps/1000)%12;if(n!==index)show(n)}requestAnimationFrame(tick)}
+Promise.all(images.map(im=>im.decode())).then(()=>{epoch=performance.now();state();requestAnimationFrame(tick)}).catch(()=>{playing=false;state();document.querySelector('#timing').textContent='이미지를 불러오지 못했습니다'});
+</script></body></html>

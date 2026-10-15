@@ -1,0 +1,15 @@
+{
+  "character": "otter",
+  "timeOfDay": "evening",
+  "mode": "builtin_image_gen",
+  "taxonomy": "lighting-weather",
+  "output": "assets/images/friends/ambience/otter/evening.png",
+  "width": 853,
+  "height": 1844,
+  "source": "assets/images/friends/motion/otter/room.png",
+  "approvedConcept": "docs/design/friend-time-of-day-concepts-v2/otter.png",
+  "originalGeneratedFile": "/Users/jaewook/.codex/generated_images/01a14036-37e9-7c91-b0f7-8c528924047f/exec-b188880a-e17d-4cf4-8a59-1edcaccf12fd.png",
+  "promptFile": "otter-evening.prompt.txt",
+  "visualInspection": "Source room geometry and props preserved closely. Empty chair and activity desk center. Lavender upper sky, coral-orange horizon, low setting sun, copper-pink sea reflections, warm existing lamp and cool room shadows. No moon, character, center open notebook, mug, UI or text.",
+  "knownLimitations": "No material issues found during visual inspection."
+}

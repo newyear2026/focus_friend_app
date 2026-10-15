@@ -1,0 +1,166 @@
+{
+  "source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-358835bd-b475-4bdd-9bfc-eeec6c6a1a59.png",
+  "sheet_size": [
+    1448,
+    1086
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "frame_size": [
+    362,
+    362
+  ],
+  "frame_count": 12,
+  "fps": 12,
+  "gif_durations_ms": [
+    80,
+    90,
+    80,
+    80,
+    90,
+    80,
+    80,
+    90,
+    80,
+    80,
+    90,
+    80
+  ],
+  "artwork_method": "Built-in Image Gen. Equal-cell extraction only; no redraw, morphing, interpolation or warping in packaging.",
+  "frames": [
+    {
+      "index": 1,
+      "file": "frames/frame-01.png",
+      "crop": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "sha256": "f3ad53b10db240ffb9e6fe60bacd3bb77222f9738e457627de01ca32999cecb7"
+    },
+    {
+      "index": 2,
+      "file": "frames/frame-02.png",
+      "crop": [
+        362,
+        0,
+        724,
+        362
+      ],
+      "sha256": "796f75dfb7a4f9e27a7bd6c8a75a59aa0aef3b2d09886baebbd8d7c65cb9a377"
+    },
+    {
+      "index": 3,
+      "file": "frames/frame-03.png",
+      "crop": [
+        724,
+        0,
+        1086,
+        362
+      ],
+      "sha256": "f66fb9e1af47a4346fdb67e484143d0f86e57bc72b03a42b3589c96441d11216"
+    },
+    {
+      "index": 4,
+      "file": "frames/frame-04.png",
+      "crop": [
+        1086,
+        0,
+        1448,
+        362
+      ],
+      "sha256": "7974fb383557764b0f046f62ea7d5d9233785d0eb091a85dbe70c63da7dc9eed"
+    },
+    {
+      "index": 5,
+      "file": "frames/frame-05.png",
+      "crop": [
+        0,
+        362,
+        362,
+        724
+      ],
+      "sha256": "34eacb1b0502ea19b04ff30d54fc9a6af94d8e925888aca8c3847a83506f38b2"
+    },
+    {
+      "index": 6,
+      "file": "frames/frame-06.png",
+      "crop": [
+        362,
+        362,
+        724,
+        724
+      ],
+      "sha256": "30c1ac1657a02ab689595af39f1f7aaaf7ba72ee75c9d0f8ef3d97e926699f51"
+    },
+    {
+      "index": 7,
+      "file": "frames/frame-07.png",
+      "crop": [
+        724,
+        362,
+        1086,
+        724
+      ],
+      "sha256": "77657f70041a35b99b7ba4cebc868eb6bd46e3c25e302171727c9c5372246305"
+    },
+    {
+      "index": 8,
+      "file": "frames/frame-08.png",
+      "crop": [
+        1086,
+        362,
+        1448,
+        724
+      ],
+      "sha256": "25778002da2f5598824993fcd7ad72a7418295178df9c7916b2a444841c2c44e"
+    },
+    {
+      "index": 9,
+      "file": "frames/frame-09.png",
+      "crop": [
+        0,
+        724,
+        362,
+        1086
+      ],
+      "sha256": "b1ae045bb18d3d87f00ba50153b20cc24eb0402486e4ab616363e9c6397b51f5"
+    },
+    {
+      "index": 10,
+      "file": "frames/frame-10.png",
+      "crop": [
+        362,
+        724,
+        724,
+        1086
+      ],
+      "sha256": "201e426b38d83fca31f29e89823828409b1ea3d4ae0fb71dd1f57bb8142bc076"
+    },
+    {
+      "index": 11,
+      "file": "frames/frame-11.png",
+      "crop": [
+        724,
+        724,
+        1086,
+        1086
+      ],
+      "sha256": "56a69e4da14f463e931859d9cc1ba5bb3e3ea312deb88443e90acc0965c3ed62"
+    },
+    {
+      "index": 12,
+      "file": "frames/frame-12.png",
+      "crop": [
+        1086,
+        724,
+        1448,
+        1086
+      ],
+      "sha256": "c88ee430cccefdbb5a64d06393348519631b6e3446cc267b9c05775fe8edec8e"
+    }
+  ]
+}

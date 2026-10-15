@@ -1,14 +1,19 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'android_bridge.dart';
 import 'session_engine.dart';
 import 'room_ambience.dart';
+import 'desk_components.dart';
 import 'desk_home.dart';
 import 'focus_records.dart';
 import 'goal_editor.dart';
+import 'l10n/app_localizations.dart';
+import 'language_sheet.dart';
+import 'localized_names.dart';
 import 'sound_sheet.dart';
+import 'session_stop_sheet.dart';
+import 'friend_picker.dart';
 
 const ink = Color(0xFF50473D);
 const sage = Color(0xFF78856B);
@@ -21,73 +26,122 @@ void main() {
       engine: SessionEngine(AndroidStore()),
       alerts: LocalAlerts(),
       sounds: FocusSoundPlayer(),
+      screen: ScreenAwake(),
+      language: AppLanguageStore(),
     ),
   );
 }
 
-class FocusFriendApp extends StatelessWidget {
+class FocusFriendApp extends StatefulWidget {
   const FocusFriendApp({
     super.key,
     required this.engine,
     this.alerts,
     this.sounds,
+    this.screen,
+    this.language,
+    this.locale,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
   final FocusSoundPlayer? sounds;
+  final ScreenAwake? screen;
+
+  /// Keeps the Settings language choice; null keeps it for this run only.
+  final AppLanguageStore? language;
+
+  /// Forces a language regardless of the choice. Null follows the choice, or
+  /// the phone when there is none; English covers unsupported languages.
+  final Locale? locale;
+  @override
+  State<FocusFriendApp> createState() => _FocusFriendAppState();
+}
+
+class _FocusFriendAppState extends State<FocusFriendApp>
+    with WidgetsBindingObserver {
+  String? chosen, system;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    system = WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag();
+    unawaited(_loadLanguage());
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  // Android 13+ lets people change it from system Settings while we run.
+  @override
+  void didChangeLocales(List<Locale>? locales) => unawaited(_loadLanguage());
+
+  Future<void> _loadLanguage() async {
+    if (widget.language == null) return;
+    try {
+      final saved = await widget.language!.load();
+      if (mounted) {
+        setState(() {
+          chosen = saved.app;
+          system = saved.system ?? system;
+        });
+      }
+    } catch (_) {
+      // The phone language is a safe default.
+    }
+  }
+
+  Future<void> _setLanguage(String? tag) async {
+    setState(() => chosen = tag);
+    try {
+      await widget.language?.save(tag);
+    } catch (_) {
+      // Still applies until the app restarts.
+    }
+  }
+
   @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: '작은 집중방',
-    locale: const Locale('ko'),
-    supportedLocales: const [Locale('ko')],
-    localizationsDelegates: GlobalMaterialLocalizations.delegates,
-    theme: ThemeData(
-      useMaterial3: true,
-      scaffoldBackgroundColor: paper,
-      colorScheme: ColorScheme.fromSeed(seedColor: sage, surface: paper),
-      textTheme: const TextTheme(
-        headlineLarge: TextStyle(
-          fontSize: 31,
-          fontWeight: FontWeight.w700,
-          color: ink,
-          letterSpacing: -1.1,
-        ),
-        headlineSmall: TextStyle(
-          fontSize: 23,
-          fontWeight: FontWeight.w600,
-          color: ink,
-          letterSpacing: -.6,
-        ),
-        bodyMedium: TextStyle(fontSize: 14, color: ink, height: 1.5),
-      ),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          backgroundColor: sage,
-          foregroundColor: Colors.white,
-          minimumSize: const Size(double.infinity, 54),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
-          ),
-        ),
-      ),
-      dividerTheme: const DividerThemeData(color: Color(0xFFE3DDCF)),
-      navigationBarTheme: const NavigationBarThemeData(
-        backgroundColor: paper,
-        indicatorColor: Color(0xFFE5E8DC),
-        height: 68,
-      ),
+    onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+    locale: widget.locale ?? (chosen == null ? null : Locale(chosen!)),
+    supportedLocales: AppLocalizations.supportedLocales,
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    theme: buildDeskTheme(ThemeData(useMaterial3: true)),
+    home: RoomScreen(
+      engine: widget.engine,
+      alerts: widget.alerts,
+      sounds: widget.sounds,
+      screen: widget.screen,
+      language: chosen,
+      systemLanguage: system,
+      onLanguage: _setLanguage,
     ),
-    home: RoomScreen(engine: engine, alerts: alerts, sounds: sounds),
   );
 }
 
 class RoomScreen extends StatefulWidget {
-  const RoomScreen({super.key, required this.engine, this.alerts, this.sounds});
+  const RoomScreen({
+    super.key,
+    required this.engine,
+    this.alerts,
+    this.sounds,
+    this.screen,
+    this.language,
+    this.systemLanguage,
+    this.onLanguage,
+  });
   final SessionEngine engine;
   final LocalAlerts? alerts;
   final FocusSoundPlayer? sounds;
+  final ScreenAwake? screen;
+
+  /// The chosen language tag, or null when following the phone.
+  final String? language, systemLanguage;
+  final Future<void> Function(String?)? onLanguage;
   @override
   State<RoomScreen> createState() => _RoomScreenState();
 }
@@ -100,7 +154,9 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   String? soundError;
   int page = 0, minutes = 25;
   Timer? ticker;
+  Future<void>? pendingAction;
   int? displayedMinute;
+  bool? screenOn;
   SessionEngine get engine => widget.engine;
   @override
   void initState() {
@@ -137,46 +193,77 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
 
   Future<void> _restore() async {
     if (busy) return;
-    await _act(() => engine.restore());
-    if (mounted && error == null) {
+    final restored = await _act(() => engine.restore());
+    if (mounted && restored) {
       setState(() {
         ready = true;
       });
     }
   }
 
-  Future<void> _act(Future<void> Function() action) async {
-    if (busy) return;
+  Future<bool> _act(
+    Future<void> Function() action, {
+    bool waitForPending = false,
+  }) async {
+    // Timer taps may be ignored while busy, but settings saves must wait for
+    // their own write and report its result to the editor.
+    while (pendingAction != null) {
+      if (!waitForPending) return false;
+      await pendingAction;
+    }
+    if (!mounted) return false;
+    final finished = Completer<void>();
+    pendingAction = finished.future;
     setState(() {
       busy = true;
       error = null;
     });
     final previous = engine.state.active;
+    var saved = false;
     try {
-      await action();
+      try {
+        await action();
+        saved = true;
+      } catch (_) {
+        if (mounted) {
+          setState(() {
+            error = AppLocalizations.of(context).errorStorage;
+          });
+        }
+      }
+      if (saved) {
+        await _alerts();
+        if (previous?.live == true && engine.state.active == null) {
+          await _stopSound();
+        } else {
+          await _syncSound(
+            activate:
+                previous?.status != SessionStatus.running &&
+                engine.state.active?.status == SessionStatus.running,
+          );
+        }
+      }
+      await _syncScreen();
+      return saved;
+    } finally {
+      pendingAction = null;
+      if (mounted) setState(() => busy = false);
+      finished.complete();
+    }
+  }
+
+  /// Every timer change passes through [_act], so this is the only sync point.
+  Future<void> _syncScreen() async {
+    final state = engine.state;
+    final on =
+        state.keepScreenOn && state.active?.status == SessionStatus.running;
+    if (widget.screen == null || on == screenOn) return;
+    screenOn = on;
+    try {
+      await widget.screen!.set(on);
     } catch (_) {
-      if (mounted) {
-        setState(() {
-          error = '저장 상태를 확인할 수 없어요. 다시 확인하면 안전하게 이어집니다.';
-        });
-      }
-    }
-    if (mounted) {
-      setState(() {
-        busy = false;
-      });
-    }
-    if (error == null) {
-      await _alerts();
-      if (previous?.live == true && engine.state.active == null) {
-        await _stopSound();
-      } else {
-        await _syncSound(
-          activate:
-              previous?.status != SessionStatus.running &&
-              engine.state.active?.status == SessionStatus.running,
-        );
-      }
+      // Purely a convenience; retry on the next timer change.
+      screenOn = null;
     }
   }
 
@@ -194,33 +281,24 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     } catch (_) {
       if (mounted) {
         setState(() {
-          alertError = '알림을 예약하지 못했어요. 앱에 돌아오면 타이머는 복구됩니다.';
+          alertError = AppLocalizations.of(context).errorAlerts;
         });
       }
     }
   }
 
   Future<void> _stop(Session a) async {
-    final confirmed = await showDialog<bool>(
+    final confirmed = await showModalBottomSheet<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('이번 집중을 마칠까요?'),
-        content: Text(
-          a.mode == SessionMode.focus
-              ? '지금까지의 시간은 중도 종료 기록으로 남아요. 소품 해금 시간에는 더하지 않아요.'
-              : '체험과 휴식은 집중 기록에 남지 않아요.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('계속하기'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('종료하기'),
-          ),
-        ],
-      ),
+      isScrollControlled: true,
+      useSafeArea: true,
+      showDragHandle: false,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      barrierColor: Colors.black54,
+      constraints: const BoxConstraints(maxWidth: 600),
+      clipBehavior: Clip.none,
+      builder: (_) => SessionStopSheet(mode: a.mode),
     );
     if (confirmed == true) await _act(() => engine.stop(a.id));
   }
@@ -231,53 +309,87 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   );
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final state = engine.state;
     final active = state.active;
+    final homeVisible = active != null || page == 0;
+    final completed = active?.status == SessionStatus.completed;
+    final resting = active?.mode == SessionMode.rest;
+    final paused = active?.status == SessionStatus.paused;
     return Theme(
       data: deskTheme(context),
       child: Scaffold(
         backgroundColor: deskPaper,
-        body: SafeArea(
-          child: Column(
-            children: [
-              if (error != null)
-                MaterialBanner(
-                  content: Text(error!),
-                  actions: [
-                    TextButton(
-                      onPressed: busy ? null : _restore,
-                      child: const Text('다시 확인'),
-                    ),
-                  ],
-                ),
-              if (alertError != null)
-                Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(
-                    alertError!,
-                    style: const TextStyle(color: Colors.brown),
+        // Keep the room geometry fixed as controls change between sessions.
+        extendBody: homeVisible,
+        body: Stack(
+          children: [
+            if (homeVisible)
+              Positioned.fill(
+                child: DeskIllustration(
+                  friend: state.friend,
+                  unlocked: state.unlocks.keys.toSet(),
+                  ambience: RoomAmbience.at(
+                    DateTime.fromMillisecondsSinceEpoch(engine.clock()),
                   ),
+                  studying: active != null && !resting && !completed,
+                  resting: resting,
+                  paused: paused,
+                  animate:
+                      active != null && !completed && !paused && foreground,
                 ),
-              Expanded(
-                child: !ready
-                    ? Center(
-                        child: error == null
-                            ? const CircularProgressIndicator()
-                            : const Text('저장된 방을 확인하고 있어요.'),
-                      )
-                    : active != null || page == 0
-                    ? _home(state)
-                    : page == 1
-                    ? FocusRecords(
-                        state: state,
-                        now: DateTime.fromMillisecondsSinceEpoch(
-                          engine.clock(),
-                        ),
-                      )
-                    : _settings(state),
               ),
-            ],
-          ),
+            SafeArea(
+              bottom: !homeVisible,
+              child: Column(
+                children: [
+                  if (error != null)
+                    MaterialBanner(
+                      content: Text(error!),
+                      actions: [
+                        TextButton(
+                          onPressed: busy ? null : _restore,
+                          child: Text(l10n.retryCheck),
+                        ),
+                      ],
+                    ),
+                  if (alertError != null)
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        alertError!,
+                        style: const TextStyle(color: deskInk),
+                      ),
+                    ),
+                  Expanded(
+                    child: !ready
+                        ? Center(
+                            child: error == null
+                                ? const CircularProgressIndicator()
+                                : Text(l10n.restoringRoom),
+                          )
+                        : active != null || page == 0
+                        ? _home(state)
+                        : page == 1
+                        ? FriendPicker(
+                            current: state.friend,
+                            unlocked: state.unlocks.keys.toSet(),
+                            onApply: engine.saveFriend,
+                            onApplied: () => setState(() => page = 0),
+                          )
+                        : page == 2
+                        ? FocusRecords(
+                            state: state,
+                            now: DateTime.fromMillisecondsSinceEpoch(
+                              engine.clock(),
+                            ),
+                          )
+                        : _settings(state),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         bottomNavigationBar: Visibility(
           visible: active == null,
@@ -285,6 +397,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
           maintainAnimation: true,
           maintainState: true,
           child: DeskNavigation(
+            immersive: homeVisible,
             selectedIndex: page,
             onSelected: (index) => setState(() => page = index),
           ),
@@ -298,7 +411,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     style: const TextStyle(
       fontSize: 11,
       letterSpacing: 2,
-      color: Color(0xFF8A8C78),
+      color: deskMuted,
       fontWeight: FontWeight.w700,
     ),
   );
@@ -313,11 +426,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
         const SizedBox(height: 7),
         Text(
           subtitle,
-          style: const TextStyle(
-            color: Color(0xFF8F8779),
-            fontSize: 13,
-            height: 1.5,
-          ),
+          style: const TextStyle(color: deskMuted, fontSize: 13, height: 1.5),
         ),
       ],
     ),
@@ -336,6 +445,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     foreground: foreground,
     onSound: _showSound,
     onGoal: _showGoal,
+    systemBottomInset: MediaQuery.viewPaddingOf(context).bottom,
     onPauseResume: () {
       final a = engine.state.active!;
       _act(
@@ -368,7 +478,9 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       if (mounted) setState(() => soundError = null);
     } catch (_) {
       if (mounted) {
-        setState(() => soundError = '소리를 재생하지 못했어요. 사운드 설정에서 다시 선택해 주세요.');
+        setState(
+          () => soundError = AppLocalizations.of(context).errorSoundPlay,
+        );
       }
     }
   }
@@ -378,7 +490,9 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       await widget.sounds?.stop();
     } catch (_) {
       if (mounted) {
-        setState(() => soundError = '소리를 끄지 못했어요. 사운드 설정에서 다시 시도해 주세요.');
+        setState(
+          () => soundError = AppLocalizations.of(context).errorSoundStop,
+        );
       }
     }
   }
@@ -390,13 +504,41 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
         builder: (_) => GoalEditor(
           goal: engine.state.goal,
           now: DateTime.fromMillisecondsSinceEpoch(engine.clock()),
-          onSave: (goal) async {
-            await _act(() => engine.saveGoal(goal));
-            return error == null;
-          },
+          onSave: (goal) =>
+              _act(() => engine.saveGoal(goal), waitForPending: true),
         ),
       ),
     );
+  }
+
+  Future<void> _showLanguage() async {
+    final picked = await showModalBottomSheet<({String? tag})>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: deskPaper,
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.sizeOf(context).height * .92,
+      ),
+      builder: (_) =>
+          LanguageSheet(value: widget.language, system: widget.systemLanguage),
+    );
+    if (picked == null || picked.tag == widget.language) return;
+    await widget.onLanguage?.call(picked.tag);
+    if (!mounted) return;
+    // Announce it in the new language; this context still has the old one.
+    final shown = picked.tag ?? supportedLanguage(widget.systemLanguage);
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            lookupAppLocalizations(
+              Locale(shown),
+            ).languageChanged(nativeLanguageNames[shown]!),
+          ),
+        ),
+      );
   }
 
   Future<void> _showSound() async {
@@ -405,7 +547,9 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       wasPlaying = (await widget.sounds?.status())?['playing'] == true;
     } catch (_) {
       if (mounted) {
-        setState(() => soundError = '사운드 상태를 확인하지 못했어요. 다시 선택해 주세요.');
+        setState(
+          () => soundError = AppLocalizations.of(context).errorSoundStatus,
+        );
       }
     }
     if (!mounted) return;
@@ -430,8 +574,11 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
           }
         },
         onSave: (sound) async {
-          await _act(() => engine.saveSound(sound));
-          if (error != null) return false;
+          final saved = await _act(
+            () => engine.saveSound(sound),
+            waitForPending: true,
+          );
+          if (!saved) return false;
           await _syncSound(activate: sound.enabled);
           return true;
         },
@@ -446,234 +593,342 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     }
   }
 
-  Widget _settings(FocusState state) => ListView(
-    padding: const EdgeInsets.fromLTRB(22, 24, 22, 24),
-    children: [
-      const Text(
-        '설정',
-        style: TextStyle(fontSize: 34, fontWeight: FontWeight.w900),
-      ),
-      const SizedBox(height: 6),
-      const Text(
-        '내게 맞는 집중 시간을 만들어요',
-        style: TextStyle(color: deskBlue, fontSize: 16),
-      ),
-      const SizedBox(height: 24),
-      ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: const Icon(Icons.flag_outlined, color: deskBlue),
-        title: const Text(
-          '목표와 다짐',
-          style: TextStyle(fontWeight: FontWeight.w700),
+  Widget _settingTile(IconData icon) => Container(
+    width: 40,
+    height: 40,
+    decoration: BoxDecoration(
+      color: deskCream,
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Icon(icon, color: deskInk, size: 22),
+  );
+
+  Widget _settings(FocusState state) {
+    final l10n = AppLocalizations.of(context);
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(22, 12, 22, 24),
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.settingsTitle,
+                    style: const TextStyle(
+                      fontSize: 34,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    l10n.settingsSubtitle,
+                    style: const TextStyle(color: deskBlue, fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            const CompanionImage(size: 72),
+          ],
         ),
-        subtitle: Text(state.goal?.name ?? '목표와 D-day를 정해 보세요'),
-        trailing: const Icon(Icons.chevron_right_rounded),
-        onTap: busy ? null : _showGoal,
-      ),
-      const Divider(),
-      ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: const Icon(Icons.volume_up_outlined, color: deskBlue),
-        title: const Text(
-          '소리 기본 설정',
-          style: TextStyle(fontWeight: FontWeight.w700),
+        const SizedBox(height: 14),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: _settingTile(Icons.flag_rounded),
+          title: Text(
+            l10n.goalTitle,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          subtitle: Text(switch (state.goal) {
+            final goal? =>
+              '${goal.countdown(DateTime.fromMillisecondsSinceEpoch(engine.clock()))} · ${goal.name}',
+            null => l10n.goalEmpty,
+          }),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: busy ? null : _showGoal,
         ),
-        subtitle: Text(
-          state.sound.enabled
-              ? soundChoices.firstWhere((s) => s.$1 == state.sound.sound).$2
-              : '현재 소리 꺼짐',
+        const Divider(),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: _settingTile(Icons.volume_up_rounded),
+          title: Text(
+            l10n.soundDefaults,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          subtitle: Text(
+            state.sound.enabled
+                ? soundTitle(l10n, state.sound.sound)
+                : l10n.soundOff,
+          ),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: busy ? null : _showSound,
         ),
-        trailing: const Icon(Icons.chevron_right_rounded),
-        onTap: busy ? null : _showSound,
-      ),
-      if (soundError != null)
-        Text(
-          soundError!,
-          style: const TextStyle(color: Colors.red, fontSize: 13),
+        if (soundError != null)
+          Text(
+            soundError!,
+            style: const TextStyle(color: Colors.red, fontSize: 13),
+          ),
+        const Divider(),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: _settingTile(Icons.notifications_rounded),
+          title: Text(
+            l10n.alertsTitle,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          subtitle: Text(notifications ? l10n.alertsOn : l10n.alertsOff),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: busy || widget.alerts == null
+              ? null
+              : () async {
+                  await widget.alerts!.request();
+                  await _alerts();
+                },
         ),
-      const Divider(),
-      ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: const Icon(Icons.notifications_none_rounded, color: deskBlue),
-        title: const Text(
-          '집중 완료 알림',
-          style: TextStyle(fontWeight: FontWeight.w700),
+        const Divider(),
+        SwitchListTile(
+          key: const ValueKey('keep-screen-on'),
+          contentPadding: EdgeInsets.zero,
+          secondary: _settingTile(Icons.light_mode_rounded),
+          title: Text(
+            l10n.keepScreenTitle,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          subtitle: Text(
+            state.keepScreenOn ? l10n.keepScreenOn : l10n.keepScreenOff,
+          ),
+          value: state.keepScreenOn,
+          onChanged: busy || error != null
+              ? null
+              : (value) => _act(() => engine.saveKeepScreenOn(value)),
         ),
-        subtitle: Text(notifications ? '알림이 켜져 있어요' : '완료 시간을 알려드려요'),
-        trailing: const Icon(Icons.chevron_right_rounded),
-        onTap: busy || widget.alerts == null
-            ? null
-            : () async {
-                await widget.alerts!.request();
-                await _alerts();
-              },
-      ),
-      const Divider(),
-      ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: const Icon(Icons.chair_outlined, color: deskBlue),
-        title: const Text(
-          '모은 소품',
-          style: TextStyle(fontWeight: FontWeight.w700),
+        const Divider(),
+        ListTile(
+          key: const ValueKey('open-language'),
+          contentPadding: EdgeInsets.zero,
+          leading: _settingTile(Icons.language_rounded),
+          title: Text(
+            l10n.languageTitle,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          subtitle: Text(
+            widget.language == null
+                ? '${l10n.followSystem} · ${nativeLanguageNames[supportedLanguage(widget.systemLanguage)]}'
+                : nativeLanguageNames[supportedLanguage(widget.language)]!,
+          ),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: widget.onLanguage == null ? null : _showLanguage,
         ),
-        subtitle: Text('${state.unlocks.length}개의 작은 선물'),
-        trailing: const Icon(Icons.chevron_right_rounded),
-        onTap: () => Navigator.push<void>(
-          context,
-          MaterialPageRoute(
-            builder: (_) => Scaffold(
-              appBar: AppBar(title: const Text('모은 소품')),
-              body: _collection(state),
+        const Divider(),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: _settingTile(Icons.weekend_rounded),
+          title: Text(
+            l10n.collectionTitle,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          subtitle: Text(l10n.collectionCount(state.unlocks.length)),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final key in ['plant', 'mug', 'lamp'])
+                if (state.unlocks.containsKey(key))
+                  Image.asset(
+                    'assets/images/immersive/reward-$key.png',
+                    width: 30,
+                    height: 30,
+                    fit: BoxFit.contain,
+                    excludeFromSemantics: true,
+                  ),
+              const SizedBox(width: 4),
+              const Icon(Icons.chevron_right_rounded),
+            ],
+          ),
+          onTap: () => Navigator.push<void>(
+            context,
+            MaterialPageRoute(
+              builder: (_) => Scaffold(
+                appBar: AppBar(title: Text(l10n.collectionTitle)),
+                body: _collection(state),
+              ),
             ),
           ),
         ),
-      ),
-      const Divider(height: 36),
-      const Text(
-        '짧게 집중하기',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
-      ),
-      const SizedBox(height: 12),
-      Row(
-        children: [
-          for (final value in [5, 15])
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: OutlinedButton(
-                  onPressed: busy || error != null
-                      ? null
-                      : () {
-                          setState(() => page = 0);
-                          _start(SessionMode.focus, value);
-                        },
-                  child: Text('$value분 집중 시작'),
+        const Divider(height: 36),
+        Text(
+          l10n.quickFocusTitle,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            for (final value in [5, 15]) ...[
+              if (value == 15) const SizedBox(width: 12),
+              Expanded(
+                child: Semantics(
+                  button: true,
+                  label: l10n.quickFocusStart(value),
+                  excludeSemantics: true,
+                  child: TicketPanel(
+                    color: deskPaper,
+                    onTap: busy || error != null
+                        ? null
+                        : () {
+                            setState(() => page = 0);
+                            _start(SessionMode.focus, value);
+                          },
+                    child: SizedBox(
+                      height: 48,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                l10n.quickFocusLabel(value),
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          const Icon(Icons.play_arrow_rounded, size: 20),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-        ],
-      ),
-      TextButton(
-        onPressed: busy || error != null
-            ? null
-            : () {
-                setState(() => page = 0);
-                _start(SessionMode.demo);
-              },
-        child: const Text('1분 체험 · 기록과 보상 없이 둘러보기'),
-      ),
-      const Divider(height: 28),
-      ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: const Icon(Icons.info_outline_rounded, color: deskMuted),
-        title: const Text('사운드 출처와 라이선스'),
-        trailing: const Icon(Icons.chevron_right_rounded),
-        onTap: _showSoundCredits,
-      ),
-    ],
-  );
+            ],
+          ],
+        ),
+        const SizedBox(height: 4),
+        TextButton(
+          style: TextButton.styleFrom(foregroundColor: deskBlue),
+          onPressed: busy || error != null
+              ? null
+              : () {
+                  setState(() => page = 0);
+                  _start(SessionMode.demo);
+                },
+          child: Text(l10n.demoButton),
+        ),
+        const Divider(height: 28),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.info_outline_rounded, color: deskMuted),
+          title: Text(l10n.soundCreditsTile),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: _showSoundCredits,
+        ),
+      ],
+    );
+  }
 
   void _showSoundCredits() => showDialog<void>(
     context: context,
-    builder: (context) => AlertDialog(
-      title: const Text('사운드 출처'),
-      content: const SingleChildScrollView(
-        child: SelectableText(
-          '세 음원은 CC0 1.0으로 공개되었습니다. 앱에 포함되어 오프라인에서도 재생돼요.\n\n창밖의 비 — bastipictures\nrain against window 2\nhttps://freesound.org/s/243781/\n\n숲의 바람 — kyles\nforest ambience constant breeze.flac\nhttps://freesound.org/s/637559/\n\n따뜻한 장작 — jmehlferber\nfire-crackling.wav\nhttps://freesound.org/s/370938/\n\nhttps://creativecommons.org/publicdomain/zero/1.0/',
+    builder: (context) {
+      final l10n = AppLocalizations.of(context);
+      return AlertDialog(
+        title: Text(l10n.soundCreditsTitle),
+        content: SingleChildScrollView(
+          child: SelectableText(
+            '${l10n.soundCreditsIntro}\n\n${l10n.soundRainTitle} — bastipictures\nrain against window 2\nhttps://freesound.org/s/243781/\n\n${l10n.soundForestTitle} — kyles\nforest ambience constant breeze.flac\nhttps://freesound.org/s/637559/\n\n${l10n.soundFireTitle} — jmehlferber\nfire-crackling.wav\nhttps://freesound.org/s/370938/\n\nhttps://creativecommons.org/publicdomain/zero/1.0/',
+          ),
         ),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('닫기'),
-        ),
-      ],
-    ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l10n.close),
+          ),
+        ],
+      );
+    },
   );
 
-  String _propName(String key) => switch (key) {
-    'plant' => '작은 화분',
-    'mug' => '따뜻한 머그컵',
-    _ => '포근한 조명',
-  };
-  Widget _collection(FocusState s) => ListView(
-    children: [
-      _heading(
-        'LITTLE THINGS, EARNED SLOWLY',
-        '방을 채우는 시간',
-        '정해진 세 자리에, 나의 집중이 남아요.',
-      ),
-      SizedBox(
-        height: 255,
-        child: DeskIllustration(
-          unlocked: s.unlocks.keys.toSet(),
-          ambience: RoomAmbience.at(
-            DateTime.fromMillisecondsSinceEpoch(engine.clock()),
+  Widget _collection(FocusState s) {
+    final l10n = AppLocalizations.of(context);
+    return ListView(
+      children: [
+        _heading(
+          'LITTLE THINGS, EARNED SLOWLY',
+          l10n.collectionHeading,
+          l10n.collectionSubtitle,
+        ),
+        SizedBox(
+          height: 255,
+          child: DeskIllustration(
+            unlocked: s.unlocks.keys.toSet(),
+            ambience: RoomAmbience.at(
+              DateTime.fromMillisecondsSinceEpoch(engine.clock()),
+            ),
           ),
         ),
-      ),
-      for (final e in {
-        'plant': '첫 정상 집중 완료',
-        'mug': '정상 완료 누적 60분',
-        'lamp': '정상 완료 누적 120분',
-      }.entries)
-        Container(
-          margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
-          padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            color: const Color(0xFFEFEBE1),
-            borderRadius: BorderRadius.circular(19),
-          ),
-          child: Row(
-            children: [
-              Icon(
-                e.key == 'plant'
-                    ? Icons.spa_outlined
-                    : e.key == 'mug'
-                    ? Icons.coffee_outlined
-                    : Icons.light_outlined,
-                color: s.unlocks.containsKey(e.key)
-                    ? sage
-                    : const Color(0xFFB5ADA0),
-                size: 29,
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _propName(e.key),
-                      style: const TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      e.value,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Color(0xFF938B7E),
-                      ),
-                    ),
-                  ],
+        for (final e in {
+          'plant': l10n.unlockFirstFocus,
+          'mug': l10n.unlockAfterMinutes(60),
+          'lamp': l10n.unlockAfterMinutes(120),
+        }.entries)
+          Container(
+            margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              color: deskCream,
+              borderRadius: BorderRadius.circular(19),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  e.key == 'plant'
+                      ? Icons.spa_outlined
+                      : e.key == 'mug'
+                      ? Icons.coffee_outlined
+                      : Icons.light_outlined,
+                  color: s.unlocks.containsKey(e.key)
+                      ? sage
+                      : const Color(0xFFB5ADA0),
+                  size: 29,
                 ),
-              ),
-              Icon(
-                s.unlocks.containsKey(e.key)
-                    ? Icons.check_circle
-                    : Icons.lock_outline,
-                color: sage,
-                size: 19,
-              ),
-            ],
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        propName(l10n, e.key),
+                        style: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        e.value,
+                        style: const TextStyle(fontSize: 12, color: deskMuted),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  s.unlocks.containsKey(e.key)
+                      ? Icons.check_circle
+                      : Icons.lock_outline,
+                  color: sage,
+                  size: 19,
+                ),
+              ],
+            ),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(24),
+          child: Text(
+            l10n.collectionFootnote,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: deskMuted, fontSize: 12),
           ),
         ),
-      const Padding(
-        padding: EdgeInsets.all(24),
-        child: Text(
-          '소품은 자동으로 자리에 놓여요.\n중도 종료·1분 체험·휴식은 해금에 포함되지 않아요.',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Color(0xFF928A7E), fontSize: 12),
-        ),
-      ),
-    ],
-  );
+      ],
+    );
+  }
 }

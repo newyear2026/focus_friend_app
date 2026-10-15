@@ -1,0 +1,15 @@
+{
+  "character": "fennec",
+  "timeOfDay": "day",
+  "mode": "builtin_image_gen",
+  "taxonomy": "lighting-weather",
+  "output": "assets/images/friends/ambience/fennec/day.png",
+  "width": 853,
+  "height": 1844,
+  "source": "assets/images/friends/fennec-scene.png",
+  "approvedConcept": "docs/design/friend-time-of-day-concepts-v2/fennec.png",
+  "originalGeneratedFile": "/Users/jaewook/.codex/generated_images/01a14036-37e9-7c91-b0f7-8c528924047f/exec-656d97da-b8f7-49ce-a138-66619e886462.png",
+  "promptFile": "fennec-day.prompt.txt",
+  "visualInspection": "Character identity and writing pose, fine glasses, peach ears, half-lidded brown eyes, connected paws and dark-tipped tail preserved closely. Original furniture, room and desert oasis geometry preserved. Clear azure sky, airy white clouds, pale-gold dunes, natural daylight and subdued/off lamp. No UI, labels or new props.",
+  "knownLimitations": "No material issues found during visual inspection."
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_complete">Enfoque y descanso completados</string>
+    <string name="alert_demo_done">Terminó tu prueba de 1 minuto</string>
+    <string name="alert_rest_done">Terminó tu descanso</string>
+    <string name="alert_focus_done">Terminó el tiempo de enfoque</string>
+    <string name="alert_body">Vuelve a tu cuartito y visita al panda rojo.</string>
+    <string name="channel_sound">Sonidos de enfoque</string>
+    <string name="sound_rain">Lluvia afuera</string>
+    <string name="sound_forest">Brisa del bosque</string>
+    <string name="sound_fire">Fuego cálido</string>
+    <string name="sound_playing">Sonido de enfoque en reproducción</string>
+    <string name="sound_stop">Apagar sonido</string>
+</resources>

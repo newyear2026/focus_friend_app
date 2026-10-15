@@ -1,0 +1,509 @@
+{
+  "source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-6bd494fd-8c00-4409-9827-29234a06b716.png",
+  "source_size": [
+    1447,
+    1087
+  ],
+  "normalized_sheet_size": [
+    1448,
+    1086
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "frame_size": [
+    362,
+    362
+  ],
+  "new_page_frames": 12,
+  "existing_writing_frames": 12,
+  "fps": 12,
+  "page_gif": {
+    "encoded_frames": 12,
+    "duration_ms": 1000
+  },
+  "combined_gif": {
+    "encoded_frames": 60,
+    "duration_ms": 5670
+  },
+  "combined_ticks": 68,
+  "combined_seconds": 5.666666666666667,
+  "timeline": [
+    {
+      "action": "writing",
+      "index": 0,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 1,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 2,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 3,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 4,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 5,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 6,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 7,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 8,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 9,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 10,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 0,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 1,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 2,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 3,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 4,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 5,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 6,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 7,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 8,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 9,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 10,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 0,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 1,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 2,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 3,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 4,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 5,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 6,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 7,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 8,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 9,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 10,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 0,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 1,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 2,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 3,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 4,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 5,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 6,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 7,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 8,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 9,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 10,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "필기하기"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "잠깐 멈춤"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "잠깐 멈춤"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "잠깐 멈춤"
+    },
+    {
+      "action": "writing",
+      "index": 11,
+      "label": "잠깐 멈춤"
+    },
+    {
+      "action": "page",
+      "index": 0,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 1,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 2,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 3,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 4,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 5,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 6,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 7,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 8,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 9,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 10,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 11,
+      "label": "페이지 넘기기"
+    },
+    {
+      "action": "page",
+      "index": 11,
+      "label": "다시 필기 준비"
+    },
+    {
+      "action": "page",
+      "index": 11,
+      "label": "다시 필기 준비"
+    },
+    {
+      "action": "page",
+      "index": 11,
+      "label": "다시 필기 준비"
+    },
+    {
+      "action": "page",
+      "index": 11,
+      "label": "다시 필기 준비"
+    }
+  ],
+  "frames": [
+    {
+      "index": 1,
+      "file": "frames/frame-01.png",
+      "crop": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "sha256": "04581203cd5ecd16caea4cc310e363b7b2bf0813364a51b82bee743abeda7203"
+    },
+    {
+      "index": 2,
+      "file": "frames/frame-02.png",
+      "crop": [
+        362,
+        0,
+        724,
+        362
+      ],
+      "sha256": "7edcf2bb03c9cb0b8b3119751a28281111e83b49166d1461ff35efadd8bf2264"
+    },
+    {
+      "index": 3,
+      "file": "frames/frame-03.png",
+      "crop": [
+        724,
+        0,
+        1086,
+        362
+      ],
+      "sha256": "d8f7386e2473da5ada1c4586b60ba56b34de035e7ab8cfe52d527c0c53af4a24"
+    },
+    {
+      "index": 4,
+      "file": "frames/frame-04.png",
+      "crop": [
+        1086,
+        0,
+        1448,
+        362
+      ],
+      "sha256": "efb72f7c71307868d96ba494437cf3ab00abbe1697c4a17e5cd4da2ce7110495"
+    },
+    {
+      "index": 5,
+      "file": "frames/frame-05.png",
+      "crop": [
+        0,
+        362,
+        362,
+        724
+      ],
+      "sha256": "bdd742a7cb117231750358701bad3d1a0fb10ae1ac54b09b89705ff29f3d5f76"
+    },
+    {
+      "index": 6,
+      "file": "frames/frame-06.png",
+      "crop": [
+        362,
+        362,
+        724,
+        724
+      ],
+      "sha256": "6ca19f153a106739dd1f99e19522c54d7ee32e94885b3526c965466cc7b71b50"
+    },
+    {
+      "index": 7,
+      "file": "frames/frame-07.png",
+      "crop": [
+        724,
+        362,
+        1086,
+        724
+      ],
+      "sha256": "1fdd23e1b791a7d987f23899185a0c240ae2f395b7d0965418766c1cc9b80da4"
+    },
+    {
+      "index": 8,
+      "file": "frames/frame-08.png",
+      "crop": [
+        1086,
+        362,
+        1448,
+        724
+      ],
+      "sha256": "c057e25d9e2a895e1559f3fb8ed21a4f0cd2c17987cf29eda873103841752835"
+    },
+    {
+      "index": 9,
+      "file": "frames/frame-09.png",
+      "crop": [
+        0,
+        724,
+        362,
+        1086
+      ],
+      "sha256": "3a55eada53beff2349f7d54672c5ee245cc9c10ccad623d8fede14e63128f3ed"
+    },
+    {
+      "index": 10,
+      "file": "frames/frame-10.png",
+      "crop": [
+        362,
+        724,
+        724,
+        1086
+      ],
+      "sha256": "6984acc0d73f57d8e6486937e8fbacd1f3118c51988b387862649f7bb1bd51b9"
+    },
+    {
+      "index": 11,
+      "file": "frames/frame-11.png",
+      "crop": [
+        724,
+        724,
+        1086,
+        1086
+      ],
+      "sha256": "f19c1dff2537932450cc0b6744ff3e5d577e0ac48e4a49b612a1a6567f697578"
+    },
+    {
+      "index": 12,
+      "file": "frames/frame-12.png",
+      "crop": [
+        1086,
+        724,
+        1448,
+        1086
+      ],
+      "sha256": "c8b84ccdd645e89218a0e7ccc8d095ea7f965e6bbbfb14fdd485fd2c496edbe3"
+    }
+  ],
+  "artwork_method": "Built-in Image Gen; packaging only normalizes the sheet by one pixel, crops equal cells, copies existing writing PNGs, and encodes GIF/MP4. No interpolation, warping, crossfades or procedural redraws."
+}

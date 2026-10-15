@@ -7,7 +7,7 @@ root = Path(__file__).resolve().parents[1]
 flutter = os.environ.get('FLUTTER_BIN', '/Users/jaewook/development/flutter/bin/flutter')
 adb = os.environ.get('ADB_BIN', '/Users/jaewook/Library/Android/sdk/platform-tools/adb')
 device = os.environ.get('ANDROID_DEVICE', 'emulator-5554')
-package = 'dev.jaewook.prototype.focus_friend_app.verification'
+package = 'dev.jaewook.deskmate.verification'
 # Flutter resolves the teardown package from the PREVIOUSLY built APK.
 # Build the isolated identity first, before starting flutter test.
 subprocess.run([flutter, 'build', 'apk', '--debug',

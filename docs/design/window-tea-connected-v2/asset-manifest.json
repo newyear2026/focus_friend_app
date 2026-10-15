@@ -1,0 +1,48 @@
+[
+  {
+    "friend": "fennec",
+    "tool": "built-in ImageGen",
+    "mode": "reference editing, identity-preserve",
+    "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-24f0f7c1-6d83-4236-894b-319f50a8c200.png",
+    "retainedRaw": "docs/design/window-tea-connected-v2/fennec-rest-raw.png",
+    "reference": "docs/design/fennec-squirrel-window-tea-v1/fennec-cel-0.png",
+    "prompt": "docs/design/window-tea-connected-v2/fennec-rest.prompt.txt",
+    "runtime": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "4f0028b24619f57fd277c4b3948c70d3c871aa5e2421dfd6af07d89eb6e2aa3e",
+    "size": [
+      1536,
+      1536
+    ],
+    "sourceCells": 16,
+    "usedCells": 15,
+    "alpha": {
+      "fullyTransparent": 1549008,
+      "nearOpaque": 712450
+    },
+    "mechanicalPackaging": "tool/package_connected_window_tea.py",
+    "registration": "docs/design/window-tea-connected-v2/fennec-registration.json"
+  },
+  {
+    "friend": "squirrel",
+    "tool": "built-in ImageGen",
+    "mode": "reference editing, identity-preserve",
+    "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-9d5d2b19-515d-4eda-8b8a-829b7714d6b3.png",
+    "retainedRaw": "docs/design/window-tea-connected-v2/squirrel-rest-raw.png",
+    "reference": "docs/design/fennec-squirrel-window-tea-v1/squirrel-cel-0.png",
+    "prompt": "docs/design/window-tea-connected-v2/squirrel-rest.prompt.txt",
+    "runtime": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "96406efb4507f5a7b46cb053d174e78fed299fb25b71499eeec9f329236dfbf4",
+    "size": [
+      1536,
+      1536
+    ],
+    "sourceCells": 16,
+    "usedCells": 15,
+    "alpha": {
+      "fullyTransparent": 1606060,
+      "nearOpaque": 688196
+    },
+    "mechanicalPackaging": "tool/package_connected_window_tea.py",
+    "registration": "docs/design/window-tea-connected-v2/squirrel-registration.json"
+  }
+]

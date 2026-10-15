@@ -1,0 +1,70 @@
+{
+  "scope": "current rest motion comparison: redpanda, squirrel, fennec",
+  "verdict": "same full-cel playback principle; different tempo; small drawing-to-drawing contour changes remain",
+  "freshCapturePass": true,
+  "motionTestsPassed": 11,
+  "currentInstalledApkMatches": true,
+  "stepScreenshots": [
+    "01-blink.png",
+    "02-lift.png",
+    "03-sip.png",
+    "04-lower.png",
+    "05-before-wrap.png",
+    "06-after-wrap.png"
+  ],
+  "friendFacts": [
+    {
+      "friend": "redpanda",
+      "seconds": 20.0,
+      "cycles": 2,
+      "fps": 12,
+      "uniqueDrawings": 14,
+      "wholeCelOnly": true,
+      "wrapPoses": [
+        11,
+        0
+      ],
+      "wrapPixelsIdentical": false,
+      "wrapChangedBounds": [
+        3,
+        83,
+        347,
+        321
+      ]
+    },
+    {
+      "friend": "squirrel",
+      "seconds": 44.0,
+      "cycles": 2,
+      "fps": 12,
+      "uniqueDrawings": 17,
+      "wholeCelOnly": true,
+      "wrapPoses": [
+        0,
+        0
+      ],
+      "wrapPixelsIdentical": true,
+      "wrapChangedBounds": null
+    },
+    {
+      "friend": "fennec",
+      "seconds": 44.0,
+      "cycles": 2,
+      "fps": 12,
+      "uniqueDrawings": 18,
+      "wholeCelOnly": true,
+      "wrapPoses": [
+        0,
+        0
+      ],
+      "wrapPixelsIdentical": true,
+      "wrapChangedBounds": null
+    }
+  ],
+  "productionMotionChanged": false,
+  "limits": [
+    "Memory rest-session fixture in current app widget, not a live native device video",
+    "No physical-device GPU frame-drop measurement",
+    "No full accessibility compliance claim"
+  ]
+}

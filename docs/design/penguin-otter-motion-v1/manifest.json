@@ -1,0 +1,63 @@
+{
+  "tool": "built-in ImageGen",
+  "mode": "reference image editing",
+  "referenceScenes": "assets/images/friends/; stage-reference PNGs in this directory",
+  "outputs": [
+    {
+      "friend": "penguin",
+      "section": "room",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-2466dd4b-a5d5-4e7c-b09b-946a48e98d37.png",
+      "retainedOutput": "assets/images/friends/motion/penguin/room.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/room-plate.prompt.txt"
+    },
+    {
+      "friend": "penguin",
+      "section": "study-a",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-3643b2ea-26a3-4add-ac43-5f85764daa46.png",
+      "retainedOutput": "docs/design/penguin-otter-motion-v1/penguin-study-a-raw.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/penguin-study-a.prompt.txt"
+    },
+    {
+      "friend": "penguin",
+      "section": "study-b",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-3d577e15-d602-4e89-a389-e1fdba3a9e9f.png",
+      "retainedOutput": "docs/design/penguin-otter-motion-v1/penguin-study-b-raw.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/penguin-study-b.prompt.txt"
+    },
+    {
+      "friend": "penguin",
+      "section": "rest",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-77b78ac7-2853-43f8-bf78-216bd7bcb207.png",
+      "retainedOutput": "docs/design/penguin-otter-motion-v1/penguin-rest-raw.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/penguin-rest.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "section": "room",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-109ea013-d6b3-4347-aae0-43436cc574f6.png",
+      "retainedOutput": "assets/images/friends/motion/otter/room.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/room-plate.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "section": "study-a",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-94c9aa69-83fe-4a20-b8cb-491d4005e023.png",
+      "retainedOutput": "docs/design/penguin-otter-motion-v1/otter-study-a-raw.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/otter-study-a.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "section": "study-b",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-c7fb811f-363c-4043-8e2f-14bd38245979.png",
+      "retainedOutput": "docs/design/penguin-otter-motion-v1/otter-study-b-raw.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/otter-study-b.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "section": "rest",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-d3ccf91d-aa46-4b3e-a933-aaebc0763919.png",
+      "retainedOutput": "docs/design/penguin-otter-motion-v1/otter-rest-raw.png",
+      "prompt": "docs/design/penguin-otter-motion-v1/otter-rest.prompt.txt"
+    }
+  ]
+}

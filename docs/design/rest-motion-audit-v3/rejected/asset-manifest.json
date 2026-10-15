@@ -1,0 +1,20 @@
+{
+  "fennec": {
+    "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-bf49842b-1d8b-4af6-acf0-c06184020682.png",
+    "reason": "Face/torso proportions and cup positions did not remain inside the requested neighbouring-pose gaps; rejected for runtime use.",
+    "tool": "built-in ImageGen",
+    "status": "rejected; not bundled",
+    "raw": "rejected/fennec-bridges-raw.png",
+    "prompt": "rejected/fennec-bridges.prompt.txt",
+    "reference": "art/fennec-bridge-reference.png"
+  },
+  "squirrel": {
+    "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-893bba46-39a3-4815-b813-055ccd224cb0.png",
+    "reason": "Head/cap proportions and stage placement differ from approved cels; not used in app.",
+    "tool": "built-in ImageGen",
+    "status": "rejected; not bundled",
+    "raw": "rejected/squirrel-bridges-raw.png",
+    "prompt": "rejected/squirrel-bridges.prompt.txt",
+    "reference": "art/squirrel-bridge-reference.png"
+  }
+}

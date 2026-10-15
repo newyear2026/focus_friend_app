@@ -1,0 +1,16 @@
+Use case: identity-preserve.
+Asset type: six whole-character animation cels for a cozy 2D focus app.
+Input Image 1 is the canonical identity, pose, texture, scale and registration reference: this exact orange red panda with large brown eyes, cream forehead spot and face patches, green overalls with two gold buttons, large striped tail on the viewer-left, a yellow pencil with pink eraser in its viewer-left brown paw, and an open cream ruled notebook. Input Image 2 shows its finishing-writing pose. Keep this EXACT character, head tilt, facial expression, proportions, fur texture and notebook perspective. This is a continuation of the existing animation, not a redesign.
+Output one 1536x1024 landscape TRANSPARENT PNG, SIX separate complete drawings arranged in a strict THREE columns by TWO rows grid of 512x512 square cells. No labels, no borders, no gutters, no table surface or background. Genuine alpha transparency outside drawings.
+Each cel includes the whole anatomically connected panda, both arms and paws, tail, pencil and whole notebook. Never separate the arm from its shoulder. Exactly two arms and two paws. Reuse the held face/head/tail drawing with EXACTLY the same size and position in ALL six cells. Only the connected viewer-right arm/paw and a single sheet of the notebook move. Viewer-left shoulder/arm/paw hold the pencil lifted just above the left page until returning to writing. No blinking or head movement.
+Registration in EACH square cell: top of ears y=30; tail left edge x=12; bottom of notebook y=480. Cream forehead spot near x=290,y=202. Notebook is a low trapezoid: spine bottom near x=325,y=468, leftmost corner near x=177,y=428, rightmost corner near x=477,y=449. Preserve the book position, perspective, spine and cover in all cels. The head must never bob or grow.
+Style: match reference exactly, warm brushed 2D cel illustration with fine orange fur texture, warm dark brown ink edges, rich gentle shading and clear silhouettes. No 3D.
+Action: the viewer-right paw turns ONE thin cream page from the RIGHT page over the central spine toward the LEFT, naturally pinching its outer corner. The turning page curls gracefully and stays attached at the spine; the rest of the book and cover stay fixed. Blank faint ruled pages only; no text or handwriting (the app adds growing handwriting).
+Draw these FINAL SIX consecutive poses in row-major order:
+1) page just passes upright, about 95 degrees toward viewer-left, viewer-right paw holding the corner over the spine.
+2) page folds toward LEFT about 120 degrees, its gentle curved sheet casts a small warm shadow onto the left page.
+3) page lowers toward left about 150 degrees; right paw reaches across the book, naturally connected at its shoulder.
+4) page lies flat on LEFT, revealing a fresh ruled left page; right paw gently smooths it near the spine.
+5) right paw retracts and returns toward its original resting spot on upper-right page, left paw lowers its pencil.
+6) EXACT seamless match of Image 1's ready-to-write pose, right paw resting, pencil tip above the fresh left page, entire book flat. No raised page, no extra sheet.
+Avoid additional hands, floating hands, detached shoulders, changing clothes, moving/tilting the notebook, changing camera scale, heavy brown matte or checkerboard background.

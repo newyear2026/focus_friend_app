@@ -1,0 +1,12 @@
+Generator: built-in image_gen, edit mode
+Source: docs/design/animated-character-scene-set-v1/squirrel.png
+Output: assets/images/friends/squirrel-scene.png
+Generated source: /Users/jaewook/.codex/generated_images/01a13cba-f947-79e1-8b93-09730fd21cbd/exec-b9aba323-3d2a-4719-87c4-e6fa0d123ac0.png
+
+Use case: precise-object-edit.
+Asset type: full-screen static illustrated background asset for a Flutter focus timer app. Clean artwork behind real native UI.
+Input image: the provided squirrel app mockup is the EDIT TARGET.
+Primary request: Remove every app interface element and reconstruct the obscured illustration naturally. Remove the Korean title at top, speaker icon, caption, huge 25:00 timer, today's focus metric, both time-selection pills, large start button and play icon, all bottom navigation icons and labels and selection underline. Remove the UI-only dark gradient overlay from the lower third while retaining natural room shadows.
+Preserve exactly the underlying cozy forest creek cabin scene: left wooden shelves with books, climbing plant, pinecones and warm lantern; large window with leafy sunlit trees, distant mountains and flowing creek with wooden bridge; cute cinnamon squirrel writing at the open notebook; brass desk lamp, green plant, illustrated mug, stacked books, acorn bowl, leaves, compass, paper map; desktop, desk legs, floor and rug. Character invariants: keep squirrel head/body size and pose, round glossy brown eyes, cream cheek/chest markings, blush, enormous curled tail with cream stripe, acorn cap with green leaf, olive backpack, connected shoulder/arm/hand/pencil/notebook relationship exactly as shown. Preserve warm hand-painted 2D animation illustration, gentle texture and detailed linework.
+Composition/framing: same tall portrait ratio 853:1844, edge-to-edge art, no borders or device frame, no cropping or zooming, same focal point around lower center x=0.46 y=0.52. Continue window and wall naturally where text was removed, and desk legs/floor naturally where buttons/nav were removed.
+Constraints: no app UI, no words, no letters, no numbers anywhere, no logos, no watermark, no extra characters, no simplified redraw, no character redesign or altered scene layout. Deliver the illustration itself only ready for native UI overlay.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_complete">Focus and break complete</string>
+    <string name="alert_demo_done">Your 1-minute trial is over</string>
+    <string name="alert_rest_done">Your break is over</string>
+    <string name="alert_focus_done">Focus time is over</string>
+    <string name="alert_body">Come back to your little room and see the red panda.</string>
+    <string name="channel_sound">Focus sounds</string>
+    <string name="sound_rain">Rain outside</string>
+    <string name="sound_forest">Forest breeze</string>
+    <string name="sound_fire">Warm fire</string>
+    <string name="sound_playing">Playing focus sound</string>
+    <string name="sound_stop">Turn sound off</string>
+</resources>

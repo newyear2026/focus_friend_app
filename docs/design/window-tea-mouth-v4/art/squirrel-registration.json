@@ -1,0 +1,122 @@
+[
+  {
+    "frame": 17,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-tilt-raw.png",
+    "stripSlot": 0,
+    "kind": "tilt",
+    "scale": 0.4174430665163472,
+    "offset": [
+      38,
+      43
+    ],
+    "featureError": 106.16510656010655
+  },
+  {
+    "frame": 18,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-tilt-raw.png",
+    "stripSlot": 1,
+    "kind": "tilt",
+    "scale": 0.41848928974069893,
+    "offset": [
+      37,
+      43
+    ],
+    "featureError": 106.02722677322677
+  },
+  {
+    "frame": 19,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-lift-0-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-0",
+    "scale": 0.5469943630214205,
+    "offset": [
+      0,
+      2
+    ],
+    "featureError": 66.08386846486846
+  },
+  {
+    "frame": 20,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-lift-0-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-0",
+    "scale": 0.533934611048478,
+    "offset": [
+      5,
+      5
+    ],
+    "featureError": 68.22122177822177
+  },
+  {
+    "frame": 21,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-lift-1-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-1",
+    "scale": 0.5497361894024801,
+    "offset": [
+      5,
+      4
+    ],
+    "featureError": 65.20944122544122
+  },
+  {
+    "frame": 22,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-lift-1-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-1",
+    "scale": 0.5483652762119503,
+    "offset": [
+      -5,
+      4
+    ],
+    "featureError": 65.8864319014319
+  },
+  {
+    "frame": 23,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-lift-2-raw.png",
+    "stripSlot": 0,
+    "kind": "lift-2",
+    "scale": 0.5312649379932356,
+    "offset": [
+      8,
+      7
+    ],
+    "featureError": 75.56194172494172
+  },
+  {
+    "frame": 24,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-lift-2-raw.png",
+    "stripSlot": 1,
+    "kind": "lift-2",
+    "scale": 0.5325997745208568,
+    "offset": [
+      7,
+      6
+    ],
+    "featureError": 75.96650882450882
+  },
+  {
+    "frame": 25,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-start-raw.png",
+    "stripSlot": 0,
+    "kind": "start",
+    "scale": 0.43291995490417134,
+    "offset": [
+      26,
+      23
+    ],
+    "featureError": 66.82981085581085
+  },
+  {
+    "frame": 26,
+    "source": "docs/design/window-tea-mouth-v4/art/squirrel-start-raw.png",
+    "stripSlot": 1,
+    "kind": "start",
+    "scale": 0.43183765501691096,
+    "offset": [
+      32,
+      23
+    ],
+    "featureError": 71.07993373293374
+  }
+]

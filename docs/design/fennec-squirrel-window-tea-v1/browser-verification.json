@@ -1,0 +1,21 @@
+{
+  "simultaneousRestartVerified": true,
+  "pauseVerified": true,
+  "resumeVerified": true,
+  "media": [
+    {
+      "duration": 22,
+      "error": null,
+      "file": "fennec-window-tea.mp4",
+      "paused": false,
+      "ready": 4
+    },
+    {
+      "duration": 22,
+      "error": null,
+      "file": "squirrel-window-tea.mp4",
+      "paused": false,
+      "ready": 4
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_complete">집중과 휴식 완료</string>
+    <string name="alert_demo_done">1분 체험이 끝났어요</string>
+    <string name="alert_rest_done">휴식이 끝났어요</string>
+    <string name="alert_focus_done">집중 시간이 끝났어요</string>
+    <string name="alert_body">작은 방으로 돌아와 랫서팬더를 만나세요.</string>
+    <string name="channel_sound">집중 사운드</string>
+    <string name="sound_rain">창밖의 비</string>
+    <string name="sound_forest">숲의 바람</string>
+    <string name="sound_fire">따뜻한 장작</string>
+    <string name="sound_playing">집중 사운드 재생 중</string>
+    <string name="sound_stop">소리 끄기</string>
+</resources>

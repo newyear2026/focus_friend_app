@@ -1,0 +1,9 @@
+{
+  "snapshot_equal": true,
+  "before_revision": 32,
+  "after_revision": 32,
+  "history_count": 5,
+  "active_unchanged": true,
+  "before_body_sha256": "3e03bb3e0222d607a3ca3f509dbc847d62228d7a457a8775634033c62b852a5e",
+  "after_body_sha256": "3e03bb3e0222d607a3ca3f509dbc847d62228d7a457a8775634033c62b852a5e"
+}

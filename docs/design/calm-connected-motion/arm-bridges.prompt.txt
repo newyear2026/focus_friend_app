@@ -1,0 +1,15 @@
+Use case: identity-preserve.
+Asset type: SIX whole-connected-body in-between animation cels, transparent 1536x1024 sprite sheet, THREE columns by TWO rows of 512x512 square cells.
+Image 1 is the canonical small writing motion/identity reference. Image 2 shows the right paw reaching to a right-page corner. Image 3 shows the right paw smoothing a page and returning. Draw SIX additional in-between poses for these existing actions, keeping the EXACT same face/head tilt/eyes/cream spot/ears, orange fur texture, green overalls with gold buttons, large striped tail and pencil as Image 1. Frozen camera, no face/head/tail acting or resizing. Keep forehead spot x=290,y=202 and ear top y=32 per cell. Every shoulder, elbow, forearm and brown paw remains naturally connected to the torso. Exactly two arms.
+Important: NO stationary notebook, cover, paper, lines, desk or background in these six cels. The app renders a single fixed book beneath the character. Only the WHOLE panda with its two attached arms and pencil is drawn. Real transparent alpha outside art.
+Viewer-left paw grips the pencil, held gently at x=254,y=422; this connected left arm is held in all six cels. Viewer-right paw moves smoothly, with no sudden jumps or detached-hand stickers.
+Top row THREE poses, gradual outward reach from Image 1 toward Image 2 cell2:
+1 right paw center near x=421,y=399 (one quarter of the reach).
+2 right paw center near x=439,y=401 (halfway).
+3 right paw center near x=456,y=403 (three quarters), just before holding the outer-right paper corner.
+Bottom row THREE poses, gradual return after Image 3 cell4's smoothing on the left page to Image 1's resting pose:
+4 right paw center near x=331,y=400, shoulder/forearm returning from the spine.
+5 right paw center near x=359,y=399, elbow relaxing naturally.
+6 right paw center near x=384,y=399, almost at its canonical x=401,y=399 resting pose.
+Do not move the body, head, left writing arm or tail while changing the connected right arm. Warm detailed 2D brush texture and fine fur from the inputs. No labels, borders, ghosts, matte or 3D. Match source silhouettes and proportions without simplification. All six cels are complete connected drawings, not separate arm sprites.
+

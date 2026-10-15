@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>랫서팬더 · 필기와 페이지 넘기기</title>
+<style>
+:root{color-scheme:light;--ink:#493425;--green:#2e6652;--muted:#8a7766}
+*{box-sizing:border-box}body{margin:0;background:#f6f1e7;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}
+main{max-width:1100px;margin:auto;padding:34px 24px 50px}header{margin-bottom:25px}.eyebrow{font-size:12px;letter-spacing:.13em;color:var(--green);font-weight:700}
+h1{font-size:29px;letter-spacing:-.04em;margin:10px 0}p{line-height:1.65;color:var(--muted);margin:0}
+.review{display:grid;grid-template-columns:420px 1fr;gap:32px;align-items:start}
+.player{background:#fffdf7;border:1px solid #e7dfd1;border-radius:22px;padding:22px;text-align:center;position:sticky;top:20px}
+#preview{width:100%;height:auto;max-width:362px;aspect-ratio:1;display:block;margin:auto;border-radius:12px}
+.status{display:flex;justify-content:space-between;margin:16px 0;font-size:14px;font-variant-numeric:tabular-nums}.status span{color:var(--muted)}
+.controls{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+button,select{font:inherit;border:1px solid #d5cbbc;border-radius:10px;padding:10px 12px;background:#fffdf8;color:var(--ink);cursor:pointer}
+button:hover,select:hover{border-color:var(--green)}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ca994d;outline-offset:3px}
+#toggle{background:var(--green);color:white;border-color:var(--green);min-width:90px}#mode{width:100%;margin-bottom:12px}
+input{width:100%;accent-color:var(--green);margin:20px 0 6px}.help{font-size:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.frame{padding:0;overflow:hidden;border-radius:13px;text-align:left;background:#fffdf8;border:2px solid transparent;box-shadow:0 1px 0 #ded6ca}
+.frame[aria-pressed="true"]{border-color:var(--green)}.frame img{width:100%;height:auto;display:block}.frame span{display:block;font-size:12px;padding:4px 10px 8px;color:var(--muted)}
+.grid-title{font-size:16px;margin:2px 0 14px}footer{display:flex;gap:18px;flex-wrap:wrap;margin-top:25px;font-size:13px}a{color:var(--green);text-underline-offset:3px}
+@media(max-width:850px){.review{grid-template-columns:1fr}.player{position:static;max-width:430px;width:100%;margin:auto}.grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:480px){main{padding:24px 16px 40px}h1{font-size:24px}.player{padding:16px}.grid{gap:7px;grid-template-columns:repeat(3,1fr)}}
+</style></head>
+<body><main>
+<header><div class="eyebrow">FOCUS FRIEND · MOTION STUDY</div><h1>쓰고, 넘기고, 다시 쓰기</h1><p>필기를 네 번 반복한 뒤 잠깐 멈추고 페이지를 넘깁니다. 각 동작을 따로 보거나 한 장씩 확인해 보세요.</p></header>
+<section class="review" aria-label="필기와 페이지 넘기기 미리보기"><div class="player">
+<select id="mode" aria-label="동작 선택"><option value="combined">필기 + 페이지 넘기기 연결</option><option value="page">페이지 넘기기만 · 12장</option><option value="writing">필기만 · 12장</option></select>
+<img id="preview" src="writing-frames/frame-01.png" width="362" height="362" alt="랫서팬더 필기하기 1번 프레임">
+<div class="status"><strong id="action">필기하기 · 01 / 12</strong><span id="timing">12 fps · 5.67초 반복</span></div>
+<div class="controls"><button id="prev" aria-label="이전 프레임">←</button><button id="toggle">일시정지</button><button id="next" aria-label="다음 프레임">→</button><select id="speed" aria-label="재생 속도"><option value="12">보통 · 12 fps</option><option value="6">느리게 · 6 fps</option></select></div>
+<input id="scrub" type="range" min="1" max="68" value="1" aria-label="재생 위치">
+<p class="help"><span id="position">01 / 68</span> · 스페이스: 재생 / 정지</p>
+</div><div><h2 class="grid-title">페이지 넘기기 12프레임 <span style="font-weight:400;color:var(--muted)">· 눌러서 보기</span></h2><div class="grid">
+<button class="frame" data-index="0" aria-label="페이지 넘기기 1번 프레임 보기" aria-pressed="false"><img src="frames/frame-01.png" width="362" height="362" alt=""><span>01</span></button>
+<button class="frame" data-index="1" aria-label="페이지 넘기기 2번 프레임 보기" aria-pressed="false"><img src="frames/frame-02.png" width="362" height="362" alt=""><span>02</span></button>
+<button class="frame" data-index="2" aria-label="페이지 넘기기 3번 프레임 보기" aria-pressed="false"><img src="frames/frame-03.png" width="362" height="362" alt=""><span>03</span></button>
+<button class="frame" data-index="3" aria-label="페이지 넘기기 4번 프레임 보기" aria-pressed="false"><img src="frames/frame-04.png" width="362" height="362" alt=""><span>04</span></button>
+<button class="frame" data-index="4" aria-label="페이지 넘기기 5번 프레임 보기" aria-pressed="false"><img src="frames/frame-05.png" width="362" height="362" alt=""><span>05</span></button>
+<button class="frame" data-index="5" aria-label="페이지 넘기기 6번 프레임 보기" aria-pressed="false"><img src="frames/frame-06.png" width="362" height="362" alt=""><span>06</span></button>
+<button class="frame" data-index="6" aria-label="페이지 넘기기 7번 프레임 보기" aria-pressed="false"><img src="frames/frame-07.png" width="362" height="362" alt=""><span>07</span></button>
+<button class="frame" data-index="7" aria-label="페이지 넘기기 8번 프레임 보기" aria-pressed="false"><img src="frames/frame-08.png" width="362" height="362" alt=""><span>08</span></button>
+<button class="frame" data-index="8" aria-label="페이지 넘기기 9번 프레임 보기" aria-pressed="false"><img src="frames/frame-09.png" width="362" height="362" alt=""><span>09</span></button>
+<button class="frame" data-index="9" aria-label="페이지 넘기기 10번 프레임 보기" aria-pressed="false"><img src="frames/frame-10.png" width="362" height="362" alt=""><span>10</span></button>
+<button class="frame" data-index="10" aria-label="페이지 넘기기 11번 프레임 보기" aria-pressed="false"><img src="frames/frame-11.png" width="362" height="362" alt=""><span>11</span></button>
+<button class="frame" data-index="11" aria-label="페이지 넘기기 12번 프레임 보기" aria-pressed="false"><img src="frames/frame-12.png" width="362" height="362" alt=""><span>12</span></button>
+</div></div></section>
+<footer><a href="writing-and-page-turn.mp4">연결 영상</a><a href="writing-and-page-turn.gif">연결 GIF</a><a href="page-turn-contact-sheet.png">넘기기 12장 전체</a><a href="writing-and-page-turn-assets.zip" download>프레임과 미리보기 다운로드</a></footer>
+</main><script>
+const actions={writing:'필기하기',page:'페이지 넘기기'},images={};
+for(const kind of ['writing','page'])images[kind]=Array.from({length:12},(_,i)=>{const im=new Image();im.src=(kind==='writing'?'writing-frames':'frames')+'/frame-'+String(i+1).padStart(2,'0')+'.png';return im});
+const preview=document.querySelector('#preview'),action=document.querySelector('#action'),position=document.querySelector('#position'),scrub=document.querySelector('#scrub'),toggle=document.querySelector('#toggle'),mode=document.querySelector('#mode'),speed=document.querySelector('#speed'),cards=[...document.querySelectorAll('.frame')];
+const sequence=(kind)=>Array.from({length:12},(_,i)=>({kind,i,label:actions[kind]}));
+const combined=[...Array.from({length:4},()=>sequence('writing')).flat(),...Array.from({length:4},()=>({kind:'writing',i:11,label:'잠깐 멈춤'})),...sequence('page'),...Array.from({length:4},()=>({kind:'page',i:11,label:'다시 필기 준비'}))];
+let queue=combined,index=0,fps=12,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,epoch=performance.now();
+function show(n){index=((n%queue.length)+queue.length)%queue.length;const item=queue[index];preview.src=images[item.kind][item.i].src;preview.alt='랫서팬더 '+actions[item.kind]+' '+(item.i+1)+'번 프레임';action.textContent=item.label+' · '+String(item.i+1).padStart(2,'0')+' / 12';position.textContent=String(index+1).padStart(2,'0')+' / '+queue.length;scrub.value=index+1;cards.forEach((c,i)=>c.setAttribute('aria-pressed',item.kind==='page'&&i===item.i?'true':'false'))}
+function state(){toggle.textContent=playing?'일시정지':'재생';document.querySelector('#timing').textContent=fps+' fps · '+Number((queue.length/fps).toFixed(2))+'초 반복'}
+function reset(){queue=mode.value==='combined'?combined:sequence(mode.value);scrub.max=queue.length;epoch=performance.now();show(0);state()}
+function pauseAt(n){playing=false;show(n);state()}
+mode.onchange=reset;
+toggle.onclick=()=>{playing=!playing;epoch=performance.now()-index*1000/fps;state()};
+document.querySelector('#prev').onclick=()=>pauseAt(index-1);
+document.querySelector('#next').onclick=()=>pauseAt(index+1);
+scrub.oninput=()=>pauseAt(Number(scrub.value)-1);
+cards.forEach((card,i)=>card.onclick=()=>{mode.value='page';reset();pauseAt(i)});
+speed.onchange=()=>{fps=Number(speed.value);epoch=performance.now()-index*1000/fps;state()};
+document.addEventListener('keydown',e=>{if(/INPUT|SELECT|BUTTON/.test(e.target.tagName))return;if(e.code==='Space'){e.preventDefault();toggle.click()}if(e.code==='ArrowLeft'){e.preventDefault();pauseAt(index-1)}if(e.code==='ArrowRight'){e.preventDefault();pauseAt(index+1)}});
+function tick(t){if(playing){const n=Math.floor((t-epoch)*fps/1000)%queue.length;if(n!==index)show(n)}requestAnimationFrame(tick)}
+Promise.all(Object.values(images).flat().map(im=>im.decode())).then(()=>{reset();requestAnimationFrame(tick)}).catch(()=>{playing=false;state();document.querySelector('#timing').textContent='이미지를 불러오지 못했습니다'});
+</script></body></html>

@@ -1,0 +1,47 @@
+{
+  "all_passed": true,
+  "videos": [
+    {
+      "file": "01_together.mp4",
+      "duration_seconds": 18,
+      "resolution": "1080x1920",
+      "fps": 30,
+      "video": "H.264 / yuv420p",
+      "audio": "AAC / stereo / 48 kHz",
+      "integrated_loudness_lufs": -18.1,
+      "true_peak_dbfs": -7.9,
+      "decoded_without_errors": true,
+      "fast_start": true,
+      "bytes": 3112948,
+      "sha256": "a39867784dba20c8d37e69b6f7aaa1dab476e7bfd1b772cae1d35de505aec523"
+    },
+    {
+      "file": "02_small_habits.mp4",
+      "duration_seconds": 20,
+      "resolution": "1080x1920",
+      "fps": 30,
+      "video": "H.264 / yuv420p",
+      "audio": "AAC / stereo / 48 kHz",
+      "integrated_loudness_lufs": -18.0,
+      "true_peak_dbfs": -7.6,
+      "decoded_without_errors": true,
+      "fast_start": true,
+      "bytes": 3052767,
+      "sha256": "75e50330f8e5fad8fc80e405e19ca61fa82e88c95bd4ddeae6b848015db80105"
+    },
+    {
+      "file": "03_a_gentle_break.mp4",
+      "duration_seconds": 18,
+      "resolution": "1080x1920",
+      "fps": 30,
+      "video": "H.264 / yuv420p",
+      "audio": "AAC / stereo / 48 kHz",
+      "integrated_loudness_lufs": -18.2,
+      "true_peak_dbfs": -6.7,
+      "decoded_without_errors": true,
+      "fast_start": true,
+      "bytes": 3158176,
+      "sha256": "492373b7b1b580b68a0f06b5b381ea6386decdc2ac556fd91cc986b1ee31c392"
+    }
+  ]
+}

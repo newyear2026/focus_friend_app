@@ -7,7 +7,9 @@
         android:label="${appLabel}"
         android:allowBackup="false"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:localeConfig="@xml/locales_config">
         <receiver android:name=".RoomAlarmReceiver" android:exported="false"/>
         <service android:name=".FocusSoundService" android:exported="false" android:foregroundServiceType="mediaPlayback"/>
         <activity

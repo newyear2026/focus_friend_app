@@ -1,6 +1,17 @@
 # 랫서팬더 홈 · 필기 동작 구현 검증
 
+> 최신 네 친구의 아침·낮·저녁·밤 적용: [friend-time-of-day-implementation/design-qa.md](docs/design/friend-time-of-day-implementation/design-qa.md) — final result: passed. 승인한 4단계 시안과 16개 실제 Flutter·Android 화면, 필기·휴식 유지, 시간대 전환·복귀, 전체 테스트 92개, 업데이트 후 저장 데이터 보존을 확인했습니다.
+
+> 최신 집중 종료 패널의 책장·책갈피 테두리: [book-frame/design-qa.md](docs/design/session-stop/book-frame/design-qa.md) — final result: passed. 선택 원본과 같은 크기의 전체·확대 비교, 작은 화면·큰 글자·가로 화면 및 종료 동작을 확인했습니다.
+
+> 집중 종료 하단 패널: [session-stop/design-qa.md](docs/design/session-stop/design-qa.md) — final result: passed. 선택 시안과 같은 뷰포트의 전체·확대 비교, 큰 글자, 계속하기·종료하기 및 취소 동작을 확인한 별도 범위입니다.
+
+> 하단 메뉴의 2D 셀 아이콘 적용 검증: [navigation-implemented/design-qa.md](docs/design/navigation-implemented/design-qa.md) — final result: passed. 책상·기록·설정 아이콘과 선택 표시만 변경한 별도 범위입니다.
+
+> 최신 구현: [2D 컷아웃 리그 검증](docs/design/puppet-motion/design-qa.md). 아래 포즈 교체 및 연속 메시 방식은 이전 구현 이력이며, 사용자 피드백에 따라 대체했습니다.
+
 final result: passed
+
 
 ## 대상과 비교 조건
 
@@ -59,3 +70,49 @@ final result: passed
 - 설치가 병행 작업의 Android 검증과 겹쳐 지연될 때 제 설치 프로세스만 중단했습니다. 다른 검증 완료를 확인한 뒤 일반 APK를 별도 파일에 고정하고 `--no-streaming -r`로 업데이트했습니다. 다른 채팅을 중단하거나 그 변경을 되돌리지 않았습니다.
 
 최종 캐릭터·홈 범위에 미해결 P0/P1/P2 없음. 루틴 앱 원본은 수정하지 않았으며 배포·커밋은 하지 않았습니다.
+
+
+## 기록 · 목표 · 사운드 기능 QA (별도 범위)
+
+새 메뉴·저장·오프라인 사운드의 최종 비교와 실행 검증은 [docs/design/features/design-qa.md](docs/design/features/design-qa.md)에 있습니다. 이 문서의 기존 필기 동작 검증 이력과는 별도 범위입니다.
+
+
+## 후속 연속 모션 개선
+
+필기 손목·호흡·고개·꼬리의 연속 움직임, 얼굴 유지, 일시정지 자세 보존을 적용했습니다. 최신 동작·검증 결과는 [docs/design/natural-motion/design-qa.md](docs/design/natural-motion/design-qa.md)에 있습니다. 위의 8포즈/160ms 전환 및 일시정지 정지 포즈 설명은 이전 구현 이력입니다.
+
+## 쿠션에서 차 마시는 휴식 애니메이션
+
+선택한 휴식 시안의 구현, 실제 움직임 영상, 일시정지·재개·완료 검증은 [docs/design/rest-tea-motion/design-qa.md](docs/design/rest-tea-motion/design-qa.md)에 있습니다.
+
+## 공유 시안 기반 몰입형 2D 책상 — 최신 QA
+
+**Findings**: 최종 비교에서 미해결 P0/P1/P2 없음. 정지 시안과 실제 필기 애니메이션의 공책·손 모양 차이, 실제 Android의 OS 표시줄은 P3이며 사용성에 영향 없음.
+
+**Open Questions**: 없음.
+
+**Implementation Checklist**: 같은 논리 화면의 전체·확대 비교, 작은 화면·큰 글자·상태별 캡처, Flutter 분석/테스트, Android 업데이트 및 저장 데이터 보존 확인 완료.
+
+원본 시각 기준은 [reference.png](docs/design/immersive-room/reference.png) 853×1844 px. 구현은 [home-evening.png](docs/design/immersive-room/home-evening.png) 780×1688 px, 논리 뷰포트 390×844 dp, devicePixelRatio 2이다. 두 이미지를 각각 390×844 px로 정규화한 [전체 비교](docs/design/immersive-room/comparison-final.jpg)와 [상·하단 확대 비교](docs/design/immersive-room/detail-final.jpg)를 열어 검토했다. 상태는 25:00 준비·오늘 50분·소품 세 개 해금인 픽스처이며, [설치 앱 화면](docs/design/immersive-room/installed-app-final.png) 1080×2160 px에는 실제 저장된 목표·오늘 5분·해금된 화분이 보인다. 모든 화면과 근거는 [상세 QA](docs/design/immersive-room/design-qa.md)에 있다.
+
+비교 이력: 첫 비교에서 공책과 `오늘의 집중` 사이 간격이 부족한 P2를 발견해 캐릭터 크기·위치를 조정했다. 초기 기본 내비게이션 아이콘의 선화 스타일도 시안에 맞는 이미지 자산으로 교체했다. 최종 전체·확대·실제 Android 캡처에서 두 문제 모두 해결됐다. Pretendard 글꼴·줄바꿈·간격·색 대비·일러스트 크롭·투명 아이콘·문구·집중/일시정지/완료/휴식 조작을 함께 확인했다. `flutter analyze` 이상 없음, 전체 Flutter 테스트 45개 통과, 최종 화면 캡처 테스트 통과. APK 업데이트 후 저장 스냅샷 SHA-256과 revision 61·기록 13개가 이전과 같다.
+
+**Follow-up Polish**: 추후 OS 상태 표시줄 처리와 실제 애니메이션 공책의 그림 스타일을 더 맞출 수 있다.
+
+final result: passed
+
+
+## 하단 친구 탭과 다섯 친구 선택 — 최신 QA
+
+선택한 책상·친구·기록·설정 배치, 친구 선택→방 미리보기→적용의 시각 비교와 검증은 [친구 탭 QA](docs/design/friend-picker-implementation/design-qa.md)에 있습니다. 실제 Flutter 전체·확대 비교, 작은 화면과 큰 글자, 네 언어, 오류·취소·적용·선택 저장을 확인했습니다. 79개 테스트 통과, 정적 분석 이상 없음, Android 업데이트 후 기존 일시정지 세션과 저장 JSON이 동일합니다. 새 네 친구는 정지 장면이며 랫서팬더의 기존 애니메이션은 유지합니다.
+
+final result: passed
+
+## 펭귄 · 해달 1차 애니메이션 — 2026-10-15
+
+두 캐릭터에 36초 필기 → 6.3초 페이지 넘김과 14초 찻잔 휴식을 연결했습니다. 실제 앱 캡처·동일 Painter 영상·검증 결과는 [모션 QA](docs/design/penguin-otter-motion-v1/design-qa.md)에 있습니다. 전체 테스트와 앱 캡처 합계 85개 통과, 분석 이상 없음, Android 업데이트 후 저장 JSON 동일입니다. 페이지 원화의 작은 윤곽 차이와 일부 손·종이 혼합 잔상은 P3 다듬기 항목입니다. 앞선 ‘새 네 친구 정지 장면’ 설명은 해당 시점의 구현 이력입니다.
+
+
+## 사막여우 · 다람쥐 창가 찻잔 휴식 — 2026-10-15
+
+승인한 창밖을 보며 차 마시는 시안을 휴식과 친구 미리보기에 적용했습니다. 22초 반복, 연결 원화·고정된 책과 방, 일시정지·재개·네 시간대 전환을 검증했습니다. [제작·QA 기록](docs/design/fennec-squirrel-window-tea-v1/README.md)에 실제 앱 캡처와 전체 영상을 보관했습니다. 테스트 98개 통과, 분석 이상 없음, Android 업데이트 후 저장 JSON과 revision 30·기록 4개가 동일합니다. 원화별 작은 몸통·꼬리 윤곽 차이와 중간 혼합 흔적은 P3입니다.

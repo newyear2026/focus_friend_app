@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:focus_friend_app/session_engine.dart';
 
@@ -292,6 +293,43 @@ void main() {
     store.raw = 'invalid';
     await expectLater(make().restore(), throwsFormatException);
     expect(store.raw, 'invalid');
+  });
+  test('screen preference persists and older saves default to off', () async {
+    final old = jsonDecode(FocusState().encode()) as Map<String, dynamic>
+      ..remove('keepScreenOn');
+    expect(FocusState.decode(jsonEncode(old)).keepScreenOn, isFalse);
+    await engine.saveKeepScreenOn(true);
+    final restored = make();
+    await restored.restore();
+    expect(restored.state.keepScreenOn, isTrue);
+  });
+  test('reads share one snapshot until the saved state changes', () async {
+    await start();
+    final running = engine.state;
+    expect(engine.state, same(running));
+    await engine.pause(id());
+    final paused = engine.state;
+    expect(paused, isNot(same(running)));
+    expect(paused.active!.status, SessionStatus.paused);
+    // Earlier snapshots are never rewritten behind a reader's back.
+    expect(running.active!.status, SessionStatus.running);
+    expect(engine.state, same(paused));
+  });
+  test('a failed save keeps showing the last saved snapshot', () async {
+    await start();
+    final before = engine.state;
+    store.failBefore = true;
+    await expectLater(engine.pause(id()), throwsStateError);
+    expect(engine.state, same(before));
+    expect(engine.state.active!.status, SessionStatus.running);
+  });
+  test('changing the shared snapshot outside the engine is caught', () async {
+    await start();
+    engine.state.goal = const FocusGoal(name: 'x', date: '2026-11-20');
+    await expectLater(
+      engine.saveSound(const SoundPreferences()),
+      throwsA(isA<AssertionError>()),
+    );
   });
   test('clock rollback cannot create negative actual time', () async {
     await start();

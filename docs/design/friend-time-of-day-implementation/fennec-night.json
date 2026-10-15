@@ -1,0 +1,10 @@
+{
+  "mode": "built-in ImageGen",
+  "source": "/Users/jaewook/.codex/generated_images/01a13cef-bf30-7ec1-93bc-7898af3f86e6/exec-3f227516-90bb-4beb-836a-8762b85e1b7d.png",
+  "output": "assets/images/friends/ambience/fennec/night.png",
+  "references": [
+    "assets/images/friends/fennec-scene.png",
+    "docs/design/friend-time-of-day-concepts-v2/fennec.png",
+    "assets/images/immersive/room-night.png"
+  ]
+}

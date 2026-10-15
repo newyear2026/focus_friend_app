@@ -1,0 +1,12 @@
+{
+  "asset": "squirrel-morning",
+  "mode": "builtin-image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/squirrel-scene.png",
+  "approved_reference": "docs/design/friend-time-of-day-concepts-v2/squirrel.png",
+  "output": "assets/images/friends/ambience/squirrel/morning.png",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14036-94d4-7921-bc0b-0a206947725f/exec-8b99c4a8-080f-447b-b8d6-c1d3b04d33f9.png",
+  "width": 853,
+  "height": 1844,
+  "visual_review": "Passed: original composition and character preserved. Pale peach/gold dawn, pearl-blue sky and gentle mist; natural green foliage and same bridge/creek. No moon/stars, header/panels, or new decorative objects."
+}

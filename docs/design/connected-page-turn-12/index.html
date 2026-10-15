@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>글씨가 쌓이고 페이지를 넘기는 집중 친구</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#211e27;color:#fff4de;font-family:system-ui,sans-serif;line-height:1.6}main{max-width:1000px;margin:auto;padding:32px 24px}h1{margin:0 0 8px;font-size:27px}p{color:#cdbfae}.layout{display:grid;grid-template-columns:minmax(280px,580px) 1fr;gap:28px;align-items:center}.stage{background:#fff7e6;border-radius:24px;overflow:hidden}canvas{display:block;width:100%;height:auto}#status{color:#ffcc83;font-size:30px;font-weight:700}button{font:inherit;border:0;border-radius:12px;padding:11px 15px;margin:5px 4px 5px 0;background:#3c3541;color:#fff4de;cursor:pointer}button.primary{background:#ffcc83;color:#211e27;font-weight:700}input{width:100%;accent-color:#ffcc83}label{display:block;margin:20px 0 8px}a{color:#ffcc83}.small{font-size:14px}#detail{font-variant-numeric:tabular-nums}@media(max-width:760px){.layout{grid-template-columns:1fr}main{padding:24px 16px}h1{font-size:24px}}
+</style>
+<main>
+<h1>글씨가 쌓이고, 다음 페이지로</h1>
+<p>천천히 쓰기 → 페이지 모서리 잡기 → 넘기기 → 새 페이지에서 다시 쓰기.</p>
+<div class="layout">
+<div class="stage"><canvas id="stage" width="580" height="580" aria-label="글씨 쓰기와 페이지 넘김 애니메이션"></canvas></div>
+<div><div id="status">원화 불러오는 중</div><p id="detail">24장 필기 + 12장 페이지 넘김</p>
+<button class="primary" id="play">일시정지</button><button id="turn">페이지 넘김 보기</button><button id="fresh">처음부터</button>
+<label for="time">전체 흐름 살펴보기</label><input id="time" type="range" min="0" max="19.49" step="0.083333" value="0">
+<p class="small">12fps · 18초 동안 글씨가 쌓이고 1.5초 동안 페이지를 넘겨요. 전체 주기는 19.5초예요.</p>
+<p class="small">글씨는 실제 메모를 저장하지 않는 손글씨 획 연출이에요. 팔·어깨·몸통은 함께 그린 원화로 교체해요.</p>
+<a href="writing-and-page-turn.gif">짧은 미리보기</a> · <a href="page-turn-12-frames.zip">페이지 넘김 원화 12장</a> · <a href="README.md">제작 정보</a>
+</div></div></main>
+<script src="../connected-writing-24/registration.js"></script>
+<script src="registration.js"></script>
+<script>
+const writing=new Image(),turning=new Image();writing.src='../connected-writing-24/final-atlas.png';turning.src='page-turn-atlas.png';
+const timeline=[...Array(6).fill(0),...Array.from({length:24},(_,i)=>i),...Array(6).fill(23)];
+const turns=[...Array(3).fill(0),...Array.from({length:12},(_,i)=>i),...Array(3).fill(11)];
+const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d'),slider=document.querySelector('#time'),play=document.querySelector('#play');
+let ready=false,running=!matchMedia('(prefers-reduced-motion: reduce)').matches,elapsed=0,last=performance.now();
+function poseAt(seconds){const tick=Math.floor(seconds*12)%234;if(tick>=216){const frame=turns[tick-216];return{turn:true,frame,ink:frame<9?1:0}}const local=tick%36;return{turn:false,frame:timeline[local],ink:(Math.floor(tick/36)+Math.max(0,Math.min(12,local-12))/12)/6}}
+function inkPaths(guide){const point=(u,v)=>[guide[0]+guide[2]*u+guide[4]*v,guide[1]+guide[3]*u+guide[5]*v],paths=[];for(let word=0;word<12;word++){const u=word%4*.245,v=Math.floor(word/4)*.45,start=point(u,v),segments=[];for(let letter=0;letter<(word%3===1?3:4);letter++){const x=u+letter*.043;segments.push([point(x+.011,v-.13),point(x+.024,v+.16),point(x+.043,v+(letter%2===0?-.01:.04))])}paths.push({start,segments})}return paths}
+function drawInk(progress,guide,fraction=1){const point=(u,v)=>[guide[0]+guide[2]*u+guide[4]*v,guide[1]+guide[3]*u+guide[5]*v];ctx.save();ctx.beginPath();ctx.moveTo(...point(-.03,-.2));ctx.lineTo(...point(fraction+.015,-.2));ctx.lineTo(...point(fraction+.015,1.12));ctx.lineTo(...point(-.03,1.12));ctx.closePath();ctx.clip();ctx.strokeStyle='#80563bb0';ctx.lineWidth=1.55;ctx.lineCap='round';ctx.lineJoin='round';const written=progress*12;inkPaths(guide).forEach((path,i)=>{if(i>=written)return;const points=[path.start];let current=path.start;for(const[a,b,c]of path.segments){for(let step=1;step<=12;step++){const t=step/12,s=1-t;points.push([s*s*s*current[0]+3*s*s*t*a[0]+3*s*t*t*b[0]+t*t*t*c[0],s*s*s*current[1]+3*s*s*t*a[1]+3*s*t*t*b[1]+t*t*t*c[1]])}current=c}const lengths=[0];for(let j=1;j<points.length;j++)lengths.push(lengths[j-1]+Math.hypot(points[j][0]-points[j-1][0],points[j][1]-points[j-1][1]));const limit=lengths.at(-1)*Math.min(1,written-i);ctx.beginPath();ctx.moveTo(...points[0]);for(let j=1;j<points.length;j++){if(lengths[j]<=limit){ctx.lineTo(...points[j]);continue}const f=(limit-lengths[j-1])/(lengths[j]-lengths[j-1]);ctx.lineTo(points[j-1][0]+f*(points[j][0]-points[j-1][0]),points[j-1][1]+f*(points[j][1]-points[j-1][1]));break}ctx.stroke()});ctx.restore()}
+function show(){if(!ready)return;const p=poseAt(elapsed),atlas=p.turn?turning:writing,rows=p.turn?3:6,scales=p.turn?pageRegistration.scales:spriteRegistration.scales,s=scales[p.frame],x=64+(1-s)*500*spriteRegistration.anchorX,y=35+(1-s)*500*spriteRegistration.anchorY;ctx.clearRect(0,0,580,580);ctx.drawImage(atlas,p.frame%4*512,Math.floor(p.frame/4)*512,512,512,x,y,500*s,500*s);ctx.save();ctx.translate(x,y);ctx.scale(500*s/512,500*s/512);drawInk(p.ink,p.turn?pageRegistration.pagePaperGuides[p.frame]:pageRegistration.writingPaperGuides[p.frame],p.turn?[1,1,1,1,1,1,1,.55,.18,0,0,0][p.frame]:1);ctx.restore();document.querySelector('#status').textContent=p.turn?'다음 페이지로':'차근차근 쓰는 중';document.querySelector('#detail').textContent=`${(elapsed%19.5).toFixed(1)}초 / 19.5초 · ${p.turn?'페이지 넘김':'필기'} ${String(p.frame+1).padStart(2,'0')} · 글씨 ${Math.round(p.ink*100)}%`;slider.value=elapsed%19.5}
+play.onclick=()=>{running=!running;play.textContent=running?'일시정지':'재생';last=performance.now()};document.querySelector('#turn').onclick=()=>{elapsed=18;running=true;play.textContent='일시정지';last=performance.now();show()};document.querySelector('#fresh').onclick=()=>{elapsed=0;last=performance.now();show()};slider.oninput=()=>{running=false;play.textContent='재생';elapsed=Number(slider.value);show()};document.addEventListener('visibilitychange',()=>last=performance.now());
+function loop(now){if(running&&!document.hidden){elapsed=(elapsed+(now-last)/1000)%19.5;show()}last=now;requestAnimationFrame(loop)}
+Promise.all([writing.decode(),turning.decode()]).then(()=>{ready=true;play.textContent=running?'일시정지':'재생';last=performance.now();show();requestAnimationFrame(loop)}).catch(()=>document.querySelector('#status').textContent='원화를 불러오지 못했어요');
+</script>
+</html>

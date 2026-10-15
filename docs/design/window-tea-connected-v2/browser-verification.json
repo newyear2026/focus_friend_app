@@ -1,0 +1,26 @@
+[
+  {
+    "duration": 10,
+    "error": null,
+    "friend": "redpanda",
+    "paused": true,
+    "playbackRate": 1,
+    "time": 5.25
+  },
+  {
+    "duration": 22,
+    "error": null,
+    "friend": "squirrel",
+    "paused": true,
+    "playbackRate": 1,
+    "time": 9
+  },
+  {
+    "duration": 22,
+    "error": null,
+    "friend": "fennec",
+    "paused": true,
+    "playbackRate": 1,
+    "time": 9
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "check": "tests",
+    "returnCode": 0,
+    "log": "docs/design/fennec-squirrel-window-tea-v1/tests.log"
+  },
+  {
+    "check": "analyze",
+    "returnCode": 0,
+    "log": "docs/design/fennec-squirrel-window-tea-v1/analyze.log"
+  },
+  {
+    "check": "build",
+    "returnCode": 0,
+    "log": "docs/design/fennec-squirrel-window-tea-v1/build.log"
+  }
+]

@@ -1,0 +1,25 @@
+Use case: identity-preserve. Asset type: production 2D animation sprite atlas.
+Input image 1 is the exact 512x512 stage reference. Extract and redraw ONLY its seated character, connected shoulders/arms, notebook, writing pencil and drinking mug as described below. The room in the reference is not part of this sprite.
+Create a 2048 x 1536 PNG sprite sheet, exactly 4 equal columns by 3 equal rows, 12 square 512 x 512 cells, left to right row-major. GENUINELY TRANSPARENT BACKGROUND in all cells. No checkerboard pixels, matte, room, chair, desk, stacked books, lamp, plants, shell ornaments, labels, cell lines, numbers, shadows under the whole cell, border, or cropping margins between cells. There must be just the isolated connected character plus notebook, pencil and mug, with genuine transparent negative space. No white background.
+Treat each cell as the SAME fixed 512x512 coordinate system as input 1, NOT as an individually centered portrait. Keep the character's face at the same location and size as the source: head approximately x=90..345,y=100..310, connected torso and arms below it, hand contact near y=350; notebook spine at (265,385), open book bounds about x=140..385,y=345..410. Mug on desk at about (437,378), except when explicitly held during tea. Preserve all original widths and proportions. This stage has deliberate empty space at top and bottom; do NOT enlarge/recenter the character to fill each cell. Do NOT draw legs, feet or full standing body. It is the same waist-up desk composition as input.
+Keep the head, face, torso, costume and tail perfectly identical and pixel-registered in all cells; hand/forearm/eye changes should be very small smooth consecutive differences. The bottom notebook cover, spine, mug position and torso anchor must NEVER translate/scale/rotate between frames. Forearms remain joined to their shoulders; draw the complete connected upper-body silhouette in every cell, never separate floating hands. No added limbs, changing eye shapes, species drift or disconnected shoulders.
+Art direction must exactly match the input's warm detailed hand-painted 2D animation style, dark-brown thin contours and soft fur/feather texture. No 3D or vector icon look.
+
+Character identity: The exact charcoal-and-cream penguin with orange beak, peach cheeks, three small cream forehead spots, round brown eyes and lavender knitted scarf with white snowflake. Preserve short rounded FLIPPERS, not fingers. The mug is cream with a blue snowflake, notebook has navy/teal cover.
+
+Animation section: slow 12-pose seamless tea break. Input image 2 shows a three-pose concept for the same character; use the tea pose at right for the action, while preserving input 1's exact stage framing.
+The notebook is CLOSED and perfectly stationary in all 12 cells at the same desk position (approx x140..385,y375..420), pencil flat just in front. The familiar mug is held in BOTH connected arms/flippers. No separate duplicate mug is left at the right of the stage. Head/body have the same anchor and proportions in every cel, no torso rocking. Draw no steam; it will be a subtle separate effect.
+Cells, strict row-major:
+0. Mug held low at chest (center around x235,y345), both hands around its sides. Eyes open, calm tiny smile.
+1. Exactly same pose, eyes gently closed in one blink.
+2. Exactly same as cell0, eyes open again.
+3. Mug and hands lift upward only 8px, both elbows naturally connected to shoulders.
+4. Mug and hands lift another 8px, toward mouth, head unchanged.
+5. Mug reaches just below mouth, eyes become softly half closed.
+6. Holds at mouth for a small sip, eyes gently closed, no wide-open mouth.
+7. Same sipping pose, tiny relaxed smile, eyes still gently closed.
+8. Mug lowers 8px, eyes start opening.
+9. Mug lowers another 8px, eyes relaxed open.
+10. Mug returns to exact low chest position of cell0, hands connected.
+11. EXACT repeat of cell0, same face and pixels, to allow a seamless loop.
+Keep the closed notebook and pencil completely identical in every cel. Keep hands/flippers a continuous part of complete upper body, no chopped wrists.

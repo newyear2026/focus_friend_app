@@ -1,0 +1,146 @@
+[
+  {
+    "frame": 0,
+    "scale": 1.1330275229357798,
+    "offset": [
+      58,
+      5
+    ],
+    "registrationError": 0.0
+  },
+  {
+    "frame": 1,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      6
+    ],
+    "registrationError": 110.84376091490509
+  },
+  {
+    "frame": 2,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      5
+    ],
+    "registrationError": 80.794395993023
+  },
+  {
+    "frame": 3,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      5
+    ],
+    "registrationError": 64.9999019769958
+  },
+  {
+    "frame": 4,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 91.61578293051977
+  },
+  {
+    "frame": 5,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 92.07686738890399
+  },
+  {
+    "frame": 6,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 90.49409475853412
+  },
+  {
+    "frame": 7,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 85.17825176603209
+  },
+  {
+    "frame": 8,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 87.62024591985691
+  },
+  {
+    "frame": 9,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 106.80846498784715
+  },
+  {
+    "frame": 10,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      7
+    ],
+    "registrationError": 94.05937251408646
+  },
+  {
+    "frame": 11,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      8
+    ],
+    "registrationError": 88.92343962419477
+  },
+  {
+    "frame": 12,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      7
+    ],
+    "registrationError": 89.93356851386599
+  },
+  {
+    "frame": 13,
+    "scale": 1.1330275229357798,
+    "offset": [
+      60,
+      7
+    ],
+    "registrationError": 100.71585262944531
+  },
+  {
+    "frame": 14,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      7
+    ],
+    "registrationError": 96.31529482467698
+  },
+  {
+    "frame": 15,
+    "scale": 1.1330275229357798,
+    "offset": [
+      59,
+      7
+    ],
+    "registrationError": 88.63231434215416
+  }
+]

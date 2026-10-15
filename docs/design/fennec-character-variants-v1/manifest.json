@@ -1,0 +1,20 @@
+[
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-character-variants-v1/round-baby-fennec.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "5d2eed8376dbb996e77d86eeb548eeef587d51911149242e8c0dbfb0b244f944"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-character-variants-v1/large-ear-fennec.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "84ad3a16b6c10633a470ad59cbc830a8dbcc99a19ad415e02dd7a600edb44939"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-character-variants-v1/bookish-fennec.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "f35947f760b95c5ac59d36204e78ac51349e7d3dbb6804ca29e1150c38fc6272"
+  }
+]

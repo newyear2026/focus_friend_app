@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   flutter:
     sdk: flutter
+  intl: any
 
 dev_dependencies:
   integration_test:
@@ -20,21 +21,68 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
+    # List files one by one: these folders also hold unused drafts and prompts.
     - assets/audio/
+    - assets/images/immersive/room-morning.png
+    - assets/images/immersive/room-day.png
+    - assets/images/immersive/room-evening.png
+    - assets/images/immersive/room-night.png
+    - assets/images/immersive/reward-plant.png
+    - assets/images/immersive/reward-mug.png
+    - assets/images/immersive/reward-lamp.png
+    - assets/images/immersive/nav-desk.png
+    - assets/images/immersive/nav-records.png
+    - assets/images/immersive/nav-settings.png
+    - assets/images/immersive/redpanda-reference.png
+    - assets/images/immersive/redpanda-slow-connected-body-38.png
+    - assets/images/immersive/redpanda-fixed-notebook.png
+    - assets/images/rest/redpanda-tea-sheet.png
+    - assets/images/rest/redpanda-tea-inbetweens.png
+    - assets/images/rest/closed-book.png
     - assets/images/companion-portrait.png
+    - assets/images/friends/penguin-scene.png
+    - assets/images/friends/otter-scene.png
+    - assets/images/friends/squirrel-scene.png
+    - assets/images/friends/fennec-scene.png
+    - assets/images/friends/ambience/penguin/morning.png
+    - assets/images/friends/ambience/penguin/day.png
+    - assets/images/friends/ambience/penguin/evening.png
+    - assets/images/friends/ambience/penguin/night.png
+    - assets/images/friends/ambience/otter/morning.png
+    - assets/images/friends/ambience/otter/day.png
+    - assets/images/friends/ambience/otter/evening.png
+    - assets/images/friends/ambience/otter/night.png
+    - assets/images/friends/ambience/squirrel/morning.png
+    - assets/images/friends/ambience/squirrel/day.png
+    - assets/images/friends/ambience/squirrel/evening.png
+    - assets/images/friends/ambience/squirrel/night.png
+    - assets/images/friends/ambience/fennec/morning.png
+    - assets/images/friends/ambience/fennec/day.png
+    - assets/images/friends/ambience/fennec/evening.png
+    - assets/images/friends/ambience/fennec/night.png
+    - assets/images/friends/motion/penguin/room.png
+    - assets/images/friends/motion/penguin/study.png
+    - assets/images/friends/motion/penguin/rest.png
+    - assets/images/friends/motion/otter/room.png
+    - assets/images/friends/motion/otter/study.png
+    - assets/images/friends/motion/otter/rest.png
+    - assets/images/friends/motion/fennec/rest.png
+    - assets/images/friends/motion/fennec/rooms/morning.png
+    - assets/images/friends/motion/fennec/rooms/day.png
+    - assets/images/friends/motion/fennec/rooms/evening.png
+    - assets/images/friends/motion/fennec/rooms/night.png
+    - assets/images/friends/motion/squirrel/rest.png
+    - assets/images/friends/motion/squirrel/rooms/morning.png
+    - assets/images/friends/motion/squirrel/rooms/day.png
+    - assets/images/friends/motion/squirrel/rooms/evening.png
+    - assets/images/friends/motion/squirrel/rooms/night.png
+    - assets/images/ui/session-stop-book-frame.png
     - assets/images/sound-rain.png
     - assets/images/sound-forest.png
     - assets/images/sound-fire.png
-    - assets/images/room-day-empty.png
-    - assets/images/room-morning-empty.png
-    - assets/images/room-evening-empty.png
-    - assets/images/room-night-empty.png
-    - assets/images/redpanda-study-sheet.png
-    - assets/images/reward-plant.png
-    - assets/images/reward-mug.png
-    - assets/images/reward-lamp.png
   fonts:
     - family: Pretendard
       fonts:

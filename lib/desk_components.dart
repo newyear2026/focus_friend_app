@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'desk_style.dart';
 
-const ticketGold = Color(0xFFF6D989);
+const ticketGold = deskAccent;
 
 class TicketBorder extends OutlinedBorder {
   const TicketBorder({
@@ -40,7 +40,7 @@ class TicketPanel extends StatelessWidget {
   const TicketPanel({
     super.key,
     required this.child,
-    this.color = ticketGold,
+    this.color = deskCream,
     this.onTap,
   });
   final Widget child;
@@ -49,7 +49,10 @@ class TicketPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Material(
     color: color,
-    shape: const TicketBorder(),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(16),
+      side: const BorderSide(color: deskDivider),
+    ),
     clipBehavior: Clip.antiAlias,
     child: InkWell(onTap: onTap, child: child),
   );
@@ -61,33 +64,35 @@ class DeskPrimaryButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.icon,
+    this.loading = false,
   });
   final String label;
   final VoidCallback? onPressed;
   final IconData? icon;
+  final bool loading;
   @override
   Widget build(BuildContext context) => Container(
     decoration: BoxDecoration(
-      color: onPressed == null ? deskMuted : deskInk,
+      color: Colors.transparent,
       borderRadius: BorderRadius.circular(14),
     ),
-    padding: const EdgeInsets.only(bottom: 4),
-    child: OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        backgroundColor: deskPaper,
-        foregroundColor: deskInk,
+    padding: EdgeInsets.zero,
+    child: FilledButton(
+      onPressed: loading ? null : onPressed,
+      style: FilledButton.styleFrom(
+        backgroundColor: deskAccent,
+        foregroundColor: deskInkShadow,
+        disabledBackgroundColor: loading
+            ? deskAccent.withValues(alpha: .55)
+            : deskCream,
+        disabledForegroundColor: loading ? deskInkShadow : deskMuted,
         minimumSize: const Size(double.infinity, 56),
-        side: BorderSide(
-          color: onPressed == null ? deskMuted : deskInk,
-          width: 1.5,
-        ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
       child: Row(
         children: [
-          if (icon != null) const SizedBox(width: 34),
+          if (icon != null || loading) const SizedBox(width: 34),
           Expanded(
             child: Text(
               label,
@@ -99,11 +104,23 @@ class DeskPrimaryButton extends StatelessWidget {
               ),
             ),
           ),
-          if (icon != null)
+          if (loading)
+            const SizedBox(
+              width: 34,
+              height: 34,
+              child: Padding(
+                padding: EdgeInsets.all(6),
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: deskInkShadow,
+                ),
+              ),
+            )
+          else if (icon != null)
             CircleAvatar(
               radius: 17,
-              backgroundColor: deskInk,
-              child: Icon(icon, size: 23, color: Colors.white),
+              backgroundColor: deskInkShadow,
+              child: Icon(icon, size: 23, color: deskAccent),
             ),
         ],
       ),

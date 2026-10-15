@@ -1,0 +1,29 @@
+[
+  {
+    "duration": 20,
+    "error": null,
+    "friend": "redpanda",
+    "paused": false,
+    "rate": 1,
+    "src": "after/redpanda.mp4",
+    "time": 0.177703
+  },
+  {
+    "duration": 44,
+    "error": null,
+    "friend": "squirrel",
+    "paused": false,
+    "rate": 1,
+    "src": "after/squirrel.mp4",
+    "time": 0.177676
+  },
+  {
+    "duration": 44,
+    "error": null,
+    "friend": "fennec",
+    "paused": false,
+    "rate": 1,
+    "src": "after/fennec.mp4",
+    "time": 0.177387
+  }
+]

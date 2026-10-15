@@ -4,12 +4,17 @@ import android.Manifest
 import android.app.*
 import android.content.*
 import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.database.sqlite.*
 import android.os.Build
+import android.os.LocaleList
+import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import org.json.JSONObject
+import java.util.Locale
 import java.util.concurrent.Executors
 
 class SnapshotDb(context: Context, scope: String = "focus") :
@@ -64,6 +69,25 @@ class MainActivity : FlutterActivity() {
                     result.success(null)
                     return@setMethodCallHandler
                 }
+                if (call.method == "getLanguage") {
+                    result.success(mapOf("app" to AppLanguage.get(this), "system" to AppLanguage.system()))
+                    return@setMethodCallHandler
+                }
+                if (call.method == "setLanguage") {
+                    AppLanguage.set(this, call.argument<String>("tag"))
+                    result.success(null)
+                    return@setMethodCallHandler
+                }
+                if (call.method == "keepScreenOn") {
+                    // Window-scoped: Android drops it whenever this activity is not visible.
+                    if (call.argument<Boolean>("on") == true) {
+                        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                    } else {
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                    }
+                    result.success(null)
+                    return@setMethodCallHandler
+                }
                 worker.execute {
                     try {
                         val scope = call.argument<String>("scope") ?: "focus"
@@ -93,6 +117,33 @@ class MainActivity : FlutterActivity() {
                     }
                 }
             }
+    }
+}
+
+/** The app language chosen in Settings; null follows the phone. */
+object AppLanguage {
+    private const val PREFS = "app_language"
+    // Android 13+ keeps the choice itself and shares it with system Settings > Apps > Language.
+    fun get(context: Context): String? =
+        if (Build.VERSION.SDK_INT >= 33) {
+            context.getSystemService(LocaleManager::class.java).applicationLocales.toLanguageTags().ifEmpty { null }
+        } else context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("tag", null)
+    fun set(context: Context, tag: String?) {
+        if (Build.VERSION.SDK_INT >= 33) {
+            context.getSystemService(LocaleManager::class.java).applicationLocales =
+                if (tag == null) LocaleList.getEmptyLocaleList() else LocaleList.forLanguageTags(tag)
+        } else {
+            context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString("tag", tag).apply()
+        }
+    }
+    fun system(): String = Resources.getSystem().configuration.locales[0].toLanguageTag()
+    /** Notifications are built outside the activity; below 13 apply the choice by hand. */
+    fun localized(context: Context): Context {
+        if (Build.VERSION.SDK_INT >= 33) return context
+        val tag = get(context) ?: return context
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(Locale.forLanguageTag(tag))
+        return context.createConfigurationContext(config)
     }
 }
 
@@ -128,13 +179,14 @@ object RoomAlerts {
             active.optLong("endAt") != intent.getLongExtra("endAt", 0) ||
             System.currentTimeMillis() < active.optLong("endAt")) return
         val notifications = context.getSystemService(NotificationManager::class.java)
-        notifications.createNotificationChannel(NotificationChannel(CHANNEL, "집중과 휴식 완료", NotificationManager.IMPORTANCE_DEFAULT))
+        val text = AppLanguage.localized(context)
+        notifications.createNotificationChannel(NotificationChannel(CHANNEL, text.getString(R.string.channel_complete), NotificationManager.IMPORTANCE_DEFAULT))
         val open = PendingIntent.getActivity(context, ID, Intent(context, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val mode = active.optString("mode")
-        val title = when(mode) { "demo" -> "1분 체험이 끝났어요"; "rest" -> "휴식이 끝났어요"; else -> "집중 시간이 끝났어요" }
+        val title = text.getString(when(mode) { "demo" -> R.string.alert_demo_done; "rest" -> R.string.alert_rest_done; else -> R.string.alert_focus_done })
         notifications.notify(ID, Notification.Builder(context, CHANNEL)
             .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-            .setContentTitle(title).setContentText("작은 방으로 돌아와 고양이를 만나세요.")
+            .setContentTitle(title).setContentText(text.getString(R.string.alert_body))
             .setContentIntent(open).setAutoCancel(true).build())
         // Notifications never mutate sessions, history, or rewards.
     }

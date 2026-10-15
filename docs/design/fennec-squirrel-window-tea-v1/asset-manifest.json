@@ -1,0 +1,188 @@
+{
+  "tool": "built-in ImageGen",
+  "mode": "reference image editing",
+  "assets": [
+    {
+      "key": "fennec-rest",
+      "friend": "fennec",
+      "kind": "sprite",
+      "period": null,
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-2c0496d7-6596-4caa-b5ee-5b944c42fc50.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/fennec-rest.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-squirrel-window-tea-v1/fennec-stage-reference.png",
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-squirrel-rest-concepts-v1/04-window-tea.png"
+      ],
+      "retainedRaw": "docs/design/fennec-squirrel-window-tea-v1/fennec-rest-raw.png",
+      "runtimeAsset": "assets/images/friends/motion/fennec/rest.png",
+      "sha256": "734631395e8c90e16799470bd4bb8690dcbbd9ce6cd5eac16b13034dedd21527",
+      "runtimeSize": [
+        1536,
+        1152
+      ],
+      "alphaValidation": {
+        "fullyTransparentPixels": 1122376,
+        "nearOpaquePixels": 551293
+      }
+    },
+    {
+      "key": "fennec-morning",
+      "friend": "fennec",
+      "kind": "room",
+      "period": "morning",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-b4660400-6ebb-4899-b122-076decdfdba8.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/fennec-morning.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/fennec/morning.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/fennec/rooms/morning.png",
+      "sha256": "92f2232a2a3690cf6e2f154b961cca2e782ff0ad8fd17da21ac6081e76480fa9",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "fennec-day",
+      "friend": "fennec",
+      "kind": "room",
+      "period": "day",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-dbb008bf-ec30-4c3a-bacd-5b5fdd560b28.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/fennec-day.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/fennec/day.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/fennec/rooms/day.png",
+      "sha256": "d081e0d179194919a2e93bd073ad42538408b214de093a40da1e08995ac8d918",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "fennec-evening",
+      "friend": "fennec",
+      "kind": "room",
+      "period": "evening",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-f6c7aac4-bd4e-4dfa-b3d7-42ec607844b3.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/fennec-evening.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/fennec/evening.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/fennec/rooms/evening.png",
+      "sha256": "6c636db8d771afb78f4538901a17610fc7beef722bde5d3dc74fa18987f68849",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "fennec-night",
+      "friend": "fennec",
+      "kind": "room",
+      "period": "night",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-1963061f-3cf6-41c7-af01-10803f830b9f.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/fennec-night.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/fennec/night.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/fennec/rooms/night.png",
+      "sha256": "9d773ff929b514043ec0488e239499b1e2f6ce3e895ec059016e443ac08093de",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "squirrel-rest",
+      "friend": "squirrel",
+      "kind": "sprite",
+      "period": null,
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-c4b1ee38-b4ae-44d1-8577-2da067597c0d.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/squirrel-rest.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-squirrel-window-tea-v1/squirrel-stage-reference.png",
+        "/Users/jaewook/dev_app/focus_friend_app/docs/design/fennec-squirrel-rest-concepts-v1/04-window-tea.png"
+      ],
+      "retainedRaw": "docs/design/fennec-squirrel-window-tea-v1/squirrel-rest-raw.png",
+      "runtimeAsset": "assets/images/friends/motion/squirrel/rest.png",
+      "sha256": "87f8da764efefd30072d9b63edb528aad4a8090fcaab73fcb5e0c8d6ccca8663",
+      "runtimeSize": [
+        1536,
+        1152
+      ],
+      "alphaValidation": {
+        "fullyTransparentPixels": 1150385,
+        "nearOpaquePixels": 548833
+      }
+    },
+    {
+      "key": "squirrel-morning",
+      "friend": "squirrel",
+      "kind": "room",
+      "period": "morning",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-e2654f32-df75-4239-b430-e93685f48715.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/squirrel-morning.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/squirrel/morning.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/squirrel/rooms/morning.png",
+      "sha256": "f80c3fdc7e2f86c62580a51086fd8bd7786de65895311e98205a92681e77d9b9",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "squirrel-day",
+      "friend": "squirrel",
+      "kind": "room",
+      "period": "day",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-38471525-a5ff-436d-ace9-8f62c6f54bfd.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/squirrel-day.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/squirrel/day.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/squirrel/rooms/day.png",
+      "sha256": "b76edb1422387ce587b50d7a802c21dbf1132317e20617cab94a51a755dad7d4",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "squirrel-evening",
+      "friend": "squirrel",
+      "kind": "room",
+      "period": "evening",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-9681c848-b531-40e1-8991-5576a7b8ab6f.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/squirrel-evening.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/squirrel/evening.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/squirrel/rooms/evening.png",
+      "sha256": "b3dcebc03e9bbd95b29cffe05a09beaf7a18452c307540617c88332b26b63f4f",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    },
+    {
+      "key": "squirrel-night",
+      "friend": "squirrel",
+      "kind": "room",
+      "period": "night",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-f896c712-3fdb-42a3-b0cd-372e9687fb6e.png",
+      "prompt": "docs/design/fennec-squirrel-window-tea-v1/squirrel-night.prompt.txt",
+      "references": [
+        "/Users/jaewook/dev_app/focus_friend_app/assets/images/friends/ambience/squirrel/night.png"
+      ],
+      "runtimeAsset": "assets/images/friends/motion/squirrel/rooms/night.png",
+      "sha256": "2f6f8daab7726428efd737d19f2c523481711178cafb00596b650b6727a38076",
+      "runtimeSize": [
+        853,
+        1844
+      ]
+    }
+  ]
+}

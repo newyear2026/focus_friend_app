@@ -1,14 +1,13 @@
 /// Local clock periods; no location or sunrise service is needed.
 enum RoomAmbience {
-  morning('아침', 'morning'),
-  day('낮', 'day'),
-  evening('저녁', 'evening'),
-  night('밤', 'night');
+  morning('morning'),
+  day('day'),
+  evening('evening'),
+  night('night');
 
-  const RoomAmbience(this.label, this.assetName);
-  final String label;
+  const RoomAmbience(this.assetName);
   final String assetName;
-  String get asset => 'assets/images/room-$assetName-empty.png';
+  String get asset => 'assets/images/immersive/room-$assetName.png';
 
   static RoomAmbience at(DateTime localTime) {
     final minute = localTime.hour * 60 + localTime.minute;

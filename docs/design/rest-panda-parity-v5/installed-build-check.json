@@ -1,0 +1,16 @@
+{
+  "device": "emulator-5554",
+  "package": "dev.jaewook.prototype.focus_friend_app",
+  "installedApkSha256": "50060e17c6fce3e6214f04ff23db3fc28585caafab7e2b9e61fae4c3993ff9d7",
+  "localApkSha256": "50060e17c6fce3e6214f04ff23db3fc28585caafab7e2b9e61fae4c3993ff9d7",
+  "sameApk": true,
+  "runtimeArtMatchesApk": {
+    "assets/images/rest/redpanda-tea-sheet.png": true,
+    "assets/images/rest/redpanda-tea-inbetweens.png": true,
+    "assets/images/friends/motion/squirrel/rest.png": true,
+    "assets/images/friends/motion/fennec/rest.png": true
+  },
+  "windowTeaClockUnchangedSinceBuild": true,
+  "captureSource": "fresh FocusFriendApp widget rendering; not a live native device video",
+  "changedProductionCode": false
+}

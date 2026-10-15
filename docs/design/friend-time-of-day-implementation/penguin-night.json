@@ -1,0 +1,28 @@
+{
+  "asset": "penguin/night",
+  "mode": "built-in image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/motion/penguin/room.png",
+  "lighting_reference": "docs/design/friend-time-of-day-concepts-v2/penguin.png",
+  "lighting_reference_region": "fourth column only",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14035-d609-79b0-8353-85486104bfe1/exec-ee86839f-d672-4028-a98d-6e04a67fd58d.png",
+  "output": "assets/images/friends/ambience/penguin/night.png",
+  "dimensions": {
+    "width": 853,
+    "height": 1844
+  },
+  "target_motion_stage": {
+    "x": 100,
+    "y": 570,
+    "width": 704,
+    "height": 704,
+    "referenceWidth": 853,
+    "referenceHeight": 1844
+  },
+  "inspection": {
+    "format": "Opaque full-bleed single portrait",
+    "visual_review": "Passed: dark navy sky and crescent moon, cool blue snowy landscape, warm cabins, local warm lamp; empty chair and study area; source furniture/window frame/props stay visually registered.",
+    "preserved_static_props": "Includes existing closed purple spiral notebook at lower right and small decorative penguin figurine on shelf. No added open study notebook, mug or animated penguin.",
+    "material_issues": []
+  }
+}

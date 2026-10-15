@@ -1,0 +1,12 @@
+Use case: precise-object-edit.
+Asset type: clean full-screen illustration for Flutter focus app background, without ANY app UI.
+Input image 1 is the exact edit target. Remove every user-interface overlay from it: remove top shuffle icon, title “나의 책상”, speaker icon, subtitle “함께 집중할 시간”, entire “25:00” timer, “오늘의 집중 50분”, both 25분 / 50분 buttons and check, large 집중 시작 button and play icon, and every bottom navigation icon, label and underline. Remove any UI-only darkening overlay. Inpaint the revealed wall, sunset window, room, desk, chair, floor and foreground plants naturally in the same illustration.
+Keep all non-UI artwork as close to unchanged as possible. Preserve exact camera framing, composition, proportions, furniture, book placement, lamp, mug, art prints, plants and large window with desert sunset, oasis and distant town. Especially preserve the identical fennec fox character: same round brown glasses, huge broad cream-and-pink triangular ears, pale sandy fur with cream chest, round plush body, brown tipped fluffy tail and brown paws, gently writing in open notebook with a pencil. Keep character at same location, center around x=0.47 y=0.52. Do not change pose or identity.
+Warm hand-painted 2D animation background style with brown fine outlines and soft textured warm colors, exactly matching source.
+Output a full-bleed portrait image at 853×1844 composition. No panels, no text, no labels, no watermarks, no symbols, no logos, no UI anywhere. Illustration only.
+
+Generation mode: built-in image_gen edit.
+Edit target: docs/design/character-menu-location-concepts-v1/bottom-friend-tab.png
+Runtime destination: assets/images/friends/fennec-scene.png
+Generated source: /Users/jaewook/.codex/generated_images/01a13cbb-9192-7963-bd0d-809717fa763b/exec-d3f1f20b-d2ac-46e4-bc64-ba1ebb755a42.png
+Mechanical resize to 853x1844 only, if necessary; no semantic pixel edits outside ImageGen.

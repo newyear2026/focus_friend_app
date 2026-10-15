@@ -1,10 +1,17 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:focus_friend_app/android_bridge.dart';
 import 'package:focus_friend_app/main.dart';
 import 'package:focus_friend_app/session_engine.dart';
 import 'package:focus_friend_app/goal_editor.dart';
 import 'session_engine_test.dart' show MemoryStore;
+
+class RecordingScreen extends ScreenAwake {
+  final calls = <bool>[];
+  @override
+  Future<void> set(bool on) async => calls.add(on);
+}
 
 void main() {
   test(
@@ -120,6 +127,70 @@ void main() {
     },
   );
 
+  testWidgets('keep screen on holds only while a focus or rest timer runs', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    var now = DateTime(2026, 10, 8, 12).millisecondsSinceEpoch;
+    final engine = SessionEngine(MemoryStore(), clock: () => now);
+    final screen = RecordingScreen();
+    Future<void> settle() async {
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
+    }
+
+    await tester.pumpWidget(
+      FocusFriendApp(
+        engine: engine,
+        screen: screen,
+        locale: const Locale('ko'),
+      ),
+    );
+    await settle();
+    expect(screen.calls, [false]);
+    await tester.tap(find.byKey(const ValueKey('desk-navigation-3')));
+    await settle();
+    expect(find.text('평소처럼 꺼져요 · 타이머는 계속 가요'), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('keep-screen-on')));
+    await tester.tap(find.byKey(const ValueKey('keep-screen-on')));
+    await settle();
+    expect(engine.state.keepScreenOn, isTrue);
+    expect(find.text('집중·휴식 중에는 화면을 켜 둬요'), findsOneWidget);
+    // Turning the option on while idle must not hold the screen yet.
+    expect(screen.calls, [false]);
+
+    await tester.tap(find.byKey(const ValueKey('desk-navigation-0')));
+    await settle();
+    await tester.tap(find.byKey(const ValueKey('start-focus')));
+    await settle();
+    expect(screen.calls.last, isTrue);
+    await tester.tap(find.text('잠시 멈추기'));
+    await settle();
+    expect(screen.calls.last, isFalse);
+    await tester.tap(find.text('이어서 집중'));
+    await settle();
+    expect(screen.calls.last, isTrue);
+    now += 25 * 60000;
+    await tester.pump(const Duration(seconds: 1));
+    await settle();
+    expect(engine.state.active!.status, SessionStatus.completed);
+    expect(screen.calls.last, isFalse);
+    await tester.tap(find.text('5분 휴식 시작'));
+    await settle();
+    expect(engine.state.active!.mode, SessionMode.rest);
+    expect(screen.calls.last, isTrue);
+    await tester.tap(find.text('이번 시간 종료'));
+    await settle();
+    await tester.tap(find.text('종료하기'));
+    await settle();
+    expect(engine.state.active, isNull);
+    expect(screen.calls, [false, true, false, true, false, true, false]);
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
   testWidgets(
     'three tabs, calendar month, goal persistence and home shortcut',
     (tester) async {
@@ -133,7 +204,9 @@ void main() {
         store,
         clock: () => DateTime(2026, 10, 8, 12).millisecondsSinceEpoch,
       );
-      await tester.pumpWidget(FocusFriendApp(engine: engine));
+      await tester.pumpWidget(
+        FocusFriendApp(engine: engine, locale: const Locale('ko')),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.text('기록'));
       await tester.pumpAndSettle();
@@ -184,7 +257,9 @@ void main() {
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
       final engine = SessionEngine(MemoryStore());
-      await tester.pumpWidget(FocusFriendApp(engine: engine));
+      await tester.pumpWidget(
+        FocusFriendApp(engine: engine, locale: const Locale('ko')),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const ValueKey('open-sound')));
       await tester.pumpAndSettle();
@@ -217,7 +292,9 @@ void main() {
         MemoryStore(),
         clock: () => DateTime(2026, 8, 8, 12).millisecondsSinceEpoch,
       );
-      await tester.pumpWidget(FocusFriendApp(engine: engine));
+      await tester.pumpWidget(
+        FocusFriendApp(engine: engine, locale: const Locale('ko')),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.text('기록'));
       await tester.pumpAndSettle();

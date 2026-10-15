@@ -1,0 +1,72 @@
+{
+  "generationMode": "built-in image_gen",
+  "kind": "static key-pose concept boards",
+  "panelOrder": [
+    "필기",
+    "페이지 넘기기",
+    "휴식"
+  ],
+  "runtimeIntegrated": false,
+  "images": [
+    {
+      "displayOrder": 1,
+      "id": "penguin",
+      "name": "펭귄",
+      "file": "penguin.png",
+      "prompt": "penguin.prompt.txt",
+      "reference": "assets/images/friends/penguin-scene.png",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-cf8a7e19-c20b-4015-8aa0-83ae8ee609a1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "restPose": "찻잔 감싸기",
+      "sha256": "1a51c3bf6a1e8cb527a15207afcdf2b2c9d95ddc040d0cbef437783c12f887ba"
+    },
+    {
+      "displayOrder": 2,
+      "id": "otter",
+      "name": "해달",
+      "file": "otter.png",
+      "prompt": "otter.prompt.txt",
+      "reference": "assets/images/friends/otter-scene.png",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-461c9f61-5320-4d18-bce4-ee95df6c95f1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "restPose": "두 손으로 찻잔 들기",
+      "sha256": "bad2018df3c1ee664cb1bf7b28422b698d4954c879f8efa0c05285a127865da9"
+    },
+    {
+      "displayOrder": 3,
+      "id": "squirrel",
+      "name": "다람쥐",
+      "file": "squirrel.png",
+      "prompt": "squirrel.prompt.txt",
+      "reference": "assets/images/friends/squirrel-scene.png",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-303627dc-58b9-4ea9-a446-1b801c607d77.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "restPose": "작게 기지개 켜기",
+      "sha256": "03b8065951fb440a3fc59e00b379be698ad6fac3e99a4346c810a0038a6a9ae3"
+    },
+    {
+      "displayOrder": 4,
+      "id": "fennec",
+      "name": "사막여우",
+      "file": "fennec.png",
+      "prompt": "fennec.prompt.txt",
+      "reference": "assets/images/friends/fennec-scene.png",
+      "generatedSource": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-4145778a-bd33-4210-b4a5-669d8176fd61.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "restPose": "안경 고쳐 쓰기",
+      "sha256": "cae0d927cec61fb0ca6858625f43146ca865c360edd5a8cfa2b7ff50e25bfb05"
+    }
+  ]
+}

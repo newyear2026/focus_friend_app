@@ -1,0 +1,25 @@
+Use case: infographic-diagram
+Asset type: one annotated side-by-side app screen preview explaining where character selection opens in the Korean Focus Friend app.
+Primary request: show the actual proposed APP APPEARANCE and the precise place to tap. The user is unsure whether the character selector is in Settings or a new menu. Make it visually obvious that a small friend button in the home header opens a separate friend-selection screen.
+Input references: Image 1 is the approved fennec home screenshot with a character avatar beside the title. Image 2 is the approved five-character selector. Preserve the source designs and character identities; this is an explanatory layout using those screens, not a new theme or character exploration.
+Target dimensions: one large landscape board, 2048 x 1536 pixels or the same 4:3 ratio. Warm ivory background. Two large full-height portrait app screenshots side by side, each maintaining the original 853:1844 aspect ratio with absolutely no stretching. The screens should occupy most of the board so their controls remain readable. Generous outer margins. No phone hardware, device bezels, notches, OS status bars, browser chrome, shadows pretending to be devices, watermarks, QR codes or extra panels.
+Board heading, exact Korean: "홈 화면에서 친구 고르기"
+Above the left screenshot, small stage label: "홈 화면"
+Above the right screenshot, small stage label: "친구 선택 화면"
+
+LEFT SCREEN:
+Faithfully preserve the warm desert-sunset fennec home from reference 1, its large glasses-wearing fennec character writing at the desk, leaf cup, lamp, window, plants, palette and all timer controls.
+Top header: retain the title "나의 책상", with shuffle at far left and mute at far right. Immediately to the right of the title add a compact rounded translucent dark-brown friend button, not a new navigation tab: a small circular avatar of the SAME glasses-wearing fennec, readable cream text "친구", and a discreet downward chevron. The title and compact friend button must fit comfortably between the shuffle and mute buttons without overlap. This is one tappable control.
+The main home copy stays exactly "함께 집중할 시간", "25:00", "오늘의 집중 50분", "25분 ✓", "50분", "집중 시작", and bottom navigation "책상", "기록", "설정" with desk selected. No extra bottom tab or settings menu item in this illustration.
+Add one clearly EXTERNAL explanatory amber ring around the small friend button, thin enough not to hide the avatar or "친구" text. The ring is an annotation for this board only, not app chrome. Draw one obvious curved amber arrow that starts at this highlighted button and points toward the RIGHT screen. Put the short readable callout "이 버튼을 누르면" in the whitespace between the two screens, connected to the highlighted control. Do not accidentally point at the shuffle, title, sound button or bottom settings tab.
+
+RIGHT SCREEN:
+Faithfully reproduce reference 2's warm cream selection page with back chevron, heading "함께할 친구", subtitle "마음에 드는 친구의 방을 만나보세요", exactly five large illustrated character cards in two columns and three rows: red panda, penguin, sea otter, squirrel, fennec. Each card shows the same individual art and room style, not a tiny app screenshot with its own timer. Names exactly "랫서팬더", "펭귄", "해달", "다람쥐", "사막여우". The same rounded-glasses fennec is selected with amber outline/checkmark.
+Consistency correction: because the left home is already using the fennec, the small "사용 중" badge belongs ONLY to the fennec card. Remove the source selector's old "사용 중" badge from the red-panda card. Do not claim both are current.
+Keep the source's clear bottom amber action "미리보기". All five cards and button stay visible within the screenshot. No prices, shop banners, paid locks, extra sixth card or bottom navigation in this standalone selection page.
+
+Visual treatment: polished readable Korean sans-serif for UI and annotations, rich soft hand-drawn 2D animation art in the app images, same warm cream/amber/brown palette as the sources. Do not redraw the animals as 3D or pixel art. No complex technical layers diagram or code details; this board is about what users see and tap.
+Footer line, exact: "홈에서 바로 친구를 고를 수 있어요"
+Small but legible footer status, exact: "앱 적용 전 화면 시안"
+One cohesive annotated image only. Keep all content, headings, screenshots, callout, arrow and footer inside the canvas and avoid crowding or tiny illegible copy.
+

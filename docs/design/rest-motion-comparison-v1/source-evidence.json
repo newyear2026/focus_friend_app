@@ -1,0 +1,38 @@
+[
+  {
+    "file": "lib/rest_animation.dart",
+    "sha256": "607fa523988f5b1aadac0e5aaf90e27bbcf3489a1c8e3289b742d6829298f76a"
+  },
+  {
+    "file": "lib/rest_companion.dart",
+    "sha256": "f1de3833e31a1812c0ecf9d25a58e9dc9c7507ecc90e7fbeb0b0447cc74cddc1"
+  },
+  {
+    "file": "lib/friend_motion_clock.dart",
+    "sha256": "1a4e3c5f0ca6c43a07cbc3d9a8ff9b3b15f81512963c60eda0f956570519f690"
+  },
+  {
+    "file": "lib/friend_motion_scene.dart",
+    "sha256": "299412c99debcee063b37b2158148b3b00a67a7a06bd705900234af71e93f11c"
+  },
+  {
+    "file": "lib/study_scene.dart",
+    "sha256": "7ba2bffceb45cc3ada627c4c65a0370b11b4a634801553c4879d8592a2436053"
+  },
+  {
+    "file": "assets/images/rest/redpanda-tea-sheet.png",
+    "sha256": "47de2f16179569d9fa9ef8d368bc478fab32bf3ad1c4d739d763b3e337951243"
+  },
+  {
+    "file": "assets/images/rest/redpanda-tea-inbetweens.png",
+    "sha256": "d307318418da4f9fd98c19f9fb1c71c903fa2f6dba4ae41af58060320e79c907"
+  },
+  {
+    "file": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "87f8da764efefd30072d9b63edb528aad4a8090fcaab73fcb5e0c8d6ccca8663"
+  },
+  {
+    "file": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "734631395e8c90e16799470bd4bb8690dcbbd9ce6cd5eac16b13034dedd21527"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "writingFramesChecked": 432,
+  "allProbePixelsIdentical": true,
+  "probes": {
+    "face": [
+      180,
+      65,
+      345,
+      275
+    ],
+    "tail": [
+      55,
+      250,
+      105,
+      210
+    ],
+    "torso": [
+      342,
+      362,
+      57,
+      64
+    ]
+  },
+  "fullCycleFrames": 499,
+  "cycleSeconds": 41.5
+}

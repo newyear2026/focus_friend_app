@@ -1,0 +1,14 @@
+Built-in image_gen__imagegen; transparent_background=true.
+Source: user-attached dusk study-room mockup, copied to docs/design/immersive-room/reference.png.
+
+Base image: redpanda-reference.png
+Generated file: /Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-09d62e52-0832-4f21-8e80-7d4e63e49de5.png
+Inputs: initial transparent cutout generated from the reference, then reference image for geometry correction.
+Final prompt:
+Use case: precise-object-edit. Image 1 is the transparent character sprite to correct; Image 2 is the authoritative original app mockup. Keep the red panda from Image 1 exactly: same face, ears, striped tail, teal overalls, paws, yellow pencil, colors, outline, texture, warm light, pose and position. Change ONLY the open notebook geometry to match Image 2. Image 1 currently has an unnaturally huge left page: narrow the left page substantially so that the full open notebook is only about the same width as the red panda's head, with two symmetric pages of roughly equal width and the center seam directly under the face. Its left edge should be under the writing paw and just to the right of the leftmost cheek tuft; its right edge should be a little past the rightmost cheek tuft. Both paws should rest naturally on the pages and the pencil tip must meet the left page. Keep the notebook low, flat on the implied desk and rendered in the same slightly elevated perspective as Image 2. Do not enlarge the notebook or shift the panda. Preserve genuine transparent alpha and full silhouette, no room/furniture/UI/text/background/shadow outside character and notebook. Single still pose, not a sprite sheet.
+
+Blink image: redpanda-reference-blink.png
+Generated file: /Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-e17af997-b506-425d-8b7a-7f186870b0ce.png
+Input: final base image above.
+Final prompt:
+Use case: precise-object-edit. Asset type: second registered frame for a 2D animation blink. Edit target: attached transparent red panda character with notebook. Reproduce the attached image EXACTLY at the same size, alignment, silhouette and pixel geometry. Change ONLY both eyes to a gentle blink: relaxed closed eyelids with two small curved dark-brown lines in the same eye positions. Do not change the head, ears, cheeks, eyebrows, nose, mouth, tail, apron, arms, paws, pencil, pencil tip, notebook, page text, colors, shadows, lighting, canvas margins or object positions AT ALL. No pose change, no scale or shift. One character on genuine transparent RGBA canvas, no background or labels. The base sprite and this blink sprite must register seamlessly for a short eye blink.

@@ -1,0 +1,20 @@
+[
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/character-scene-concepts-v1/stargazer-cat.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "510a9d08fbe9e3b8a2a46a2aad1a8d1824cc0b69e999043398f5090622d9c546"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/character-scene-concepts-v1/sunshine-otter.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "6641aa698b3f5526d65907e57d9c951b880a19f66bd5a393e4d16614a2bbe356"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/character-scene-concepts-v1/tranqui-capybara.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "deb7126c902430c6822910fc60cac87770f299fbb7cb06d0cefc59b21e21537d"
+  }
+]

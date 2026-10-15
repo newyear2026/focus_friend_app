@@ -1,0 +1,194 @@
+[
+  {
+    "friend": "squirrel",
+    "frame": 10,
+    "source": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "f3ea6227ed691cbed12b556238f15fa440d9202249f4d9909443f67a8d5d6af2",
+    "staticRegionBounds512": {
+      "hat": {
+        "box": [
+          189.33333333333334,
+          97.33333333333333,
+          345.3333333333333,
+          170.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          50.666666666666664,
+          137.33333333333334,
+          173.33333333333334,
+          360.0
+        ]
+      }
+    }
+  },
+  {
+    "friend": "squirrel",
+    "frame": 17,
+    "source": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "f3ea6227ed691cbed12b556238f15fa440d9202249f4d9909443f67a8d5d6af2",
+    "staticRegionBounds512": {
+      "hat": {
+        "box": [
+          189.33333333333334,
+          96.0,
+          350.6666666666667,
+          170.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          50.666666666666664,
+          137.33333333333334,
+          173.33333333333334,
+          360.0
+        ]
+      }
+    }
+  },
+  {
+    "friend": "squirrel",
+    "frame": 18,
+    "source": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "f3ea6227ed691cbed12b556238f15fa440d9202249f4d9909443f67a8d5d6af2",
+    "staticRegionBounds512": {
+      "hat": {
+        "box": [
+          189.33333333333334,
+          96.0,
+          350.6666666666667,
+          170.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          49.333333333333336,
+          137.33333333333334,
+          173.33333333333334,
+          360.0
+        ]
+      }
+    }
+  },
+  {
+    "friend": "squirrel",
+    "frame": 16,
+    "source": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "f3ea6227ed691cbed12b556238f15fa440d9202249f4d9909443f67a8d5d6af2",
+    "staticRegionBounds512": {
+      "hat": {
+        "box": [
+          189.33333333333334,
+          96.0,
+          346.6666666666667,
+          170.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          49.333333333333336,
+          137.33333333333334,
+          173.33333333333334,
+          360.0
+        ]
+      }
+    }
+  },
+  {
+    "friend": "fennec",
+    "frame": 10,
+    "source": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "9c2dd2b753d3eacdbb00bfd383c7e379887e8133e2e5b2c8182dfc3d9b41b970",
+    "staticRegionBounds512": {
+      "ears": {
+        "box": [
+          133.33333333333334,
+          45.333333333333336,
+          386.6666666666667,
+          174.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          77.33333333333333,
+          200.0,
+          189.33333333333334,
+          346.6666666666667
+        ]
+      }
+    }
+  },
+  {
+    "friend": "fennec",
+    "frame": 17,
+    "source": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "9c2dd2b753d3eacdbb00bfd383c7e379887e8133e2e5b2c8182dfc3d9b41b970",
+    "staticRegionBounds512": {
+      "ears": {
+        "box": [
+          134.66666666666666,
+          46.666666666666664,
+          389.3333333333333,
+          174.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          81.33333333333333,
+          200.0,
+          189.33333333333334,
+          346.6666666666667
+        ]
+      }
+    }
+  },
+  {
+    "friend": "fennec",
+    "frame": 18,
+    "source": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "9c2dd2b753d3eacdbb00bfd383c7e379887e8133e2e5b2c8182dfc3d9b41b970",
+    "staticRegionBounds512": {
+      "ears": {
+        "box": [
+          134.66666666666666,
+          46.666666666666664,
+          389.3333333333333,
+          174.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          80.0,
+          200.0,
+          189.33333333333334,
+          346.6666666666667
+        ]
+      }
+    }
+  },
+  {
+    "friend": "fennec",
+    "frame": 16,
+    "source": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "9c2dd2b753d3eacdbb00bfd383c7e379887e8133e2e5b2c8182dfc3d9b41b970",
+    "staticRegionBounds512": {
+      "ears": {
+        "box": [
+          136.0,
+          46.666666666666664,
+          388.0,
+          174.66666666666666
+        ]
+      },
+      "tail": {
+        "box": [
+          84.0,
+          200.0,
+          189.33333333333334,
+          346.6666666666667
+        ]
+      }
+    }
+  }
+]

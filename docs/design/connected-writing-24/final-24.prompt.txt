@@ -1,0 +1,35 @@
+Use case: identity-preserve.
+Asset type: FINAL 24-CEL transparent character sprite atlas for a working Flutter focus app; hand-drawn connected-pose animation, method 2.
+Input Image1 is the canonical IDENTITY and square registration reference. Input Image2 shows three connected key poses (ready, writing, return). Input Image3 is a twelve-cel rough acting reference ONLY. Its changing scale between rows is a defect: do NOT reproduce its row-dependent head/character/notebook size or vertical drift.
+Primary request: create exactly TWENTY-FOUR consecutive closely registered complete red panda + open notebook cels. Same lovely source character, head shape, large brown eyes, cream facial markings, two forehead spots, orange textured fur, pink cheeks, dark-green overalls and round brass buttons, orange-and-cream tail at viewer-left. Same original textured 2D illustrated style and detail. One calm small writing action, not alternate character designs.
+GEOMETRY: portrait atlas, precisely FOUR columns by SIX rows of equal SQUARE cells. 1448x2172 pixels total, each cell exactly 362x362. Cell reading order row-major 01..24. No gutters, grid lines, outlines, borders, numbers, captions, labels, arrows or drawn motion marks. TRUE transparent background everywhere outside the cels, with clean alpha edges.
+EXTREMELY IMPORTANT REGISTRATION: Within EVERY 362x362 cell, the SAME unchanging drawing of head, ears, eyes, tail, resting right paw, notebook and body scale is duplicated exactly. Only the connected writing-arm silhouette below the face is redrawn. Never shrink the drawings in later rows. Keep the tail safely inside x>=8, both ears safely inside y>=45, full notebook safely above y=327, fur/head safely inside right x<=329. Exact fixed notebook spine=(230,316); cover corners approximately (140,292),(304,287),(321,321),(160,326). All parts comfortably clear cell edges. Identical framing and face size throughout, derived from Image1. Head center around (217,144), head width around210px; original three-quarter downward head tilt unchanged.
+FACE/HOLD: All frames share exactly the same eyes, pupils, smile, spots, cheeks, head tilt, tail, resting right hand and notebook outline/page lines. No blink, look around, nod, breathing scale, ear motion or tail motion in this focused writing-only asset. Stable face is crucial. Do not add facial acting to these frames.
+CONNECTED MOTION: viewer-left hand securely holds ONE yellow pencil with pink eraser. Animate paw, wrist, forearm, elbow and the attached shoulder as a continuous anatomical drawing. Source anatomy remains intact from green overall strap to shoulder to elbow to paw. Two arms only. The other paw remains planted on the right page. Never detach the forearm, never place a floating paw, never leave holes in fur/shoulder. No body rotation or elastic distortions.
+The pencil contact starts approximately (191,302), on the LEFT paper page. Motion is small: first tip position roughly(191,299) hovering slightly, contacts near(191,302), travels smoothly to(199,303) in two short handwriting curves, lifts to(199,299) and returns to(191,299). The shaft pivots a little around the properly gripping paw. The source notebook never shifts.
+24 CONSECUTIVE DRAWINGS:
+01 Ready: tip(191,299), paw relaxed, pencil hovering.
+02 Begin lowering, tiny elbow response.
+03 Lower a little more.
+04 Almost touch paper, wrist bends subtly.
+05 First contact at(191,302).
+06 Settle into writing, shoulder connected.
+07 First short stroke begins toward right.
+08 Stroke continues a tiny amount down-right.
+09 Curve bends gently upward.
+10 Complete first hook around(194,302).
+11 Tiny connecting movement toward right.
+12 Start second short downstroke.
+13 Continue downstroke toward(196,304).
+14 Curve begins upward.
+15 Smooth upward hook.
+16 Finish second curve near(199,303).
+17 Last small settling motion with paper contact.
+18 Writing stops, fingers relax but pencil stays held.
+19 Lift tip gently clear at(199,299).
+20 Raised pencil starts returning left.
+21 Halfway return, attached elbow follows.
+22 Almost back at ready position.
+23 Ease into relaxed ready position.
+24 Tip(191,299), extremely close to drawing01 for a seamless loop, a tiny wrist change only.
+These are 24 distinct sequential cels with modest readable hand-drawn in-betweens, not 24 copies. Avoid sudden pose jumps and changing drawing size. Keep ALL stationary areas truly locked from one base cel, especially face, book, tail and planted hand. No white backgrounds, checkerboard painted background, photorealism, 3D, motion blur, ghost poses, extra pencils/fingers/arms, redraw of the character identity, page turn or new props.

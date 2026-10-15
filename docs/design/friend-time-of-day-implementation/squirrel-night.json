@@ -1,0 +1,13 @@
+{
+  "asset": "squirrel-night",
+  "mode": "builtin-image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/squirrel-scene.png",
+  "approved_reference": "docs/design/friend-time-of-day-concepts-v2/squirrel.png",
+  "ambience_reference": "assets/images/immersive/room-night.png",
+  "output": "assets/images/friends/ambience/squirrel/night.png",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14036-94d4-7921-bc0b-0a206947725f/exec-e1f52652-1a3e-405e-8aa0-561a8025ea43.png",
+  "width": 853,
+  "height": 1844,
+  "visual_review": "Passed: original composition and character scale/pose preserved. Navy moonlit forest and silver-blue creek, warm existing lamp/lantern pools, readable face/notebook. No headers/panels/new decorative items."
+}

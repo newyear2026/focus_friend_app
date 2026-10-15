@@ -1,0 +1,26 @@
+[
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/animated-character-scene-set-v1/penguin.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "fe153fc284143ff15ffdb37e7938f49d35ca710a5d52c21a69980d11847dd2c1"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/animated-character-scene-set-v1/otter.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "f95ff67d3518a6bb356a54e4d795348b5e8dc99b4cd912c30b9097d63a5c4856"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/animated-character-scene-set-v1/squirrel.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "d8d0c366ca2d4ff9cfec60fb7c3e39cf44893004f43fd6c5953f4722307ed410"
+  },
+  {
+    "file": "/Users/jaewook/dev_app/focus_friend_app/docs/design/animated-character-scene-set-v1/fennec.png",
+    "width": 853,
+    "height": 1844,
+    "sha256": "d2e78dcb405df510b7a12191a8a0228a3ec37f8fd4a30544622ce531ad15a7d3"
+  }
+]

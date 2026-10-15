@@ -1,0 +1,28 @@
+{
+  "asset": "penguin/morning",
+  "mode": "built-in image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/motion/penguin/room.png",
+  "lighting_reference": "docs/design/friend-time-of-day-concepts-v2/penguin.png",
+  "lighting_reference_region": "first column only",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14035-d609-79b0-8353-85486104bfe1/exec-395b4413-1019-4845-9997-402c719988ab.png",
+  "output": "assets/images/friends/ambience/penguin/morning.png",
+  "dimensions": {
+    "width": 853,
+    "height": 1844
+  },
+  "target_motion_stage": {
+    "x": 100,
+    "y": 570,
+    "width": 704,
+    "height": 704,
+    "referenceWidth": 853,
+    "referenceHeight": 1844
+  },
+  "inspection": {
+    "visual_review": "Passed: pale blue sky, peach/gold sunrise with low sun, fresh snowy mountains, cool snow shadows, gentle warm wood light. No stars or moon. Furniture/window geometry visually registered to source.",
+    "preserved_static_props": "Original closed foreground spiral notebook and shelf figurine retained; no living penguin, open study book or mug.",
+    "material_issues": [],
+    "note": "Existing lamp and lantern remain visibly warm, but daylight and sunlit wood dominate the scene."
+  }
+}

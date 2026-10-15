@@ -1,0 +1,15 @@
+{
+  "normal_history_unchanged": true,
+  "totals_unchanged": true,
+  "rewards_unchanged": true,
+  "active_after": null,
+  "history_count": 4,
+  "paused_character_pixels_identical": true,
+  "compared_to_before_update": true,
+  "pause_crop": [
+    300,
+    580,
+    720,
+    920
+  ]
+}

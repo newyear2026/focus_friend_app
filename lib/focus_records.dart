@@ -1,4 +1,7 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'l10n/app_localizations.dart';
 import 'session_engine.dart';
 import 'desk_style.dart';
 import 'desk_components.dart';
@@ -26,6 +29,8 @@ class _FocusRecordsState extends State<FocusRecords> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final locale = Localizations.localeOf(context).toLanguageTag();
     final prefix = calendarKey(month).substring(0, 7);
     final totals = widget.state.dailyFocus.entries.where(
       (entry) => entry.key.startsWith(prefix),
@@ -54,23 +59,23 @@ class _FocusRecordsState extends State<FocusRecords> {
       children: [
         Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '차곡차곡 기록',
-                    style: TextStyle(
+                    l10n.recordsTitle,
+                    style: const TextStyle(
                       fontSize: 31,
                       height: 1.2,
                       fontWeight: FontWeight.w900,
                       letterSpacing: -1.2,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
-                    '함께 집중한 날을 모았어요',
-                    style: TextStyle(fontSize: 15, color: deskBlue),
+                    l10n.recordsSubtitle,
+                    style: const TextStyle(fontSize: 15, color: deskBlue),
                   ),
                 ],
               ),
@@ -85,12 +90,16 @@ class _FocusRecordsState extends State<FocusRecords> {
           children: [
             _summary(
               Icons.schedule_rounded,
-              '이번 달',
+              l10n.thisMonth,
               minutes >= 60
-                  ? '${minutes ~/ 60}시간 ${minutes % 60}분'
-                  : '$minutes분',
+                  ? l10n.hoursMinutes(minutes ~/ 60, minutes % 60)
+                  : l10n.minutesShort(minutes),
             ),
-            _summary(Icons.calendar_today_rounded, '집중한 날', '$focusedDays일'),
+            _summary(
+              Icons.calendar_today_rounded,
+              l10n.focusedDays,
+              l10n.dayCount(focusedDays),
+            ),
           ],
         ),
         const Divider(height: 20),
@@ -98,13 +107,13 @@ class _FocusRecordsState extends State<FocusRecords> {
           children: [
             IconButton(
               key: const ValueKey('previous-month'),
-              tooltip: '이전 달',
+              tooltip: l10n.previousMonth,
               onPressed: () => moveMonth(-1),
               icon: const Icon(Icons.chevron_left_rounded),
             ),
             Expanded(
               child: Text(
-                '${month.year}년 ${month.month}월',
+                DateFormat.yMMMM(locale).format(month),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 23,
@@ -114,7 +123,7 @@ class _FocusRecordsState extends State<FocusRecords> {
             ),
             IconButton(
               key: const ValueKey('next-month'),
-              tooltip: '다음 달',
+              tooltip: l10n.nextMonth,
               onPressed: () => moveMonth(1),
               icon: const Icon(Icons.chevron_right_rounded),
             ),
@@ -123,7 +132,10 @@ class _FocusRecordsState extends State<FocusRecords> {
         const SizedBox(height: 4),
         Row(
           children: [
-            for (final label in ['일', '월', '화', '수', '목', '금', '토'])
+            // The grid starts on Sunday; narrowWeekdays is Sunday-first too.
+            for (final label in MaterialLocalizations.of(
+              context,
+            ).narrowWeekdays)
               Expanded(
                 child: Center(
                   child: Text(
@@ -137,7 +149,9 @@ class _FocusRecordsState extends State<FocusRecords> {
         const SizedBox(height: 7),
         LayoutBuilder(
           builder: (context, constraints) {
-            final height = MediaQuery.textScalerOf(context).scale(13) > 18
+            // A 52pt cell fits the day number up to about 1.2x text; past
+            // that the number's line height pushes the stamp out.
+            final height = MediaQuery.textScalerOf(context).scale(13) > 16
                 ? 70.0
                 : 52.0;
             return GridView.builder(
@@ -158,8 +172,11 @@ class _FocusRecordsState extends State<FocusRecords> {
                     (widget.state.dailyFocus[calendarKey(date)]?.count ?? 0) >
                     0;
                 return Semantics(
-                  label:
-                      '${month.month}월 $number일${completed ? ', 집중 완료' : ''}${current ? ', 오늘' : ''}',
+                  label: [
+                    DateFormat.MMMd(locale).format(date),
+                    if (completed) l10n.dayFocusDone,
+                    if (current) l10n.today,
+                  ].join(', '),
                   selected: chosen,
                   button: true,
                   child: InkWell(
@@ -185,24 +202,28 @@ class _FocusRecordsState extends State<FocusRecords> {
                               fontWeight: current
                                   ? FontWeight.w800
                                   : FontWeight.w500,
-                              color: date.isAfter(today) ? deskMuted : deskInk,
+                              color: date.isAfter(today)
+                                  ? const Color(0xFFB9BCCB)
+                                  : deskInk,
                             ),
                           ),
                           const SizedBox(height: 2),
-                          Container(
-                            width: 28,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: completed ? ticketGold : null,
-                              border: completed
-                                  ? null
-                                  : Border.all(color: const Color(0xFFE6E6ED)),
-                            ),
-                            child: completed
-                                ? const CompanionImage(size: 28)
-                                : null,
-                          ),
+                          completed
+                              ? Container(
+                                  width: 28,
+                                  height: 28,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ticketGold,
+                                  ),
+                                  child: const CompanionImage(size: 28),
+                                )
+                              : CustomPaint(
+                                  size: const Size.square(28),
+                                  painter: _DayRingPainter(
+                                    upcoming: date.isAfter(today),
+                                  ),
+                                ),
                         ],
                       ),
                     ),
@@ -218,11 +239,14 @@ class _FocusRecordsState extends State<FocusRecords> {
           spacing: 10,
           children: [
             Text(
-              '${selected.month}월 ${selected.day}일 ${['월', '화', '수', '목', '금', '토', '일'][selected.weekday - 1]}요일',
+              DateFormat.MMMMEEEEd(locale).format(selected),
               style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w800),
             ),
             if (DateUtils.isSameDay(selected, today)) ...[
-              const Text('오늘', style: TextStyle(color: deskBlue, fontSize: 15)),
+              Text(
+                l10n.today,
+                style: const TextStyle(color: deskBlue, fontSize: 15),
+              ),
             ],
           ],
         ),
@@ -236,14 +260,14 @@ class _FocusRecordsState extends State<FocusRecords> {
               runSpacing: 4,
               children: [
                 Text(
-                  '${day.milliseconds ~/ 60000}분 집중',
+                  l10n.dayFocusMinutes(day.milliseconds ~/ 60000),
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
                 Text(
-                  '${day.count}회 완료',
+                  l10n.daySessions(day.count),
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w800,
@@ -258,10 +282,10 @@ class _FocusRecordsState extends State<FocusRecords> {
             padding: const EdgeInsets.symmetric(vertical: 22),
             child: Text(
               day.count > 0
-                  ? '이날의 합계와 스탬프를 보관하고 있어요.\n상세 내역은 최근 100회까지 볼 수 있어요.'
+                  ? l10n.recordsArchived
                   : selected.isAfter(today)
-                  ? '앞으로 함께 채워갈 하루예요.'
-                  : '아직 기록이 없어요.\n25분부터 함께 시작해 볼까요?',
+                  ? l10n.recordsFuture
+                  : l10n.recordsEmpty,
               textAlign: TextAlign.center,
               style: const TextStyle(color: deskMuted, height: 1.6),
             ),
@@ -273,17 +297,29 @@ class _FocusRecordsState extends State<FocusRecords> {
             leading: Icon(
               session.status == SessionStatus.completed
                   ? Icons.check_circle_rounded
-                  : Icons.pause_circle_outline,
+                  : Icons.stop_circle_outlined,
               color: session.status == SessionStatus.completed
                   ? deskGreen
-                  : deskMuted,
+                  : const Color(0xFFA9ADC0),
             ),
             title: Text(
-              '${session.actualMs ~/ 60000}분 ${session.status == SessionStatus.completed ? '집중 완료' : '중도 종료'}',
-              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+              session.status == SessionStatus.completed
+                  ? l10n.sessionCompleted(session.actualMs ~/ 60000)
+                  : session.actualMs < 60000
+                  ? l10n.sessionStoppedShort
+                  : l10n.sessionStopped(session.actualMs ~/ 60000),
+              style: session.status == SessionStatus.completed
+                  ? const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)
+                  : const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: deskMuted,
+                    ),
             ),
             trailing: Text(
-              _time(session.startedAt),
+              DateFormat.jm(
+                locale,
+              ).format(DateTime.fromMillisecondsSinceEpoch(session.startedAt)),
               style: const TextStyle(color: deskMuted),
             ),
           ),
@@ -293,15 +329,10 @@ class _FocusRecordsState extends State<FocusRecords> {
     );
   }
 
-  String _time(int value) {
-    final date = DateTime.fromMillisecondsSinceEpoch(value);
-    return '${date.hour < 12 ? '오전' : '오후'} ${date.hour % 12 == 0 ? 12 : date.hour % 12}:${date.minute.toString().padLeft(2, '0')}';
-  }
-
   Widget _summary(IconData icon, String label, String value) => Row(
     mainAxisSize: MainAxisSize.min,
     children: [
-      Icon(icon, size: 20, color: deskGreen),
+      Icon(icon, size: 20, color: deskInk),
       const SizedBox(width: 6),
       Text('$label ', style: const TextStyle(fontSize: 13)),
       Text(
@@ -310,4 +341,33 @@ class _FocusRecordsState extends State<FocusRecords> {
       ),
     ],
   );
+}
+
+/// Empty day marker: a solid ring for past days, a faint dashed ring for days
+/// that have not come yet.
+class _DayRingPainter extends CustomPainter {
+  const _DayRingPainter({required this.upcoming});
+  final bool upcoming;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.3
+      ..color = upcoming ? const Color(0xFFE2DFD6) : const Color(0xFFD5D2C8);
+    final rect = (Offset.zero & size).deflate(1);
+    if (!upcoming) {
+      canvas.drawOval(rect, paint);
+      return;
+    }
+    const dashes = 16;
+    const sweep = 2 * math.pi / dashes;
+    for (var i = 0; i < dashes; i++) {
+      canvas.drawArc(rect, i * sweep, sweep * .55, false, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DayRingPainter oldDelegate) =>
+      oldDelegate.upcoming != upcoming;
 }

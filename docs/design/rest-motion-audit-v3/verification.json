@@ -1,0 +1,20 @@
+{
+  "functional": "pass in widget/capture tests",
+  "visual": "partial: original-cel spacing and small shape changes remain",
+  "fullTestsPassed": 97,
+  "freshTwoCycleCaptureTestsPassed": 2,
+  "analyze": "No issues found",
+  "androidBuild": "passed",
+  "installed": "emulator-5554",
+  "savedDataUnchanged": true,
+  "bundledAssetsMatch": true,
+  "newInbetweenCandidates": "rejected; not bundled",
+  "fixed": [
+    "constant scale per character",
+    "removed backtracking/repeated cels 12/13"
+  ],
+  "remaining": [
+    "large spatial gaps between some cup poses",
+    "small face/tail/cup shape changes including blink/sip change"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "mode": "built-in image_gen edit",
+  "assets": [
+    {
+      "asset": "assets/images/storybook/room-day.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-25750c8f-7104-4228-aeb5-f49870ccd0df.png",
+      "prompt": "room-day.prompt.txt",
+      "sha256": "3d34c9c42c4501cb387e2a19bd8af7ec3a335e1b09db78d58b4786e5858ef695"
+    },
+    {
+      "asset": "assets/images/storybook/room-morning.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-eeb768b8-bbdc-465f-a3fb-21e7ee9b75cf.png",
+      "prompt": "room-morning.prompt.txt",
+      "sha256": "cd7f8633aaed0f8f46961b1e748c66af254ea115f2d8e4396957f004a4774437"
+    },
+    {
+      "asset": "assets/images/storybook/room-evening.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-fc34ea87-c973-4b0c-9243-687896edd086.png",
+      "prompt": "room-evening.prompt.txt",
+      "sha256": "43a24276d836e05a37981ea0a14bd5545f860f766bfd1281a2bb3b7b650e4841"
+    },
+    {
+      "asset": "assets/images/storybook/room-night.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-f31e8f6e-eea2-481a-90b3-7595b9372e73.png",
+      "prompt": "room-night.prompt.txt",
+      "sha256": "4164ba8a192451fe9afa5fbbeb5ce0f7bc536d6f7a3014d138b2d61b71911484"
+    },
+    {
+      "asset": "assets/images/storybook/reward-plant.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-9416feaf-f567-46d3-964e-d464380df2dc.png",
+      "prompt": "reward-plant.prompt.txt",
+      "sha256": "cd548194a073f2a86ce3bb8cab185b764db713de10c537f9cc827b9ffce7f5b5"
+    },
+    {
+      "asset": "assets/images/storybook/reward-mug.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-8e1338ea-3c49-4161-b12e-299195635622.png",
+      "prompt": "reward-mug.prompt.txt",
+      "sha256": "c0b78ceb705169f5c376c750e0543f564e0314ddad8e133e8345d54e6248f70a"
+    },
+    {
+      "asset": "assets/images/storybook/reward-lamp.png",
+      "generated_source": "/Users/jaewook/.codex/generated_images/01a118d2-1fb9-7060-a354-23505d975c23/exec-4f82f657-1ebb-40c1-8c09-4536b96a07f5.png",
+      "prompt": "reward-lamp.prompt.txt",
+      "sha256": "13939c1b62e8c4819505175104229df2c3de568161c9f014660a1cf2407b631c"
+    }
+  ]
+}

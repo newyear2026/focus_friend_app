@@ -1,0 +1,15 @@
+{
+  "character": "otter",
+  "timeOfDay": "morning",
+  "mode": "builtin_image_gen",
+  "taxonomy": "lighting-weather",
+  "output": "assets/images/friends/ambience/otter/morning.png",
+  "width": 853,
+  "height": 1844,
+  "source": "assets/images/friends/motion/otter/room.png",
+  "approvedConcept": "docs/design/friend-time-of-day-concepts-v2/otter.png",
+  "originalGeneratedFile": "/Users/jaewook/.codex/generated_images/01a14036-37e9-7c91-b0f7-8c528924047f/exec-13dde28e-1ecc-4922-ad40-0690fe158f86.png",
+  "promptFile": "otter-morning.prompt.txt",
+  "visualInspection": "Source geometry and props preserved closely, empty chair and central activity desk, pale peach-gold horizon with pearl-blue upper sky, low pale sun and turquoise ocean. No character, center open notebook, mug, UI or text.",
+  "knownLimitations": "Lamp bulb retains a subdued warm tint from source despite requested unlit appearance; morning is primarily sunlit."
+}

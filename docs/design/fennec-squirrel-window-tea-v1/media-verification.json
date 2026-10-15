@@ -1,0 +1,38 @@
+[
+  {
+    "file": "fennec-window-tea.mp4",
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "r_frame_rate": "12/1",
+          "nb_frames": "264"
+        }
+      ],
+      "format": {
+        "duration": "22.000000"
+      }
+    }
+  },
+  {
+    "file": "squirrel-window-tea.mp4",
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "r_frame_rate": "12/1",
+          "nb_frames": "264"
+        }
+      ],
+      "format": {
+        "duration": "22.000000"
+      }
+    }
+  }
+]

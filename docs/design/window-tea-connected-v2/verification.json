@@ -1,0 +1,21 @@
+{
+  "tests": {
+    "fullSuite": 97,
+    "actualAppCapture": 1,
+    "passed": true
+  },
+  "analyze": "No issues found",
+  "build": "Android debug APK successful",
+  "installedDevice": "emulator-5554",
+  "bundledAssetsMatch": {
+    "fennec": true,
+    "squirrel": true
+  },
+  "savedDataUnchanged": true,
+  "visualReview": [
+    "16-cel source contact sheets",
+    "full 22s production app capture",
+    "cup lift/sip/lower contacts",
+    "browser original-speed playback and seek"
+  ]
+}

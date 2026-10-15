@@ -1,0 +1,20 @@
+Use case: identity-preserve. Asset type: transparent production sprite atlas for a calm hand-drawn 2D mobile app rest animation.
+Input image 1 is the EXACT original 512x512 stage crop and its framing. Input image 2 is the approved concept board: use ONLY the TOP fennec row for the window-facing tea action. Do not draw a storyboard or use the other species.
+Output one PNG sprite atlas with GENUINELY TRANSPARENT background, exactly FOUR columns by THREE rows of equal square cells (12 cels), row-major order. Suggested output 2048x1536. Each cell is the same fixed 512x512 stage coordinates, not a centered full-body portrait. No room, chair, desk surface, lamp, stacked books, plants, labels, cell outlines, borders, checkerboard or whole-scene shadow. Draw only ONE complete connected waist-up character with tail/backpack if present, ONE held mug, ONE closed notebook and ONE laid-down pencil in each cell. No legs or feet.
+Identity and style: Pale sandy cream fennec with enormous pink-inner ears, round thin brown spectacles, brown paws and brown-tipped fluffy tail. No clothes. Cream mug with green leaf motif. Closed notebook with olive-green cover. Match the exact warm textured 2D animation drawing of the input, thin dark-brown outlines, fine soft fur, coherent rounded proportions. No 3D render or vector icon style.
+Framing: Ear tips around y45; head and enormous ears occupy x90..410,y45..300; torso/shoulders x130..325,y275..375. Closed notebook is stationary around x145..355,y375..425, pencil flat immediately below. Everything stays inside the cell with at least 18px transparent outer margin. Character head is a gentle three-quarter view facing the WINDOW at screen-right in ALL 12 cels. Face remains mostly visible and eyes look right, never at camera. No chair/body turn during the loop.
+CRITICAL registration: EXACT same head size, head/ear/tail/torso locations, lighting and camera in all cells. Only eyelids and connected forearms/paws/mug may change. Keep both shoulders joined to the torso, exactly two arms and two paws; no floating hands. Both paws wrap the SAME mug; no duplicate mug stays on desk. The closed book and pencil stay identical.
+Cells:
+0: rest, both paws cradle mug LOW at chest centered about (280,343), rim around y320, gaze out window, soft smile.
+1: exact cel0 body and mug, eyes gently shut for blink.
+2: exact cel0, eyes open toward window.
+3: mug and joined forearms lift only 6px, head unchanged.
+4: mug lifts another 6px.
+5: mug lifts another 6px.
+6: mug lifts another 6px toward mouth, eyes softly half-lidded.
+7: rim at mouth, gently sipping, closed/half-closed relaxed eyes; no open mouth.
+8: almost identical sipping pose, eyes relaxed.
+9: mug lowers 6px.
+10: mug returns to exact low chest pose of cel0.
+11: EXACT repeat of cel0 to close a seamless loop.
+The mug motion should travel no more than 30px total. Keep pose changes very small and the face position/angle absolutely fixed. No steam, motion lines or ambient animation. Transparent pixels remain truly transparent.

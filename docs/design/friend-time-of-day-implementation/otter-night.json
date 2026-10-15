@@ -1,0 +1,16 @@
+{
+  "character": "otter",
+  "timeOfDay": "night",
+  "mode": "builtin_image_gen",
+  "taxonomy": "lighting-weather",
+  "output": "assets/images/friends/ambience/otter/night.png",
+  "width": 853,
+  "height": 1844,
+  "source": "assets/images/friends/motion/otter/room.png",
+  "approvedConcept": "docs/design/friend-time-of-day-concepts-v2/otter.png",
+  "lightingReference": "assets/images/immersive/room-night.png",
+  "originalGeneratedFile": "/Users/jaewook/.codex/generated_images/01a14036-37e9-7c91-b0f7-8c528924047f/exec-c38f0373-08c8-40d2-9107-cbe2c03d57af.png",
+  "promptFile": "otter-night.prompt.txt",
+  "visualInspection": "Matches original geometry closely. Empty chair and center tabletop; fixed lower-right closed spiral sketchbook preserved. Navy night sky, crescent moon, silver ocean reflection and warm desk lamp. No character, center activity notebook, mug, UI or text.",
+  "knownLimitations": "Some warm diagonal highlights on left wall remain from the source, though the outdoor scene is unambiguously night."
+}

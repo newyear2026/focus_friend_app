@@ -1,17 +1,17 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'session_engine.dart';
-import 'room_ambience.dart';
-import 'study_scene.dart';
 export 'study_scene.dart' show DeskIllustration;
-
 export 'desk_style.dart';
 import 'desk_style.dart';
 import 'desk_components.dart';
+import 'l10n/app_localizations.dart';
+import 'localized_names.dart';
 
 int todayFocusMinutes(FocusState state, DateTime now) =>
     (state.dailyFocus[calendarKey(now)]?.milliseconds ?? 0) ~/ 60000;
 
+/// The room is a persistent scene behind this live, accessible UI.
 class DeskHome extends StatelessWidget {
   const DeskHome({
     super.key,
@@ -30,8 +30,8 @@ class DeskHome extends StatelessWidget {
     this.foreground = true,
     this.onSound,
     this.onGoal,
+    this.systemBottomInset = 0,
   });
-
   final FocusState state;
   final DateTime now;
   final int minutes;
@@ -40,362 +40,313 @@ class DeskHome extends StatelessWidget {
   final VoidCallback onRandomMinutes, onStart, onPauseResume, onStop;
   final VoidCallback onDismiss, onRest, onNext;
   final VoidCallback? onSound, onGoal;
+  final double systemBottomInset;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final active = state.active;
     final completed = active?.status == SessionStatus.completed;
     final paused = active?.status == SessionStatus.paused;
     final rest = active?.mode == SessionMode.rest;
     final demo = active?.mode == SessionMode.demo;
-    final studying = active != null && !rest && !completed;
-    final ambience = RoomAmbience.at(now);
-    final seconds =
-        ((active?.remaining(now.millisecondsSinceEpoch) ?? 0) + 999) ~/ 1000;
-    final subtitle = active == null
-        ? '오늘도 같이 시작해요'
-        : completed
-        ? (active.rewards.contains('plant')
-              ? '첫 집중의 선물, 작은 화분을 놓았어요.'
-              : active.rewards.isNotEmpty
-              ? '새 소품: ${active.rewards.map((key) => key == 'mug' ? '따뜻한 머그컵' : '포근한 조명').join(' · ')}'
-              : demo
-              ? '체험을 마쳤어요. 함께해 줘서 고마워요'
-              : rest
-              ? '잘 쉬었어요. 다시 천천히 시작해요'
-              : '잘했어요. 책상에 집중이 쌓였어요')
-        : paused
-        ? '잠시 쉬어가도 괜찮아요'
-        : rest
-        ? '같은 자리에서 잠깐 쉬어가요'
-        : '차근차근, 함께 써 내려가요';
+    final seconds = active == null
+        ? minutes * 60
+        : ((active.remaining(now.millisecondsSinceEpoch) + 999) ~/ 1000);
     final caption = active == null
-        ? '오늘의 집중'
+        ? l10n.captionReady
         : completed
         ? (demo
-              ? '체험 완료'
+              ? l10n.captionDemoDone
               : rest
-              ? '휴식 완료'
-              : '집중 완료')
+              ? l10n.captionRestDone
+              : l10n.captionFocusDone)
         : paused
-        ? '일시정지'
+        ? l10n.captionPaused
         : demo
-        ? '1분 체험 · 기록 없이'
+        ? l10n.captionDemo
         : rest
-        ? '쉬어가는 시간'
-        : '${active.durationMs ~/ 60000}분 집중 중';
-    final value = active == null
-        ? '${todayFocusMinutes(state, now)}분'
-        : completed
-        ? '${active.durationMs ~/ 60000}분'
+        ? l10n.captionRest
+        : l10n.captionFocusing(active.durationMs ~/ 60000);
+    final value = completed
+        ? l10n.minutesShort(active!.durationMs ~/ 60000)
         : '${(seconds ~/ 60).toString().padLeft(2, '0')}:${(seconds % 60).toString().padLeft(2, '0')}';
-    return Theme(
-      data: deskTheme(context),
-      child: DefaultTextStyle(
-        style: const TextStyle(fontFamily: 'Pretendard', color: deskInk),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final textScale = MediaQuery.textScalerOf(context).scale(16) / 16;
-            final minHeight = 570.0 + math.max(0.0, textScale - 1) * 360;
-            final height = math.max(constraints.maxHeight, minHeight);
-            return SingleChildScrollView(
-              child: SizedBox(
-                height: height,
+    final message = active == null
+        ? null
+        : completed
+        ? (active.rewards.contains('plant')
+              ? l10n.messageFirstPlant
+              : active.rewards.isNotEmpty
+              ? l10n.messageNewProps(
+                  active.rewards.map((key) => propName(l10n, key)).join(' · '),
+                )
+              : demo
+              ? l10n.messageDemoDone
+              : rest
+              ? l10n.messageRestDone
+              : l10n.messageFocusDone)
+        : paused
+        ? l10n.messagePaused
+        : rest
+        ? l10n.messageRest
+        : l10n.messageFocus;
+    return DefaultTextStyle(
+      style: const TextStyle(fontFamily: 'Pretendard', color: deskInk),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final scale = MediaQuery.textScalerOf(context).scale(16) / 16;
+          final height = math.max(
+            constraints.maxHeight,
+            700 + math.max(0.0, scale - 1) * 300,
+          );
+          final bottomReserve =
+              DeskNavigation.contentHeight + systemBottomInset + 24;
+          return SingleChildScrollView(
+            child: SizedBox(
+              height: height,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 26),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const Expanded(
-                                child: Text(
-                                  '나의 책상',
-                                  style: TextStyle(
-                                    fontSize: 34,
-                                    fontWeight: FontWeight.w900,
-                                    height: 1.12,
-                                    letterSpacing: -1.4,
-                                  ),
-                                ),
-                              ),
-                              if (onSound != null)
-                                IconButton(
-                                  key: const ValueKey('open-sound'),
-                                  tooltip: '집중 사운드',
-                                  onPressed: enabled ? onSound : null,
-                                  icon: Icon(
-                                    state.sound.enabled
-                                        ? Icons.volume_up_rounded
-                                        : Icons.volume_off_rounded,
-                                    color: deskBlue,
-                                    size: 23,
-                                  ),
-                                ),
-                              Semantics(
-                                label: '현재 시간대 ${ambience.label}',
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      ambience == RoomAmbience.night
-                                          ? Icons.nightlight_round
-                                          : ambience == RoomAmbience.evening
-                                          ? Icons.wb_twilight_rounded
-                                          : Icons.wb_sunny_outlined,
-                                      size: 17,
-                                      color: deskBlue,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      ambience.label,
-                                      key: const ValueKey('room-period'),
-                                      style: const TextStyle(
-                                        fontSize: 15,
-                                        color: deskBlue,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            subtitle,
-                            style: TextStyle(
-                              fontSize: completed ? 16 : 20,
-                              fontWeight: FontWeight.w500,
-                              color: deskBlue,
-                              height: 1.2,
-                              letterSpacing: -.4,
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        IconButton(
+                          key: const ValueKey('random-focus'),
+                          tooltip: l10n.randomTooltip,
+                          onPressed: enabled && active == null
+                              ? onRandomMinutes
+                              : null,
+                          icon: const Icon(Icons.shuffle_rounded, size: 20),
+                          color: deskInk.withValues(alpha: .75),
+                          disabledColor: Colors.transparent,
+                        ),
+                        Expanded(
+                          child: Text(
+                            l10n.deskTitle,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -.8,
                             ),
                           ),
+                        ),
+                        IconButton(
+                          key: const ValueKey('open-sound'),
+                          tooltip: l10n.focusSound,
+                          onPressed: enabled ? onSound : null,
+                          color: deskInk,
+                          icon: Icon(
+                            state.sound.enabled
+                                ? Icons.volume_up_rounded
+                                : Icons.volume_off_rounded,
+                            size: 27,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: height * .04),
+                    Text(
+                      caption,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        shadows: [
+                          Shadow(color: Color(0x990C1227), blurRadius: 12),
                         ],
                       ),
                     ),
-                    if (state.goal case final goal? when goal.showOnHome)
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
-                        child: InkWell(
-                          key: const ValueKey('home-goal'),
-                          onTap: enabled ? onGoal : null,
-                          borderRadius: BorderRadius.circular(8),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 6),
-                            child: Row(
-                              children: [
-                                Text(
-                                  goal.countdown(now),
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w800,
-                                    color: deskBlue,
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    goal.name,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                                const Icon(
-                                  Icons.chevron_right_rounded,
-                                  size: 18,
-                                  color: deskMuted,
-                                ),
-                              ],
-                            ),
+                    const SizedBox(height: 7),
+                    SizedBox(
+                      height: 92 * math.min(scale, 1.2),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          value,
+                          key: ValueKey(
+                            active == null ? 'ready-timer' : 'timer',
+                          ),
+                          style: const TextStyle(
+                            fontSize: 72,
+                            fontWeight: FontWeight.w800,
+                            height: 1.06,
+                            letterSpacing: -2,
+                            fontFeatures: [FontFeature.tabularFigures()],
+                            shadows: [
+                              Shadow(color: Color(0x550C1227), blurRadius: 18),
+                            ],
                           ),
                         ),
                       ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                        child: DeskIllustration(
-                          unlocked: state.unlocks.keys.toSet(),
-                          ambience: ambience,
-                          studying: studying,
-                          animate: studying && !paused && foreground,
-                          paused: paused,
+                    ),
+                    if (message != null)
+                      Container(
+                        margin: const EdgeInsets.only(top: 9),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 7,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xB3292630),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          message,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            height: 1.4,
+                            color: deskInk,
+                          ),
                         ),
                       ),
-                    ),
-                    Semantics(
-                      label: '$caption $value',
-                      excludeSemantics: true,
-                      child: SizedBox(
-                        height: 52 * textScale,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                '$caption · ',
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: active == null ? 18 : 15,
-                                  color: deskBlue,
+                    if (state.goal case final goal? when goal.showOnHome)
+                      Center(
+                        child: TextButton.icon(
+                          key: const ValueKey('home-goal'),
+                          onPressed: enabled ? onGoal : null,
+                          icon: const Icon(Icons.flag_outlined, size: 16),
+                          label: Text(
+                            '${goal.countdown(now)} · ${goal.name}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          style: TextButton.styleFrom(foregroundColor: deskInk),
+                        ),
+                      ),
+                    const Spacer(),
+                    Container(
+                      padding: scale > 1.2
+                          ? const EdgeInsets.all(12)
+                          : EdgeInsets.zero,
+                      decoration: scale > 1.2
+                          ? BoxDecoration(
+                              color: const Color(0xED292630),
+                              borderRadius: BorderRadius.circular(18),
+                            )
+                          : null,
+                      child: Column(
+                        children: [
+                          if (active == null) ...[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${l10n.todayFocus} ',
+                                  style: const TextStyle(fontSize: 15),
                                 ),
-                              ),
+                                Text(
+                                  l10n.minutesShort(
+                                    todayFocusMinutes(state, now),
+                                  ),
+                                  key: const ValueKey('today-focus'),
+                                  style: const TextStyle(
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              value,
-                              key: ValueKey(
-                                active == null ? 'today-focus' : 'timer',
+                            const SizedBox(height: 13),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: scale > 1.2 ? 0 : 16,
                               ),
-                              style: TextStyle(
-                                fontSize: active == null ? 28 : 38,
-                                fontWeight: FontWeight.w900,
-                                height: 1.05,
-                                fontFeatures: const [
-                                  FontFeature.tabularFigures(),
+                              child: Row(
+                                children: [
+                                  for (final value in [25, 50]) ...[
+                                    if (value == 50) const SizedBox(width: 12),
+                                    Expanded(
+                                      child: _DurationChoice(
+                                        minutes: value,
+                                        selected: minutes == value,
+                                        onPressed: enabled
+                                            ? () => onSelectMinutes(value)
+                                            : null,
+                                      ),
+                                    ),
+                                  ],
                                 ],
                               ),
                             ),
+                            const SizedBox(height: 13),
+                            _primary(
+                              l10n.startFocus,
+                              Icons.play_arrow_rounded,
+                              onStart,
+                              key: const ValueKey('start-focus'),
+                            ),
+                          ] else if (completed) ...[
+                            _primary(
+                              l10n.confirm,
+                              Icons.check_rounded,
+                              onDismiss,
+                            ),
+                            const SizedBox(height: 8),
+                            if (!demo && !rest)
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: TextButton(
+                                      onPressed: enabled ? onRest : null,
+                                      style: _secondaryStyle,
+                                      child: Text(l10n.startRest),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: TextButton(
+                                      onPressed: enabled ? onNext : null,
+                                      style: _secondaryStyle,
+                                      child: Text(l10n.nextFocus),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            else
+                              const SizedBox(height: 48),
+                          ] else ...[
+                            _primary(
+                              paused
+                                  ? (rest ? l10n.resumeRest : l10n.resumeFocus)
+                                  : l10n.pause,
+                              paused
+                                  ? Icons.play_arrow_rounded
+                                  : Icons.pause_rounded,
+                              onPauseResume,
+                            ),
+                            const SizedBox(height: 8),
+                            TextButton(
+                              onPressed: enabled ? onStop : null,
+                              style: _secondaryStyle,
+                              child: Text(l10n.endThisSession),
+                            ),
                           ],
-                        ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 7),
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(minHeight: 156),
-                        child: active == null
-                            ? _idleControls()
-                            : completed
-                            ? _completeControls(demo: demo, rest: rest)
-                            : _activeControls(paused: paused, rest: rest),
-                      ),
-                    ),
+                    SizedBox(height: bottomReserve),
                   ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
-  Widget _idleControls() => Column(
-    children: [
-      Row(
-        children: [
-          for (final value in [25, 50]) ...[
-            if (value == 50) const SizedBox(width: 12),
-            Expanded(
-              child: _DurationChoice(
-                minutes: value,
-                selected: minutes == value,
-                onPressed: enabled ? () => onSelectMinutes(value) : null,
-              ),
-            ),
-          ],
-        ],
-      ),
-      TextButton.icon(
-        onPressed: enabled ? onRandomMinutes : null,
-        style: _secondaryStyle,
-        icon: const Icon(Icons.shuffle_rounded, size: 23),
-        label: const Text('랫서팬더가 골라주기'),
-      ),
-      _primary(
-        '집중 시작',
-        Icons.play_arrow_rounded,
-        onStart,
-        key: const ValueKey('start-focus'),
-      ),
-    ],
-  );
-
-  Widget _activeControls({required bool paused, required bool rest}) => Column(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      SizedBox(
-        height: 46,
-        child: Center(
-          child: Text(
-            paused
-                ? '준비되면 여기서 이어가요'
-                : rest
-                ? '숨을 고르고, 어깨도 편하게'
-                : '천천히, 한 줄씩 써봐요',
-            style: const TextStyle(fontSize: 18, color: deskBlue),
-          ),
-        ),
-      ),
-      _primary(
-        paused ? (rest ? '이어서 쉬기' : '이어서 집중') : '잠시 멈추기',
-        paused ? Icons.play_arrow_rounded : Icons.pause_rounded,
-        onPauseResume,
-      ),
-      TextButton(
-        onPressed: enabled ? onStop : null,
-        style: _secondaryStyle,
-        child: const Text('이번 시간 종료'),
-      ),
-    ],
-  );
-
-  Widget _completeControls({required bool demo, required bool rest}) => Column(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      const SizedBox(
-        height: 46,
-        child: Icon(
-          Icons.check_circle_outline_rounded,
-          color: deskGreen,
-          size: 30,
-        ),
-      ),
-      _primary('확인', Icons.check_rounded, onDismiss),
-      if (!demo && !rest)
-        Row(
-          children: [
-            Expanded(
-              child: TextButton(
-                onPressed: enabled ? onRest : null,
-                style: _secondaryStyle,
-                child: const Text('5분 휴식 시작'),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                onPressed: enabled ? onNext : null,
-                style: _secondaryStyle,
-                child: const Text('다음 집중 시작'),
-              ),
-            ),
-          ],
-        )
-      else
-        const SizedBox(height: 48),
-    ],
-  );
-
   ButtonStyle get _secondaryStyle => TextButton.styleFrom(
-    foregroundColor: deskBlue,
+    foregroundColor: deskInk,
     minimumSize: const Size(48, 48),
-    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
     textStyle: const TextStyle(
       fontFamily: 'Pretendard',
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
     ),
   );
-
   Widget _primary(
     String label,
     IconData icon,
@@ -418,26 +369,35 @@ class _DurationChoice extends StatelessWidget {
   final int minutes;
   final bool selected;
   final VoidCallback? onPressed;
-
   @override
   Widget build(BuildContext context) => Semantics(
     selected: selected,
     button: true,
-    child: TicketPanel(
-      color: selected ? ticketGold : deskPaper,
-      onTap: onPressed,
-      child: SizedBox(
-        height: 48,
+    child: OutlinedButton(
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size(48, 42),
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        backgroundColor: selected ? deskAccent : const Color(0x77413944),
+        foregroundColor: selected ? deskInkShadow : deskInk,
+        side: BorderSide(
+          color: selected ? deskAccent : const Color(0xFFC1ADB5),
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
+      ),
+      // Longer translations ("25 min") shrink instead of overflowing.
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              '$minutes분',
-              style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w800),
+              AppLocalizations.of(context).minutesShort(minutes),
+              style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w800),
             ),
             if (selected) ...[
-              const SizedBox(width: 9),
-              const Icon(Icons.check_rounded, size: 19),
+              const SizedBox(width: 10),
+              const Icon(Icons.check_rounded, size: 20),
             ],
           ],
         ),
@@ -451,65 +411,110 @@ class DeskNavigation extends StatelessWidget {
     super.key,
     required this.selectedIndex,
     required this.onSelected,
+    this.immersive = false,
   });
+  static const contentHeight = 108.0;
   final int selectedIndex;
   final ValueChanged<int> onSelected;
-
+  final bool immersive;
   @override
-  Widget build(BuildContext context) => Material(
-    color: deskPaper,
-    child: DecoratedBox(
-      decoration: const BoxDecoration(
-        border: Border(top: BorderSide(color: Color(0xFFECECE6))),
-      ),
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    // Daylight can brighten the floor behind every tab. Keep the controls
+    // readable as the authored room light changes through the day.
+    final muted = immersive ? deskInk.withValues(alpha: .9) : deskMuted;
+    return Material(
+      color: immersive ? deskInkShadow.withValues(alpha: .5) : deskPaper,
       child: SafeArea(
         top: false,
-        child: Row(
-          children: [
-            for (final (index, label, icon) in [
-              (0, '책상', Icons.home_rounded),
-              (1, '기록', Icons.bar_chart_rounded),
-              (2, '설정', Icons.settings_rounded),
-            ])
-              Expanded(
-                child: Semantics(
-                  selected: selectedIndex == index,
-                  button: true,
-                  child: InkWell(
-                    onTap: () => onSelected(index),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            icon,
-                            size: 29,
-                            color: selectedIndex == index
-                                ? const Color(0xFF168053)
-                                : deskMuted,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            label,
-                            style: TextStyle(
-                              fontFamily: 'Pretendard',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: selectedIndex == index
-                                  ? const Color(0xFF168053)
-                                  : deskBlue,
+        child: SizedBox(
+          height: contentHeight,
+          child: Row(
+            children: [
+              for (final (index, label, asset) in [
+                (0, l10n.navDesk, 'nav-desk'),
+                (1, l10n.navFriends, 'friends'),
+                (2, l10n.navRecords, 'nav-records'),
+                (3, l10n.navSettings, 'nav-settings'),
+              ])
+                Expanded(
+                  child: Semantics(
+                    selected: selectedIndex == index,
+                    button: true,
+                    child: InkWell(
+                      key: ValueKey('desk-navigation-$index'),
+                      onTap: () => onSelected(index),
+                      child: SizedBox(
+                        height: contentHeight,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 48,
+                              height: 48,
+                              child: Center(
+                                child: index == 1
+                                    ? Icon(
+                                        Icons.pets_outlined,
+                                        size: 34,
+                                        color: selectedIndex == index
+                                            ? deskAccent
+                                            : muted,
+                                      )
+                                    : Image.asset(
+                                        'assets/images/immersive/$asset.png',
+                                        width: index == 3 ? 40 : 48,
+                                        height: index == 3 ? 40 : 48,
+                                        fit: BoxFit.contain,
+                                        color: selectedIndex == index
+                                            ? deskAccent
+                                            : muted,
+                                        colorBlendMode: BlendMode.srcIn,
+                                        filterQuality: FilterQuality.medium,
+                                        excludeFromSemantics: true,
+                                      ),
+                              ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2),
+                            Flexible(
+                              child: Text(
+                                label,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Pretendard',
+                                  fontSize: 14,
+                                  fontWeight: selectedIndex == index
+                                      ? FontWeight.w700
+                                      : FontWeight.w500,
+                                  color: selectedIndex == index
+                                      ? deskAccent
+                                      : muted,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 7),
+                            Container(
+                              width: 32,
+                              height: 3,
+                              decoration: BoxDecoration(
+                                color: selectedIndex == index
+                                    ? deskAccent
+                                    : Colors.transparent,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }

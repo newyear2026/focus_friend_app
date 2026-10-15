@@ -1,0 +1,16 @@
+Use case: background-extraction
+Asset type: production Flutter nine-slice transparent PNG UI perimeter.
+Input image 1: reference for the illustrated BOOK-PAGE FRAME at the very bottom only.
+Primary request: redraw/extract ONLY that lower popup's thin warm-ivory layered book-page perimeter, its teal fabric bookmark with small golden two-leaf embroidery near the upper left, and the folded ivory page corner at upper right. The output is one isolated straight-on rectangular frame ring with a huge EMPTY TRANSPARENT opening.
+Composition: landscape-ish 1024 x 896 pixels. Frame close to canvas edges, about 8 pixels of outside transparent margin. Narrow cream border about 12–18 pixels wide, gently irregular hand-drawn outline, soft 45–55 pixel corner radius. The top edge is straight horizontal and continuous behind the bookmark. Show three or four fine stacked page contours along bottom and right, with total bottom thickness around 30px. Bookmark attached at top edge near x=70px, about 90px wide and 160px tall, hanging INSIDE the central opening with a V-notched lower end. Gold two-leaf embroidery centered on bookmark. Folded upper-right page corner around 70–90px. All decorated details stay close to their corners or edges so the long blank middle stretches safely.
+Style and colors: match the reference's matte hand-drawn cozy 2D storybook illustration, warm cream paper and soft brown page-line details, dark teal woven fabric bookmark, subtle paper grain, restrained shading.
+Transparency: BOTH all area outside the frame and the ENTIRE large central opening must be genuine alpha 0 transparency. The frame has NO dark interior fill. Use real transparency, NOT a checkerboard drawing. Opaque pixels exist only on the thin paper perimeter, small fold and bookmark.
+Avoid absolutely: character, red panda, books inside, Korean text, any text or lettering, buttons, room scene, background, dark panel interior, opaque backing rectangle, extra ornaments, large drop shadows, perspective/tilt. Do not include any content from inside the popup. Make a clean production-ready empty frame.
+
+Generation provenance
+Tool: image_gen.imagegen (built-in default mode)
+transparent_background: true
+referenced_image_paths: ["/var/folders/1d/f_54vtrd34b966kbj7vfrncc0000gn/T/codex-clipboard-5fa5694f-4b54-441c-a2c9-9337f21643b1.png"]
+Original generated output: /Users/jaewook/.codex/generated_images/01a13cb0-6a75-71a3-a7d1-3c157964f940/exec-7fdab625-0dcb-4b9a-a7cc-18b2228907cd.png
+Generated output copied without pixel modification.
+

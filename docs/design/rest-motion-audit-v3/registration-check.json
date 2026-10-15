@@ -1,0 +1,40 @@
+{
+  "fennec": {
+    "before": {
+      "staticHeadMeanAbsoluteRgbDifference": 10.038736465293802,
+      "sourceSize": [
+        1536,
+        1536
+      ]
+    },
+    "after": {
+      "staticHeadMeanAbsoluteRgbDifference": 10.082253564677924,
+      "sourceSize": [
+        1536,
+        1536
+      ],
+      "uniformScales": [
+        1.1330275229357798
+      ]
+    }
+  },
+  "squirrel": {
+    "before": {
+      "staticHeadMeanAbsoluteRgbDifference": 8.642545695045696,
+      "sourceSize": [
+        1536,
+        1536
+      ]
+    },
+    "after": {
+      "staticHeadMeanAbsoluteRgbDifference": 7.093534234284235,
+      "sourceSize": [
+        1536,
+        1536
+      ],
+      "uniformScales": [
+        1.0510204081632653
+      ]
+    }
+  }
+}

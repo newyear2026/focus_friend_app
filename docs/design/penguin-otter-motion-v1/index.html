@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>펭귄과 해달 · 모션 미리보기</title>
+<style>
+@font-face{font-family:Pretendard;src:url('/assets/fonts/PretendardVariable.ttf');font-weight:100 900}*{box-sizing:border-box}body{margin:0;background:#fff8e9;color:#352724;font-family:Pretendard,system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:36px 22px 60px}h1{font-size:30px;margin:0 0 12px;letter-spacing:-1px}p{line-height:1.65;color:#756458;margin:6px 0}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}h2{font-size:23px;margin:0 0 14px}.switch{display:flex;gap:8px;margin-bottom:14px}.switch button{font:inherit;font-weight:700;padding:12px 16px;border:1px solid #ddcdb6;background:#fff8e9;color:#625044;border-radius:13px;cursor:pointer;min-height:48px}.switch button[aria-pressed=true]{background:#ffc16f;border-color:#ffc16f;color:#171b32}button:focus-visible{outline:3px solid #58412c;outline-offset:3px}video{display:block;width:100%;height:auto;aspect-ratio:484/434;border-radius:18px;background:#292630}.note{font-size:14px;margin-top:14px}a{color:#865324}.downloads{margin-top:30px;border-top:1px solid #e4d7c3;padding-top:18px;font-size:14px}@media(max-width:680px){.gallery{grid-template-columns:1fr;gap:34px}h1{font-size:25px}main{padding-top:25px}}
+</style>
+<main>
+<h1>펭귄과 해달 · 모션 미리보기</h1>
+<p>필기와 페이지 넘김, 차 마시는 휴식 동작을 확인해 보세요.</p>
+<p class="note">앱의 집중 동작은 <strong>36초 필기 → 6.3초 페이지 넘김</strong>으로 반복돼요.<br>아래 집중 영상은 페이지 넘김 앞뒤를 담은 13.5초 발췌이며, 휴식은 14초 반복이에요.</p>
+<div class="gallery">
+<section data-friend="penguin"><h2>펭귄 · 눈 내리는 겨울 서재</h2><div class="switch"><button data-mode="study" aria-pressed="true">필기·페이지 넘김</button><button data-mode="rest" aria-pressed="false">휴식</button></div><video id="penguin-video" src="penguin-study.mp4" controls autoplay loop muted playsinline preload="auto" aria-label="펭귄 모션 미리보기"></video><p class="note">몸은 안정적으로 두고 날개와 연필로 작게 필기해요.<br>휴식에는 양 날개로 눈꽃 머그컵을 들어 차를 마셔요.</p></section>
+<section data-friend="otter"><h2>해달 · 햇살 가득한 바닷가</h2><div class="switch"><button data-mode="study" aria-pressed="true">필기·페이지 넘김</button><button data-mode="rest" aria-pressed="false">휴식</button></div><video id="otter-video" src="otter-study.mp4" controls autoplay loop muted playsinline preload="auto" aria-label="해달 모션 미리보기"></video><p class="note">작은 앞발로 필기하고, 한 장씩 천천히 넘겨요.<br>휴식에는 조개 머그컵을 두 손으로 감싸 들어요.</p></section>
+</div>
+<p class="downloads">실제 Flutter 앱과 같은 원화·타이밍·렌더러로 만든 영상이에요. <a href="README.md">원화와 제작 기록</a></p>
+</main>
+<script>
+document.querySelectorAll('[data-friend]').forEach(section=>{
+ const video=section.querySelector('video');
+ section.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{
+  section.querySelectorAll('[data-mode]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  video.src=section.dataset.friend+'-'+button.dataset.mode+'.mp4';
+  video.play().catch(()=>{});
+ }));
+});
+</script>
+</html>

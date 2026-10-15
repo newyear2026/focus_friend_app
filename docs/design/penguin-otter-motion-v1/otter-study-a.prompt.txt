@@ -1,0 +1,24 @@
+Use case: identity-preserve. Asset type: production 2D animation sprite atlas.
+Input image 1 is the exact 512x512 stage reference. Extract and redraw ONLY its seated character, connected shoulders/arms, notebook, writing pencil and drinking mug as described below. The room in the reference is not part of this sprite.
+Create a 2048 x 1536 PNG sprite sheet, exactly 4 equal columns by 3 equal rows, 12 square 512 x 512 cells, left to right row-major. GENUINELY TRANSPARENT BACKGROUND in all cells. No checkerboard pixels, matte, room, chair, desk, stacked books, lamp, plants, shell ornaments, labels, cell lines, numbers, shadows under the whole cell, border, or cropping margins between cells. There must be just the isolated connected character plus notebook, pencil and mug, with genuine transparent negative space. No white background.
+Treat each cell as the SAME fixed 512x512 coordinate system as input 1, NOT as an individually centered portrait. Keep the character's face at the same location and size as the source: head approximately x=90..345,y=100..310, connected torso and arms below it, hand contact near y=350; notebook spine at (265,385), open book bounds about x=140..385,y=345..410. Mug on desk at about (437,378), except when explicitly held during tea. Preserve all original widths and proportions. This stage has deliberate empty space at top and bottom; do NOT enlarge/recenter the character to fill each cell. Do NOT draw legs, feet or full standing body. It is the same waist-up desk composition as input.
+Keep the head, face, torso, costume and tail perfectly identical and pixel-registered in all cells; hand/forearm/eye changes should be very small smooth consecutive differences. The bottom notebook cover, spine, mug position and torso anchor must NEVER translate/scale/rotate between frames. Forearms remain joined to their shoulders; draw the complete connected upper-body silhouette in every cell, never separate floating hands. No added limbs, changing eye shapes, species drift or disconnected shoulders.
+Art direction must exactly match the input's warm detailed hand-painted 2D animation style, dark-brown thin contours and soft fur/feather texture. No 3D or vector icon look.
+
+Character identity: The exact honey-golden sea otter with small round ears, brown eyes, cream cheeks/muzzle/chest, white whiskers, brown nose, peach cheeks and dark-brown paws. No scarf or invented clothes. Tail part at stage left, same as reference. The mug is cream with a blue shell, notebook has teal/blue cover.
+
+Animation section: six writing positions followed by six closely spaced preparation poses. Torso and head do not rock.
+Cells in strict row-major order:
+0. Canonical writing pose identical to source. Right hand/flipper at viewer-left holds pencil with tip touching left page; other hand at right notebook edge; mug on desk.
+1. Identical face and body, writing wrist/pencil shifted just 2 pixels right.
+2. Same, wrist/pencil shifted 4 pixels right, tip remains on paper.
+3. Same, wrist/pencil shifted 6 pixels right, tiny stroke end.
+4. Same, wrist/pencil shifted 4 pixels right.
+5. Same, wrist/pencil shifted 2 pixels right.
+6. Start from canonical pose; pencil tip lifts just 3px off paper, arm connected.
+7. Writing hand brings pencil a little forward and down toward desktop just in front of notebook, head/body unchanged.
+8. Same hand gently lays pencil horizontally on desk in front of the book at x225..315,y435, fingertips/flipper still touching pencil.
+9. Pencil lies exactly there, writing hand releases it and returns beside notebook, free hand remains on other side.
+10. Free hand at viewer-right shifts about 10px toward the outer right sheet corner, the other hand now resting on notebook's left side.
+11. Free hand at viewer-right touches that right sheet corner, ready to pinch/lift, no lifted page yet. Pencil stays flat at x225..315,y435.
+Do not change facial expression or blink in this atlas. No paper curls yet. Notebook remains flat in all cells. Each cel contains the full connected character and stationery at fixed source coordinates.

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>작은 집중방 · 편안한 모션</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff7e6;color:#342c29;font-family:system-ui,-apple-system,sans-serif}main{max-width:880px;margin:32px auto;padding:24px}h1{font-size:26px;margin:0 0 12px}p{line-height:1.7}video{display:block;width:min(100%,580px);margin:0 auto;border-radius:24px;background:#fff7e6}nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}button{border:1px solid #cfa675;background:#ffca7c;color:#362a24;border-radius:12px;padding:12px 20px;font:inherit;cursor:pointer}.note{font-size:14px;color:#71655b}a{color:#6d4828}.room{display:block;max-width:390px;width:100%;margin:32px auto;border-radius:20px}
+</style>
+<main>
+<h1>몸을 안정적으로 유지하는 필기</h1>
+<p>필기 중에는 얼굴·몸통·꼬리를 기본 그림으로 유지하고, 연결된 팔과 연필의 작은 동작을 보여줍니다. 필기 왕복 4초, 페이지 넘김 5.5초의 속도는 그대로입니다.</p>
+<video id="preview" src="stable-writing-full-cycle.mp4?v=1" controls autoplay muted loop playsinline aria-label="몸의 흔들림을 줄인 캐릭터 전체 동작 41.5초"></video>
+<nav><button data-time="0">필기 보기</button><button data-time="35">페이지 넘김 보기</button><button data-time="40">필기로 돌아오기</button></nav>
+<p class="note">36초 필기와 5.5초 페이지 넘김을 합친 전체 주기는 41.5초입니다. 앱과 같은 Flutter 렌더러에서 그린 미리보기이며, 에뮬레이터의 실시간 화면 녹화는 아닙니다. 재생 속도는 1배입니다.</p>
+<img class="room" src="home-evening.png" alt="고정된 책과 캐릭터가 있는 앱 저녁 화면">
+<p class="note"><a href="README.md">제작 원화·프롬프트·검증 기록</a></p>
+</main>
+<script>
+const video=document.querySelector('video');for(const b of document.querySelectorAll('button'))b.addEventListener('click',()=>{video.currentTime=Number(b.dataset.time);video.play();});
+</script>
+</html>

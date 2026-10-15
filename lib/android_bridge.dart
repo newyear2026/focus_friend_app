@@ -26,6 +26,25 @@ class LocalAlerts {
   Future<void> sync() => AndroidStore.channel.invokeMethod<void>('syncAlerts');
 }
 
+class ScreenAwake {
+  Future<void> set(bool on) =>
+      AndroidStore.channel.invokeMethod<void>('keepScreenOn', {'on': on});
+}
+
+/// The language chosen in Settings, kept by Android rather than the snapshot
+/// so notifications and system Settings > Apps > Language see it too.
+class AppLanguageStore {
+  /// [app] is null when the app follows the phone; [system] is the phone's.
+  Future<({String? app, String? system})> load() async {
+    final value = await AndroidStore.channel
+        .invokeMethod<Map<Object?, Object?>>('getLanguage');
+    return (app: value?['app'] as String?, system: value?['system'] as String?);
+  }
+
+  Future<void> save(String? tag) =>
+      AndroidStore.channel.invokeMethod<void>('setLanguage', {'tag': tag});
+}
+
 class FocusSoundPlayer {
   static const channel = MethodChannel('focus_friend/sound');
   Future<void> preview(SoundPreferences sound, {Session? session}) =>

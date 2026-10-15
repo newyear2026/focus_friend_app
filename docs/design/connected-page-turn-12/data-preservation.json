@@ -1,0 +1,16 @@
+{
+  "before": {
+    "revision": 3,
+    "bodySha256": "ba7a2b107ff98f2f2872fa48d856732c266e15065f9c0f9e34abde19bf6b6fdb",
+    "historyCount": 1,
+    "active": false
+  },
+  "after": {
+    "revision": 3,
+    "bodySha256": "ba7a2b107ff98f2f2872fa48d856732c266e15065f9c0f9e34abde19bf6b6fdb",
+    "historyCount": 1,
+    "active": false
+  },
+  "bodyUnchanged": true,
+  "installedApk": "/private/tmp/focus-writing-and-page-turn.apk"
+}

@@ -1,0 +1,27 @@
+{
+  "asset": "penguin/day",
+  "mode": "built-in image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/motion/penguin/room.png",
+  "lighting_reference": "docs/design/friend-time-of-day-concepts-v2/penguin.png",
+  "lighting_reference_region": "second column only",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14035-d609-79b0-8353-85486104bfe1/exec-a3897a65-5d27-4ab9-9864-8539ef775286.png",
+  "output": "assets/images/friends/ambience/penguin/day.png",
+  "dimensions": {
+    "width": 853,
+    "height": 1844
+  },
+  "target_motion_stage": {
+    "x": 100,
+    "y": 570,
+    "width": 704,
+    "height": 704,
+    "referenceWidth": 853,
+    "referenceHeight": 1844
+  },
+  "inspection": {
+    "visual_review": "Passed: clear bright blue sky, white soft clouds, crisp snowy mountains/pines and fresh blue lake. No stars, moon, sun disk, sunrise or sunset band. Neutral daylight, natural warm wood; lamp and lantern off. Furniture/window geometry visually registered to source.",
+    "preserved_static_props": "Original closed foreground spiral notebook and shelf figurine retained; no living penguin, open study book or mug.",
+    "material_issues": []
+  }
+}

@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 
-const deskPaper = Color(0xFFFFFEFA);
-const deskInk = Color(0xFF07143C);
-const deskBlue = Color(0xFF4752CE);
-const deskGreen = Color(0xFF3D956D);
-const deskMuted = Color(0xFF7B80B7);
+const deskPaper = Color(0xFF292630);
+const deskInk = Color(0xFFFFEBC5);
+const deskInkShadow = Color(0xFF171B32);
+const deskCream = Color(0xFF403943);
+const deskBlue = Color(0xFFE5CAB0);
+const deskGreen = Color(0xFFFFC16F);
+const deskMuted = Color(0xFFC5B8BA);
+const deskAccent = Color(0xFFFFC16F);
+const deskDivider = Color(0xFF554A54);
 
-ThemeData deskTheme(BuildContext context) => Theme.of(context).copyWith(
+ThemeData deskTheme(BuildContext context) => buildDeskTheme(Theme.of(context));
+
+ThemeData buildDeskTheme(ThemeData base) => base.copyWith(
   scaffoldBackgroundColor: deskPaper,
-  textTheme: Theme.of(context).textTheme
-      .copyWith(
-        bodyMedium: Theme.of(
-          context,
-        ).textTheme.bodyMedium?.copyWith(height: 1.25),
-      )
+  brightness: Brightness.dark,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: deskPaper,
+    foregroundColor: deskInk,
+    surfaceTintColor: Colors.transparent,
+  ),
+  dividerTheme: const DividerThemeData(color: deskDivider),
+  dialogTheme: const DialogThemeData(backgroundColor: deskPaper),
+  textTheme: base.textTheme
+      .copyWith(bodyMedium: base.textTheme.bodyMedium?.copyWith(height: 1.25))
       .apply(
         fontFamily: 'Pretendard',
         bodyColor: deskInk,
@@ -21,8 +31,10 @@ ThemeData deskTheme(BuildContext context) => Theme.of(context).copyWith(
       ),
   iconTheme: const IconThemeData(color: deskInk),
   colorScheme: ColorScheme.fromSeed(
-    seedColor: deskGreen,
-    primary: deskGreen,
+    brightness: Brightness.dark,
+    seedColor: deskAccent,
+    primary: deskAccent,
+    onPrimary: deskInkShadow,
     surface: deskPaper,
     onSurface: deskInk,
   ),

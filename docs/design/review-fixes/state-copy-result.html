@@ -1,0 +1,118 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>상태 복사 줄이기 결과</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#1f1c25;--card:#292630;--cream:#403943;--ink:#FFEBC5;--muted:#C5B8BA;--accent:#FFC16F;--bad:#ff7b72;--good:#8fd6a0;--line:#554A54}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif;line-height:1.55}
+main{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:28px;margin:0 0 4px;letter-spacing:-.5px}.sub{color:var(--muted);margin:0 0 26px}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+h2{font-size:19px;margin:0 0 4px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.num{background:var(--accent);color:#171B32;border-radius:8px;font-size:13px;padding:2px 8px;font-weight:800}
+p.d{color:var(--muted);margin:4px 0 18px;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}@media(max-width:800px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--cream);border-radius:14px;padding:14px}.kpi h3{margin:0 0 8px;font-size:13px;color:var(--muted);font-weight:600}
+.kpi .was{font-size:14px;color:#ffb0a8;text-decoration:line-through;text-decoration-color:#ff7b7288}
+.kpi .is{font-size:28px;font-weight:800;color:var(--good);letter-spacing:-.5px;line-height:1.2}
+.kpi .same{font-size:28px;font-weight:800;color:var(--ink);line-height:1.2}
+.kpi small{color:var(--muted);font-size:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:800px){.two{grid-template-columns:1fr}}
+.box{background:var(--cream);border-radius:14px;padding:14px 16px}.box h3{margin:0 0 10px;font-size:14px}
+.hb{margin-bottom:12px}.hl{font-size:13px;margin-bottom:4px}
+.row{display:grid;grid-template-columns:34px 1fr 74px;gap:8px;align-items:center;margin:3px 0}
+.k{font-size:12px;color:var(--muted)}.track{height:14px;background:#1f1c25;border-radius:7px;overflow:hidden}
+.fill{height:100%;border-radius:7px}.fill.a{background:#d9786f}.fill.b{background:var(--good)}
+.val{font-size:12.5px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}.val.a{color:#ffb0a8}.val.b{color:var(--good)}
+.tlw{position:relative;margin:30px 8px 44px}.tl{height:10px;border-radius:5px;background:linear-gradient(90deg,#4a5a3f 0 46.2%,#5a4a3a 46.2% 50%,#4a5a3f 50% 100%)}
+.mk{position:absolute;top:-6px;width:22px;height:22px;border-radius:50%;background:var(--good);border:3px solid var(--card);transform:translateX(-50%)}
+.ml{position:absolute;top:24px;transform:translateX(-50%);font-size:12px;color:var(--muted);white-space:nowrap;text-align:center}
+.tlnote{position:relative;height:18px;margin:0 8px;font-size:12px;color:var(--muted)}.tlnote span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+pre{background:#1f1c25;border-radius:10px;padding:12px;font-size:12.5px;overflow:auto;margin:0;line-height:1.5}
+.del{color:var(--bad)}.add{color:var(--good)}.cm{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}td,th{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600}
+.ok{color:var(--good);font-weight:800;white-space:nowrap}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#1f1c25;border-radius:5px;padding:1px 5px}
+.note{margin-top:12px;font-size:13px;color:var(--muted);border-left:3px solid var(--accent);padding:4px 0 4px 12px}
+</style></head><body><main>
+<h1>6번 · 상태 복사 줄이기 결과</h1>
+<p class="sub">수정한 코드로 25분 집중(중간 1분 일시정지 포함, 총 26분)을 실제 앱 화면에서 끝까지 돌리며 잰 값입니다. "이전"은 같은 실행에서 예전 방식(읽을 때마다 전체 복사)의 비용을 함께 잰 것입니다.</p>
+
+<section>
+<h2><span class="num">1</span>한눈에 보기 · 1년 사용자</h2>
+<div class="kpis">
+<div class="kpi"><h3>화면이 상태를 읽은 횟수</h3><div class="same">12,266번</div><small>그대로 (화면은 똑같이 갱신)</small></div>
+<div class="kpi"><h3>상태 전체 복사</h3><div class="was">12,266번</div><div class="is">5번</div></div>
+<div class="kpi"><h3>복사에 쓴 시간</h3><div class="was">9.2초</div><div class="is">0.009초</div></div>
+<div class="kpi"><h3>만들었다 버린 임시 데이터</h3><div class="was">약 504MB</div><div class="is">약 0.2MB</div></div>
+</div>
+</section>
+
+<section>
+<h2><span class="num">2</span>오래 쓴 사용자일수록 차이가 큼</h2>
+<p class="d">예전 방식은 상태가 클수록 비용이 커졌지만, 지금은 복사를 몇 번만 하니 사용 기간과 거의 상관없습니다. 초록 막대는 너무 작아서 선처럼 보입니다.</p>
+<div class="two">
+<div class="box"><h3>26분 동안 복사에 쓴 시간</h3><div class="hb"><div class="hl">1년 사용자</div>
+<div class="row"><span class="k">이전</span><div class="track"><div class="fill a" style="width:100.0%"></div></div><span class="val a">9.2초</span></div>
+<div class="row"><span class="k">지금</span><div class="track"><div class="fill b" style="width:max(3px,0.094%)"></div></div><span class="val b">0.009초</span></div></div><div class="hb"><div class="hl">3년 사용자</div>
+<div class="row"><span class="k">이전</span><div class="track"><div class="fill a" style="width:100.0%"></div></div><span class="val a">18.1초</span></div>
+<div class="row"><span class="k">지금</span><div class="track"><div class="fill b" style="width:max(3px,0.042%)"></div></div><span class="val b">0.008초</span></div></div></div>
+<div class="box"><h3>26분 동안 만들었다 버린 임시 데이터</h3><div class="hb"><div class="hl">1년 사용자</div>
+<div class="row"><span class="k">이전</span><div class="track"><div class="fill a" style="width:100.0%"></div></div><span class="val a">504MB</span></div>
+<div class="row"><span class="k">지금</span><div class="track"><div class="fill b" style="width:max(3px,0.041%)"></div></div><span class="val b">0.2MB</span></div></div><div class="hb"><div class="hl">3년 사용자</div>
+<div class="row"><span class="k">이전</span><div class="track"><div class="fill a" style="width:100.0%"></div></div><span class="val a">934MB</span></div>
+<div class="row"><span class="k">지금</span><div class="track"><div class="fill b" style="width:max(3px,0.041%)"></div></div><span class="val b">0.4MB</span></div></div></div>
+</div>
+<p class="note">Mac의 개발용 실행 환경에서 잰 값이라 실제 폰과는 절대값이 다릅니다. 비율을 참고해 주세요.</p>
+</section>
+
+<section>
+<h2><span class="num">3</span>이제 복사가 일어나는 순간</h2>
+<p class="d">26분 동안 단 5번, 상태가 실제로 바뀌었을 때만 새 복사본을 만듭니다. 그 사이 1초에 8번씩 하는 화면 갱신은 이미 만든 복사본을 그대로 읽습니다.</p>
+<div class="tlw"><div class="tl"></div>
+<span class="mk" style="left:0%"></span><span class="ml" style="left:3%">시작 전<br>화면</span>
+<span class="mk" style="left:3.5%"></span><span class="ml" style="left:12%">시작</span>
+<span class="mk" style="left:46.2%"></span><span class="ml" style="left:44%">일시정지</span>
+<span class="mk" style="left:50%"></span><span class="ml" style="left:53%">재개</span>
+<span class="mk" style="left:100%"></span><span class="ml" style="left:96%">완료</span>
+</div>
+<div class="tlnote"><span style="left:0%">0분</span><span style="left:46.2%">12분</span><span style="left:100%">26분</span></div>
+</section>
+
+<section>
+<h2><span class="num">4</span>바뀐 코드</h2>
+<pre><span class="cm">// lib/session_engine.dart</span>
+<span class="del">- FocusState _state = FocusState();</span>
+<span class="del">- FocusState get state => _state.copy();</span>
+<span class="add">+ FocusState _current = FocusState();</span>
+<span class="add">+ FocusState? _snapshot;</span>
+<span class="add">+ FocusState get _state => _current;</span>
+<span class="add">+ set _state(FocusState value) {        </span><span class="cm">// 복구·저장·다시 읽기가 모두 여기를 지남</span>
+<span class="add">+   _current = value;</span>
+<span class="add">+   _snapshot = null;</span>
+<span class="add">+ }</span>
+<span class="add">+ FocusState get state => _snapshot ??= _state.copy();</span>
+
+<span class="cm">  // 변경을 처리할 때마다 (개발 중 실행에서만)</span>
+<span class="add">+ assert(_snapshot == null || _snapshot!.encode() == _state.encode(),</span>
+<span class="add">+     'SessionEngine.state was modified outside the engine.');</span></pre>
+</section>
+
+<section>
+<h2><span class="num">5</span>확인한 것</h2>
+<table>
+<tr><th>새 테스트</th><th>확인 내용</th></tr>
+<tr><td>복사본 공유</td><td>여러 번 읽어도 같은 복사본이고, 일시정지 뒤에는 새 복사본이 생기며 이전 복사본은 그대로 남음</td></tr>
+<tr><td>저장 실패</td><td>저장에 실패하면 마지막으로 저장된 상태가 그대로 보임</td></tr>
+<tr><td>바깥 수정 검사</td><td>엔진 밖에서 복사본을 고치면 개발 중 실행에서 바로 오류</td></tr>
+<tr><td>실제 앱 화면</td><td>시계가 25:00 → 24:55로 넘어가는 동안 복사 0번</td></tr>
+</table>
+<table style="margin-top:14px">
+<tr><th>일부러 넣은 고장</th><th>결과</th></tr>
+<tr><td>예전처럼 매번 복사</td><td class="ok">잡힘 · 4개 실패</td></tr>
+<tr><td>상태가 바뀌어도 옛 복사본을 계속 보여 줌</td><td class="ok">잡힘 · 29개 실패</td></tr>
+<tr><td>바깥 수정을 검사하지 않음</td><td class="ok">잡힘 · 1개 실패</td></tr>
+</table>
+<p class="note">전체 테스트 56개 통과 · <code>flutter analyze</code> 문제 0건 · 화면 코드와 앱 동작은 그대로</p>
+</section>
+</main></body></html>

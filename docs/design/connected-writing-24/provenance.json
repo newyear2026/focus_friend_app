@@ -1,0 +1,30 @@
+{
+  "mode": "built-in image_gen",
+  "canonicalReference": "assets/images/immersive/redpanda-reference.png",
+  "cleanupSheets": [
+    {
+      "batch": 1,
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-4bfaeed4-0997-4be5-af65-e0d7f79a5d20.png",
+      "saved": "detail/output-1.png",
+      "prompt": "detail/output-1.prompt.txt"
+    },
+    {
+      "batch": 2,
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-1635ceee-c9c5-45a1-8acc-f3f520e7d4ef.png",
+      "saved": "detail/output-2.png",
+      "prompt": "detail/output-2.prompt.txt"
+    },
+    {
+      "batch": 3,
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-c14763d0-11b4-4dc2-8280-40efd03a2800.png",
+      "saved": "detail/output-3.png",
+      "prompt": "detail/output-3.prompt.txt"
+    },
+    {
+      "batch": 4,
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-8d7f5b97-4b7e-42a5-a6f3-256cf57ee7b4.png",
+      "saved": "detail/output-4.png",
+      "prompt": "detail/output-4.prompt.txt"
+    }
+  ]
+}

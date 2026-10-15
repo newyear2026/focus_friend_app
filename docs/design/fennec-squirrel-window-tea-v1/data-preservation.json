@@ -1,0 +1,15 @@
+{
+  "package": "dev.jaewook.prototype.focus_friend_app",
+  "device": "emulator-5554",
+  "installMode": "adb install --no-streaming -r",
+  "sameSavedState": true,
+  "sameHistory": true,
+  "sameActiveSession": true,
+  "sameSelectedFriend": true,
+  "revisionBefore": 30,
+  "revisionAfter": 30,
+  "historyCountBefore": 4,
+  "historyCountAfter": 4,
+  "sha256Before": "76a904fb5a644d8dd6e9091dcc4ce5c10ae18a314e9aba8108de5498f3a7c129",
+  "sha256After": "76a904fb5a644d8dd6e9091dcc4ce5c10ae18a314e9aba8108de5498f3a7c129"
+}

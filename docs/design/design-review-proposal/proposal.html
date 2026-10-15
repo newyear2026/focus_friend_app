@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>디자인 개선 시안</title>
+<style>
+@font-face { font-family: Pretendard; src: url(../../../assets/fonts/PretendardVariable.ttf); font-weight: 100 900; }
+:root {
+  --paper: #FFFEFA; --ink: #07143C; --blue: #4752CE; --green: #3D956D; --muted: #606890;
+  --yellow: #F6D989; --cream: #FFF3CF; --line: #E6E2D8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Pretendard, sans-serif; background: #EFEBE1; color: var(--ink); padding: 40px; width: 1360px; }
+svg { display: block; }
+
+/* board */
+.board-head { margin-bottom: 28px; }
+.board-head h1 { font-size: 36px; font-weight: 900; }
+.board-head p { color: var(--muted); font-size: 17px; margin-top: 6px; }
+.rule { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.chip { display: flex; align-items: center; gap: 8px; background: #fff; border-radius: 999px; padding: 8px 14px 8px 8px; font-size: 15px; font-weight: 600; }
+.chip i { width: 22px; height: 22px; border-radius: 50%; display: block; }
+.row { display: grid; grid-template-columns: 393px 393px 1fr; gap: 32px; align-items: start; background: #F8F5EE; border-radius: 28px; padding: 28px; margin-bottom: 28px; }
+.label { font-size: 15px; font-weight: 800; color: var(--muted); margin-bottom: 10px; letter-spacing: .02em; }
+.label.new { color: var(--ink); }
+.label.new::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--yellow); border: 2px solid var(--ink); border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.shot { width: 393px; height: 786px; border-radius: 26px; overflow: hidden; box-shadow: 0 0 0 1px #0002, 0 10px 30px #0001; }
+.shot img { width: 100%; display: block; }
+.notes h2 { font-size: 26px; font-weight: 900; margin: 26px 0 18px; }
+.notes ol { list-style: none; counter-reset: n; }
+.notes li { counter-increment: n; position: relative; padding-left: 40px; margin-bottom: 18px; font-size: 16px; line-height: 1.5; color: #2A3150; }
+.notes li::before { content: counter(n); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 800; font-size: 14px; display: grid; place-items: center; }
+.notes b { color: var(--ink); }
+
+/* phone */
+.phone { width: 393px; height: 786px; background: var(--paper); border-radius: 26px; overflow: hidden; position: relative; box-shadow: 0 0 0 1px #0002, 0 10px 30px #0001; display: flex; flex-direction: column; }
+.status { height: 24px; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; font-size: 13px; color: #333; flex: none; }
+.content { flex: 1; padding: 0 20px; display: flex; flex-direction: column; position: relative; }
+.title-row { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+.title { font-size: 34px; font-weight: 900; letter-spacing: -.02em; line-height: 1.15; }
+.sub { color: var(--blue); font-size: 19px; margin-top: 6px; }
+.sub.sm { font-size: 15px; }
+.hdr-tools { display: flex; align-items: center; gap: 14px; color: var(--blue); font-size: 16px; font-weight: 600; }
+.goal { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 4px 0; font-size: 16px; }
+.goal b { color: var(--blue); font-weight: 900; }
+.goal .grow { flex: 1; }
+.room { width: 389px; margin: 0 -18px; display: block; }
+.today { text-align: center; color: var(--blue); font-size: 17px; margin-top: 6px; }
+.today b { color: var(--ink); font-size: 30px; font-weight: 900; vertical-align: -3px; margin-left: 2px; }
+.tickets { display: flex; gap: 12px; margin-top: 12px; }
+.ticket { flex: 1; height: 48px; border: 2px solid var(--ink); border-radius: 10px; position: relative; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 21px; font-weight: 900; background: var(--paper); }
+.ticket.on { background: var(--yellow); }
+.ticket::before, .ticket::after { content: ""; position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); }
+.ticket::before { left: -8px; clip-path: inset(0 0 0 50%); }
+.ticket::after { right: -8px; clip-path: inset(0 50% 0 0); }
+.link { display: flex; justify-content: center; align-items: center; gap: 8px; color: var(--blue); font-size: 17px; padding: 12px 0; }
+.cta { height: 56px; border-radius: 16px; background: var(--ink); color: #fff; font-size: 21px; font-weight: 900; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 4px 0 #000A2A; }
+.cta .ic { position: absolute; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; }
+.nav { height: 68px; flex: none; display: flex; border-top: 1px solid var(--line); background: var(--paper); }
+.nav div { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; color: #9A9FB5; font-weight: 600; }
+.nav .pill { width: 64px; height: 40px; border-radius: 20px; display: grid; place-items: center; }
+.nav img { width: 50px; height: 50px; filter: saturate(.1) opacity(.5); }
+.nav .on { color: var(--ink); font-weight: 800; }
+.nav .on .pill { background: var(--cream); }
+.nav .on img { filter: none; }
+.gesture { height: 24px; flex: none; display: grid; place-items: center; }
+.gesture i { width: 120px; height: 4px; border-radius: 2px; background: #555; display: block; }
+.focus-gap { height: 88px; flex: none; }
+
+/* settings */
+.portrait { width: 82px; height: 82px; object-fit: contain; }
+.list { margin-top: 14px; }
+.item { display: flex; align-items: center; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.tile { width: 40px; height: 40px; border-radius: 12px; background: var(--cream); display: grid; place-items: center; flex: none; }
+.item .t { flex: 1; }
+.item .t b { font-size: 17px; font-weight: 800; display: block; }
+.item .t span { font-size: 14px; color: var(--muted); }
+.section { font-size: 18px; font-weight: 900; margin-top: 22px; }
+.mini { margin-top: 12px; }
+.mini .ticket { font-size: 17px; height: 46px; }
+.mini .ticket svg { margin-left: 2px; }
+.trial { text-align: center; color: var(--blue); font-size: 14px; margin-top: 12px; }
+
+/* records */
+.summary { display: flex; gap: 22px; margin-top: 12px; font-size: 14px; color: #2A3150; align-items: center; }
+.summary span { display: flex; align-items: center; gap: 6px; }
+.summary b { font-size: 18px; font-weight: 900; }
+.month { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 21px; font-weight: 900; }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 4px; margin-top: 8px; text-align: center; }
+.cal .wd { font-size: 12px; color: var(--muted); padding-bottom: 4px; }
+.day { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 13px; font-weight: 700; padding: 2px 0; }
+.day i { width: 34px; height: 34px; border-radius: 50%; display: block; border: 1.5px solid #DCD8CC; }
+.day.fut { color: #B9BCCB; font-weight: 500; }
+.day.fut i { border: 1.5px dashed #E6E3DA; }
+.day.stamp i { border: none; background: url(../../../assets/images/companion-portrait.png) center/40px no-repeat; }
+.day.today { outline: 2px solid var(--ink); border-radius: 10px; }
+.dayhead { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 19px; font-weight: 900; }
+.dayhead span { font-size: 14px; color: var(--blue); font-weight: 500; }
+.sumticket { margin-top: 10px; height: 52px; justify-content: space-around; font-size: 19px; }
+.log { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 700; }
+.log .grow { flex: 1; }
+.log small { font-size: 12px; color: var(--muted); font-weight: 500; }
+.log.dim { color: var(--muted); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <path id="p-play" d="M8 5v14l11-7z"/>
+    <path id="p-pause" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    <path id="p-chev" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    <path id="p-chevl" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    <path id="p-shuffle" d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+    <path id="p-mute" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/>
+    <path id="p-sunset" d="M4 18h16v2H4zM12 9a5 5 0 0 0-5 5h10a5 5 0 0 0-5-5zm-1-6h2v3h-2zM4.2 6.6l1.4-1.4 2.1 2.1-1.4 1.4zm12.1.7 2.1-2.1 1.4 1.4-2.1 2.1z"/>
+    <path id="p-flag" d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"/>
+    <path id="p-vol" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+    <path id="p-bell" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+    <path id="p-sofa" d="M21 10c-1.1 0-2 .9-2 2v3H5v-3c0-1.1-.89-2-2-2s-2 .9-2 2v5c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-5c0-1.1-.9-2-2-2zm-3-5H6c-1.1 0-2 .9-2 2v2.15c1.16.41 2 1.51 2 2.82V14h12v-2.03c0-1.3.84-2.4 2-2.82V7c0-1.1-.9-2-2-2z"/>
+    <path id="p-clock" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+    <path id="p-cal" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+    <path id="p-check" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+    <path id="p-stop" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM9 9h6v6H9z"/>
+  </defs>
+</svg>
+
+<header class="board-head">
+  <h1>작은 집중방 · 디자인 개선 시안</h1>
+  <p>왼쪽은 현재 Android 앱 캡처(393×786dp), 가운데는 같은 에셋과 Pretendard로 만든 제안 시안입니다.</p>
+  <div class="rule">
+    <span class="chip"><i style="background:var(--ink)"></i>남색 — 누르는 것 (주요 버튼, 선택)</span>
+    <span class="chip"><i style="background:var(--yellow);border:2px solid var(--ink)"></i>노랑 — 선택된 값, 보상 하이라이트</span>
+    <span class="chip"><i style="background:var(--blue)"></i>파랑 — 보조 문구, 텍스트 링크</span>
+    <span class="chip"><i style="background:var(--green)"></i>초록 — 완료 상태 전용</span>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<section class="row" id="home">
+  <div><div class="label">현재</div><div class="shot"><img src="current/home.png"></div></div>
+  <div>
+    <div class="label new">제안</div>
+    <div class="phone">
+      <div class="status"><span>5:34</span><span>●●●</span></div>
+      <div class="content">
+        <div class="title-row">
+          <div class="title">나의 책상</div>
+          <div class="hdr-tools">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><use href="#p-mute"/></svg>
+            <span style="display:flex;gap:4px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><use href="#p-sunset"/></svg>저녁</span>
+          </div>
+        </div>
+        <div class="sub">오늘도 같이 시작해요</div>
+        <div class="goal"><b>D-30</b><span class="grow">dele</span><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--muted)"><use href="#p-chev"/></svg></div>
+        <img class="room" src="parts/room-home.png" style="margin-top:4px">
+        <div class="today">오늘의 집중 · <b>5분</b></div>
+        <div style="flex:1;min-height:12px"></div>
+        <div class="tickets">
+          <div class="ticket on">25분 <svg width="20" height="20" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg></div>
+          <div class="ticket">50분</div>
+        </div>
+        <div class="link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><use href="#p-shuffle"/></svg>랫서팬더가 골라주기</div>
+        <div class="cta">집중 시작<span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-play"/></svg></span></div>
+        <div style="height:14px"></div>
+      </div>
+      <nav class="nav">
+        <div class="on"><span class="pill"><img src="../../../assets/images/navigation/desk.png"></span>책상</div>
+        <div><span class="pill"><img src="../../../assets/images/navigation/records.png"></span>기록</div>
+        <div><span class="pill"><img src="../../../assets/images/navigation/settings.png"></span>설정</div>
+      </nav>
+      <div class="gesture"><i></i></div>
+    </div>
+  </div>
+  <div class="notes">
+    <h2>홈</h2>
+    <ol>
+      <li><b>‘집중 시작’을 남색으로 채웠습니다.</b> 지금은 노란 25분 티켓이 가장 눈에 띄는데, 이제 화면에서 가장 무거운 요소가 핵심 버튼입니다. 재생 아이콘은 노랑으로 바꿔 티켓과 연결했습니다.</li>
+      <li><b>하단 메뉴 85dp → 68dp.</b> 일러스트 아이콘을 줄이고, 선택하지 않은 아이콘은 회색으로 낮췄습니다. 선택 상태는 크림색 알약 배경, 풀컬러 아이콘, 남색 굵은 글씨로 표시합니다.</li>
+      <li><b>메뉴에서 줄인 높이는 방과 티켓 사이 여백으로 돌렸습니다.</b> 방 일러스트의 크기와 위치는 그대로 두었습니다.</li>
+      <li>헤더, 목표 줄, 티켓, 랫서팬더 링크는 현재 디자인을 유지합니다.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FOCUS ============ -->
+<section class="row" id="focus">
+  <div><div class="label">현재 (1분 체험)</div><div class="shot"><img src="current/focus.png"></div></div>
+  <div>
+    <div class="label new">제안</div>
+    <div class="phone">
+      <div class="status"><span>5:35</span><span>●●●</span></div>
+      <div class="content">
+        <div class="title-row">
+          <div class="title">나의 책상</div>
+          <div class="hdr-tools">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><use href="#p-mute"/></svg>
+            <span style="display:flex;gap:4px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><use href="#p-sunset"/></svg>저녁</span>
+          </div>
+        </div>
+        <div class="sub">차근차근, 함께 써 내려가요</div>
+        <div class="goal"><b>D-30</b><span class="grow">dele</span><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--muted)"><use href="#p-chev"/></svg></div>
+        <img class="room" src="parts/room-focus.png" style="margin-top:4px">
+        <div style="text-align:center;margin-top:6px;color:var(--blue);font-size:15px">1분 체험 · 기록 없이</div>
+        <div style="text-align:center;font-size:60px;font-weight:900;letter-spacing:-.01em;line-height:1.05;font-variant-numeric:tabular-nums">00:56</div>
+        <div style="flex:1"></div>
+        <div class="cta">잠시 멈추기<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-pause"/></svg></span></div>
+        <div class="link" style="padding:14px 0 18px">이번 시간 종료</div>
+      </div>
+      <div class="gesture"><i></i></div>
+    </div>
+  </div>
+  <div class="notes">
+    <h2>집중 중</h2>
+    <ol>
+      <li><b>겹치는 응원 문구를 하나로 줄였습니다.</b> 헤더의 “차근차근, 함께 써 내려가요”만 남기고 “천천히, 한 줄씩 써봐요”는 뺐습니다.</li>
+      <li><b>타이머를 따로 한 줄에 크게 두었습니다 (38 → 60).</b> “1분 체험 · 기록 없이” 같은 상태 문구는 타이머 위 작은 글씨로 옮겼습니다.</li>
+      <li><b>조작 버튼을 아래로 붙였습니다.</b> 메뉴 자리만 비어 있던 빈 공간이 사라지고, 엄지가 닿는 곳에 ‘잠시 멈추기’와 ‘이번 시간 종료’가 있습니다. 방의 위치는 홈과 똑같이 유지됩니다.</li>
+      <li>‘잠시 멈추기’도 홈의 ‘집중 시작’과 같은 남색 주요 버튼 스타일을 씁니다.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SETTINGS ============ -->
+<section class="row" id="settings">
+  <div><div class="label">현재</div><div class="shot"><img src="current/settings.png"></div></div>
+  <div>
+    <div class="label new">제안</div>
+    <div class="phone">
+      <div class="status"><span>5:35</span><span>●●●</span></div>
+      <div class="content">
+        <div class="title-row" style="align-items:flex-end">
+          <div>
+            <div class="title">설정</div>
+            <div class="sub sm">내게 맞는 집중 시간을 만들어요</div>
+          </div>
+          <img class="portrait" src="../../../assets/images/companion-portrait.png">
+        </div>
+        <div class="list">
+          <div class="item"><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-flag"/></svg></span><span class="t"><b>목표와 다짐</b><span>D-30 · dele</span></span><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--muted)"><use href="#p-chev"/></svg></div>
+          <div class="item"><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-vol"/></svg></span><span class="t"><b>소리 기본 설정</b><span>현재 소리 꺼짐</span></span><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--muted)"><use href="#p-chev"/></svg></div>
+          <div class="item"><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-bell"/></svg></span><span class="t"><b>집중 완료 알림</b><span>알림이 켜져 있어요</span></span><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--muted)"><use href="#p-chev"/></svg></div>
+          <div class="item"><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-sofa"/></svg></span><span class="t"><b>모은 소품</b><span>1개의 작은 선물</span></span>
+            <img src="../../../assets/images/storybook/reward-plant.png" style="width:34px;height:34px;object-fit:contain;margin-right:2px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--muted)"><use href="#p-chev"/></svg></div>
+        </div>
+        <div class="section">짧게 집중하기</div>
+        <div class="tickets mini">
+          <div class="ticket">5분 집중<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><use href="#p-play"/></svg></div>
+          <div class="ticket">15분 집중<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><use href="#p-play"/></svg></div>
+        </div>
+        <div class="trial">1분 체험 · 기록과 보상 없이 둘러보기</div>
+      </div>
+      <nav class="nav">
+        <div><span class="pill"><img src="../../../assets/images/navigation/desk.png"></span>책상</div>
+        <div><span class="pill"><img src="../../../assets/images/navigation/records.png"></span>기록</div>
+        <div class="on"><span class="pill"><img src="../../../assets/images/navigation/settings.png"></span>설정</div>
+      </nav>
+      <div class="gesture"><i></i></div>
+    </div>
+  </div>
+  <div class="notes">
+    <h2>설정</h2>
+    <ol>
+      <li><b>기록 화면처럼 헤더에 랫서팬더를 넣었습니다.</b> 일러스트가 없는 화면이 사라지고, 세 탭의 헤더 구조가 같아집니다.</li>
+      <li><b>목록 아이콘을 크림색 둥근 타일에 남색으로 넣었습니다.</b> 이제 파랑 아이콘이 버튼처럼 보이지 않고, 홈의 크림/남색 팔레트와 이어집니다. ‘모은 소품’ 줄에는 실제 화분을 미리 보여줍니다.</li>
+      <li><b>‘5분/15분 집중’을 홈과 같은 티켓 모양으로 바꿨습니다.</b> 초록 테두리 알약 버튼은 홈의 집중 선택과 다른 기능처럼 보였습니다. 초록은 이제 완료 표시에만 씁니다.</li>
+      <li>목표 줄에는 남은 날짜(D-30)도 함께 보여줘서 들어가지 않아도 상태를 알 수 있습니다.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ RECORDS ============ -->
+<section class="row" id="records">
+  <div><div class="label">현재</div><div class="shot"><img src="current/records.png"></div></div>
+  <div>
+    <div class="label new">제안</div>
+    <div class="phone">
+      <div class="status"><span>5:35</span><span>●●●</span></div>
+      <div class="content">
+        <div class="title-row" style="align-items:flex-end;margin-top:12px">
+          <div>
+            <div class="title">차곡차곡 기록</div>
+            <div class="sub sm">함께 집중한 날을 모았어요</div>
+          </div>
+          <img class="portrait" src="../../../assets/images/companion-portrait.png">
+        </div>
+        <div class="summary">
+          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-clock"/></svg>이번 달 <b>10분</b></span>
+          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-cal"/></svg>집중한 날 <b>2일</b></span>
+        </div>
+        <div class="month">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-chevl"/></svg>
+          2026년 10월
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--ink)"><use href="#p-chev"/></svg>
+        </div>
+        <div class="cal" id="cal"></div>
+        <div class="dayhead">10월 8일 목요일 <span>오늘</span></div>
+        <div class="ticket on sumticket"><span>5분 집중</span><span>1회 완료</span></div>
+        <div class="log"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--green)"><use href="#p-check"/></svg><span class="grow">5분 집중 완료</span><small>오후 5:21</small></div>
+        <div class="log dim"><svg width="22" height="22" viewBox="0 0 24 24" fill="#A9ADC0"><use href="#p-stop"/></svg><span class="grow">1분 미만 · 중도 종료</span><small>오후 5:21</small></div>
+      </div>
+      <nav class="nav">
+        <div><span class="pill"><img src="../../../assets/images/navigation/desk.png"></span>책상</div>
+        <div class="on"><span class="pill"><img src="../../../assets/images/navigation/records.png"></span>기록</div>
+        <div><span class="pill"><img src="../../../assets/images/navigation/settings.png"></span>설정</div>
+      </nav>
+      <div class="gesture"><i></i></div>
+    </div>
+  </div>
+  <div class="notes">
+    <h2>기록</h2>
+    <ol>
+      <li><b>“0분 중도 종료”를 “1분 미만 · 중도 종료”로 바꾸고 흐리게 처리했습니다.</b> 완료 기록이 먼저 읽힙니다.</li>
+      <li><b>달력의 날짜를 세 단계로 나눴습니다.</b> 지난 날은 실선 원, 아직 오지 않은 날은 연한 점선 원, 집중한 날은 스탬프입니다. 빈 원 31개가 같은 무게로 보이던 문제가 줄어듭니다.</li>
+      <li>상단 요약 아이콘을 초록에서 남색으로 바꿨습니다. 초록은 완료 체크에만 씁니다.</li>
+      <li>메뉴가 낮아진 덕분에 오늘의 기록 두 줄이 메뉴에 가려지지 않고 모두 보입니다.</li>
+    </ol>
+  </div>
+</section>
+
+<script>
+  // 2026년 10월: 1일이 목요일
+  const cal = document.getElementById('cal');
+  '일월화수목금토'.split('').forEach(d => cal.insertAdjacentHTML('beforeend', `<div class="wd">${d}</div>`));
+  for (let i = 0; i < 4; i++) cal.insertAdjacentHTML('beforeend', '<div></div>');
+  for (let d = 1; d <= 31; d++) {
+    const cls = d === 7 ? 'stamp' : d === 8 ? 'stamp today' : d > 8 ? 'fut' : '';
+    cal.insertAdjacentHTML('beforeend', `<div class="day ${cls}">${d}<i></i></div>`);
+  }
+  // ?only=home 처럼 한 화면만 렌더링
+  const only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.board-head').style.display = 'none';
+    document.querySelectorAll('.row').forEach(r => { if (r.id !== only) r.remove(); else r.style.marginBottom = 0; });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Use case: style-transfer.
+Asset type: ONE transparent tabletop lamp sprite for a 2D study room.
+Image 1 EDIT TARGET is the old lamp. Image 2 is the approved red panda STYLE REFERENCE. Image 3 is the new matching room STYLE/PALETTE REFERENCE.
+Restyle ONLY image 1: Same green banker desk lamp, tilted shade on left and curved brass stem on right with round base. Keep original three-quarter viewing angle, silhouette and proportions. Simplify brass to warm ochre flat paint, green shade matte dark teal/forest green, warm cream lit underside. No metallic reflections or specular streaks.
+Use clearly defined warm dark-brown hand-drawn cartoon outlines, matte gouache/colored-pencil fills, subtle fine paper grain and simple 2-tone shading matching image 2 and image 3. Cozy children's storybook illustration. Match line thickness proportionally to the panda, keep recognizable form, less realistic/3D detail. Preserve original full-object crop proportions and angle so replacement fits existing asset bounds.
+Object only, complete object visible, tight framing with minimal empty padding, genuinely transparent alpha background. No room, no table, no panda, no extra objects, no floor/cast shadow outside object, no words, no panel or border.

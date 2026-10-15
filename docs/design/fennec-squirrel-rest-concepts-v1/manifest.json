@@ -1,0 +1,52 @@
+{
+  "tool": "built-in ImageGen",
+  "mode": "reference-guided generation",
+  "referenceImages": [
+    "assets/images/friends/fennec-scene.png",
+    "assets/images/friends/squirrel-scene.png"
+  ],
+  "purpose": "static rest motion key-pose concepts; no runtime animation change",
+  "images": [
+    {
+      "file": "docs/design/fennec-squirrel-rest-concepts-v1/01-tea.png",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-7ae4c4e5-ad8e-4d0c-b6ed-48dfa3ada6b3.png",
+      "prompt": "docs/design/fennec-squirrel-rest-concepts-v1/01-tea.prompt.txt",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "file": "docs/design/fennec-squirrel-rest-concepts-v1/02-stretch.png",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-d5eb165d-3c7a-4d5a-9a40-eb1ffe87c1f7.png",
+      "prompt": "docs/design/fennec-squirrel-rest-concepts-v1/02-stretch.prompt.txt",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "file": "docs/design/fennec-squirrel-rest-concepts-v1/03-window.png",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-d7e80a38-ed76-49ec-be45-0b110d910be6.png",
+      "prompt": "docs/design/fennec-squirrel-rest-concepts-v1/03-window.prompt.txt",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "file": "docs/design/fennec-squirrel-rest-concepts-v1/04-window-tea.png",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-97935429-a9a8-4e23-8b28-b86e82f29e73.png",
+      "prompt": "docs/design/fennec-squirrel-rest-concepts-v1/04-window-tea.prompt.txt",
+      "size": [
+        1536,
+        1024
+      ],
+      "referenceImages": [
+        "docs/design/fennec-squirrel-rest-concepts-v1/01-tea.png",
+        "docs/design/fennec-squirrel-rest-concepts-v1/03-window.png"
+      ],
+      "purpose": "combined window-gaze and tea static key-pose proposal"
+    }
+  ]
+}

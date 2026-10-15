@@ -1,0 +1,119 @@
+{
+  "app": "작은 집중방",
+  "size": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "language": "ko",
+  "date": "2026-10-14",
+  "videos": [
+    {
+      "slug": "01_together",
+      "title": "함께 집중하는 감성편",
+      "duration": 18,
+      "captions": [
+        [
+          "미루고 있던 일, 같이 시작할까요?",
+          0,
+          4
+        ],
+        [
+          "당신의 옆자리엔 작은 친구가 있어요.",
+          4,
+          8.5
+        ],
+        [
+          "딱 25분. 시작은 작아도 괜찮아요.",
+          8.5,
+          13
+        ],
+        [
+          "작은 집중방. 오늘, 같이 시작해요.",
+          13,
+          18
+        ]
+      ]
+    },
+    {
+      "slug": "02_small_habits",
+      "title": "타이머·소품·기록 기능편",
+      "duration": 20,
+      "captions": [
+        [
+          "오늘의 25분이 내일의 습관으로.",
+          0,
+          4
+        ],
+        [
+          "25분 또는 50분. 내 리듬대로.",
+          4,
+          8
+        ],
+        [
+          "집중한 시간만큼, 방에 작은 기쁨이.",
+          8,
+          12
+        ],
+        [
+          "쌓이는 건 시간, 남는 건 나의 기록.",
+          12,
+          16
+        ],
+        [
+          "작은 집중방. 작은 시작이 나만의 습관이 되도록.",
+          16,
+          20
+        ]
+      ]
+    },
+    {
+      "slug": "03_a_gentle_break",
+      "title": "차와 자연 소리 힐링편",
+      "duration": 18,
+      "captions": [
+        [
+          "집중한 뒤엔, 잠깐 쉬어가요.",
+          0,
+          4.5
+        ],
+        [
+          "빗소리, 숲, 장작. 내가 좋아하는 고요.",
+          4.5,
+          9
+        ],
+        [
+          "아침부터 밤까지, 언제나 나의 작은 방.",
+          9,
+          13.5
+        ],
+        [
+          "작은 집중방. 집중도, 휴식도 다정하게.",
+          13.5,
+          18
+        ]
+      ]
+    }
+  ],
+  "production": {
+    "footage": "Real Flutter app widgets rendered with isolated in-memory fixtures. Focus and rest clocks progress normally. Calendar screen is example data.",
+    "audio": "Original synthesized music plus the bundled CC0 nature recordings; no voiceover.",
+    "availability": "No store availability or download URL is claimed; this is an Android prototype.",
+    "rewards": {
+      "plant": "First completed focus session",
+      "mug": "60 completed minutes",
+      "lamp": "120 completed minutes"
+    },
+    "safe_area": "Main copy is within x=88..992, y=116..1810. Platform UI overlays may vary.",
+    "rebuild": [
+      "flutter test --no-pub tool/capture_promo_footage_test.dart",
+      "python3 tool/create_promo_videos.py"
+    ]
+  },
+  "sources": {
+    "font": "PretendardVariable.ttf, SIL OFL 1.1 (assets/fonts/OFL.txt)",
+    "artwork": "Existing project illustrations and companion animation; no new generated artwork.",
+    "rain": "rain against window 2 — bastipictures — CC0 — https://freesound.org/people/bastipictures/sounds/243781/",
+    "forest": "forest ambience constant breeze.flac — kyles — CC0 — https://freesound.org/people/kyles/sounds/637559/"
+  }
+}

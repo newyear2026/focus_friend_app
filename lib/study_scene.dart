@@ -1,6 +1,12 @@
-import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'l10n/app_localizations.dart';
+import 'localized_names.dart';
 import 'room_ambience.dart';
+import 'reference_companion.dart';
+import 'rest_companion.dart';
+import 'focus_friend.dart';
+import 'friend_motion_scene.dart';
+export 'reference_companion.dart' show ReferenceCompanion;
 
 class DeskIllustration extends StatelessWidget {
   const DeskIllustration({
@@ -10,304 +16,323 @@ class DeskIllustration extends StatelessWidget {
     this.studying = false,
     this.animate = false,
     this.paused = false,
+    this.resting = false,
+    this.friend = FocusFriend.redpanda,
   });
   final Set<String> unlocked;
   final RoomAmbience ambience;
   final bool studying;
   final bool animate;
   final bool paused;
+  final bool resting;
+  final FocusFriend friend;
+
+  Color get _foregroundTint => switch (ambience) {
+    RoomAmbience.night => const Color(0xFFBCC3E4),
+    RoomAmbience.evening => const Color(0xFFFFDDCA),
+    _ => Colors.white,
+  };
+
+  // Keep the authored cels intact. A gentle room light crosses the whole
+  // silhouette, so every writing, page-turn and tea frame shares one light.
+  Widget _roomLitCompanion(Widget child) => ShaderMask(
+    blendMode: BlendMode.modulate,
+    shaderCallback: (bounds) => LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: switch (ambience) {
+        RoomAmbience.evening => const [
+          Color(0xFFD9BCC0),
+          Color(0xFFF5D3BF),
+          Color(0xFFFFE7BC),
+        ],
+        RoomAmbience.night => const [
+          Color(0xFFC4B6C8),
+          Color(0xFFD8C6C5),
+          Color(0xFFF4D9B4),
+        ],
+        _ => const [Color(0xFFE8DADB), Color(0xFFFFF1DE), Color(0xFFFFF1D2)],
+      },
+      stops: const [0, .53, 1],
+    ).createShader(bounds),
+    child: child,
+  );
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    image: true,
-    label:
-        '${ambience.label}의 책상. ${paused
-            ? '잠시 쉬는'
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    if (friend != FocusFriend.redpanda) {
+      return Semantics(
+        image: true,
+        label:
+            '${friendName(l10n, friend)} · ${friendRoom(l10n, friend)} · ${ambienceName(l10n, ambience)}',
+        child: RepaintBoundary(
+          key: const ValueKey('study-scene'),
+          child: friend.hasDeskMotion || (resting && friend.hasWindowTeaMotion)
+              ? FriendMotionScene(
+                  friend: friend,
+                  ambience: ambience,
+                  animate: animate,
+                  studying: studying,
+                  resting: resting,
+                  paused: paused,
+                )
+              : _friendRoom(context),
+        ),
+      );
+    }
+    return Semantics(
+      image: true,
+      label: l10n.sceneLabel(
+        ambienceName(l10n, ambience),
+        resting
+            ? (paused ? l10n.poseRestPaused : l10n.poseTea)
+            : paused
+            ? l10n.posePaused
             : studying
-            ? '노트에 필기하고 페이지를 넘기는'
-            : '책상에서 기다리는'} 랫서팬더. '
-        '얻은 소품 ${unlocked.contains('plant') ? '화분 ' : ''}'
-        '${unlocked.contains('mug') ? '머그컵 ' : ''}'
-        '${unlocked.contains('lamp') ? '조명' : ''}',
-    child: ExcludeSemantics(
-      child: RepaintBoundary(
-        key: const ValueKey('study-scene'),
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: SizedBox(
-            width: 1182,
-            height: 1330,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: AnimatedSwitcher(
-                    duration: MediaQuery.disableAnimationsOf(context)
-                        ? Duration.zero
-                        : const Duration(seconds: 2),
-                    child: Image.asset(
-                      ambience.asset,
-                      key: ValueKey(ambience),
-                      width: 1182,
-                      height: 1330,
+            ? l10n.poseWriting
+            : l10n.poseWaiting,
+        [
+          if (unlocked.contains('plant')) l10n.propShortPlant,
+          if (unlocked.contains('mug')) l10n.propShortMug,
+          if (unlocked.contains('lamp')) l10n.propShortLamp,
+        ].join(' '),
+      ),
+      child: ExcludeSemantics(
+        child: RepaintBoundary(
+          key: const ValueKey('study-scene'),
+          child: _scene(context),
+        ),
+      ),
+    );
+  }
+
+  Widget _friendRoom(BuildContext context) {
+    final asset = friend.ambienceAsset(ambience);
+    return AnimatedSwitcher(
+      duration: MediaQuery.disableAnimationsOf(context)
+          ? Duration.zero
+          : const Duration(seconds: 2),
+      transitionBuilder: (child, animation) => child.key == ValueKey(asset)
+          ? FadeTransition(opacity: animation, child: child)
+          : child,
+      child: Image.asset(
+        asset,
+        key: ValueKey(asset),
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: double.infinity,
+        excludeFromSemantics: true,
+      ),
+    );
+  }
+
+  // The foreground books are a clipped copy of the room, so both copies must
+  // change together. The new room fades in over the opaque previous one.
+  Widget _room(BuildContext context) => AnimatedSwitcher(
+    duration: MediaQuery.disableAnimationsOf(context)
+        ? Duration.zero
+        : const Duration(seconds: 2),
+    transitionBuilder: (child, animation) => child.key == ValueKey(ambience)
+        ? FadeTransition(opacity: animation, child: child)
+        : child,
+    child: Image.asset(
+      ambience.asset,
+      key: ValueKey(ambience),
+      width: 853,
+      height: 1844,
+      fit: BoxFit.fill,
+    ),
+  );
+
+  Widget _scene(BuildContext context) => ClipRect(
+    child: FittedBox(
+      fit: BoxFit.cover,
+      child: SizedBox(
+        width: 853,
+        height: 1844,
+        child: Stack(
+          children: [
+            Positioned.fill(child: _room(context)),
+            if (!resting)
+              const Positioned.fill(
+                child: CustomPaint(painter: _DeskContactShadowPainter()),
+              ),
+            if (!resting)
+              Positioned(
+                left: 90,
+                top: 610,
+                width: 580,
+                height: 580,
+                child: _roomLitCompanion(
+                  ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      _foregroundTint,
+                      BlendMode.modulate,
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 342,
-                  top: 335,
-                  width: 440,
-                  height: 440,
-                  child: ColorFiltered(
-                    colorFilter: ColorFilter.mode(switch (ambience) {
-                      RoomAmbience.night => const Color(0xFFBCC3E4),
-                      RoomAmbience.evening => const Color(0xFFFFDDCA),
-                      _ => Colors.white,
-                    }, BlendMode.modulate),
-                    child: StudyCompanion(
+                    child: ReferenceCompanion(
                       studying: studying,
                       animate: animate,
                       paused: paused,
                     ),
                   ),
                 ),
-                if (unlocked.contains('lamp'))
-                  Positioned(
-                    left: 742,
-                    top: 622,
-                    width: 152,
-                    height: 216,
-                    child: Image.asset('assets/images/reward-lamp.png'),
+              ),
+            if (!resting)
+              Positioned.fill(
+                child: ClipPath(
+                  clipper: _ForegroundBooksClipper(),
+                  child: _room(context),
+                ),
+              ),
+            if (resting) ...[
+              const Positioned.fill(
+                child: CustomPaint(painter: _RestContactShadowPainter()),
+              ),
+              Positioned(
+                left: 105,
+                top: 680,
+                width: 490,
+                height: 377,
+                child: ClipRect(
+                  child: OverflowBox(
+                    alignment: Alignment.topCenter,
+                    minWidth: 490,
+                    maxWidth: 490,
+                    minHeight: 490,
+                    maxHeight: 490,
+                    child: _roomLitCompanion(
+                      ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          _foregroundTint,
+                          BlendMode.modulate,
+                        ),
+                        child: RestCompanion(animate: animate, paused: paused),
+                      ),
+                    ),
                   ),
-                if (unlocked.contains('plant'))
-                  Positioned(
-                    left: 692,
-                    top: 644,
-                    width: 114,
-                    height: 164,
-                    child: Image.asset('assets/images/reward-plant.png'),
-                  ),
-                if (unlocked.contains('mug'))
-                  Positioned(
-                    left: 637,
-                    top: 789,
-                    width: 95,
-                    height: 99,
-                    child: Image.asset('assets/images/reward-mug.png'),
-                  ),
-              ],
-            ),
-          ),
+                ),
+              ),
+              Positioned(
+                left: 222,
+                top: 1033,
+                width: 330,
+                height: 150,
+                child: Image.asset(
+                  'assets/images/rest/closed-book.png',
+                  color: _foregroundTint,
+                  colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            ],
+            if (unlocked.contains('lamp'))
+              Positioned(
+                left: 608,
+                top: 739,
+                width: 266,
+                height: 400,
+                child: Image.asset(
+                  'assets/images/immersive/reward-lamp.png',
+                  fit: BoxFit.fill,
+                  color: _foregroundTint,
+                  colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            if (unlocked.contains('plant'))
+              Positioned(
+                left: 648,
+                top: 957,
+                width: 115,
+                height: 138,
+                child: Image.asset(
+                  'assets/images/immersive/reward-plant.png',
+                  fit: BoxFit.contain,
+                  color: _foregroundTint,
+                  colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            if (unlocked.contains('mug'))
+              Positioned(
+                left: 613,
+                top: 1010,
+                width: 156,
+                height: 170,
+                child: Image.asset(
+                  'assets/images/immersive/reward-mug.png',
+                  fit: BoxFit.fill,
+                  color: _foregroundTint,
+                  colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            const Positioned.fill(child: ColoredBox(color: Color(0x0A11131F))),
+          ],
         ),
       ),
     ),
   );
 }
 
-/// Decorative motion never changes the durable focus timer.
-class StudyCompanion extends StatefulWidget {
-  const StudyCompanion({
-    super.key,
-    required this.studying,
-    required this.animate,
-    this.paused = false,
-  });
-  final bool studying, animate, paused;
-  @override
-  State<StudyCompanion> createState() => _StudyCompanionState();
-}
-
-class _StudyCompanionState extends State<StudyCompanion>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController motion = AnimationController(
-    vsync: this,
-    duration: const Duration(seconds: StudyMotion.cycleSeconds),
-  );
-  ImageStream? stream;
-  ImageStreamListener? listener;
-  ImageInfo? imageInfo;
-  bool reducedMotion = false;
-  bool tickerEnabled = true;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    reducedMotion = MediaQuery.disableAnimationsOf(context);
-    tickerEnabled = TickerMode.valuesOf(context).enabled;
-    if (stream == null) {
-      stream = const AssetImage(
-        'assets/images/redpanda-study-sheet.png',
-      ).resolve(createLocalImageConfiguration(context));
-      listener = ImageStreamListener((info, _) {
-        if (!mounted) {
-          info.dispose();
-          return;
-        }
-        final oldInfo = imageInfo;
-        setState(() => imageInfo = info);
-        oldInfo?.dispose();
-      });
-      stream!.addListener(listener!);
-    }
-    _syncMotion();
-  }
-
-  @override
-  void didUpdateWidget(StudyCompanion oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.studying != oldWidget.studying) motion.value = 0;
-    _syncMotion();
-  }
-
-  void _syncMotion() {
-    if (widget.studying &&
-        widget.animate &&
-        !widget.paused &&
-        !reducedMotion &&
-        tickerEnabled) {
-      if (!motion.isAnimating) motion.repeat();
-    } else {
-      motion.stop();
-    }
-  }
-
-  @override
-  void dispose() {
-    if (listener != null) stream?.removeListener(listener!);
-    imageInfo?.dispose();
-    motion.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) => RepaintBoundary(
-    child: AnimatedBuilder(
-      animation: motion,
-      builder: (context, _) => CustomPaint(
-        painter: StudyCompanionPainter(
-          imageInfo?.image,
-          widget.studying ? motion.value * StudyMotion.cycleSeconds : -1,
-          resting: widget.paused,
-          reducedMotion: reducedMotion,
-        ),
-      ),
-    ),
-  );
-}
-
-/// Mostly quiet handwriting, with a short review and a deliberate page turn.
-abstract final class StudyMotion {
-  static const cycleSeconds = 24;
-  static const writingFrames = [1, 2, 3, 2];
-
-  static ({int previous, int current, double blend}) sample(double seconds) {
-    final t = seconds % cycleSeconds;
-    int previous, current;
-    double elapsed;
-    if (t < 16) {
-      final stroke = (t / .8).floor();
-      current = writingFrames[stroke % 4];
-      previous = stroke == 0 ? 1 : writingFrames[(stroke + 3) % 4];
-      elapsed = t - stroke * .8;
-    } else if (t < 19) {
-      previous = 2;
-      current = 4;
-      elapsed = t - 16;
-    } else if (t < 19.8) {
-      previous = 4;
-      current = 5;
-      elapsed = t - 19;
-    } else if (t < 21.2) {
-      previous = 5;
-      current = 6;
-      elapsed = t - 19.8;
-    } else if (t < 22) {
-      previous = 6;
-      current = 7;
-      elapsed = t - 21.2;
-    } else {
-      previous = 7;
-      current = 1;
-      elapsed = t - 22;
-    }
-    return (
-      previous: previous,
-      current: current,
-      blend: Curves.easeInOut.transform((elapsed / .16).clamp(0.0, 1.0)),
-    );
-  }
-}
-
-class StudyCompanionPainter extends CustomPainter {
-  StudyCompanionPainter(
-    this.sheet,
-    this.seconds, {
-    this.resting = false,
-    this.reducedMotion = false,
-  });
-  final ui.Image? sheet;
-  final double seconds;
-  final bool resting, reducedMotion;
-
-  // Full-cell registration corrections in the 512px authoring coordinate space.
-  static const offsets = [
-    Offset.zero,
-    Offset(-.5772, 0),
-    Offset.zero,
-    Offset(-.5772, 0),
-    Offset(0, .5772),
-    Offset(-.5772, .5772),
-    Offset(0, .5772),
-    Offset(-.5772, .5772),
-  ];
+class _DeskContactShadowPainter extends CustomPainter {
+  const _DeskContactShadowPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (sheet == null) return;
+    final sx = size.width / 853;
+    final sy = size.height / 1844;
     canvas.save();
-    canvas.scale(size.width / 512, size.height / 512);
-    final cellWidth = sheet!.width / 4;
-    final cellHeight = sheet!.height / 2;
-    void draw(int frame, double opacity, {BlendMode mode = BlendMode.srcOver}) {
-      canvas.drawImageRect(
-        sheet!,
-        Rect.fromLTWH(
-          (frame % 4) * cellWidth,
-          (frame ~/ 4) * cellHeight,
-          cellWidth,
-          cellHeight,
-        ),
-        offsets[frame] & const Size(512, 512),
-        Paint()
-          ..blendMode = mode
-          ..filterQuality = FilterQuality.medium
-          ..color = Color.fromRGBO(255, 255, 255, opacity),
-      );
-    }
-
-    if (seconds < 0 || resting) {
-      draw(0, 1);
-    } else if (reducedMotion) {
-      draw(1, 1);
-    } else {
-      final pose = StudyMotion.sample(seconds);
-      if (pose.blend < 1) {
-        // Interpolate premultiplied pixels in isolation. Two srcOver draws
-        // would lower coverage and let the room show through opaque fur.
-        canvas.saveLayer(Offset.zero & const Size(512, 512), Paint());
-        draw(pose.previous, 1 - pose.blend);
-        draw(pose.current, pose.blend, mode: BlendMode.plus);
-        canvas.restore();
-      } else {
-        draw(pose.current, 1);
-      }
-    }
+    canvas.scale(sx, sy);
+    canvas.drawOval(
+      const Rect.fromLTWH(276, 1090, 355, 76),
+      Paint()
+        ..color = const Color(0x66282031)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 18),
+    );
+    canvas.drawOval(
+      const Rect.fromLTWH(145, 1010, 220, 84),
+      Paint()
+        ..color = const Color(0x33282031)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 22),
+    );
     canvas.restore();
   }
 
   @override
-  bool shouldRepaint(StudyCompanionPainter oldDelegate) =>
-      sheet != oldDelegate.sheet ||
-      seconds != oldDelegate.seconds ||
-      resting != oldDelegate.resting ||
-      reducedMotion != oldDelegate.reducedMotion;
+  bool shouldRepaint(covariant _DeskContactShadowPainter oldDelegate) => false;
+}
+
+class _RestContactShadowPainter extends CustomPainter {
+  const _RestContactShadowPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.scale(size.width / 853, size.height / 1844);
+    canvas.drawOval(
+      const Rect.fromLTWH(191, 1001, 381, 73),
+      Paint()
+        ..color = const Color(0x54291724)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 21),
+    );
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant _RestContactShadowPainter oldDelegate) => false;
+}
+
+class _ForegroundBooksClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final sx = size.width / 853;
+    final sy = size.height / 1844;
+    return Path()..addPolygon([
+      Offset(0, 1035 * sy),
+      Offset(294 * sx, 1035 * sy),
+      Offset(345 * sx, 1198 * sy),
+      Offset(0, 1198 * sy),
+    ], true);
+  }
+
+  @override
+  bool shouldReclip(covariant _ForegroundBooksClipper oldClipper) => false;
 }

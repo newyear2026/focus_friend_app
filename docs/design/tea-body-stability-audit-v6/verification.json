@@ -1,0 +1,30 @@
+{
+  "verdict": "Whole-character wobble confirmed during entry and return of sipping pose",
+  "cause": "Whole-cel drawing differences in head, shoulders, torso and tail, not a timed global shake transform",
+  "affectedIntervalsSeconds": [
+    [
+      8.5,
+      9
+    ],
+    [
+      10.5,
+      11
+    ]
+  ],
+  "stableSipHoldSeconds": [
+    9,
+    10.5
+  ],
+  "sipHoldPixelIdenticalForBoth": true,
+  "freshCaptureCyclesPerFriend": 2,
+  "captureTest": "passed; not a no-wobble assertion",
+  "productionAssetsChanged": false,
+  "productionCodeChanged": false,
+  "shortClip": "mouth-body-1x.mp4",
+  "shortClipSpeed": 1,
+  "steps": [
+    "01-before.png",
+    "02-sip.png",
+    "03-return.png"
+  ]
+}

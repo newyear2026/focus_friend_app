@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 import 'focus_preferences.dart';
+import 'focus_friend.dart';
 export 'focus_preferences.dart';
 
 enum SessionMode { focus, demo, rest }
@@ -81,6 +82,8 @@ class FocusState {
     Map<String, DailyFocus>? dailyFocus,
     this.goal,
     this.sound = const SoundPreferences(),
+    this.keepScreenOn = false,
+    this.friend = FocusFriend.redpanda,
   }) : dailyFocus = dailyFocus ?? _migrateDaily(history ?? []),
        unlocks = unlocks ?? {},
        history = history ?? [];
@@ -93,6 +96,9 @@ class FocusState {
   final Map<String, DailyFocus> dailyFocus;
   FocusGoal? goal;
   SoundPreferences sound;
+  // Holds the screen awake while a focus, demo or rest timer runs.
+  bool keepScreenOn;
+  FocusFriend friend;
   static Map<String, DailyFocus> _migrateDaily(List<Session> sessions) {
     final result = <String, DailyFocus>{};
     for (final session in sessions) {
@@ -120,6 +126,8 @@ class FocusState {
     'dailyFocus': dailyFocus.map((key, value) => MapEntry(key, value.toJson())),
     'goal': goal?.toJson(),
     'sound': sound.toJson(),
+    'keepScreenOn': keepScreenOn,
+    'friendId': friend.name,
   };
   String encode() => jsonEncode(toJson());
   FocusState copy() => FocusState.decode(encode());
@@ -150,6 +158,8 @@ class FocusState {
       sound: j['sound'] == null
           ? const SoundPreferences()
           : SoundPreferences.fromJson(j['sound'] as Map<String, dynamic>),
+      keepScreenOn: j['keepScreenOn'] as bool? ?? false,
+      friend: FocusFriend.fromId(j['friendId'] as String?),
       history: (j['history'] as List)
           .map((x) => Session.fromJson(x as Map<String, dynamic>))
           .toList(),
@@ -182,8 +192,18 @@ class SessionEngine {
   final StateStore store;
   final int Function() clock;
   final String Function() idFactory;
-  FocusState _state = FocusState();
-  FocusState get state => _state.copy();
+  FocusState _current = FocusState();
+  FocusState? _snapshot;
+  FocusState get _state => _current;
+  set _state(FocusState value) {
+    _current = value;
+    _snapshot = null;
+  }
+
+  /// A read-only view shared by every reader until the saved state changes.
+  /// The UI reads this several times a second, so it must never be mutated:
+  /// all changes go through the engine's methods.
+  FocusState get state => _snapshot ??= _state.copy();
   Future<void> _tail = Future.value();
   bool _loaded = false;
   bool _uncertain = false;
@@ -216,6 +236,10 @@ class SessionEngine {
 
   Future<void> _change(bool Function(FocusState next, int now) change) =>
       _serial(() async {
+        assert(
+          _snapshot == null || _snapshot!.encode() == _state.encode(),
+          'SessionEngine.state was modified outside the engine.',
+        );
         if (!_loaded || _uncertain) {
           _state = await store.load();
           _loaded = true;
@@ -232,6 +256,18 @@ class SessionEngine {
 
   Future<void> saveSound(SoundPreferences sound) => _change((s, now) {
     s.sound = sound;
+    return true;
+  });
+
+  Future<void> saveKeepScreenOn(bool keepScreenOn) => _change((s, now) {
+    s.keepScreenOn = keepScreenOn;
+    return true;
+  });
+
+  Future<void> saveFriend(FocusFriend friend) => _change((s, now) {
+    if (s.active != null) throw StateError('Finish the session first');
+    if (s.friend == friend) return false;
+    s.friend = friend;
     return true;
   });
 

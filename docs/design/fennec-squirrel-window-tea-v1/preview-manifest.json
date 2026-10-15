@@ -1,0 +1,20 @@
+[
+  {
+    "friend": "fennec",
+    "frames": 264,
+    "fps": 12,
+    "durationSeconds": 22,
+    "source": "production Flutter painters",
+    "file": "fennec-window-tea.mp4",
+    "speedMultiplier": 1
+  },
+  {
+    "friend": "squirrel",
+    "frames": 264,
+    "fps": 12,
+    "durationSeconds": 22,
+    "source": "production Flutter painters",
+    "file": "squirrel-window-tea.mp4",
+    "speedMultiplier": 1
+  }
+]

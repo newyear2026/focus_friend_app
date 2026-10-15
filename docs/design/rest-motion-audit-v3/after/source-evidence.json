@@ -1,0 +1,26 @@
+[
+  {
+    "path": "lib/friend_motion_clock.dart",
+    "sha256": "1092d5845a5a30b8445f81057ec5d2dbc0b5f6d18078e29e86e9e4046df48396"
+  },
+  {
+    "path": "lib/friend_motion_scene.dart",
+    "sha256": "8511e53067f328dbd15fa302f524185f375068d702ab5eee857a3c4393b15ece"
+  },
+  {
+    "path": "test/window_tea_test.dart",
+    "sha256": "1038b673e1932c37fb8937e67db2e459884fac3351ad194969efb1647b02e2ad"
+  },
+  {
+    "path": "tool/package_window_tea_v3.py",
+    "sha256": "86998f4112c45d45cb7a50a86ed863963fd3b11bc70bbc8ab07b37030b04118f"
+  },
+  {
+    "path": "assets/images/friends/motion/fennec/rest.png",
+    "sha256": "c088ebee6447628a02b9fc16463a2c586148db8c07b3e1f68933d964cad05f09"
+  },
+  {
+    "path": "assets/images/friends/motion/squirrel/rest.png",
+    "sha256": "0a6109428e758e9202c88b1e5ac91e0070a48285ab26e962df6b9a4d3ae47ea3"
+  }
+]

@@ -1,4 +1,5 @@
 import java.util.Base64
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -12,6 +13,16 @@ plugins {
 val dartDefines = (project.findProperty("dart-defines") as? String).orEmpty()
     .split(',').mapNotNull { runCatching { String(Base64.getDecoder().decode(it)) }.getOrNull() }
 val verificationApp = dartDefines.contains("FOCUS_FRIEND_VERIFICATION=true")
+
+// Play upload key. android/key.properties is git-ignored; copy key.properties.example.
+// Without it, release builds fall back to the debug key, which Play rejects.
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) keystorePropertiesFile.inputStream().use { load(it) }
+}
+fun keystoreProperty(name: String): String =
+    keystoreProperties.getProperty(name)?.trim()?.takeIf { it.isNotEmpty() }
+        ?: throw GradleException("android/key.properties is missing '$name'.")
 
 android {
     namespace = "dev.jaewook.prototype.focus_friend_app"
@@ -28,10 +39,9 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = if (verificationApp) "dev.jaewook.prototype.focus_friend_app.verification"
-            else "dev.jaewook.prototype.focus_friend_app"
-        manifestPlaceholders["appLabel"] = if (verificationApp) "집중방 화면 검증" else "작은 집중방 Dev"
+        applicationId = if (verificationApp) "dev.jaewook.deskmate.verification"
+            else "dev.jaewook.deskmate"
+        manifestPlaceholders["appLabel"] = if (verificationApp) "Deskmate 검증" else "Deskmate"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -40,11 +50,27 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                keyAlias = keystoreProperty("keyAlias")
+                keyPassword = keystoreProperty("keyPassword")
+                storePassword = keystoreProperty("storePassword")
+                // Gradle does not expand "~", so resolve it against the home directory.
+                storeFile = file(keystoreProperty("storeFile")
+                    .replaceFirst(Regex("^~(?=/|$)"), System.getProperty("user.home")))
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = if (keystorePropertiesFile.exists()) {
+                signingConfigs.getByName("release")
+            } else {
+                logger.warn("android/key.properties not found: release build is signed with the debug key.")
+                signingConfigs.getByName("debug")
+            }
         }
     }
 }

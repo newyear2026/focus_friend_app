@@ -1,0 +1,49 @@
+{
+  "actionStart": [
+    {
+      "error": null,
+      "friend": "redpanda",
+      "rate": 1,
+      "time": 3.444106
+    },
+    {
+      "error": null,
+      "friend": "squirrel",
+      "rate": 1,
+      "time": 6.371453
+    },
+    {
+      "error": null,
+      "friend": "fennec",
+      "rate": 1,
+      "time": 6.370614
+    }
+  ],
+  "sip": [
+    {
+      "duration": 10,
+      "error": null,
+      "friend": "redpanda",
+      "paused": true,
+      "rate": 1,
+      "time": 5.25
+    },
+    {
+      "duration": 22,
+      "error": null,
+      "friend": "squirrel",
+      "paused": true,
+      "rate": 1,
+      "time": 11.6
+    },
+    {
+      "duration": 22,
+      "error": null,
+      "friend": "fennec",
+      "paused": true,
+      "rate": 1,
+      "time": 11.6
+    }
+  ],
+  "url": "http://127.0.0.1:8127/docs/design/rest-motion-comparison-v1/"
+}

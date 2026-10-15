@@ -1,0 +1,336 @@
+{
+  "@@locale": "en",
+  "appTitle": "Deskmate",
+  "@appTitle": {
+    "description": "App name shown in the task switcher. Kept as the brand name in every language."
+  },
+  "minutesShort": "{minutes} min",
+  "@minutesShort": {
+    "description": "A duration in whole minutes, e.g. on the 25/50 buttons.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursMinutes": "{hours} h {minutes} min",
+  "@hoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "errorStorage": "We couldn't check your saved room. Check again to continue safely.",
+  "errorAlerts": "We couldn't schedule the reminder. The timer will recover when you come back.",
+  "retryCheck": "Check again",
+  "restoringRoom": "Checking your saved room.",
+  "errorSoundPlay": "We couldn't play the sound. Please pick it again in sound settings.",
+  "errorSoundStop": "We couldn't turn the sound off. Please try again in sound settings.",
+  "errorSoundStatus": "We couldn't check the sound. Please pick it again.",
+  "stopTitle": "End this session?",
+  "stopSheetTitle": "End this\nsession?",
+  "@stopSheetTitle": {
+    "description": "Two-line heading beside the companion portrait in the stop confirmation sheet."
+  },
+  "stopFocusBody": "Time so far is saved as an early stop. It won't count toward unlocking items.",
+  "stopFocusSummary": "Time so far is saved as an early stop.",
+  "@stopFocusSummary": {
+    "description": "Main explanation in the focus stop confirmation sheet."
+  },
+  "stopFocusRewardsHint": "It won't count toward unlocking items.",
+  "@stopFocusRewardsHint": {
+    "description": "Secondary note below the early-stop explanation."
+  },
+  "stopOtherBody": "Trials and breaks aren't saved to your focus records.",
+  "keepGoing": "Keep going",
+  "endSession": "End",
+  "settingsTitle": "Settings",
+  "settingsSubtitle": "Shape a focus time that fits you",
+  "goalTitle": "Goal & promise",
+  "goalEmpty": "Set a goal and a D-day",
+  "soundDefaults": "Default sound",
+  "soundOff": "Sound is off",
+  "alertsTitle": "Focus complete alerts",
+  "alertsOn": "Alerts are on",
+  "alertsOff": "We'll let you know when time is up",
+  "keepScreenTitle": "Keep screen on during timer",
+  "keepScreenOn": "The screen stays on while you focus or rest",
+  "keepScreenOff": "Turns off as usual · the timer keeps going",
+  "collectionTitle": "Collected items",
+  "collectionCount": "{count, plural, =1{1 little gift} other{{count} little gifts}}",
+  "@collectionCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quickFocusTitle": "Quick focus",
+  "quickFocusStart": "Start {minutes}-minute focus",
+  "@quickFocusStart": {
+    "description": "Screen reader label for a quick focus button.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "quickFocusLabel": "{minutes} min focus",
+  "@quickFocusLabel": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "demoButton": "1-minute trial · look around without records or rewards",
+  "soundCreditsTile": "Sound sources & licenses",
+  "soundCreditsTitle": "Sound sources",
+  "soundCreditsIntro": "All three sounds are released under CC0 1.0. They ship with the app and play offline.",
+  "close": "Close",
+  "propPlant": "Little plant",
+  "propMug": "Warm mug",
+  "propLamp": "Cozy lamp",
+  "collectionHeading": "Filling the room, slowly",
+  "collectionSubtitle": "Three set spots, filled by your focus.",
+  "unlockFirstFocus": "First completed focus",
+  "unlockAfterMinutes": "{minutes} min of completed focus in total",
+  "@unlockAfterMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "collectionFootnote": "Items find their place on their own.\nEarly stops, 1-minute trials and breaks don't count toward unlocks.",
+  "captionReady": "Time to focus together",
+  "captionDemoDone": "Trial complete",
+  "captionRestDone": "Break complete",
+  "captionFocusDone": "Focus complete",
+  "captionPaused": "Paused",
+  "captionDemo": "1-minute trial · not recorded",
+  "captionRest": "Time to rest",
+  "captionFocusing": "{minutes}-minute focus",
+  "@captionFocusing": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "messageFirstPlant": "A gift for your first focus: a little plant is on the desk.",
+  "messageNewProps": "New item: {items}",
+  "@messageNewProps": {
+    "placeholders": {
+      "items": {
+        "type": "String"
+      }
+    }
+  },
+  "messageDemoDone": "Trial finished. Thanks for spending time together",
+  "messageRestDone": "Nicely rested. Let's ease back in",
+  "messageFocusDone": "Well done. Your focus is piling up on the desk",
+  "messagePaused": "It's okay to take a moment",
+  "messageRest": "A cup of tea, nice and slow",
+  "messageFocus": "Step by step, let's write it down together",
+  "randomTooltip": "Let your friend pick a time",
+  "deskTitle": "My desk",
+  "focusSound": "Focus sounds",
+  "todayFocus": "Today's focus",
+  "startFocus": "Start focus",
+  "confirm": "OK",
+  "startRest": "Start 5-min break",
+  "nextFocus": "Start next focus",
+  "resumeRest": "Resume break",
+  "resumeFocus": "Resume focus",
+  "pause": "Pause",
+  "endThisSession": "End this session",
+  "navDesk": "Desk",
+  "navRecords": "Records",
+  "navSettings": "Settings",
+  "recordsTitle": "Little by little",
+  "recordsSubtitle": "The days we focused together",
+  "thisMonth": "This month",
+  "focusedDays": "Focus days",
+  "dayCount": "{count, plural, =1{1 day} other{{count} days}}",
+  "@dayCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "previousMonth": "Previous month",
+  "nextMonth": "Next month",
+  "dayFocusDone": "focus done",
+  "today": "Today",
+  "dayFocusMinutes": "{minutes} min focused",
+  "@dayFocusMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "daySessions": "{count, plural, =1{1 session done} other{{count} sessions done}}",
+  "@daySessions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "recordsArchived": "We keep this day's total and stamp.\nDetails are kept for your last 100 sessions.",
+  "recordsFuture": "A day we'll fill together.",
+  "recordsEmpty": "No records yet.\nShall we start with 25 minutes?",
+  "sessionCompleted": "{minutes} min focus complete",
+  "@sessionCompleted": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "sessionStoppedShort": "Under 1 min · stopped early",
+  "sessionStopped": "{minutes} min · stopped early",
+  "@sessionStopped": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "goalDefaultMessage": "One small step today",
+  "@goalDefaultMessage": {
+    "description": "Pre-filled cheer message for a new goal."
+  },
+  "saveError": "Couldn't save. Please try again.",
+  "deleteGoalTitle": "Delete this goal?",
+  "deleteGoalBody": "Your focus records and collected items stay as they are.",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "deleteGoalTooltip": "Delete goal",
+  "back": "Back",
+  "saving": "Saving…",
+  "goalSaving": "Safely saving your changes",
+  "@goalSaving": {
+    "description": "Status shown while goal changes are waiting to be saved or being saved."
+  },
+  "saveGoal": "Save goal",
+  "goalSubtitle": "Add a small reason to today's focus",
+  "preview": "Preview",
+  "goalPlaceholderName": "My little goal",
+  "goalNameLabel": "Goal",
+  "goalNameHint": "e.g. Certification exam",
+  "goalNameRequired": "Please write a goal.",
+  "goalDateLabel": "Goal date",
+  "select": "Select",
+  "goalMessageLabel": "A note to myself",
+  "goalMessageHint": "Words of cheer for yourself",
+  "showOnHome": "Show on home",
+  "showOnHomeSubtitle": "Shows your goal small on the desk",
+  "goalChangeAnytime": "You can change your goal anytime",
+  "soundRainTitle": "Rain outside",
+  "soundRainSubtitle": "Raindrops tapping on the window",
+  "soundForestTitle": "Forest breeze",
+  "soundForestSubtitle": "Wind drifting through the leaves",
+  "soundFireTitle": "Warm fire",
+  "soundFireSubtitle": "A cozy, crackling fire",
+  "soundSheetSubtitle": "Pick a sound that suits your room",
+  "volume": "Volume",
+  "volumeValue": "Volume {percent}%",
+  "@volumeValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "mute": "Turn sound off",
+  "unmute": "Turn sound on",
+  "stopSoundAtEnd": "Turn sound off when focus ends",
+  "soundDone": "Done",
+  "soundPreviewError": "We couldn't play the sound. Please pick it again.",
+  "soundSaveError": "Couldn't save your settings. Please try again.",
+  "ambienceMorning": "Morning",
+  "ambienceDay": "Daytime",
+  "ambienceEvening": "Evening",
+  "ambienceNight": "Night",
+  "poseRestPaused": "pausing with a teacup",
+  "poseTea": "sipping tea",
+  "posePaused": "taking a short break",
+  "poseWriting": "writing in a notebook",
+  "poseWaiting": "waiting at the desk",
+  "propShortPlant": "plant",
+  "propShortMug": "mug",
+  "propShortLamp": "lamp",
+  "sceneLabel": "{ambience} desk. A red panda {pose}. Earned items: {props}",
+  "@sceneLabel": {
+    "description": "Screen reader description of the room illustration.",
+    "placeholders": {
+      "ambience": {
+        "type": "String"
+      },
+      "pose": {
+        "type": "String"
+      },
+      "props": {
+        "type": "String"
+      }
+    }
+  },
+  "navFriends": "Friends",
+  "friendsTitle": "Choose a friend",
+  "friendsSubtitle": "Find a friend and a room you love",
+  "friendCurrent": "In use",
+  "friendPreviewTitle": "Friend’s room",
+  "friendApply": "Join this friend",
+  "friendApplyHint": "Your friend and room change together",
+  "friendRestAnimated": "Rests with tea while looking out the window",
+  "friendAnimated": "Writing and tea-break animations",
+  "friendStill": "This friend joins you as a still illustration",
+  "friendRedpanda": "Red panda",
+  "friendPenguin": "Penguin",
+  "friendOtter": "Sea otter",
+  "friendSquirrel": "Squirrel",
+  "friendFennec": "Fennec fox",
+  "roomRedpanda": "A cozy evening desk",
+  "roomPenguin": "A snowy winter study",
+  "roomOtter": "A sunlit seaside room",
+  "roomSquirrel": "A green forest journal room",
+  "roomFennec": "A desert study at sunset",
+  "languageTitle": "Language",
+  "languageSheetTitle": "Language",
+  "languageSheetSubtitle": "Pick the language for this app",
+  "followSystem": "Use phone setting",
+  "languageNow": "Phone language: {language}",
+  "languageFallbackNote": "Phone languages not listed here show in English",
+  "languageChanged": "Language changed to {language}",
+  "languageNameKo": "Korean",
+  "languageNameEn": "English",
+  "languageNameJa": "Japanese",
+  "languageNameEs": "Spanish",
+  "@languageNow": {
+    "description": "Under 'Use phone setting': the language the phone would give this app.",
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "@languageChanged": {
+    "description": "Shown briefly after picking a language, written in the new language.",
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "@languageTitle": {
+    "description": "Settings row. Non-English languages keep the English word so lost users can find it."
+  }
+}

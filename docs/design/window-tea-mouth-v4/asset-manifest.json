@@ -1,0 +1,223 @@
+{
+  "mode": "built-in ImageGen",
+  "semanticEdits": "Corrected mouth contact, small cup tilt and connected in-between drawings.",
+  "mechanicalProcessing": "Whole-cel uniform registration; alpha cleanup of detached edge fragments; fixed book/pencil crop; atlas packing. No limb warps, painted repair or cup relocation in Python.",
+  "sourceBaseline": "../rest-motion-audit-v3/art/",
+  "outputs": [
+    "../../../assets/images/friends/motion/squirrel/rest.png",
+    "../../../assets/images/friends/motion/fennec/rest.png"
+  ],
+  "generation": [
+    {
+      "key": "fennec-lift-0",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-bf1ca404-cb9b-4b9b-a896-2bf1cf0966eb.png",
+      "prompt": "art/fennec-lift-0.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/fennec-lift-pair-0.png",
+      "retainedRaw": "art/fennec-lift-0-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "fennec-lift-1",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-56935e44-3709-4243-b266-3283232c2370.png",
+      "prompt": "art/fennec-lift-1.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/fennec-lift-pair-1.png",
+      "retainedRaw": "art/fennec-lift-1-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "fennec-lift-2",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-b3a574a3-d377-4f3b-9933-8fd86693f28b.png",
+      "prompt": "art/fennec-lift-2.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/fennec-lift-pair-2.png",
+      "retainedRaw": "art/fennec-lift-2-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "fennec-lift-3",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-7c440b3a-1a4e-49f5-8a12-57cf2e152515.png",
+      "prompt": "art/fennec-lift-3.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/fennec-lift-pair-3.png",
+      "retainedRaw": "art/fennec-lift-3-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "squirrel-lift-0",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-c1ed7eef-cc1c-4783-92c4-093dfcd439ec.png",
+      "prompt": "art/squirrel-lift-0.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/squirrel-lift-pair-0.png",
+      "retainedRaw": "art/squirrel-lift-0-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "squirrel-lift-1",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-5cdc8a13-827d-4171-beb1-b0c5a65f000c.png",
+      "prompt": "art/squirrel-lift-1.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/squirrel-lift-pair-1.png",
+      "retainedRaw": "art/squirrel-lift-1-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "squirrel-lift-2",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-0600136a-66ce-4028-b0b7-8963ea6b0168.png",
+      "prompt": "art/squirrel-lift-2.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/squirrel-lift-pair-2.png",
+      "retainedRaw": "art/squirrel-lift-2-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "candidate strip; selected cels only"
+    },
+    {
+      "key": "squirrel-tilt",
+      "source": "/Users/jaewook/.codex/generated_images/01a11ddf-3c0c-7460-ba1c-b2187e86fa2c/exec-cd1534bb-e93d-482a-8bde-ffa078a1f674.png",
+      "prompt": "art/squirrel-tilt.prompt.txt",
+      "reference": "/Users/jaewook/dev_app/focus_friend_app/docs/design/window-tea-mouth-v4/art/squirrel-tilt-pair.png",
+      "retainedRaw": "art/squirrel-tilt-rejected-raw.png",
+      "tool": "built-in ImageGen",
+      "status": "rejected"
+    },
+    {
+      "key": "squirrel-sip",
+      "source": "exec-ac3a3afc-b28f-45d9-b633-6d17c4a2b08f.png",
+      "retainedRaw": "art/squirrel-sip-raw.png",
+      "prompt": "art/squirrel-sip-correction.prompt.txt",
+      "status": "accepted frame16"
+    },
+    {
+      "key": "fennec-sip",
+      "source": "exec-c148eed9-d68d-4114-9ff5-d3e33c6b79d8.png",
+      "retainedRaw": "art/fennec-sip-raw.png",
+      "prompts": [
+        "art/fennec-sip-correction.prompt.txt",
+        "art/fennec-sip-base.prompt.txt"
+      ],
+      "status": "accepted frame16"
+    },
+    {
+      "key": "squirrel-tilt-corrected",
+      "source": "exec-4f6a554f-9c44-4518-ab86-00cda468a1ac.png",
+      "retainedRaw": "art/squirrel-tilt-raw.png",
+      "prompt": "art/squirrel-tilt-corrected.prompt.txt",
+      "status": "accepted frames17/18"
+    },
+    {
+      "key": "fennec-tilt-corrected",
+      "source": "exec-b5052292-c712-414f-aa73-9414f0b16ee8.png",
+      "retainedRaw": "art/fennec-tilt-raw.png",
+      "prompt": "art/fennec-tilt-corrected.prompt.txt",
+      "status": "accepted frames17/18"
+    },
+    {
+      "key": "fennec-tilt-first",
+      "source": "exec-e37e64e6-ca81-4d93-a504-08e05853c82f.png",
+      "retainedRaw": "art/fennec-tilt-rejected-raw.png",
+      "prompt": "art/fennec-tilt.prompt.txt",
+      "status": "rejected: raised cup toward nose"
+    },
+    {
+      "key": "squirrel-start",
+      "source": "exec-b933b1f4-d5be-4770-9705-b731780bd252.png",
+      "retainedRaw": "art/squirrel-start-raw.png",
+      "prompt": "art/squirrel-start.prompt.txt",
+      "status": "first cel used between old4/5; second unused: overshoots requested gap"
+    }
+  ],
+  "squirrel": {
+    "runtimeAsset": "assets/images/friends/motion/squirrel/rest.png",
+    "runtimeDimensions": [
+      1536,
+      2688
+    ],
+    "slots": 28,
+    "usedCels": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22,
+      25
+    ],
+    "unusedCels": [
+      3,
+      11,
+      12,
+      13,
+      14,
+      15,
+      19,
+      23,
+      24,
+      26,
+      27
+    ],
+    "registeredDrawings": "art/squirrel-cel-*.png",
+    "transforms": "art/squirrel-registration.json",
+    "mouthContactCel": 16,
+    "tiltCels": [
+      17,
+      18
+    ]
+  },
+  "fennec": {
+    "runtimeAsset": "assets/images/friends/motion/fennec/rest.png",
+    "runtimeDimensions": [
+      1536,
+      2688
+    ],
+    "slots": 28,
+    "usedCels": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      16,
+      17,
+      18,
+      19,
+      20,
+      23,
+      24,
+      25,
+      26
+    ],
+    "unusedCels": [
+      3,
+      4,
+      11,
+      12,
+      13,
+      14,
+      15,
+      21,
+      22,
+      27
+    ],
+    "registeredDrawings": "art/fennec-cel-*.png",
+    "transforms": "art/fennec-registration.json",
+    "mouthContactCel": 16,
+    "tiltCels": [
+      17,
+      18
+    ]
+  }
+}

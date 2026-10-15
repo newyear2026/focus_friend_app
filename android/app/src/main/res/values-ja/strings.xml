@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_complete">集中と休憩の完了</string>
+    <string name="alert_demo_done">1分お試しが終わりました</string>
+    <string name="alert_rest_done">休憩が終わりました</string>
+    <string name="alert_focus_done">集中時間が終わりました</string>
+    <string name="alert_body">小さな部屋に戻って、レッサーパンダに会いましょう。</string>
+    <string name="channel_sound">集中サウンド</string>
+    <string name="sound_rain">窓の外の雨</string>
+    <string name="sound_forest">森の風</string>
+    <string name="sound_fire">あたたかい薪</string>
+    <string name="sound_playing">集中サウンドを再生中</string>
+    <string name="sound_stop">サウンドをオフ</string>
+</resources>

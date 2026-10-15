@@ -1,0 +1,21 @@
+Use case: identity-preserve.
+Asset type: a registered TWELVE-CEL rough motion sheet, prior to drawing the 24-cel final animation for a Flutter focus app.
+Input Image 1: canonical character identity, camera and square-canvas registration reference. Image 2: approved THREE key poses, left ready / middle writing / right returned, used ONLY for the small connected forearm gesture.
+Primary request: draw TWELVE successive distinct complete character cels of this SAME red panda gently beginning to write, writing two small strokes, and returning the pencil to ready. Preserve the canonical large brown eyes, adorable face, orange/cream fur spots, pink cheeks, dark green overalls, gold buttons and striped tail on viewer-left. Hand-painted textured 2D cel art, clean dark contours, source-quality detail.
+Layout: precisely FOUR columns by THREE rows of equal SQUARE cells, 1448x1086 pixels, each 362x362. No gutters or dividers, no text, titles, labels, arrows, motion marks or extra objects. True transparent background.
+Registration in every cell: use Image1 square framing, not Image2's tight framing. Ears top around y=0.128; tail left around x=0.02; head centered around x=0.60,y=0.39; notebook cover spans x=0.39..0.89 and y=0.80..0.91. Keep identical scale, camera, head position, tail, right resting paw, notebook corners, notebook spine and page-line artwork in ALL cells. No head rotation, no head/body growth, no bouncing notebook. Every cell contains the WHOLE connected character with two attached arms, pencil securely held by left paw, and open notebook.
+Motion is deliberately small and readable: source-sized paw moves about 0.025 cell width overall. Left forearm, elbow and shoulder follow as a single anatomically continuous drawing; never attach an isolated hand on top of a still torso.
+In row-major order:
+01 ready, pencil tip just above left page at the source contact point.
+02 tip eases downward, wrist starts bending.
+03 pen touches page, shoulder softly settles.
+04 begin short curved stroke to viewer-right.
+05 continue that curve, paw and pencil travel together.
+06 finish first curve, wrist shifts gently.
+07 start second short downstroke slightly farther right.
+08 finish second curve at rightmost contact point, about 8 pixels farther right than start.
+09 pencil gently lifts, elbow and shoulder follow.
+10 raised pencil moves halfway back toward initial location.
+11 pencil almost back at ready, wrist relaxed.
+12 return almost exactly to frame01 pose for a seamless loop.
+Do not move the right paw. Eyes remain open and face stays exactly consistent. No thinking, page turning, blink, redesign, detached arm, extra hands, extra pencils, motion blur or generated checkerboard. Preserve warm original artwork and true alpha; exactly twelve consecutive hand-drawn frames.

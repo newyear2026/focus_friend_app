@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-15",
+  "previewOnly": false,
+  "assets": [
+    {
+      "friend": "fennec",
+      "period": "day",
+      "file": "assets/images/friends/ambience/fennec/day.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "ff6f99b7215c6708c41ed134f9898c673fbf80afc13176d841300ead81b2c555",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/fennec-day.prompt.txt"
+    },
+    {
+      "friend": "fennec",
+      "period": "evening",
+      "file": "assets/images/friends/ambience/fennec/evening.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "dbc3bd15f6e5e00e9ab762e27e0e1ace8ba29b8ccd9f7705cf8f10de0a42a6cd",
+      "mode": "existing source copied unchanged",
+      "source": "assets/images/friends/fennec-scene.png",
+      "prompt": null
+    },
+    {
+      "friend": "fennec",
+      "period": "morning",
+      "file": "assets/images/friends/ambience/fennec/morning.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "6d5b3e2ba4a9fca75de2a6893375c7d4e8bdf791f7b8b023a79f79b448689f39",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/fennec-morning.prompt.txt"
+    },
+    {
+      "friend": "fennec",
+      "period": "night",
+      "file": "assets/images/friends/ambience/fennec/night.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "0bcd5c9549a94d8662a4cf5f9d1766f81190b905727e67f5957452562da400da",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/fennec-night.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "period": "day",
+      "file": "assets/images/friends/ambience/otter/day.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "3b07fec8c656599837879519f0a7907a2e4c1d4c38468a86b07927de875c0589",
+      "mode": "existing source copied unchanged",
+      "source": "assets/images/friends/motion/otter/room.png",
+      "prompt": null
+    },
+    {
+      "friend": "otter",
+      "period": "evening",
+      "file": "assets/images/friends/ambience/otter/evening.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "4013286ebad8e6b217966e434badb707887a189482b3370679eab26f610782a2",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/otter-evening.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "period": "morning",
+      "file": "assets/images/friends/ambience/otter/morning.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "71bac20a0655655c504b8c2622aba0b97c8c898ee4e9ae30e30f9cb467f81816",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/otter-morning.prompt.txt"
+    },
+    {
+      "friend": "otter",
+      "period": "night",
+      "file": "assets/images/friends/ambience/otter/night.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "620ac9ce4fceb8cce92c8cb2c46c9b9096427df08bc1485b92837f9581678fc1",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/otter-night.prompt.txt"
+    },
+    {
+      "friend": "penguin",
+      "period": "day",
+      "file": "assets/images/friends/ambience/penguin/day.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "747de103f8c86af691c4c2117426b87afca36a3a8d26482e301a6f1fea710d59",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/penguin-day.prompt.txt"
+    },
+    {
+      "friend": "penguin",
+      "period": "evening",
+      "file": "assets/images/friends/ambience/penguin/evening.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "c4e9ec965990c5359f087efdd857ff8904ee4a8b7834b71114455e0312a256ce",
+      "mode": "existing source copied unchanged",
+      "source": "assets/images/friends/motion/penguin/room.png",
+      "prompt": null
+    },
+    {
+      "friend": "penguin",
+      "period": "morning",
+      "file": "assets/images/friends/ambience/penguin/morning.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "735b338c2b77cdcfd41a0c50849a32c492a1edf66177302c2167d15baf169bc5",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/penguin-morning.prompt.txt"
+    },
+    {
+      "friend": "penguin",
+      "period": "night",
+      "file": "assets/images/friends/ambience/penguin/night.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "cdda8735b6d04090ba57dffd5ebffbd13ff64578596318f8a193757cc18930b0",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/penguin-night.prompt.txt"
+    },
+    {
+      "friend": "squirrel",
+      "period": "day",
+      "file": "assets/images/friends/ambience/squirrel/day.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "83605f894117a4619f43abeb7ffb16e7ff08547eccc3dfef7170b1b1a2b86179",
+      "mode": "existing source copied unchanged",
+      "source": "assets/images/friends/squirrel-scene.png",
+      "prompt": null
+    },
+    {
+      "friend": "squirrel",
+      "period": "evening",
+      "file": "assets/images/friends/ambience/squirrel/evening.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "ec5c49485cd0ef1b0d3b2938581f8546cbe240f255f8c8b2f4591d10f0d164df",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/squirrel-evening.prompt.txt"
+    },
+    {
+      "friend": "squirrel",
+      "period": "morning",
+      "file": "assets/images/friends/ambience/squirrel/morning.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "3289ef91e31920a518f2e7dbb218e4d551e2ad41dea2b57c00fc5b1a769ad469",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/squirrel-morning.prompt.txt"
+    },
+    {
+      "friend": "squirrel",
+      "period": "night",
+      "file": "assets/images/friends/ambience/squirrel/night.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "b185c9bc23dcdcb4f22668d2a0b1a25a463da0bb3e5a2e1ad7c68a9d5bc2003e",
+      "mode": "built-in ImageGen",
+      "source": null,
+      "prompt": "docs/design/friend-time-of-day-implementation/squirrel-night.prompt.txt"
+    }
+  ]
+}

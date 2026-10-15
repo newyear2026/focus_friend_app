@@ -1,0 +1,12 @@
+{
+  "asset": "squirrel-evening",
+  "mode": "builtin-image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/squirrel-scene.png",
+  "approved_reference": "docs/design/friend-time-of-day-concepts-v2/squirrel.png",
+  "output": "assets/images/friends/ambience/squirrel/evening.png",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14036-94d4-7921-bc0b-0a206947725f/exec-be51c0ab-29ce-4768-b38a-2816679e2c8d.png",
+  "width": 853,
+  "height": 1844,
+  "visual_review": "Passed: original composition, source character scale/identity and furnishings preserved. Coral/gold horizon and lavender sky, golden leaf-edge highlights over green/cool dusk forest, same creek reflections. Warm lamp and lantern. No moon/stars, header/panels or new decorations."
+}

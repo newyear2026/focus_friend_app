@@ -1,0 +1,6 @@
+Use case: style-transfer.
+Asset type: ONE transparent tabletop plant sprite for a 2D study room.
+Image 1 EDIT TARGET is the old plant. Image 2 is the approved red panda STYLE REFERENCE. Image 3 is the new matching room STYLE/PALETTE REFERENCE.
+Restyle ONLY image 1: Same small terracotta potted pothos plant with saucer. Simplify glossy variegated leaves into rounded bold green leaf shapes with only one painted highlight/shadow and simple veins. Maintain same three-quarter view and overall silhouette, orange terracotta pot, same height/width ratio.
+Use clearly defined warm dark-brown hand-drawn cartoon outlines, matte gouache/colored-pencil fills, subtle fine paper grain and simple 2-tone shading matching image 2 and image 3. Cozy children's storybook illustration. Match line thickness proportionally to the panda, keep recognizable form, less realistic/3D detail. Preserve original full-object crop proportions and angle so replacement fits existing asset bounds.
+Object only, complete object visible, tight framing with minimal empty padding, genuinely transparent alpha background. No room, no table, no panda, no extra objects, no floor/cast shadow outside object, no words, no panel or border.

@@ -1,0 +1,180 @@
+{
+  "method": "one fixed scale per source sheet and rigid whole-cel translation",
+  "originals": [
+    {
+      "frame": 0,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 0.0
+    },
+    {
+      "frame": 1,
+      "scale": 1.0510204081632653,
+      "offset": [
+        47,
+        47
+      ],
+      "registrationError": 41.42677788877789
+    },
+    {
+      "frame": 2,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 23.00644821844822
+    },
+    {
+      "frame": 3,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 39.57341292041292
+    },
+    {
+      "frame": 4,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        48
+      ],
+      "registrationError": 55.6618667998668
+    },
+    {
+      "frame": 5,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 62.4761302031302
+    },
+    {
+      "frame": 6,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 50.33222644022644
+    },
+    {
+      "frame": 7,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        48
+      ],
+      "registrationError": 62.822120213120215
+    },
+    {
+      "frame": 8,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 21.452269397269397
+    },
+    {
+      "frame": 9,
+      "scale": 1.0510204081632653,
+      "offset": [
+        47,
+        47
+      ],
+      "registrationError": 44.150666666666666
+    },
+    {
+      "frame": 10,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 24.10134532134532
+    },
+    {
+      "frame": 11,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 42.49475357975358
+    },
+    {
+      "frame": 12,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 53.716039960039964
+    },
+    {
+      "frame": 13,
+      "scale": 1.0510204081632653,
+      "offset": [
+        47,
+        47
+      ],
+      "registrationError": 60.23446553446553
+    },
+    {
+      "frame": 14,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        46
+      ],
+      "registrationError": 56.502889443889444
+    },
+    {
+      "frame": 15,
+      "scale": 1.0510204081632653,
+      "offset": [
+        46,
+        47
+      ],
+      "registrationError": 58.15399034299034
+    }
+  ],
+  "inbetweens": [],
+  "bridgePairs": [
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      11,
+      14
+    ]
+  ],
+  "stage": [
+    512,
+    512
+  ],
+  "runtimeCel": [
+    384,
+    384
+  ],
+  "runtimeGrid": [
+    4,
+    4
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "asset": "fennec/morning",
+  "mode": "built-in image_gen",
+  "use_case": "lighting-weather",
+  "source": "assets/images/friends/fennec-scene.png",
+  "lighting_reference": "docs/design/friend-time-of-day-concepts-v2/fennec.png",
+  "lighting_reference_region": "first column only",
+  "generated_original": "/Users/jaewook/.codex/generated_images/01a14035-d609-79b0-8353-85486104bfe1/exec-0f2a6338-a6f7-4dbc-a572-d623339b5911.png",
+  "output": "assets/images/friends/ambience/fennec/morning.png",
+  "dimensions": {
+    "width": 853,
+    "height": 1844
+  },
+  "inspection": {
+    "visual_review": "Passed: pearl-blue sky with soft pale peach/gold dawn and low sun, delicate dune haze, creamy dunes and cool shadows, subdued lamp, gentle golden wood daylight. No outdoor stars or moon, no purple sunset band.",
+    "invariants": "Source character pose, size, huge peach ears, fine glasses, half-lidded brown eyes, cream/sandy fur and connected writing paws/notebook preserved. Window/furniture/props/desert landmarks visually registered.",
+    "material_issues": []
+  }
+}

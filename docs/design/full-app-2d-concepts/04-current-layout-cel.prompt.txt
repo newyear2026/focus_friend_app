@@ -1,0 +1,31 @@
+Generator: built-in image_gen
+Source: docs/design/unified-room-style/home-day.png
+Output: 04-current-layout-cel.png
+Scope: Static concept; preserve current layout and restyle illustration rendering only.
+
+Use case: style-transfer / ui-mockup
+EDIT THE SINGLE ATTACHED SCREENSHOT of the existing Korean mobile app 작은 집중방. The user specifically wants to see THEIR CURRENT APP DESIGN converted to a 2D animation look. This is a conservative rendering-style edit, NOT a new app concept or layout redesign. Output ONE complete app screen, same 786 x 1572 portrait dimensions/aspect ratio as the reference, sharp and high resolution. No comparison panel or concept board.
+
+Input image role: exact edit target. Preserve its layout, element coordinates, relative sizes, typography, colors, spacing, Korean text, white/cream empty space, central room composition, all control shapes and bottom navigation placements. The current reference is authoritative, ignore any other prior generated mockups.
+
+ONLY change the illustration rendering of the central room, the red panda, its objects and the three bottom navigation icon illustrations to a visibly FLAT, CLEAN, HAND-DRAWN 2D CEL ANIMATION STYLE. 
+- Replace all painterly grain, fur texture, realistic lighting, wood grain and smoothly modeled 3D-looking material shading with SOLID FLAT COLOR SHAPES.
+- Each object gets base color plus at most ONE hard-edged shadow color. NO gradients, no glow, no ambient occlusion, no soft shadow rendering, no realistic volume or gloss.
+- Crisp continuous uniform dark-brown contour lines, simplified inner detail, animation-background line art. Think a clean paused frame of a charming original 2D cartoon, not a rendered dollhouse or textured storybook.
+- Keep the isometric cutaway room VIEW ANGLE and exact room silhouette! 2D here means flat drawing / cel animation rendering, not changing the camera to front-on. Preserve wall/window/desk geometry and object positions precisely.
+- Keep shelf at upper left with books and trailing plants, big window upper right, framed prints, wood desk at center, large plant at right, striped rug front-left, teal round cushion front-right, floorboards and existing warm palette. Simplify each plant leaf to crisp color shapes. Wood remains honey orange but completely flat with just a few drawn seams.
+- Preserve the same small orange RED PANDA writing behind the desk at the EXACT reference scale and position. Preserve full original face, large round brown eyes with white sclera/highlights, white brows/cheeks, ears, striped tail, forest-green outfit and gentle expression. Cleanly redraw it with smooth cel colors instead of textured fur. Do NOT enlarge it into a hero portrait. Do not change the eyes into dots or put new costume on it.
+- Restyle bottom desk/calendar/gear icon artwork with the identical flat cel coloring and clean contours, while retaining the same subjects, icon sizes, selected pale-yellow backing and label placement.
+
+ALL UI OUTSIDE ILLUSTRATIONS MUST STAY THE SAME:
+cream #FFFEFA screen surface, dark navy #07143C headings and outlines, blue-violet #4752CE secondary copy.
+Top: "나의 책상" large bold left, mute icon and sun/"낮" right. Subtitle "오늘도 같이 시작해요".
+Room artwork occupying the same central bounds as reference with the same generous white space.
+Below: "오늘의 집중 · 0분" same size/hierarchy.
+Two existing ticket-shaped controls with side notches: left pale yellow selected "25분" and check, right cream "50분".
+Shuffle action exact text "랫서팬더가 골라주기".
+Large white/cream rounded outlined CTA "집중 시작" with navy play circle on the right and existing navy bottom edge.
+Bottom three tabs with exact labels "책상", "기록", "설정". Selected desk label green, others muted.
+Do not add feature cards, callouts, titles, explanatory text, decorative stickers, extra animals, badges, a timer number, a different scene, or any new functionality. Keep existing copy in readable accurate Korean. App content only; no OS status bar, device bezel, notch, browser chrome or presentation frame.
+Hard priority: identical app design and composition, with obviously flatter TWO-DIMENSIONAL ANIMATION ILLUSTRATIONS. The change should look like replacing only the art assets with production-ready traditional cel art.
+

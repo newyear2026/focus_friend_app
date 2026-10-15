@@ -92,7 +92,7 @@ class FocusSoundService : Service() {
         audioManager = getSystemService(AudioManager::class.java)
         if (Build.VERSION.SDK_INT >= 26) {
             getSystemService(NotificationManager::class.java).createNotificationChannel(
-                NotificationChannel(CHANNEL, "집중 사운드", NotificationManager.IMPORTANCE_LOW))
+                NotificationChannel(CHANNEL, AppLanguage.localized(this).getString(R.string.channel_sound), NotificationManager.IMPORTANCE_LOW))
         }
         mediaSession = MediaSession(this, "FocusAmbience").apply {
             setCallback(object : MediaSession.Callback() {
@@ -173,7 +173,8 @@ class FocusSoundService : Service() {
     }
 
     private fun notification(id: String): Notification {
-        val title = when (id) { "forest" -> "숲의 바람"; "fire" -> "따뜻한 장작"; else -> "창밖의 비" }
+        val text = AppLanguage.localized(this)
+        val title = text.getString(when (id) { "forest" -> R.string.sound_forest; "fire" -> R.string.sound_fire; else -> R.string.sound_rain })
         val open = PendingIntent.getActivity(this, ID, Intent(this, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val stop = PendingIntent.getService(this, ID, Intent(this, FocusSoundService::class.java).setAction("STOP"), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val builder = if (Build.VERSION.SDK_INT >= 26) Notification.Builder(this, CHANNEL) else {
@@ -181,8 +182,8 @@ class FocusSoundService : Service() {
             Notification.Builder(this)
         }
         return builder.setSmallIcon(android.R.drawable.ic_media_play).setContentTitle(title)
-            .setContentText("집중 사운드 재생 중").setContentIntent(open).setOngoing(true)
-            .addAction(Notification.Action.Builder(android.R.drawable.ic_media_pause, "소리 끄기", stop).build())
+            .setContentText(text.getString(R.string.sound_playing)).setContentIntent(open).setOngoing(true)
+            .addAction(Notification.Action.Builder(android.R.drawable.ic_media_pause, text.getString(R.string.sound_stop), stop).build())
             .setStyle(Notification.MediaStyle().setMediaSession(mediaSession!!.sessionToken).setShowActionsInCompactView(0)).build()
     }
 

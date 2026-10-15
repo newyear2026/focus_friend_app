@@ -1,0 +1,48 @@
+{
+  "asset_path": "/Users/jaewook/dev_app/focus_friend_app/assets/images/ui/session-stop-book-frame.png",
+  "original_generated_path": "/Users/jaewook/.codex/generated_images/01a13cb0-6a75-71a3-a7d1-3c157964f940/exec-7fdab625-0dcb-4b9a-a7cc-18b2228907cd.png",
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "pixel_dimensions": {
+    "width": 1340,
+    "height": 1174
+  },
+  "mode": "RGBA",
+  "scale": 3.0,
+  "proposed_center_slice_pixels": {
+    "left": 315,
+    "top": 310,
+    "right": 1104,
+    "bottom": 1043
+  },
+  "proposed_center_slice_dart": "Rect.fromLTRB(315, 310, 1104, 1043)",
+  "alpha_samples": {
+    "outside_top_left": 0,
+    "outside_bottom_right": 0,
+    "center": 0
+  },
+  "center_opening_inspected_rect_pixels": [
+    320,
+    300,
+    1100,
+    1024
+  ],
+  "center_opening_alpha_extrema": [
+    0,
+    1
+  ],
+  "notes": [
+    "Copied original generated PNG without editing or resizing.",
+    "Center and outside sample points are alpha 0. A few effectively invisible alpha-1 antialias residue pixels exist in the inspected opening; no opaque central fill.",
+    "Keep bookmark, fold and rounded corners in nonstretchable edge regions.",
+    "Contains only illustrated paper frame, teal bookmark, gold leaf embroidery, and page fold. No character, text, buttons, or room.",
+    "Implementation divides pixel slice coordinates by image scale because Flutter centerSlice uses logical image units."
+  ],
+  "implementation_scale": 4.0,
+  "flutter_center_slice_logical_units": {
+    "left": 78.75,
+    "top": 77.5,
+    "right": 276.0,
+    "bottom": 260.75
+  }
+}

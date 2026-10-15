@@ -1,0 +1,16 @@
+{
+  "normal_history_unchanged": true,
+  "totals_unchanged": true,
+  "rewards_unchanged": true,
+  "active_after": null,
+  "completed_ms": 300000,
+  "completed_count": 1,
+  "history_count": 3,
+  "paused_character_pixels_identical": true,
+  "paused_comparison_crop": [
+    300,
+    600,
+    670,
+    900
+  ]
+}

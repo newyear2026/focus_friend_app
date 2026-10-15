@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>창밖 보며 차 한 잔 · 사막여우와 다람쥐</title>
+<style>
+@font-face{font-family:Pretendard;src:url('/assets/fonts/PretendardVariable.ttf');font-weight:100 900}*{box-sizing:border-box}body{margin:0;background:#fff8e9;color:#352724;font-family:Pretendard,system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:32px 22px 50px}h1{font-size:29px;margin:0 0 12px;letter-spacing:-1px}p{line-height:1.7;color:#756458;margin:8px 0}.actions{display:flex;gap:10px;margin:22px 0}button{font:inherit;font-weight:700;border:1px solid #d9c8ad;background:#fffaf0;color:#352724;border-radius:12px;padding:12px 18px;min-height:48px;cursor:pointer}button:first-child{background:#ffc16f;border-color:#ffc16f}button:focus-visible,a:focus-visible{outline:3px solid #805c38;outline-offset:3px}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:26px}h2{font-size:22px;margin:0 0 13px}video{width:100%;aspect-ratio:490/462;display:block;border-radius:18px;background:#473628}.note{font-size:14px}.footer{margin-top:24px;border-top:1px solid #e4d7c3;padding-top:18px}a{color:#865324}details{margin-top:28px}summary{cursor:pointer;padding:14px 0;font-weight:700}.screens{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px}.screens img{width:100%;border-radius:14px}@media(max-width:680px){h1{font-size:25px}.gallery{grid-template-columns:1fr}.screens{gap:12px}main{padding-top:24px}}
+</style>
+<main>
+<h1>창밖 보며 차 한 잔</h1>
+<p>사막여우와 다람쥐가 풍경을 바라보며 천천히 쉬어요.<br>잔을 감싸고 쉬기 → 한 모금 → 잔을 내리고 여유롭게 머무르기.</p>
+<p class="note">22초에 한 번 차를 마시는 전체 반복 영상이에요. 처음에는 창밖을 바라보는 시간이 길어요.</p>
+<div class="actions"><button id="restart">처음부터 함께 보기</button><button id="pause" aria-pressed="false">함께 일시정지</button></div>
+<div class="gallery">
+<section><h2>사막여우 · 노을 지는 창가</h2><video src="fennec-window-tea.mp4" autoplay loop muted playsinline controls preload="auto" aria-label="사막여우 창밖을 보며 차 마시는 휴식"></video><p class="note">둥근 안경 너머로 풍경을 보고, 두 손으로 잔을 들어요.</p></section>
+<section><h2>다람쥐 · 숲이 보이는 창가</h2><video src="squirrel-window-tea.mp4" autoplay loop muted playsinline controls preload="auto" aria-label="다람쥐 창밖을 보며 차 마시는 휴식"></video><p class="note">도토리 모자를 쓴 채 숲을 바라보다 따뜻한 차를 마셔요.</p></section>
+</div>
+<details><summary>실제 앱의 휴식 화면 보기</summary><div class="screens"><img src="fennec-evening-app.png" alt="사막여우 실제 앱 휴식 화면"><img src="squirrel-day-app.png" alt="다람쥐 실제 앱 휴식 화면"></div></details>
+<p class="footer note">앱에서는 친구 → 사막여우 또는 다람쥐 → 적용 후 휴식 시간에 볼 수 있어요. 친구 미리보기에서도 이 동작이 보여요.<br><a href="../penguin-otter-motion-v1/">펭귄·해달 모션 보기</a> · <a href="README.md">제작 기록</a></p>
+</main>
+<script>
+const videos=[...document.querySelectorAll('video')],pause=document.querySelector('#pause');
+document.querySelector('#restart').addEventListener('click',()=>{videos.forEach(v=>{v.currentTime=0;v.play().catch(()=>{})});pause.textContent='함께 일시정지';pause.setAttribute('aria-pressed','false')});
+pause.addEventListener('click',()=>{const held=pause.getAttribute('aria-pressed')==='true';videos.forEach(v=>{if(held)v.play().catch(()=>{});else v.pause()});pause.setAttribute('aria-pressed',String(!held));pause.textContent=held?'함께 일시정지':'함께 이어보기'});
+</script>
+</html>

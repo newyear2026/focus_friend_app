@@ -1,0 +1,29 @@
+Use case: infographic-diagram
+Asset type: one illustrated explanatory board showing how character images are selected, previewed, applied and composed inside the Korean Focus Friend app.
+Primary request: explain the IMAGE USAGE STRUCTURE in one clear visual. The user already saw individual app screen mockups and now wants to understand how the images are used and connected. This board is a proposed design explanation, not a working-app screenshot, and not three alternative designs.
+Input images: reference 1 = approved five-character selection screen; reference 2 = selected glasses-wearing fennec room preview; reference 3 = fennec applied home with character picker avatar, timer and buttons; reference 4 = selected bookish fennec character identity. Use these actual visual references and the same warm hand-drawn 2D animated style. Keep the round brown glasses, very large broad peach-lined triangular ears, sandy fur and cream face/chest of the chosen fennec. Do not substitute another animal.
+Target dimensions: one large landscape 2560 x 1920 explanatory image, aspect ratio 4:3. Two clearly separated horizontal sections, generous margins, readable Korean text and a consistent visual scale. Warm ivory-paper background, dark brown typography, amber arrows and soft sage supporting accents. Polished designer presentation with real illustrated source imagery, no placeholder boxes, no code listing, no QR codes, no watermark. Do not use physical phone bodies, device bezels, status bars or browser frames.
+Top title, exact text: "캐릭터 이미지는 이렇게 사용돼요"
+One short subtitle, exact text: "친구를 고르면 방과 캐릭터가 함께 바뀌어요"
+
+UPPER SECTION: clear left-to-right USER FLOW, four evenly spaced stages connected by large simple amber arrows.
+Stage heading "친구 선택". Under it show a readable miniature of reference 1, five actual animal-room thumbnail cards, chosen fennec checked, bottom "미리보기" button. Keep the source's warm cream selection UI. A short label below: "마음에 드는 친구를 골라요".
+Stage heading "방 미리보기". Under it show reference 2's fennec room preview with the cream lower area and clear "이 친구와 함께하기" action. A short label below: "방과 캐릭터를 크게 확인해요".
+Stage heading "내 책상에 적용". Under it show reference 3's fennec home with its avatar picker entry, prominent "25:00" and "집중 시작". A short label below: "선택한 친구가 홈에 나타나요".
+Stage heading "집중하고 쉬기". Under it show two compact illustrated views of the SAME fennec at the SAME desk: one writing in the open notebook, labeled "집중 · 필기"; one holding a warm cup with both connected paws and relaxing, labeled "휴식 · 차 마시기". These are proposed pose examples, not a claim that motion assets already exist. A small curved connecting arrow can indicate switching states. A short label below: "상태에 맞는 동작을 보여줘요".
+Do not cram full tiny UI copy into these miniatures. Keep the important headings, timer and primary actions readable; simplify unneeded tiny details.
+
+LOWER SECTION: explain HOW THE SCREEN IS BUILT using actual drawn components and a visual plus/equal composition.
+Section heading, exact text: "한 화면은 이렇게 겹쳐져요"
+Arrange four clearly separated illustrated component examples with plus signs between, followed by an equals sign and a slightly larger final composed-home example. Use the same fennec room throughout:
+1. Label "배경 그림". Show the desert sunset window, wall and wooden desk WITHOUT any character, timer or buttons. Caption "방 · 창밖 · 책상".
+2. Label "캐릭터 동작". Show the selected glasses-wearing fennec as connected upper-body artwork with a pencil/open notebook, plus two tiny registered whole-character pose thumbnails behind it suggesting a sequence. Keep head/shoulders/arms visibly connected, never disassembled limbs. Caption "기본 · 필기 · 휴식".
+3. Label "앞쪽 소품". Show the book stack, leaf cup, plant and lamp as separate small drawn prop pieces, with no background or character. Caption "책 · 컵 · 조명".
+4. Label "타이머와 버튼". Show clean large "25:00" and an amber "집중 시작" button as the live interface component on a very subtle empty frame. Caption "시간과 버튼은 앱에서 동작".
+5. Final label "내 책상". Show a small complete composed home with room, selected fennec, foreground props and timer UI together, matching reference 3.
+Use very light neutral or lightly gridded demonstration surfaces only for separated art components; these are explanatory areas on this board, not app cards and not actual transparent exports. Do not add technical filenames, JSON, programming terms, fake prices or extra user features.
+
+At the bottom, exact short explanatory sentence: "배경은 유지하고, 연결된 자세 그림을 순서대로 재생해요"
+Smaller but still readable footer, exact text: "앱 적용 전 구조 설명 시안"
+Avoid overly long text. Make every label spelled correctly and all content stay inside the canvas. The hierarchy should make the four-step usage flow immediately clear, then the background/character/props/UI composition clear at a glance. This is ONE coherent structure explanation board.
+

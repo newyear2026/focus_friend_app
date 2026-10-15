@@ -1,0 +1,22 @@
+[
+  {
+    "version": "before",
+    "friend": "squirrel",
+    "fullAppLoopBoundaryIdentical": true
+  },
+  {
+    "version": "before",
+    "friend": "fennec",
+    "fullAppLoopBoundaryIdentical": true
+  },
+  {
+    "version": "after",
+    "friend": "squirrel",
+    "fullAppLoopBoundaryIdentical": true
+  },
+  {
+    "version": "after",
+    "friend": "fennec",
+    "fullAppLoopBoundaryIdentical": true
+  }
+]

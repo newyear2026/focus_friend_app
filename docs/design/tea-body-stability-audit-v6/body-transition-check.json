@@ -1,0 +1,152 @@
+[
+  {
+    "friend": "squirrel",
+    "sipHoldStartSeconds": 9,
+    "sipHoldEndSeconds": 10.5,
+    "sipHoldFramesIdentical": true,
+    "transitions": [
+      {
+        "time": 8.5,
+        "fromCel": 10,
+        "toCel": 17,
+        "changedBounds": [
+          44,
+          67,
+          372,
+          383
+        ]
+      },
+      {
+        "time": 8.75,
+        "fromCel": 17,
+        "toCel": 18,
+        "changedBounds": [
+          43,
+          67,
+          372,
+          376
+        ]
+      },
+      {
+        "time": 9.0,
+        "fromCel": 18,
+        "toCel": 16,
+        "changedBounds": [
+          43,
+          67,
+          372,
+          376
+        ]
+      },
+      {
+        "time": 10.5,
+        "fromCel": 16,
+        "toCel": 18,
+        "changedBounds": [
+          43,
+          67,
+          372,
+          376
+        ]
+      },
+      {
+        "time": 10.75,
+        "fromCel": 18,
+        "toCel": 17,
+        "changedBounds": [
+          43,
+          67,
+          372,
+          376
+        ]
+      },
+      {
+        "time": 11.0,
+        "fromCel": 17,
+        "toCel": 10,
+        "changedBounds": [
+          44,
+          67,
+          372,
+          383
+        ]
+      }
+    ],
+    "source": "fresh actual FocusFriendApp capture in this audit"
+  },
+  {
+    "friend": "fennec",
+    "sipHoldStartSeconds": 9,
+    "sipHoldEndSeconds": 10.5,
+    "sipHoldFramesIdentical": true,
+    "transitions": [
+      {
+        "time": 8.5,
+        "fromCel": 10,
+        "toCel": 17,
+        "changedBounds": [
+          69,
+          18,
+          391,
+          374
+        ]
+      },
+      {
+        "time": 8.75,
+        "fromCel": 17,
+        "toCel": 18,
+        "changedBounds": [
+          74,
+          21,
+          388,
+          367
+        ]
+      },
+      {
+        "time": 9.0,
+        "fromCel": 18,
+        "toCel": 16,
+        "changedBounds": [
+          74,
+          19,
+          388,
+          367
+        ]
+      },
+      {
+        "time": 10.5,
+        "fromCel": 16,
+        "toCel": 18,
+        "changedBounds": [
+          74,
+          19,
+          388,
+          367
+        ]
+      },
+      {
+        "time": 10.75,
+        "fromCel": 18,
+        "toCel": 17,
+        "changedBounds": [
+          74,
+          21,
+          388,
+          367
+        ]
+      },
+      {
+        "time": 11.0,
+        "fromCel": 17,
+        "toCel": 10,
+        "changedBounds": [
+          69,
+          18,
+          391,
+          374
+        ]
+      }
+    ],
+    "source": "fresh actual FocusFriendApp capture in this audit"
+  }
+]
