@@ -34,9 +34,8 @@ void main() {
         boundary - const Duration(microseconds: 1),
       );
       final after = FriendMotionClock.sample(boundary);
-      expect(before.to, after.from);
-      expect(before.blend, closeTo(1, .0001));
-      expect(after.blend, closeTo(0, .0001));
+      expect(before.from, after.from);
+      expect((before.blend, after.blend), (0, 0));
     }
     final before = FriendMotionClock.sample(
       FriendMotionClock.restDuration - const Duration(microseconds: 1),
@@ -46,10 +45,35 @@ void main() {
       FriendMotionClock.restDuration,
       resting: true,
     );
-    expect(before.to, after.from);
-    expect(before.blend, closeTo(1, .0001));
-    expect(after.blend, 0);
+    expect(before.from, after.from);
+    expect((before.blend, after.blend), (0, 0));
     expect(FriendMotionClock.sample(const Duration(seconds: -1)).blend, 0);
+  });
+
+  test('desk friends show one complete drawing at a time', () {
+    for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+      for (final resting in [false, true]) {
+        final cycle = resting
+            ? FriendMotionClock.restDurationFor(friend)
+            : FriendMotionClock.studyDuration;
+        final seen = <int>{};
+        var changes = 0, previous = -1;
+        for (var ms = 0; ms < cycle.inMilliseconds; ms += 1000 ~/ 12) {
+          final pose = FriendMotionClock.sample(
+            Duration(milliseconds: ms),
+            resting: resting,
+            friend: friend,
+          );
+          expect(pose.from, pose.to, reason: '${friend.name} at $ms ms');
+          expect(pose.blend, 0, reason: '${friend.name} at $ms ms');
+          if (previous != -1 && pose.from != previous) changes++;
+          previous = pose.from;
+          seen.add(pose.from);
+        }
+        expect(seen.length, greaterThan(3));
+        expect(changes, greaterThan(3));
+      }
+    }
   });
 
   for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
@@ -174,11 +198,11 @@ void main() {
         reduced = true;
         await tester.pumpWidget(harness());
         await tester.pump(const Duration(seconds: 2));
-        expect(stamp(), (0, 1, 0.0));
+        expect(stamp(), (0, 0, 0.0));
         reduced = false;
         await tester.pumpWidget(harness());
         await tester.pump(const Duration(milliseconds: 500));
-        expect(stamp(), isNot((0, 1, 0.0)));
+        expect(stamp(), isNot((0, 0, 0.0)));
         expect(tester.takeException(), isNull);
         await tester.pumpWidget(const SizedBox.shrink());
       },

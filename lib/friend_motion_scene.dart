@@ -100,11 +100,10 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
 
   void _tick(Duration elapsed) {
     played = runBase + elapsed;
-    final tick = widget.friend.hasWindowTeaMotion
-        ? played.inMicroseconds *
-              FriendMotionClock.windowTeaFramesPerSecond ~/
-              Duration.microsecondsPerSecond
-        : played.inMicroseconds ~/ 33333;
+    final tick =
+        played.inMicroseconds *
+        FriendMotionClock.framesPerSecond ~/
+        Duration.microsecondsPerSecond;
     if (tick != displayedTick) setState(() => displayedTick = tick);
   }
 
@@ -351,20 +350,12 @@ class FriendMotionPainter extends CustomPainter {
     );
   }
 
-  // Retain the same closed book and torso anchor while the connected arms lift.
+  // Retain the same ears and closed book while the connected arms lift. The
+  // rest cels redraw the whole outline, so the edges stay outside the
+  // shoulders, whiskers and tail; a cut through them leaves a straight seam.
   Path get teaRegion => Path()
-    ..addRRect(
-      RRect.fromRectAndRadius(
-        const Rect.fromLTWH(115, 185, 235, 95),
-        const Radius.circular(15),
-      ),
-    )
-    ..addRRect(
-      RRect.fromRectAndRadius(
-        const Rect.fromLTWH(105, 272, 230, 120),
-        const Radius.circular(15),
-      ),
-    );
+    ..addRect(const Rect.fromLTRB(40, 170, 370, 280))
+    ..addRect(const Rect.fromLTRB(20, 272, 380, 392));
 
   void _cel(Canvas canvas, ui.Image atlas, int index, Paint paint) {
     final cell = atlas.width / 4;
@@ -422,45 +413,11 @@ class FriendMotionPainter extends CustomPainter {
     );
     _cel(canvas, atlas, 0, paint);
     canvas.restore();
+    // One complete authored drawing at a time, as for the panda. Blending
+    // neighbouring cels showed double cups, eyes and see-through paws.
     canvas.save();
     canvas.clipPath(region, doAntiAlias: false);
-    const head = Rect.fromLTWH(0, 0, 512, 320);
-    canvas.save();
-    canvas.clipPath(
-      Path.combine(
-        PathOperation.difference,
-        Path()..addRect(stageBounds),
-        Path()..addRect(head),
-      ),
-      doAntiAlias: false,
-    );
-    // Add premultiplied neighbouring cels, avoiding opacity pulses at each join.
-    canvas.saveLayer(stageBounds, Paint());
-    _cel(
-      canvas,
-      atlas,
-      pose.from,
-      Paint()
-        ..filterQuality = FilterQuality.medium
-        ..color = Color.fromRGBO(255, 255, 255, 1 - pose.blend),
-    );
-    _cel(
-      canvas,
-      atlas,
-      pose.to,
-      Paint()
-        ..filterQuality = FilterQuality.medium
-        ..color = Color.fromRGBO(255, 255, 255, pose.blend)
-        ..blendMode = BlendMode.plus,
-    );
-    canvas.restore();
-    canvas.restore();
-    // One authored face at a time. Blending open/closed eyes creates double eyes.
-    canvas.save();
-    canvas.clipPath(region, doAntiAlias: false);
-    canvas.clipRect(head, doAntiAlias: false);
     _cel(canvas, atlas, pose.blend < .5 ? pose.from : pose.to, paint);
-    canvas.restore();
     canvas.restore();
     if (tea) {
       canvas.save();

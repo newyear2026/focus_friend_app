@@ -18,7 +18,8 @@ abstract final class FriendMotionClock {
   static const windowTeaDuration = Duration(seconds: 22);
   // Like the panda: a 12fps timing grid selects one complete drawing.
   // Holds belong to the whole action; no per-cel easing or image blending.
-  static const windowTeaFramesPerSecond = 12;
+  static const framesPerSecond = 12;
+  static const windowTeaFramesPerSecond = framesPerSecond;
   static const windowTeaFrameCount = 28;
   // Measured upright rim heights in the registered 512px drawings. A single
   // ease spans the whole lift, so unequal drawing distances do not create a
@@ -142,6 +143,18 @@ abstract final class FriendMotionClock {
 
   static double _ease(double value) => value * value * (3 - 2 * value);
 
+  // One authored drawing at a time, switching halfway through each step.
+  // Blending neighbouring cels showed two cups and see-through paws.
+  static FriendMotionPose _expose(
+    int from,
+    int to,
+    double progress,
+    FriendMotionPhase phase,
+  ) {
+    final cel = progress < .5 ? from : to;
+    return FriendMotionPose(cel, cel, 0, phase);
+  }
+
   static FriendMotionPose sample(
     Duration elapsed, {
     bool resting = false,
@@ -169,10 +182,10 @@ abstract final class FriendMotionClock {
               FriendMotionPhase.tea,
             );
           }
-          return FriendMotionPose(
+          return _expose(
             frames[i],
             frames[i + 1],
-            _ease(local / duration),
+            local / duration,
             FriendMotionPhase.tea,
           );
         }
@@ -184,19 +197,19 @@ abstract final class FriendMotionClock {
     if (local < writingDuration.inMilliseconds) {
       final stroke = (local % 3600) / 600;
       final index = stroke.floor();
-      return FriendMotionPose(
+      return _expose(
         writingFrames[index],
         writingFrames[index + 1],
-        _ease(stroke - index),
+        stroke - index,
         FriendMotionPhase.writing,
       );
     }
     final turn = (local - writingDuration.inMilliseconds) / 350;
     final index = turn.floor().clamp(0, turnFrames.length - 2);
-    return FriendMotionPose(
+    return _expose(
       turnFrames[index],
       turnFrames[index + 1],
-      _ease(turn - index),
+      turn - index,
       FriendMotionPhase.pageTurn,
     );
   }
