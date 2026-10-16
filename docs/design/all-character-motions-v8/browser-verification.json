@@ -1,0 +1,60 @@
+{
+  "restState": [
+    {
+      "duration": 10,
+      "friend": "redpanda",
+      "hidden": false,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "time": 0.709215
+    },
+    {
+      "duration": 14,
+      "friend": "penguin",
+      "hidden": false,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "time": 0.709253
+    },
+    {
+      "duration": 14,
+      "friend": "otter",
+      "hidden": false,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "time": 0.709278
+    },
+    {
+      "duration": 22,
+      "friend": "squirrel",
+      "hidden": false,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "time": 0.70935
+    },
+    {
+      "duration": 22,
+      "friend": "fennec",
+      "hidden": false,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "time": 0.708752
+    }
+  ],
+  "checkedControls": [
+    "rest/study global switch",
+    "page-turn pose",
+    "all pause",
+    "restart while paused",
+    "per-friend mode",
+    "moving video dialog",
+    "static image dialog",
+    "close dialog",
+    "all play"
+  ]
+}

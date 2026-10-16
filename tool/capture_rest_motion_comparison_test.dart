@@ -15,7 +15,7 @@ import 'package:focus_friend_app/session_engine.dart';
 import '../test/session_engine_test.dart' show MemoryStore;
 
 void main() {
-  testWidgets('fresh actual-app comparison of three current tea motions', (
+  testWidgets('fresh actual-app capture of selected current tea motions', (
     tester,
   ) async {
     const folder = String.fromEnvironment(
@@ -26,6 +26,10 @@ void main() {
       'REST_COMPARISON_CYCLES',
       defaultValue: 1,
     );
+    const onlyFriend = String.fromEnvironment('REST_COMPARISON_FRIEND');
+    if (onlyFriend.isNotEmpty) {
+      expect(['redpanda', 'squirrel', 'fennec'], contains(onlyFriend));
+    }
     Directory(folder).createSync(recursive: true);
     tester.view.physicalSize = const Size(780, 1688);
     tester.view.devicePixelRatio = 2;
@@ -43,7 +47,7 @@ void main() {
       FocusFriend.redpanda,
       FocusFriend.squirrel,
       FocusFriend.fennec,
-    ]) {
+    ].where((friend) => onlyFriend.isEmpty || friend.name == onlyFriend)) {
       tester.platformDispatcher.accessibilityFeaturesTestValue =
           const FakeAccessibilityFeatures(disableAnimations: true);
       final now = DateTime(2026, 10, 15, 18).millisecondsSinceEpoch;

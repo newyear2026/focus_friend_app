@@ -1,0 +1,23 @@
+{
+  "friend": "fennec",
+  "verdict": "Torso and tail shape changes confirmed at sip entry and return",
+  "source": "fresh FocusFriendApp widget capture using current runtime asset",
+  "fps": 12,
+  "seconds": 22,
+  "captureTestPassed": true,
+  "stableHold9to10p5Seconds": true,
+  "entryCels": [
+    10,
+    17,
+    18,
+    16
+  ],
+  "returnCels": [
+    16,
+    18,
+    17,
+    10
+  ],
+  "runtimeSha256": "9c2dd2b753d3eacdbb00bfd383c7e379887e8133e2e5b2c8182dfc3d9b41b970",
+  "productionChanged": false
+}

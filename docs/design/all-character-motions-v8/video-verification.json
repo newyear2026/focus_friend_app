@@ -1,0 +1,74 @@
+[
+  {
+    "friend": "redpanda",
+    "mode": "study",
+    "frames": 153,
+    "fps": "12/1",
+    "seconds": 12.75,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "redpanda",
+    "mode": "rest",
+    "frames": 120,
+    "fps": "12/1",
+    "seconds": 10.0,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "penguin",
+    "mode": "study",
+    "frames": 405,
+    "fps": "30/1",
+    "seconds": 13.5,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "penguin",
+    "mode": "rest",
+    "frames": 420,
+    "fps": "30/1",
+    "seconds": 14.0,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "otter",
+    "mode": "study",
+    "frames": 405,
+    "fps": "30/1",
+    "seconds": 13.5,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "otter",
+    "mode": "rest",
+    "frames": 420,
+    "fps": "30/1",
+    "seconds": 14.0,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "squirrel",
+    "mode": "rest",
+    "frames": 264,
+    "fps": "12/1",
+    "seconds": 22.0,
+    "width": 490,
+    "height": 462
+  },
+  {
+    "friend": "fennec",
+    "mode": "rest",
+    "frames": 264,
+    "fps": "12/1",
+    "seconds": 22.0,
+    "width": 490,
+    "height": 462
+  }
+]

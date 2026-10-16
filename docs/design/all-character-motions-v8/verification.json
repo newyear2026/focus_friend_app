@@ -1,0 +1,33 @@
+{
+  "status": "verified all-five motion gallery",
+  "currentFriends": [
+    "redpanda",
+    "penguin",
+    "otter",
+    "squirrel",
+    "fennec"
+  ],
+  "restVideos": 5,
+  "studyVideos": 3,
+  "staticStudyScenes": [
+    "squirrel",
+    "fennec"
+  ],
+  "playbackRate": 1,
+  "captureTest": "passed",
+  "newCaptureToolAnalysis": "No issues found",
+  "browserControls": [
+    "rest/study global switch",
+    "page-turn pose",
+    "all pause",
+    "restart while paused",
+    "per-friend mode",
+    "moving video dialog",
+    "static image dialog",
+    "close dialog",
+    "all play"
+  ],
+  "knownMotionIssues": "squirrel and fennec whole-body contour changes remain during sipping transitions",
+  "productionAssetsChanged": false,
+  "productionAnimationCodeChanged": false
+}
