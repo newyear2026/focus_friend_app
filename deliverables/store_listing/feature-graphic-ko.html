@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(../../assets/fonts/PretendardVariable.ttf)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1024px;height:500px;overflow:hidden}
+body{font-family:P,sans-serif;background:linear-gradient(120deg,#352734 0%,#5a3b3c 55%,#785047 100%);color:#FFF3D8;position:relative}
+.glow{position:absolute;right:120px;top:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(#FFD18F33,#FFD18F00 70%)}
+.copy{position:absolute;left:64px;top:0;bottom:0;width:440px;display:flex;flex-direction:column;justify-content:center}
+.brand{display:flex;align-items:center;gap:14px;font-size:30px;font-weight:750;letter-spacing:-.3px}
+.brand img{width:64px;height:64px;border-radius:15px;box-shadow:0 6px 16px #1d142855}
+h1{font-size:52px;line-height:1.22;font-weight:800;letter-spacing:-1.2px;margin-top:30px}
+h1 em{font-style:normal;color:#FFD08C}
+p{margin-top:18px;font-size:20px;line-height:1.5;color:#E8D6C2;font-weight:500}
+.card{position:absolute;border-radius:22px;overflow:hidden;border:5px solid #FFF1D9;box-shadow:0 18px 40px #1d142866}
+.scene{position:absolute;inset:0}
+.stage{position:absolute;width:853px;height:1844px;transform-origin:0 0}
+.stage .room{position:absolute;inset:0;background:url(../../assets/images/immersive/room-evening.png) 0 0/853px 1844px}
+.stage .panda{position:absolute;left:90px;top:610px;width:580px;height:580px}
+.stage .front{position:absolute;inset:0;background:url(../../assets/images/immersive/room-evening.png) 0 0/853px 1844px;clip-path:polygon(0 1035px,294px 1035px,345px 1198px,0 1198px)}
+</style></head>
+<body>
+<div class="glow"></div>
+<div class="copy">
+  <div class="brand"><img src="icon-512.png" alt="">Deskmate</div>
+  <h1>혼자 말고,<br><em>함께 집중해요</em></h1>
+  <p>레서판다와 동물 친구들이 함께하는<br>아늑한 공부 타이머</p>
+</div>
+<div class="card" style="left:548px;top:96px;width:210px;height:330px;transform:rotate(-7deg)">
+  <div class="scene" style="background:url(../../assets/images/friends/otter-scene.png) 62% 58%/150% auto no-repeat"></div>
+</div>
+<div class="card" style="left:790px;top:96px;width:210px;height:330px;transform:rotate(7deg)">
+  <div class="scene" style="background:url(../../assets/images/friends/fennec-scene.png) 30% 62%/150% auto no-repeat"></div>
+</div>
+<div class="card" style="left:640px;top:52px;width:270px;height:400px;z-index:2">
+  <div class="stage" style="transform:translate(-62px,-262px) scale(.52)">
+    <div class="room"></div>
+    <img class="panda" src="../../assets/images/immersive/redpanda-reference.png" alt="">
+    <div class="front"></div>
+  </div>
+</div>
+</body></html>

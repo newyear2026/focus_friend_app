@@ -1,0 +1,156 @@
+{
+  "title": "Deskmate Korean store screenshots",
+  "locale": "ko-KR",
+  "created": "2026-10-15",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "method": "Real current Flutter widgets captured at 390×700 logical pixels (collection: 390×750), at 3× resolution. Marketing typography and layout composed deterministically with Canvas.",
+  "font": "Pretendard Variable (bundled OFL font)",
+  "imageGeneration": false,
+  "demoData": "Isolated in-memory demonstration state. Dates are October 2026, through October 15. No installed app database is accessed.",
+  "sources": [
+    {
+      "id": "01_together",
+      "title": "혼자 말고, 함께 집중해요",
+      "source": "redpanda-focus.png",
+      "alt": "랫서팬더가 책상에서 공부하고, 실제 집중 타이머에 25분이 표시됩니다."
+    },
+    {
+      "id": "02_friends",
+      "title": "내 마음에 드는 친구와 함께",
+      "source": "friends.png",
+      "alt": "친구 선택 화면의 랫서팬더·펭귄·해달·다람쥐와 사막여우의 실제 책상 화면입니다."
+    },
+    {
+      "id": "03_day_and_night",
+      "title": "아침부터 밤까지, 나만의 집중방",
+      "source": "room-morning.png",
+      "alt": "같은 랫서팬더 책상이 아침, 낮, 저녁, 밤의 빛으로 바뀌는 실제 앱 화면 네 개입니다."
+    },
+    {
+      "id": "04_focus_sounds",
+      "title": "편안한 소리로 몰입해요",
+      "source": "sound.png",
+      "alt": "집중 사운드 화면에서 빗소리, 숲, 장작 소리를 선택하고 음량을 조절할 수 있습니다."
+    },
+    {
+      "id": "05_small_habits",
+      "title": "작은 집중이 쌓이는 하루",
+      "source": "records.png",
+      "alt": "2026년 10월의 예시 집중 기록입니다. 달력에 집중한 날의 랫서팬더 스탬프가 표시됩니다."
+    },
+    {
+      "id": "06_little_rewards",
+      "title": "집중 끝에 만나는 작은 선물",
+      "source": "collection.png",
+      "alt": "모은 소품 화면에 집중으로 해금한 작은 화분, 따뜻한 머그컵, 포근한 조명이 표시됩니다."
+    }
+  ],
+  "files": [
+    {
+      "file": "01_together.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 1885375,
+      "sha256": "0debb1a05143f265d3b57c9dd66ade787ead89da00733db4f3c896fa17d69621"
+    },
+    {
+      "file": "01_together.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 595062,
+      "sha256": "7daa0acbc31152b9bfb93f4a2bd40a9e403bc4c63b3a9277c39137d6aaf65c05"
+    },
+    {
+      "file": "02_friends.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 1601354,
+      "sha256": "0f8f07f4bb485eec45ff4aa7362a629f5448e96317c7c09d3cb8c57b999ffb3f"
+    },
+    {
+      "file": "02_friends.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 700067,
+      "sha256": "49cb86b467d8ac78aa815aa262be8cb71276b961d994bfcfea9f12fd992f72ca"
+    },
+    {
+      "file": "03_day_and_night.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 1963841,
+      "sha256": "372001b6f720458cf006a3e6921fc88ab53189eb88886e31924b4c5451d75f07"
+    },
+    {
+      "file": "03_day_and_night.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 861478,
+      "sha256": "10ce2bd35601870a3f10918f3ae6d33082fb03f157d8a39dfff0dbfcc254f970"
+    },
+    {
+      "file": "04_focus_sounds.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 567073,
+      "sha256": "20be267cb8bada36786b386ab8ed8ee7d134b1cca44fbcbf38d6837e1bc54053"
+    },
+    {
+      "file": "04_focus_sounds.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 401012,
+      "sha256": "41da00e505288eda60c19200b4d4127b468cbb77fe240702945b6976e411a9a6"
+    },
+    {
+      "file": "05_small_habits.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 312617,
+      "sha256": "213469fb0e03e323480d2b20e0c83a5dd2378737f32229aba6cccefc0bda751c"
+    },
+    {
+      "file": "05_small_habits.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 375582,
+      "sha256": "5eb1d2af41f84dcc30c18e82f8f4fbf85720d44d5814999c47be8369ae35274d"
+    },
+    {
+      "file": "06_little_rewards.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 967825,
+      "sha256": "4448b90a88d38b8c84acf32996a08ccd8e47287d6cb848f08351d0aa4d2774a7"
+    },
+    {
+      "file": "06_little_rewards.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 441922,
+      "sha256": "be04fb2918026c7fbecbb59470c65b3465ab41f37ee8fab491d62f1c1a6cb86f"
+    }
+  ],
+  "quality": {
+    "allExports1080x1920": true,
+    "allExportsRGBWithoutAlpha": true,
+    "textOverflowChecksPassed": true,
+    "captureCommand": "flutter test --no-pub tool/capture_store_screenshots_test.dart --reporter expanded"
+  },
+  "guidelines": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=ko"
+}

@@ -1,0 +1,158 @@
+{
+  "title": "Deskmate English store screenshots",
+  "locale": "en-US",
+  "created": "2026-10-16",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "method": "Real current Flutter widgets captured at 390×700 logical pixels (collection: 390×750), at 3× resolution. Marketing typography and layout composed deterministically with Canvas.",
+  "font": "Pretendard Variable (bundled OFL font)",
+  "imageGeneration": false,
+  "demoData": "Isolated in-memory demonstration state. Dates are October 2026, through October 16. No installed app database is accessed.",
+  "appIcon": "assets/icon/app_icon.png (current app icon at render time)",
+  "localization": "English marketing copy, English app locale, English panel labels and alt text. Original in-scene illustration artwork is preserved.",
+  "sources": [
+    {
+      "id": "01_together",
+      "title": "Focus feels better with a friend.",
+      "source": "redpanda-focus.png",
+      "alt": "A red panda studies at a cozy desk while the real focus timer shows 25 minutes."
+    },
+    {
+      "id": "02_friends",
+      "title": "Find your favorite friend.",
+      "source": "friends.png",
+      "alt": "Choose a red panda, penguin, sea otter, squirrel or fennec fox. Each friend has a different room."
+    },
+    {
+      "id": "03_day_and_night",
+      "title": "A cozy space, day and night.",
+      "source": "room-morning.png",
+      "alt": "Four real app screens show the same red panda desk in morning, daytime, evening and night light."
+    },
+    {
+      "id": "04_focus_sounds",
+      "title": "Settle in with soothing sounds.",
+      "source": "sound.png",
+      "alt": "The Focus sounds panel offers rain, forest and fire sounds, a volume slider and automatic stop at the end of focus."
+    },
+    {
+      "id": "05_small_habits",
+      "title": "Small moments. Steady progress.",
+      "source": "records.png",
+      "alt": "Example focus records for October 2026 show a calendar with red panda stamps on the days focused, through October 16."
+    },
+    {
+      "id": "06_little_rewards",
+      "title": "A little focus. A little reward.",
+      "source": "collection.png",
+      "alt": "The Collected items screen shows a little plant, warm mug and cozy lamp unlocked by completing focus sessions."
+    }
+  ],
+  "files": [
+    {
+      "file": "01_together.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 1896326,
+      "sha256": "e6d3791ec1cc955edb1bf1332c8647271de890e09028a9cf383fc57b3ed8f4ea"
+    },
+    {
+      "file": "01_together.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 607482,
+      "sha256": "741b3b20a872a410bb302bfaa61c768810142ad1db22c58140841c88029e77c6"
+    },
+    {
+      "file": "02_friends.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 1618343,
+      "sha256": "27585f61f0c8c2e6a052efd1da9fc1792b952edc3379eefd1fe530f6a7612bad"
+    },
+    {
+      "file": "02_friends.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 718229,
+      "sha256": "d98894aa380efb398b77a5f533a53c06ab21addf21750ddd8cdf01e355b23fd2"
+    },
+    {
+      "file": "03_day_and_night.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 1979090,
+      "sha256": "02aa7ce91d2c68beedf52ab5e555e036ef02cf607a6a4761214cc70e98167182"
+    },
+    {
+      "file": "03_day_and_night.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 882754,
+      "sha256": "29c90ae665ce0e7d1ccbe0117d45d1b9ad3665f3837dcad36c5b05fd8c96f957"
+    },
+    {
+      "file": "04_focus_sounds.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 594669,
+      "sha256": "3586e8d3b186473296818be861156980e17d6e84eadb5338197e6e3711bafe65"
+    },
+    {
+      "file": "04_focus_sounds.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 436167,
+      "sha256": "44e0cd648224b04ffb0a24347cf031b8a1c1a1a52f769d67b71de9fcec4788ec"
+    },
+    {
+      "file": "05_small_habits.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 338319,
+      "sha256": "4dd4b2286abeedd7bab89649735a8edbd747ffb4460fb3172381ac6e0987324b"
+    },
+    {
+      "file": "05_small_habits.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 402144,
+      "sha256": "6dfb71b04df7b8e3e589841f1021c82036ea9c51f7544736a0c06f220d2dc4af"
+    },
+    {
+      "file": "06_little_rewards.png",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 992891,
+      "sha256": "4313ce9f9e2d58684376557b09b080a1469db47691690d1a5c619367c2d5c91e"
+    },
+    {
+      "file": "06_little_rewards.jpg",
+      "width": 1080,
+      "height": 1920,
+      "channels": 3,
+      "bytes": 472978,
+      "sha256": "b3d08f5513dab92b515adab50125cb00c920ad3594a006b32dc4f47f4f1d6f01"
+    }
+  ],
+  "quality": {
+    "allExports1080x1920": true,
+    "allExportsRGBWithoutAlpha": true,
+    "textOverflowChecksPassed": true,
+    "captureCommand": "flutter test --no-pub tool/capture_store_screenshots_test.dart --dart-define=STORE_SCREENSHOT_LOCALE=en --dart-define=STORE_SCREENSHOT_DATE=2026-10-16 --reporter expanded"
+  },
+  "guidelines": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en"
+}
