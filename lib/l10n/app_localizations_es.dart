@@ -619,4 +619,81 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get languageNameEs => 'Español';
+
+  @override
+  String get recordsTabCalendar => 'Calendario';
+
+  @override
+  String get recordsTabWeek => 'Semana';
+
+  @override
+  String get recordsTabMonth => 'Mes';
+
+  @override
+  String get thisWeek => 'Esta semana';
+
+  @override
+  String get previousWeek => 'Semana anterior';
+
+  @override
+  String get nextWeek => 'Semana siguiente';
+
+  @override
+  String statsMoreThanLastWeek(String duration) {
+    return '$duration más que la semana pasada';
+  }
+
+  @override
+  String statsLessThanLastWeek(String duration) {
+    return '$duration menos que la semana pasada';
+  }
+
+  @override
+  String get statsSameAsLastWeek => 'Igual que la semana pasada';
+
+  @override
+  String statsMoreThanLastMonth(String duration) {
+    return '$duration más que el mes pasado';
+  }
+
+  @override
+  String statsLessThanLastMonth(String duration) {
+    return '$duration menos que el mes pasado';
+  }
+
+  @override
+  String get statsSameAsLastMonth => 'Igual que el mes pasado';
+
+  @override
+  String statsBestDay(String day, String duration) {
+    return 'Mejor día · $day $duration';
+  }
+
+  @override
+  String get statsTimeOfDay => 'Momento del día';
+
+  @override
+  String statsTopBand(String band) {
+    return 'Te concentras más $band';
+  }
+
+  @override
+  String get statsAverage => 'Promedio diario';
+
+  @override
+  String get statsStreak => 'Racha más larga';
+
+  @override
+  String get statsRecentMonths => 'Últimos 6 meses';
+
+  @override
+  String get statsEmptyWeek => 'Aún no hay concentración esta semana.';
+
+  @override
+  String get statsEmptyMonth => 'Aún no hay concentración este mes.';
+
+  @override
+  String hoursShort(String hours) {
+    return '$hours h';
+  }
 }

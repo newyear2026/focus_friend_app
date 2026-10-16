@@ -1175,6 +1175,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Spanish'**
   String get languageNameEs;
+
+  /// Records view tab showing the month calendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get recordsTabCalendar;
+
+  /// No description provided for @recordsTabWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get recordsTabWeek;
+
+  /// No description provided for @recordsTabMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get recordsTabMonth;
+
+  /// No description provided for @thisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get thisWeek;
+
+  /// No description provided for @previousWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous week'**
+  String get previousWeek;
+
+  /// No description provided for @nextWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Next week'**
+  String get nextWeek;
+
+  /// Compared with the previous week up to the same weekday.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} more than last week'**
+  String statsMoreThanLastWeek(String duration);
+
+  /// No description provided for @statsLessThanLastWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} less than last week'**
+  String statsLessThanLastWeek(String duration);
+
+  /// No description provided for @statsSameAsLastWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as last week'**
+  String get statsSameAsLastWeek;
+
+  /// Compared with the previous month up to the same day.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} more than last month'**
+  String statsMoreThanLastMonth(String duration);
+
+  /// No description provided for @statsLessThanLastMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} less than last month'**
+  String statsLessThanLastMonth(String duration);
+
+  /// No description provided for @statsSameAsLastMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as last month'**
+  String get statsSameAsLastMonth;
+
+  /// day is a short localized date such as Oct 9.
+  ///
+  /// In en, this message translates to:
+  /// **'Best day · {day} {duration}'**
+  String statsBestDay(String day, String duration);
+
+  /// No description provided for @statsTimeOfDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Time of day'**
+  String get statsTimeOfDay;
+
+  /// band is the localized room period name (ambienceMorning etc.).
+  ///
+  /// In en, this message translates to:
+  /// **'Most focus: {band}'**
+  String statsTopBand(String band);
+
+  /// No description provided for @statsAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily average'**
+  String get statsAverage;
+
+  /// No description provided for @statsStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak'**
+  String get statsStreak;
+
+  /// No description provided for @statsRecentMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 6 months'**
+  String get statsRecentMonths;
+
+  /// No description provided for @statsEmptyWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'No focus this week yet.'**
+  String get statsEmptyWeek;
+
+  /// No description provided for @statsEmptyMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'No focus this month yet.'**
+  String get statsEmptyMonth;
+
+  /// Compact chart label; hours may have one decimal such as 12.5.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} h'**
+  String hoursShort(String hours);
 }
 
 class _AppLocalizationsDelegate

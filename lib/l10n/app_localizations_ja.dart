@@ -594,4 +594,81 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get languageNameEs => 'スペイン語';
+
+  @override
+  String get recordsTabCalendar => 'カレンダー';
+
+  @override
+  String get recordsTabWeek => '週間';
+
+  @override
+  String get recordsTabMonth => '月間';
+
+  @override
+  String get thisWeek => '今週';
+
+  @override
+  String get previousWeek => '前の週';
+
+  @override
+  String get nextWeek => '次の週';
+
+  @override
+  String statsMoreThanLastWeek(String duration) {
+    return '先週より$duration多い';
+  }
+
+  @override
+  String statsLessThanLastWeek(String duration) {
+    return '先週より$duration少ない';
+  }
+
+  @override
+  String get statsSameAsLastWeek => '先週と同じ';
+
+  @override
+  String statsMoreThanLastMonth(String duration) {
+    return '先月より$duration多い';
+  }
+
+  @override
+  String statsLessThanLastMonth(String duration) {
+    return '先月より$duration少ない';
+  }
+
+  @override
+  String get statsSameAsLastMonth => '先月と同じ';
+
+  @override
+  String statsBestDay(String day, String duration) {
+    return 'いちばん集中した日・$day $duration';
+  }
+
+  @override
+  String get statsTimeOfDay => '集中した時間帯';
+
+  @override
+  String statsTopBand(String band) {
+    return '$bandにいちばん長く集中しています';
+  }
+
+  @override
+  String get statsAverage => '1日平均';
+
+  @override
+  String get statsStreak => '最長連続';
+
+  @override
+  String get statsRecentMonths => '直近6か月';
+
+  @override
+  String get statsEmptyWeek => 'この週はまだ集中の記録がありません。';
+
+  @override
+  String get statsEmptyMonth => 'この月はまだ集中の記録がありません。';
+
+  @override
+  String hoursShort(String hours) {
+    return '$hours時間';
+  }
 }

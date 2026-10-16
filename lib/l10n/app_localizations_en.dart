@@ -615,4 +615,81 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languageNameEs => 'Spanish';
+
+  @override
+  String get recordsTabCalendar => 'Calendar';
+
+  @override
+  String get recordsTabWeek => 'Week';
+
+  @override
+  String get recordsTabMonth => 'Month';
+
+  @override
+  String get thisWeek => 'This week';
+
+  @override
+  String get previousWeek => 'Previous week';
+
+  @override
+  String get nextWeek => 'Next week';
+
+  @override
+  String statsMoreThanLastWeek(String duration) {
+    return '$duration more than last week';
+  }
+
+  @override
+  String statsLessThanLastWeek(String duration) {
+    return '$duration less than last week';
+  }
+
+  @override
+  String get statsSameAsLastWeek => 'Same as last week';
+
+  @override
+  String statsMoreThanLastMonth(String duration) {
+    return '$duration more than last month';
+  }
+
+  @override
+  String statsLessThanLastMonth(String duration) {
+    return '$duration less than last month';
+  }
+
+  @override
+  String get statsSameAsLastMonth => 'Same as last month';
+
+  @override
+  String statsBestDay(String day, String duration) {
+    return 'Best day · $day $duration';
+  }
+
+  @override
+  String get statsTimeOfDay => 'Time of day';
+
+  @override
+  String statsTopBand(String band) {
+    return 'Most focus: $band';
+  }
+
+  @override
+  String get statsAverage => 'Daily average';
+
+  @override
+  String get statsStreak => 'Longest streak';
+
+  @override
+  String get statsRecentMonths => 'Last 6 months';
+
+  @override
+  String get statsEmptyWeek => 'No focus this week yet.';
+
+  @override
+  String get statsEmptyMonth => 'No focus this month yet.';
+
+  @override
+  String hoursShort(String hours) {
+    return '$hours h';
+  }
 }

@@ -332,5 +332,86 @@
   },
   "@languageTitle": {
     "description": "Settings row. Non-English languages keep the English word so lost users can find it."
+  },
+  "recordsTabCalendar": "Calendar",
+  "@recordsTabCalendar": {
+    "description": "Records view tab showing the month calendar."
+  },
+  "recordsTabWeek": "Week",
+  "recordsTabMonth": "Month",
+  "thisWeek": "This week",
+  "previousWeek": "Previous week",
+  "nextWeek": "Next week",
+  "statsMoreThanLastWeek": "{duration} more than last week",
+  "@statsMoreThanLastWeek": {
+    "description": "Compared with the previous week up to the same weekday.",
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "statsLessThanLastWeek": "{duration} less than last week",
+  "@statsLessThanLastWeek": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "statsSameAsLastWeek": "Same as last week",
+  "statsMoreThanLastMonth": "{duration} more than last month",
+  "@statsMoreThanLastMonth": {
+    "description": "Compared with the previous month up to the same day.",
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "statsLessThanLastMonth": "{duration} less than last month",
+  "@statsLessThanLastMonth": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "statsSameAsLastMonth": "Same as last month",
+  "statsBestDay": "Best day · {day} {duration}",
+  "@statsBestDay": {
+    "description": "day is a short localized date such as Oct 9.",
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "statsTimeOfDay": "Time of day",
+  "statsTopBand": "Most focus: {band}",
+  "@statsTopBand": {
+    "description": "band is the localized room period name (ambienceMorning etc.).",
+    "placeholders": {
+      "band": {
+        "type": "String"
+      }
+    }
+  },
+  "statsAverage": "Daily average",
+  "statsStreak": "Longest streak",
+  "statsRecentMonths": "Last 6 months",
+  "statsEmptyWeek": "No focus this week yet.",
+  "statsEmptyMonth": "No focus this month yet.",
+  "hoursShort": "{hours} h",
+  "@hoursShort": {
+    "description": "Compact chart label; hours may have one decimal such as 12.5.",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
   }
 }

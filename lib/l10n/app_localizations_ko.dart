@@ -596,4 +596,81 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get languageNameEs => '스페인어';
+
+  @override
+  String get recordsTabCalendar => '달력';
+
+  @override
+  String get recordsTabWeek => '주간';
+
+  @override
+  String get recordsTabMonth => '월간';
+
+  @override
+  String get thisWeek => '이번 주';
+
+  @override
+  String get previousWeek => '이전 주';
+
+  @override
+  String get nextWeek => '다음 주';
+
+  @override
+  String statsMoreThanLastWeek(String duration) {
+    return '지난주보다 $duration 더';
+  }
+
+  @override
+  String statsLessThanLastWeek(String duration) {
+    return '지난주보다 $duration 적게';
+  }
+
+  @override
+  String get statsSameAsLastWeek => '지난주와 같아요';
+
+  @override
+  String statsMoreThanLastMonth(String duration) {
+    return '지난달보다 $duration 더';
+  }
+
+  @override
+  String statsLessThanLastMonth(String duration) {
+    return '지난달보다 $duration 적게';
+  }
+
+  @override
+  String get statsSameAsLastMonth => '지난달과 같아요';
+
+  @override
+  String statsBestDay(String day, String duration) {
+    return '가장 많이 한 날 · $day $duration';
+  }
+
+  @override
+  String get statsTimeOfDay => '집중한 시간대';
+
+  @override
+  String statsTopBand(String band) {
+    return '$band에 가장 오래 집중해요';
+  }
+
+  @override
+  String get statsAverage => '하루 평균';
+
+  @override
+  String get statsStreak => '최장 연속';
+
+  @override
+  String get statsRecentMonths => '최근 6개월';
+
+  @override
+  String get statsEmptyWeek => '이 주에는 아직 집중 기록이 없어요.';
+
+  @override
+  String get statsEmptyMonth => '이 달에는 아직 집중 기록이 없어요.';
+
+  @override
+  String hoursShort(String hours) {
+    return '$hours시간';
+  }
 }
