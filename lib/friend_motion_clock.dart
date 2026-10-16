@@ -14,7 +14,7 @@ abstract final class FriendMotionClock {
   static const writingDuration = Duration(seconds: 36);
   static const turnDuration = Duration(milliseconds: 6300);
   static const studyDuration = Duration(milliseconds: 42300);
-  static const restDuration = Duration(seconds: 14);
+  static const restDuration = Duration(seconds: 10);
   static const windowTeaDuration = Duration(seconds: 22);
   // Like the panda: a 12fps timing grid selects one complete drawing.
   // Holds belong to the whole action; no per-cel easing or image blending.
@@ -90,12 +90,13 @@ abstract final class FriendMotionClock {
   }) {
     if (elapsed.isNegative) return 0;
     final timeline = windowTeaTimelineFor(friend);
-    final tick =
-        elapsed.inMicroseconds *
-        windowTeaFramesPerSecond ~/
-        Duration.microsecondsPerSecond;
-    return timeline[tick % timeline.length];
+    return timeline[_tick(elapsed) % timeline.length];
   }
+
+  static int _tick(Duration elapsed) =>
+      elapsed.inMicroseconds *
+      framesPerSecond ~/
+      Duration.microsecondsPerSecond;
 
   static Duration restDurationFor(FocusFriend friend) =>
       friend.hasWindowTeaMotion ? windowTeaDuration : restDuration;
@@ -122,24 +123,36 @@ abstract final class FriendMotionClock {
     23,
     0,
   ];
+  static List<int> _exposures(List<(int, int)> holds) => List.unmodifiable([
+    for (final (cel, ticks) in holds)
+      for (var tick = 0; tick < ticks; tick++) cel,
+  ]);
+  // The panda's ten-second rhythm: a long rest, quick 4-6 tick steps through
+  // the lift, about a second at the cup and the same steps back down.
   // Lower the cup through the same poses, avoiding the abrupt return drawings.
-  static const penguinRestFrames = [3, 3, 3, 4, 5, 6, 6, 6, 5, 4, 3, 3, 3];
-  static const otterRestFrames = [0, 1, 0, 4, 3, 6, 7, 7, 6, 3, 4, 0, 0];
-  // Time to reach the next drawing; relaxed holds at the bottom and while sipping.
-  static const restSegmentsMs = [
-    2700,
-    160,
-    900,
-    700,
-    700,
-    600,
-    1600,
-    600,
-    700,
-    700,
-    900,
-    3740,
-  ];
+  static final List<int> penguinRestTimeline = _exposures([
+    (3, 40),
+    (4, 4),
+    (5, 6),
+    (6, 14),
+    (5, 4),
+    (4, 4),
+    (3, 48),
+  ]);
+  // Cel 3 holds the cup lower than cel 4, so it comes first on the way up.
+  static final List<int> otterRestTimeline = _exposures([
+    (0, 30),
+    (1, 2),
+    (0, 8),
+    (3, 4),
+    (4, 4),
+    (6, 6),
+    (7, 14),
+    (6, 4),
+    (4, 4),
+    (3, 4),
+    (0, 40),
+  ]);
 
   static double _ease(double value) => value * value * (3 - 2 * value);
 
@@ -166,32 +179,11 @@ abstract final class FriendMotionClock {
         final frame = windowTeaFrameAt(elapsed, friend: friend);
         return FriendMotionPose(frame, frame, 0, FriendMotionPhase.tea);
       }
-      final frames = friend == FocusFriend.penguin
-          ? penguinRestFrames
-          : otterRestFrames;
-      const segments = restSegmentsMs;
-      var local = milliseconds % restDurationFor(friend).inMilliseconds;
-      for (var i = 0; i < segments.length; i++) {
-        final duration = segments[i];
-        if (local < duration) {
-          if (i < 2) {
-            return FriendMotionPose(
-              frames[i],
-              frames[i],
-              0,
-              FriendMotionPhase.tea,
-            );
-          }
-          return _expose(
-            frames[i],
-            frames[i + 1],
-            local / duration,
-            FriendMotionPhase.tea,
-          );
-        }
-        local -= duration;
-      }
-      return const FriendMotionPose(0, 0, 0, FriendMotionPhase.tea);
+      final timeline = friend == FocusFriend.penguin
+          ? penguinRestTimeline
+          : otterRestTimeline;
+      final frame = timeline[_tick(elapsed) % timeline.length];
+      return FriendMotionPose(frame, frame, 0, FriendMotionPhase.tea);
     }
     final local = milliseconds % studyDuration.inMilliseconds;
     if (local < writingDuration.inMilliseconds) {

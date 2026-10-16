@@ -21,10 +21,17 @@ void main() {
       FriendMotionClock.studyDuration,
       const Duration(milliseconds: 42300),
     );
-    expect(
-      FriendMotionClock.restSegmentsMs.reduce((a, b) => a + b),
-      FriendMotionClock.restDuration.inMilliseconds,
-    );
+    for (final timeline in [
+      FriendMotionClock.penguinRestTimeline,
+      FriendMotionClock.otterRestTimeline,
+    ]) {
+      expect(
+        timeline.length,
+        FriendMotionClock.restDuration.inSeconds *
+            FriendMotionClock.framesPerSecond,
+      );
+      expect(timeline.first, timeline.last);
+    }
     for (final boundary in [
       const Duration(milliseconds: 3600),
       const Duration(seconds: 36),
