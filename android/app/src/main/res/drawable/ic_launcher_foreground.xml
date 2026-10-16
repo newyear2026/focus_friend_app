@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Keep the complete illustration within the adaptive icon's safe area. -->
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="20%"
-    android:insetTop="20%"
-    android:insetRight="20%"
-    android:insetBottom="20%">
+    android:insetLeft="21%"
+    android:insetTop="21%"
+    android:insetRight="21%"
+    android:insetBottom="21%">
     <bitmap
         android:src="@drawable/ic_launcher_artwork"
         android:gravity="fill"

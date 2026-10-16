@@ -1,5 +1,7 @@
 # 작은 집중방 — 선택한 앱 아이콘
 
+2026-10-16에 기본 앱 아이콘을 아침 버전으로 교체했습니다. 아래는 이전 야간 버전의 제작·검증 기록입니다. 현재 적용 기록은 [아침 버전](../morning-app-icon/README.md)을 참고하세요.
+
 제작일: 2026-10-14
 제작 도구: built-in `image_gen__imagegen`.
 원본: 사용자가 선택한 ‘비 오는 밤’ 2D 애니메이션풍 배경.
@@ -7,7 +9,7 @@
 ## 결과와 적용
 
 - 원본 생성물: `generated-original.png`
-- 배포용 마스터: `../../../assets/icon/app_icon.png` (1024×1024, 불투명 RGB PNG)
+- 야간 버전 마스터: `../../../assets/icon/app_icon_night.png` (1024×1024, 불투명 RGB PNG)
 - 기본 아이콘: Android `mipmap-mdpi/hdpi/xhdpi/xxhdpi/xxxhdpi/ic_launcher.png` (48/72/96/144/192px)
 - Android 8 이상: `mipmap-anydpi-v26/ic_launcher.xml`에서 남색 배경과 그림 레이어를 조합.
 - 그림 레이어는 각 방향 20% inset을 두어 캐릭터, 책, 조명을 마스크 안쪽에 배치.
