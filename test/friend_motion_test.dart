@@ -19,7 +19,20 @@ void main() {
   test('slow study and tea loops join the exact canonical cel', () {
     expect(
       FriendMotionClock.studyDuration,
-      const Duration(milliseconds: 42300),
+      const Duration(milliseconds: 40500),
+    );
+    expect(
+      FriendMotionClock.writingLoops *
+              FriendMotionClock.writingTimeline.length +
+          FriendMotionClock.pageTurnTimeline.length,
+      FriendMotionClock.studyDuration.inMilliseconds *
+          FriendMotionClock.framesPerSecond ~/
+          1000,
+    );
+    expect(
+      FriendMotionClock.writingLoops * FriendMotionClock.writingTimeline.length,
+      FriendMotionClock.writingDuration.inSeconds *
+          FriendMotionClock.framesPerSecond,
     );
     for (final timeline in [
       FriendMotionClock.penguinRestTimeline,
@@ -33,15 +46,17 @@ void main() {
       expect(timeline.first, timeline.last);
     }
     for (final boundary in [
-      const Duration(milliseconds: 3600),
-      const Duration(seconds: 36),
+      const Duration(seconds: 4),
+      FriendMotionClock.writingDuration,
       FriendMotionClock.studyDuration,
     ]) {
       final before = FriendMotionClock.sample(
         boundary - const Duration(microseconds: 1),
       );
       final after = FriendMotionClock.sample(boundary);
-      expect(before.from, after.from);
+      // Each join is the rest cel or its neighbouring stroke drawing.
+      expect(before.from, anyOf(0, 1));
+      expect(after.from, 0);
       expect((before.blend, after.blend), (0, 0));
     }
     final before = FriendMotionClock.sample(

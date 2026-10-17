@@ -11,9 +11,9 @@ class FriendMotionPose {
 
 /// A visual clock only. Pausing it never affects the saved focus timer.
 abstract final class FriendMotionClock {
+  static const writingLoops = 9;
   static const writingDuration = Duration(seconds: 36);
-  static const turnDuration = Duration(milliseconds: 6300);
-  static const studyDuration = Duration(milliseconds: 42300);
+  static const studyDuration = Duration(milliseconds: 40500);
   static const restDuration = Duration(seconds: 10);
   static const windowTeaDuration = Duration(seconds: 22);
   // Like the panda: a 12fps timing grid selects one complete drawing.
@@ -53,12 +53,14 @@ abstract final class FriendMotionClock {
     (9, 262.0),
     (10, 261.0),
   ];
+  // About 1.7s, close to the panda's 1.5s lift; 3.5s read as slow motion.
+  static const teaLiftTicks = 20;
   static List<int> _liftExposure(List<(int, double)> poses) => [
-    for (var tick = 0; tick < 42; tick++)
+    for (var tick = 0; tick < teaLiftTicks; tick++)
       poses.reduce((a, b) {
         final y =
             poses.first.$2 +
-            (poses.last.$2 - poses.first.$2) * _ease(tick / 41);
+            (poses.last.$2 - poses.first.$2) * _ease(tick / (teaLiftTicks - 1));
         return (a.$2 - y).abs() <= (b.$2 - y).abs() ? a : b;
       }).$1,
   ];
@@ -73,9 +75,10 @@ abstract final class FriendMotionClock {
     18, 18, 18, 17, 17, 17,
     10, 10, 10, 10,
     ..._liftExposure(lift).reversed,
-    ...[for (var i = 0; i < 22; i++) 0],
+    // The faster lift's spare time stays in these rests, keeping 22s.
+    ...[for (var i = 0; i < 44; i++) 0],
     1, 2, 2, 1,
-    ...[for (var i = 0; i < 26; i++) 0],
+    ...[for (var i = 0; i < 48; i++) 0],
     1, 2, 2, 1,
     ...[for (var i = 0; i < 30; i++) 0],
   ]);
@@ -100,29 +103,6 @@ abstract final class FriendMotionClock {
 
   static Duration restDurationFor(FocusFriend friend) =>
       friend.hasWindowTeaMotion ? windowTeaDuration : restDuration;
-  static const writingFrames = [0, 1, 2, 3, 4, 5, 0];
-  // Cel 7 contained a duplicate pen and is deliberately unused.
-  static const turnFrames = [
-    0,
-    6,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    0,
-  ];
   static List<int> _exposures(List<(int, int)> holds) => List.unmodifiable([
     for (final (cel, ticks) in holds)
       for (var tick = 0; tick < ticks; tick++) cel,
@@ -154,26 +134,38 @@ abstract final class FriendMotionClock {
     (0, 40),
   ]);
 
-  static double _ease(double value) => value * value * (3 - 2 * value);
+  // The panda's pen stroke: out and back through adjacent drawings in 4s,
+  // with no snap from the last drawing to the first.
+  static final List<int> writingTimeline = _exposures([
+    (0, 6),
+    (1, 5),
+    (2, 4),
+    (3, 4),
+    (4, 4),
+    (5, 6),
+    (4, 4),
+    (3, 4),
+    (2, 5),
+    (1, 6),
+  ]);
+  // Three ticks per drawing, near the panda's two to three.
+  // Cel 7 contained a duplicate pen and is deliberately unused.
+  static final List<int> pageTurnTimeline = _exposures([
+    (0, 1),
+    for (final cel in [
+      6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, //
+    ])
+      (cel, 3),
+    (0, 2),
+  ]);
 
-  // One authored drawing at a time, switching halfway through each step.
-  // Blending neighbouring cels showed two cups and see-through paws.
-  static FriendMotionPose _expose(
-    int from,
-    int to,
-    double progress,
-    FriendMotionPhase phase,
-  ) {
-    final cel = progress < .5 ? from : to;
-    return FriendMotionPose(cel, cel, 0, phase);
-  }
+  static double _ease(double value) => value * value * (3 - 2 * value);
 
   static FriendMotionPose sample(
     Duration elapsed, {
     bool resting = false,
     FocusFriend friend = FocusFriend.otter,
   }) {
-    final milliseconds = elapsed.isNegative ? 0 : elapsed.inMicroseconds / 1000;
     if (resting) {
       if (friend.hasWindowTeaMotion) {
         final frame = windowTeaFrameAt(elapsed, friend: friend);
@@ -185,24 +177,15 @@ abstract final class FriendMotionClock {
       final frame = timeline[_tick(elapsed) % timeline.length];
       return FriendMotionPose(frame, frame, 0, FriendMotionPhase.tea);
     }
-    final local = milliseconds % studyDuration.inMilliseconds;
-    if (local < writingDuration.inMilliseconds) {
-      final stroke = (local % 3600) / 600;
-      final index = stroke.floor();
-      return _expose(
-        writingFrames[index],
-        writingFrames[index + 1],
-        stroke - index,
-        FriendMotionPhase.writing,
-      );
+    final writingTicks = writingLoops * writingTimeline.length;
+    final tick = elapsed.isNegative
+        ? 0
+        : _tick(elapsed) % (writingTicks + pageTurnTimeline.length);
+    if (tick < writingTicks) {
+      final cel = writingTimeline[tick % writingTimeline.length];
+      return FriendMotionPose(cel, cel, 0, FriendMotionPhase.writing);
     }
-    final turn = (local - writingDuration.inMilliseconds) / 350;
-    final index = turn.floor().clamp(0, turnFrames.length - 2);
-    return _expose(
-      turnFrames[index],
-      turnFrames[index + 1],
-      turn - index,
-      FriendMotionPhase.pageTurn,
-    );
+    final cel = pageTurnTimeline[tick - writingTicks];
+    return FriendMotionPose(cel, cel, 0, FriendMotionPhase.pageTurn);
   }
 }

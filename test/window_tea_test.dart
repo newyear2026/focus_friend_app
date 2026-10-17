@@ -44,7 +44,7 @@ void main() {
       );
       expect(
         FriendMotionClock.sample(
-          const Duration(seconds: 9),
+          const Duration(seconds: 8),
           resting: true,
           friend: friend,
         ).from,
@@ -124,8 +124,12 @@ void main() {
       };
       for (final friend in heights.keys) {
         final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
-        final lift = timeline.sublist(60, 102);
-        final lower = timeline.sublist(136, 178);
+        const lifted = 60 + FriendMotionClock.teaLiftTicks;
+        final lift = timeline.sublist(60, lifted);
+        final lower = timeline.sublist(
+          lifted + 34,
+          lifted + 34 + FriendMotionClock.teaLiftTicks,
+        );
         expect(lower, lift.reversed.toList());
         var lastHeight = heights[friend]![0]!;
         for (final frame in lift) {
@@ -139,7 +143,7 @@ void main() {
         }
         expect(lift.first, 0);
         expect(lift.last, 10);
-        expect(timeline.sublist(108, 126).toSet(), {16});
+        expect(timeline.sublist(lifted + 6, lifted + 24).toSet(), {16});
       }
     },
   );
