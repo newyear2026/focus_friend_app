@@ -1,0 +1,251 @@
+{
+  "cupPath": [
+    {
+      "cel": 0,
+      "emblem": [
+        287.52941176470586,
+        322.5365853658537
+      ],
+      "cupBox": [
+        266,
+        303,
+        328,
+        350
+      ],
+      "cupCenter": [
+        297.0,
+        326.5
+      ],
+      "width": 62,
+      "height": 47
+    },
+    {
+      "cel": 10,
+      "emblem": [
+        306.61756373937675,
+        307.90793201133147
+      ],
+      "cupBox": [
+        268,
+        262,
+        329,
+        323
+      ],
+      "cupCenter": [
+        298.5,
+        292.5
+      ],
+      "width": 61,
+      "height": 61
+    },
+    {
+      "cel": 3,
+      "emblem": [
+        303.3564049586777,
+        312.5113636363636
+      ],
+      "cupBox": [
+        268,
+        257,
+        330,
+        317
+      ],
+      "cupCenter": [
+        299.0,
+        287.0
+      ],
+      "width": 62,
+      "height": 60
+    },
+    {
+      "cel": 27,
+      "emblem": [
+        297.1108695652174,
+        308.3380434782609
+      ],
+      "cupBox": [
+        269,
+        256,
+        329,
+        314
+      ],
+      "cupCenter": [
+        299.0,
+        285.0
+      ],
+      "width": 60,
+      "height": 58
+    },
+    {
+      "cel": 17,
+      "emblem": [
+        315.1683967704729,
+        305.7843137254902
+      ],
+      "cupBox": [
+        280,
+        255,
+        340,
+        315
+      ],
+      "cupCenter": [
+        310.0,
+        285.0
+      ],
+      "width": 60,
+      "height": 60
+    },
+    {
+      "cel": 18,
+      "emblem": [
+        308.15671641791045,
+        306.9179104477612
+      ],
+      "cupBox": [
+        272,
+        256,
+        333,
+        319
+      ],
+      "cupCenter": [
+        302.5,
+        287.5
+      ],
+      "width": 61,
+      "height": 63
+    },
+    {
+      "cel": 16,
+      "emblem": [
+        307.3428927680798,
+        310.81920199501246
+      ],
+      "cupBox": [
+        272,
+        258,
+        333,
+        319
+      ],
+      "cupCenter": [
+        302.5,
+        288.5
+      ],
+      "width": 61,
+      "height": 61
+    }
+  ],
+  "friend": "squirrel",
+  "boundaryUnionOver40": 21,
+  "boundaryLimit": 30,
+  "darkBaseline10": 2556,
+  "rows": [
+    {
+      "cel": 0,
+      "boundaryOver40": 0,
+      "darkPixels": 2534,
+      "darkRatioVs10": 0.9913928012519562
+    },
+    {
+      "cel": 1,
+      "boundaryOver40": 4,
+      "darkPixels": 2523,
+      "darkRatioVs10": 0.9870892018779343
+    },
+    {
+      "cel": 2,
+      "boundaryOver40": 0,
+      "darkPixels": 2560,
+      "darkRatioVs10": 1.001564945226917
+    },
+    {
+      "cel": 3,
+      "boundaryOver40": 3,
+      "darkPixels": 2533,
+      "darkRatioVs10": 0.991001564945227
+    },
+    {
+      "cel": 4,
+      "boundaryOver40": 2,
+      "darkPixels": 2479,
+      "darkRatioVs10": 0.9698748043818466
+    },
+    {
+      "cel": 5,
+      "boundaryOver40": 5,
+      "darkPixels": 2504,
+      "darkRatioVs10": 0.9796557120500783
+    },
+    {
+      "cel": 6,
+      "boundaryOver40": 1,
+      "darkPixels": 2487,
+      "darkRatioVs10": 0.9730046948356808
+    },
+    {
+      "cel": 7,
+      "boundaryOver40": 2,
+      "darkPixels": 2477,
+      "darkRatioVs10": 0.9690923317683882
+    },
+    {
+      "cel": 8,
+      "boundaryOver40": 2,
+      "darkPixels": 2566,
+      "darkRatioVs10": 1.0039123630672926
+    },
+    {
+      "cel": 9,
+      "boundaryOver40": 5,
+      "darkPixels": 2515,
+      "darkRatioVs10": 0.9839593114241002
+    },
+    {
+      "cel": 10,
+      "boundaryOver40": 2,
+      "darkPixels": 2556,
+      "darkRatioVs10": 1.0
+    },
+    {
+      "cel": 16,
+      "boundaryOver40": 3,
+      "darkPixels": 2533,
+      "darkRatioVs10": 0.991001564945227
+    },
+    {
+      "cel": 17,
+      "boundaryOver40": 3,
+      "darkPixels": 2533,
+      "darkRatioVs10": 0.991001564945227
+    },
+    {
+      "cel": 18,
+      "boundaryOver40": 3,
+      "darkPixels": 2533,
+      "darkRatioVs10": 0.991001564945227
+    },
+    {
+      "cel": 21,
+      "boundaryOver40": 10,
+      "darkPixels": 2868,
+      "darkRatioVs10": 1.1220657276995305
+    },
+    {
+      "cel": 22,
+      "boundaryOver40": 18,
+      "darkPixels": 2843,
+      "darkRatioVs10": 1.112284820031299
+    },
+    {
+      "cel": 25,
+      "boundaryOver40": 10,
+      "darkPixels": 2941,
+      "darkRatioVs10": 1.1506259780907668
+    },
+    {
+      "cel": 27,
+      "boundaryOver40": 3,
+      "darkPixels": 2533,
+      "darkRatioVs10": 0.991001564945227
+    }
+  ]
+}

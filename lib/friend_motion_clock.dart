@@ -70,13 +70,16 @@ abstract final class FriendMotionClock {
     ...[for (var i = 0; i < 26; i++) 0],
     // Stop at the mouth. Old cels 11..15 raised the cup toward the nose.
     ..._liftExposure(lift),
+    // Two authored inbetweens let lids and cup angle change gradually.
+    3, 3, 27, 27,
     17, 17, 17, 18, 18, 18,
     ...[for (var i = 0; i < 18; i++) 16],
     18, 18, 18, 17, 17, 17,
+    27, 27, 3, 3,
     10, 10, 10, 10,
     ..._liftExposure(lift).reversed,
     // The faster lift's spare time stays in these rests, keeping 22s.
-    ...[for (var i = 0; i < 44; i++) 0],
+    ...[for (var i = 0; i < 36; i++) 0],
     1, 2, 2, 1,
     ...[for (var i = 0; i < 48; i++) 0],
     1, 2, 2, 1,

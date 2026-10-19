@@ -1,0 +1,771 @@
+{
+  "unchanged": [
+    {
+      "clip": "redpanda-study",
+      "compared": 153,
+      "changed": []
+    },
+    {
+      "clip": "redpanda-rest",
+      "compared": 120,
+      "changed": []
+    },
+    {
+      "clip": "penguin-study",
+      "compared": 141,
+      "changed": []
+    },
+    {
+      "clip": "penguin-rest",
+      "compared": 120,
+      "changed": []
+    },
+    {
+      "clip": "otter-study",
+      "compared": 141,
+      "changed": []
+    },
+    {
+      "clip": "otter-rest",
+      "compared": 120,
+      "changed": []
+    },
+    {
+      "clip": "squirrel-study",
+      "compared": 1,
+      "changed": []
+    },
+    {
+      "clip": "fennec-study",
+      "compared": 1,
+      "changed": []
+    }
+  ],
+  "changes": {
+    "redpanda": {
+      "maxChangedAny": 48101,
+      "maxChangedMaxRgbGt15": 21210,
+      "transitions": [
+        {
+          "tick": 30,
+          "from": 0,
+          "to": 1,
+          "changedAny": 45247,
+          "changedMaxRgbGt15": 5881
+        },
+        {
+          "tick": 32,
+          "from": 1,
+          "to": 0,
+          "changedAny": 45247,
+          "changedMaxRgbGt15": 5881
+        },
+        {
+          "tick": 40,
+          "from": 0,
+          "to": 2,
+          "changedAny": 45516,
+          "changedMaxRgbGt15": 13826
+        },
+        {
+          "tick": 44,
+          "from": 2,
+          "to": 3,
+          "changedAny": 45490,
+          "changedMaxRgbGt15": 5489
+        },
+        {
+          "tick": 48,
+          "from": 3,
+          "to": 12,
+          "changedAny": 46597,
+          "changedMaxRgbGt15": 20852
+        },
+        {
+          "tick": 50,
+          "from": 12,
+          "to": 4,
+          "changedAny": 47112,
+          "changedMaxRgbGt15": 17401
+        },
+        {
+          "tick": 52,
+          "from": 4,
+          "to": 5,
+          "changedAny": 48101,
+          "changedMaxRgbGt15": 21058
+        },
+        {
+          "tick": 58,
+          "from": 5,
+          "to": 6,
+          "changedAny": 47983,
+          "changedMaxRgbGt15": 21210
+        },
+        {
+          "tick": 70,
+          "from": 6,
+          "to": 7,
+          "changedAny": 46468,
+          "changedMaxRgbGt15": 12860
+        },
+        {
+          "tick": 74,
+          "from": 7,
+          "to": 8,
+          "changedAny": 46377,
+          "changedMaxRgbGt15": 13112
+        },
+        {
+          "tick": 78,
+          "from": 8,
+          "to": 13,
+          "changedAny": 46578,
+          "changedMaxRgbGt15": 20459
+        },
+        {
+          "tick": 80,
+          "from": 13,
+          "to": 9,
+          "changedAny": 46483,
+          "changedMaxRgbGt15": 19502
+        },
+        {
+          "tick": 82,
+          "from": 9,
+          "to": 10,
+          "changedAny": 45776,
+          "changedMaxRgbGt15": 9940
+        },
+        {
+          "tick": 88,
+          "from": 10,
+          "to": 11,
+          "changedAny": 45427,
+          "changedMaxRgbGt15": 7491
+        },
+        {
+          "tick": 0,
+          "from": 11,
+          "to": 0,
+          "changedAny": 45893,
+          "changedMaxRgbGt15": 7280
+        }
+      ]
+    },
+    "squirrel": {
+      "maxChangedAny": 25445,
+      "maxChangedMaxRgbGt15": 12307,
+      "transitions": [
+        {
+          "tick": 30,
+          "from": 0,
+          "to": 1,
+          "changedAny": 24620,
+          "changedMaxRgbGt15": 4166
+        },
+        {
+          "tick": 31,
+          "from": 1,
+          "to": 2,
+          "changedAny": 24636,
+          "changedMaxRgbGt15": 3663
+        },
+        {
+          "tick": 33,
+          "from": 2,
+          "to": 1,
+          "changedAny": 24636,
+          "changedMaxRgbGt15": 3663
+        },
+        {
+          "tick": 34,
+          "from": 1,
+          "to": 0,
+          "changedAny": 24620,
+          "changedMaxRgbGt15": 4166
+        },
+        {
+          "tick": 65,
+          "from": 0,
+          "to": 4,
+          "changedAny": 24933,
+          "changedMaxRgbGt15": 7582
+        },
+        {
+          "tick": 67,
+          "from": 4,
+          "to": 25,
+          "changedAny": 25401,
+          "changedMaxRgbGt15": 9906
+        },
+        {
+          "tick": 68,
+          "from": 25,
+          "to": 5,
+          "changedAny": 25313,
+          "changedMaxRgbGt15": 8638
+        },
+        {
+          "tick": 69,
+          "from": 5,
+          "to": 21,
+          "changedAny": 25251,
+          "changedMaxRgbGt15": 8186
+        },
+        {
+          "tick": 70,
+          "from": 21,
+          "to": 6,
+          "changedAny": 25332,
+          "changedMaxRgbGt15": 8079
+        },
+        {
+          "tick": 71,
+          "from": 6,
+          "to": 22,
+          "changedAny": 25353,
+          "changedMaxRgbGt15": 9417
+        },
+        {
+          "tick": 73,
+          "from": 22,
+          "to": 7,
+          "changedAny": 25445,
+          "changedMaxRgbGt15": 11355
+        },
+        {
+          "tick": 75,
+          "from": 7,
+          "to": 8,
+          "changedAny": 25031,
+          "changedMaxRgbGt15": 7274
+        },
+        {
+          "tick": 76,
+          "from": 8,
+          "to": 9,
+          "changedAny": 24863,
+          "changedMaxRgbGt15": 5876
+        },
+        {
+          "tick": 78,
+          "from": 9,
+          "to": 10,
+          "changedAny": 24874,
+          "changedMaxRgbGt15": 5547
+        },
+        {
+          "tick": 80,
+          "from": 10,
+          "to": 3,
+          "changedAny": 22682,
+          "changedMaxRgbGt15": 9021
+        },
+        {
+          "tick": 82,
+          "from": 3,
+          "to": 27,
+          "changedAny": 22339,
+          "changedMaxRgbGt15": 9170
+        },
+        {
+          "tick": 84,
+          "from": 27,
+          "to": 17,
+          "changedAny": 22548,
+          "changedMaxRgbGt15": 12307
+        },
+        {
+          "tick": 87,
+          "from": 17,
+          "to": 18,
+          "changedAny": 22258,
+          "changedMaxRgbGt15": 9690
+        },
+        {
+          "tick": 90,
+          "from": 18,
+          "to": 16,
+          "changedAny": 22105,
+          "changedMaxRgbGt15": 6630
+        },
+        {
+          "tick": 108,
+          "from": 16,
+          "to": 18,
+          "changedAny": 22105,
+          "changedMaxRgbGt15": 6630
+        },
+        {
+          "tick": 111,
+          "from": 18,
+          "to": 17,
+          "changedAny": 22258,
+          "changedMaxRgbGt15": 9690
+        },
+        {
+          "tick": 114,
+          "from": 17,
+          "to": 27,
+          "changedAny": 22548,
+          "changedMaxRgbGt15": 12307
+        },
+        {
+          "tick": 116,
+          "from": 27,
+          "to": 3,
+          "changedAny": 22339,
+          "changedMaxRgbGt15": 9170
+        },
+        {
+          "tick": 118,
+          "from": 3,
+          "to": 10,
+          "changedAny": 22682,
+          "changedMaxRgbGt15": 9021
+        },
+        {
+          "tick": 124,
+          "from": 10,
+          "to": 9,
+          "changedAny": 24874,
+          "changedMaxRgbGt15": 5547
+        },
+        {
+          "tick": 126,
+          "from": 9,
+          "to": 8,
+          "changedAny": 24863,
+          "changedMaxRgbGt15": 5876
+        },
+        {
+          "tick": 127,
+          "from": 8,
+          "to": 7,
+          "changedAny": 25031,
+          "changedMaxRgbGt15": 7274
+        },
+        {
+          "tick": 129,
+          "from": 7,
+          "to": 22,
+          "changedAny": 25445,
+          "changedMaxRgbGt15": 11355
+        },
+        {
+          "tick": 131,
+          "from": 22,
+          "to": 6,
+          "changedAny": 25353,
+          "changedMaxRgbGt15": 9417
+        },
+        {
+          "tick": 132,
+          "from": 6,
+          "to": 21,
+          "changedAny": 25332,
+          "changedMaxRgbGt15": 8079
+        },
+        {
+          "tick": 133,
+          "from": 21,
+          "to": 5,
+          "changedAny": 25251,
+          "changedMaxRgbGt15": 8186
+        },
+        {
+          "tick": 134,
+          "from": 5,
+          "to": 25,
+          "changedAny": 25313,
+          "changedMaxRgbGt15": 8638
+        },
+        {
+          "tick": 135,
+          "from": 25,
+          "to": 4,
+          "changedAny": 25401,
+          "changedMaxRgbGt15": 9906
+        },
+        {
+          "tick": 137,
+          "from": 4,
+          "to": 0,
+          "changedAny": 24933,
+          "changedMaxRgbGt15": 7582
+        },
+        {
+          "tick": 178,
+          "from": 0,
+          "to": 1,
+          "changedAny": 24620,
+          "changedMaxRgbGt15": 4166
+        },
+        {
+          "tick": 179,
+          "from": 1,
+          "to": 2,
+          "changedAny": 24636,
+          "changedMaxRgbGt15": 3663
+        },
+        {
+          "tick": 181,
+          "from": 2,
+          "to": 1,
+          "changedAny": 24636,
+          "changedMaxRgbGt15": 3663
+        },
+        {
+          "tick": 182,
+          "from": 1,
+          "to": 0,
+          "changedAny": 24620,
+          "changedMaxRgbGt15": 4166
+        },
+        {
+          "tick": 230,
+          "from": 0,
+          "to": 1,
+          "changedAny": 24620,
+          "changedMaxRgbGt15": 4166
+        },
+        {
+          "tick": 231,
+          "from": 1,
+          "to": 2,
+          "changedAny": 24636,
+          "changedMaxRgbGt15": 3663
+        },
+        {
+          "tick": 233,
+          "from": 2,
+          "to": 1,
+          "changedAny": 24636,
+          "changedMaxRgbGt15": 3663
+        },
+        {
+          "tick": 234,
+          "from": 1,
+          "to": 0,
+          "changedAny": 24620,
+          "changedMaxRgbGt15": 4166
+        }
+      ]
+    },
+    "fennec": {
+      "maxChangedAny": 41749,
+      "maxChangedMaxRgbGt15": 19439,
+      "transitions": [
+        {
+          "tick": 30,
+          "from": 0,
+          "to": 1,
+          "changedAny": 39966,
+          "changedMaxRgbGt15": 9684
+        },
+        {
+          "tick": 31,
+          "from": 1,
+          "to": 2,
+          "changedAny": 40034,
+          "changedMaxRgbGt15": 7987
+        },
+        {
+          "tick": 33,
+          "from": 2,
+          "to": 1,
+          "changedAny": 40034,
+          "changedMaxRgbGt15": 7987
+        },
+        {
+          "tick": 34,
+          "from": 1,
+          "to": 0,
+          "changedAny": 39966,
+          "changedMaxRgbGt15": 9684
+        },
+        {
+          "tick": 62,
+          "from": 0,
+          "to": 19,
+          "changedAny": 40065,
+          "changedMaxRgbGt15": 14887
+        },
+        {
+          "tick": 65,
+          "from": 19,
+          "to": 20,
+          "changedAny": 38509,
+          "changedMaxRgbGt15": 14351
+        },
+        {
+          "tick": 67,
+          "from": 20,
+          "to": 5,
+          "changedAny": 40740,
+          "changedMaxRgbGt15": 19439
+        },
+        {
+          "tick": 68,
+          "from": 5,
+          "to": 6,
+          "changedAny": 40610,
+          "changedMaxRgbGt15": 9481
+        },
+        {
+          "tick": 69,
+          "from": 6,
+          "to": 7,
+          "changedAny": 40827,
+          "changedMaxRgbGt15": 8544
+        },
+        {
+          "tick": 70,
+          "from": 7,
+          "to": 23,
+          "changedAny": 41348,
+          "changedMaxRgbGt15": 17421
+        },
+        {
+          "tick": 72,
+          "from": 23,
+          "to": 8,
+          "changedAny": 41503,
+          "changedMaxRgbGt15": 18696
+        },
+        {
+          "tick": 73,
+          "from": 8,
+          "to": 25,
+          "changedAny": 41316,
+          "changedMaxRgbGt15": 17221
+        },
+        {
+          "tick": 75,
+          "from": 25,
+          "to": 9,
+          "changedAny": 41534,
+          "changedMaxRgbGt15": 16984
+        },
+        {
+          "tick": 76,
+          "from": 9,
+          "to": 26,
+          "changedAny": 41749,
+          "changedMaxRgbGt15": 16691
+        },
+        {
+          "tick": 78,
+          "from": 26,
+          "to": 10,
+          "changedAny": 41467,
+          "changedMaxRgbGt15": 12499
+        },
+        {
+          "tick": 80,
+          "from": 10,
+          "to": 3,
+          "changedAny": 38889,
+          "changedMaxRgbGt15": 15039
+        },
+        {
+          "tick": 82,
+          "from": 3,
+          "to": 27,
+          "changedAny": 38210,
+          "changedMaxRgbGt15": 13223
+        },
+        {
+          "tick": 84,
+          "from": 27,
+          "to": 17,
+          "changedAny": 37655,
+          "changedMaxRgbGt15": 2244
+        },
+        {
+          "tick": 87,
+          "from": 17,
+          "to": 18,
+          "changedAny": 38327,
+          "changedMaxRgbGt15": 12415
+        },
+        {
+          "tick": 90,
+          "from": 18,
+          "to": 16,
+          "changedAny": 38388,
+          "changedMaxRgbGt15": 10397
+        },
+        {
+          "tick": 108,
+          "from": 16,
+          "to": 18,
+          "changedAny": 38388,
+          "changedMaxRgbGt15": 10397
+        },
+        {
+          "tick": 111,
+          "from": 18,
+          "to": 17,
+          "changedAny": 38327,
+          "changedMaxRgbGt15": 12415
+        },
+        {
+          "tick": 114,
+          "from": 17,
+          "to": 27,
+          "changedAny": 37655,
+          "changedMaxRgbGt15": 2244
+        },
+        {
+          "tick": 116,
+          "from": 27,
+          "to": 3,
+          "changedAny": 38210,
+          "changedMaxRgbGt15": 13223
+        },
+        {
+          "tick": 118,
+          "from": 3,
+          "to": 10,
+          "changedAny": 38889,
+          "changedMaxRgbGt15": 15039
+        },
+        {
+          "tick": 124,
+          "from": 10,
+          "to": 26,
+          "changedAny": 41467,
+          "changedMaxRgbGt15": 12499
+        },
+        {
+          "tick": 126,
+          "from": 26,
+          "to": 9,
+          "changedAny": 41749,
+          "changedMaxRgbGt15": 16691
+        },
+        {
+          "tick": 127,
+          "from": 9,
+          "to": 25,
+          "changedAny": 41534,
+          "changedMaxRgbGt15": 16984
+        },
+        {
+          "tick": 129,
+          "from": 25,
+          "to": 8,
+          "changedAny": 41316,
+          "changedMaxRgbGt15": 17221
+        },
+        {
+          "tick": 130,
+          "from": 8,
+          "to": 23,
+          "changedAny": 41503,
+          "changedMaxRgbGt15": 18696
+        },
+        {
+          "tick": 132,
+          "from": 23,
+          "to": 7,
+          "changedAny": 41348,
+          "changedMaxRgbGt15": 17421
+        },
+        {
+          "tick": 133,
+          "from": 7,
+          "to": 6,
+          "changedAny": 40827,
+          "changedMaxRgbGt15": 8544
+        },
+        {
+          "tick": 134,
+          "from": 6,
+          "to": 5,
+          "changedAny": 40610,
+          "changedMaxRgbGt15": 9481
+        },
+        {
+          "tick": 135,
+          "from": 5,
+          "to": 20,
+          "changedAny": 40740,
+          "changedMaxRgbGt15": 19439
+        },
+        {
+          "tick": 137,
+          "from": 20,
+          "to": 19,
+          "changedAny": 38509,
+          "changedMaxRgbGt15": 14351
+        },
+        {
+          "tick": 140,
+          "from": 19,
+          "to": 0,
+          "changedAny": 40065,
+          "changedMaxRgbGt15": 14887
+        },
+        {
+          "tick": 178,
+          "from": 0,
+          "to": 1,
+          "changedAny": 39966,
+          "changedMaxRgbGt15": 9684
+        },
+        {
+          "tick": 179,
+          "from": 1,
+          "to": 2,
+          "changedAny": 40034,
+          "changedMaxRgbGt15": 7987
+        },
+        {
+          "tick": 181,
+          "from": 2,
+          "to": 1,
+          "changedAny": 40034,
+          "changedMaxRgbGt15": 7987
+        },
+        {
+          "tick": 182,
+          "from": 1,
+          "to": 0,
+          "changedAny": 39966,
+          "changedMaxRgbGt15": 9684
+        },
+        {
+          "tick": 230,
+          "from": 0,
+          "to": 1,
+          "changedAny": 39966,
+          "changedMaxRgbGt15": 9684
+        },
+        {
+          "tick": 231,
+          "from": 1,
+          "to": 2,
+          "changedAny": 40034,
+          "changedMaxRgbGt15": 7987
+        },
+        {
+          "tick": 233,
+          "from": 2,
+          "to": 1,
+          "changedAny": 40034,
+          "changedMaxRgbGt15": 7987
+        },
+        {
+          "tick": 234,
+          "from": 1,
+          "to": 0,
+          "changedAny": 39966,
+          "changedMaxRgbGt15": 9684
+        }
+      ]
+    }
+  }
+}

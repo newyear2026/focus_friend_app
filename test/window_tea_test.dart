@@ -58,7 +58,7 @@ void main() {
       for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
         final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
         expect(timeline.length, 264);
-        expect(timeline.toSet(), containsAll([0, 1, 2, 10, 16, 17, 18]));
+        expect(timeline.toSet(), containsAll([0, 1, 2, 3, 10, 16, 17, 18, 27]));
         expect(timeline.any((cel) => cel >= 19), isTrue);
         // These old drawings raised the upright rim from the lip to the nose.
         for (var cel = 11; cel <= 15; cel++) {
@@ -90,7 +90,8 @@ void main() {
   test(
     'upright cup only rises toward the mouth and lowers on the same path',
     () {
-      // Rim heights measured from the authored, registered 512px artwork.
+      // Top cream pixels inside the rim, measured consistently in the final
+      // 384px atlas enlarged to 512px with LANCZOS. Values decrease upward.
       const heights = {
         FocusFriend.fennec: {
           0: 280,
@@ -105,7 +106,12 @@ void main() {
           25: 237,
           9: 230,
           26: 227,
-          10: 224,
+          10: 225,
+          3: 225,
+          27: 217,
+          17: 217,
+          18: 218,
+          16: 217,
         },
         FocusFriend.squirrel: {
           0: 303,
@@ -119,7 +125,12 @@ void main() {
           7: 270,
           8: 266,
           9: 262,
-          10: 261,
+          10: 262,
+          3: 257,
+          27: 256,
+          17: 255,
+          18: 256,
+          16: 258,
         },
       };
       for (final friend in heights.keys) {
@@ -127,12 +138,14 @@ void main() {
         const lifted = 60 + FriendMotionClock.teaLiftTicks;
         final lift = timeline.sublist(60, lifted);
         final lower = timeline.sublist(
-          lifted + 34,
-          lifted + 34 + FriendMotionClock.teaLiftTicks,
+          lifted + 42,
+          lifted + 42 + FriendMotionClock.teaLiftTicks,
         );
         expect(lower, lift.reversed.toList());
+        expect(timeline.sublist(lifted, lifted + 4), [3, 3, 27, 27]);
+        expect(timeline.sublist(lifted + 34, lifted + 38), [27, 27, 3, 3]);
         var lastHeight = heights[friend]![0]!;
-        for (final frame in lift) {
+        for (final frame in [...lift, 3, 27, 17]) {
           final y = heights[friend]![frame]!;
           expect(
             y,
@@ -143,7 +156,7 @@ void main() {
         }
         expect(lift.first, 0);
         expect(lift.last, 10);
-        expect(timeline.sublist(lifted + 6, lifted + 24).toSet(), {16});
+        expect(timeline.sublist(lifted + 10, lifted + 28).toSet(), {16});
       }
     },
   );
@@ -207,11 +220,11 @@ void main() {
 
           final base = await render(0);
           final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
+          expect(FriendMotionPainter.windowTeaWholeCels, isEmpty);
           for (final cel in timeline.toSet()) {
-            final whole = FriendMotionPainter.windowTeaWholeCels.contains(cel);
             expect(
               same(await render(cel), base),
-              !whole,
+              isTrue,
               reason: '${friend.name} cel $cel',
             );
           }
