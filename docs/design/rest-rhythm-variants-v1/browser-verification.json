@@ -1,0 +1,15 @@
+{
+  "url": "http://127.0.0.1:8131/rest-rhythm-variants-v1/",
+  "checkedVia": "CUA in-app browser",
+  "allVideosReadyState": 4,
+  "allPlaybackRate": 1,
+  "allVideosPlayed": true,
+  "allVideosPaused": true,
+  "mediaErrors": [],
+  "durations": [
+    22.333333,
+    38,
+    57,
+    57
+  ]
+}

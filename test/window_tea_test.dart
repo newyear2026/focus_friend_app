@@ -8,24 +8,23 @@ import 'package:focus_friend_app/friend_motion_scene.dart';
 import 'package:focus_friend_app/room_ambience.dart';
 
 void main() {
-  test('window tea takes 22 seconds and joins the same resting pose', () {
-    expect(
-      FriendMotionClock.windowTeaTimeline.length,
-      22 * FriendMotionClock.windowTeaFramesPerSecond,
-    );
+  test('window tea repeats its complete three-variant supercycle', () {
     for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
+      final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
+      expect(timeline.length, 57 * FriendMotionClock.windowTeaFramesPerSecond);
+      final cycle = FriendMotionClock.restDurationFor(friend);
       final start = FriendMotionClock.sample(
         Duration.zero,
         resting: true,
         friend: friend,
       );
       final end = FriendMotionClock.sample(
-        const Duration(microseconds: 21999999),
+        cycle - const Duration(microseconds: 1),
         resting: true,
         friend: friend,
       );
       final next = FriendMotionClock.sample(
-        const Duration(seconds: 22),
+        cycle,
         resting: true,
         friend: friend,
       );
@@ -34,22 +33,9 @@ void main() {
         (next.from, next.to, next.blend),
       );
       expect((end.from, end.to, end.blend), (0, 0, 0));
-      expect(
-        FriendMotionClock.sample(
-          const Duration(seconds: 2),
-          resting: true,
-          friend: friend,
-        ).from,
-        0,
-      );
-      expect(
-        FriendMotionClock.sample(
-          const Duration(seconds: 8),
-          resting: true,
-          friend: friend,
-        ).from,
-        16,
-      );
+      for (final variant in FriendMotionClock.restVariantsFor(friend)) {
+        expect(variant.action.sublist(26, 44).toSet(), {16});
+      }
     }
   });
   test(
@@ -57,7 +43,7 @@ void main() {
     () {
       for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
         final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
-        expect(timeline.length, 264);
+        expect(timeline.length, 684);
         expect(timeline.toSet(), containsAll([0, 1, 2, 10, 16, 17, 18]));
         expect(timeline.any((cel) => cel >= 19), isTrue);
         // These old drawings raised the upright rim from the lip to the nose.
@@ -123,27 +109,26 @@ void main() {
         },
       };
       for (final friend in heights.keys) {
-        final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
-        const lifted = 60 + FriendMotionClock.teaLiftTicks;
-        final lift = timeline.sublist(60, lifted);
-        final lower = timeline.sublist(
-          lifted + 34,
-          lifted + 34 + FriendMotionClock.teaLiftTicks,
-        );
-        expect(lower, lift.reversed.toList());
-        var lastHeight = heights[friend]![0]!;
-        for (final frame in lift) {
-          final y = heights[friend]![frame]!;
-          expect(
-            y,
-            lessThanOrEqualTo(lastHeight),
-            reason: '${friend.name}: cup reversed while lifting',
-          );
-          lastHeight = y;
+        for (final variant in FriendMotionClock.restVariantsFor(friend)) {
+          const lifted = FriendMotionClock.teaLiftTicks;
+          final action = variant.action;
+          final lift = action.sublist(0, lifted);
+          final lower = action.sublist(lifted + 34, lifted + 34 + lifted);
+          expect(lower, lift.reversed.toList());
+          var lastHeight = heights[friend]![0]!;
+          for (final frame in lift) {
+            final y = heights[friend]![frame]!;
+            expect(
+              y,
+              lessThanOrEqualTo(lastHeight),
+              reason: '${friend.name}: cup reversed while lifting',
+            );
+            lastHeight = y;
+          }
+          expect(lift.first, 0);
+          expect(lift.last, 10);
+          expect(action.sublist(lifted + 6, lifted + 24).toSet(), {16});
         }
-        expect(lift.first, 0);
-        expect(lift.last, 10);
-        expect(timeline.sublist(lifted + 6, lifted + 24).toSet(), {16});
       }
     },
   );

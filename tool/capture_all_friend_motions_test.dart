@@ -71,9 +71,23 @@ void main() {
               : resting
               ? cycle
               : cycle + const Duration(milliseconds: 3600) - start;
+          final variants = resting && friend != FocusFriend.redpanda
+              ? FriendMotionClock.restVariantsFor(friend)
+              : <FriendRestVariant>[];
+          // A non-integral supercycle (penguin: 268/12 seconds) rounds up
+          // to microseconds in Duration. Do not ceil that into an extra tick.
           final count = staticScene
               ? 1
+              : resting
+              ? (duration.inMicroseconds * fps / 1000000).round()
               : (duration.inMicroseconds * fps / 1000000).ceil();
+          if (variants.isNotEmpty) {
+            expect(
+              count,
+              variants.fold<int>(0, (sum, v) => sum + v.timeline.length),
+              reason: 'capture the entire rest supercycle',
+            );
+          }
           tester.platformDispatcher.accessibilityFeaturesTestValue =
               const FakeAccessibilityFeatures(disableAnimations: true);
           final now = DateTime(2026, 10, 15, 18).millisecondsSinceEpoch;
@@ -203,6 +217,20 @@ void main() {
                 sample.addAll({'from': p.from, 'to': p.to, 'blend': p.blend});
               }
             }
+            if (variants.isNotEmpty) {
+              var offset = 0;
+              for (var i = 0; i < variants.length; i++) {
+                final variant = variants[i];
+                if (tick < offset + variant.timeline.length) {
+                  sample['variant'] = i;
+                  sample['action'] =
+                      tick >= offset + variant.actionStartTick &&
+                      tick < offset + variant.actionEndTick;
+                  break;
+                }
+                offset += variant.timeline.length;
+              }
+            }
             sample['phase'] = phase;
             final firstPhase = seenPhases.add(phase);
             stamps.add(stamp);
@@ -275,6 +303,15 @@ void main() {
             'cycleSeconds': cycle.inMicroseconds / 1000000,
             'phases': seenPhases.toList(),
             'source': 'fresh current FocusFriendApp widget capture',
+            if (variants.isNotEmpty)
+              'variants': [
+                for (final variant in variants)
+                  {
+                    'ticks': variant.timeline.length,
+                    'actionStartTick': variant.actionStartTick,
+                    'actionEndTick': variant.actionEndTick,
+                  },
+              ],
             'samples': samples,
           });
           File(
@@ -285,6 +322,6 @@ void main() {
         }
       }
     },
-    timeout: const Timeout(Duration(minutes: 10)),
+    timeout: const Timeout(Duration(minutes: 15)),
   );
 }

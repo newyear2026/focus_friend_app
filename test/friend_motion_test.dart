@@ -34,15 +34,10 @@ void main() {
       FriendMotionClock.writingDuration.inSeconds *
           FriendMotionClock.framesPerSecond,
     );
-    for (final timeline in [
-      FriendMotionClock.penguinRestTimeline,
-      FriendMotionClock.otterRestTimeline,
-    ]) {
-      expect(
-        timeline.length,
-        FriendMotionClock.restDuration.inSeconds *
-            FriendMotionClock.framesPerSecond,
-      );
+    for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+      final timeline = FriendMotionClock.restTimelineFor(friend);
+      final duration = FriendMotionClock.restDurationFor(friend);
+      expect((duration.inMicroseconds * 12 / 1000000).round(), timeline.length);
       expect(timeline.first, timeline.last);
     }
     for (final boundary in [
@@ -60,11 +55,12 @@ void main() {
       expect((before.blend, after.blend), (0, 0));
     }
     final before = FriendMotionClock.sample(
-      FriendMotionClock.restDuration - const Duration(microseconds: 1),
+      FriendMotionClock.restDurationFor(FocusFriend.otter) -
+          const Duration(microseconds: 1),
       resting: true,
     );
     final after = FriendMotionClock.sample(
-      FriendMotionClock.restDuration,
+      FriendMotionClock.restDurationFor(FocusFriend.otter),
       resting: true,
     );
     expect(before.from, after.from);
