@@ -70,11 +70,13 @@ flutter:
     - assets/images/friends/motion/otter/study.png
     - assets/images/friends/motion/otter/rest.png
     - assets/images/friends/motion/fennec/rest.png
+    - assets/images/friends/motion/fennec/study.png
     - assets/images/friends/motion/fennec/rooms/morning.png
     - assets/images/friends/motion/fennec/rooms/day.png
     - assets/images/friends/motion/fennec/rooms/evening.png
     - assets/images/friends/motion/fennec/rooms/night.png
     - assets/images/friends/motion/squirrel/rest.png
+    - assets/images/friends/motion/squirrel/study.png
     - assets/images/friends/motion/squirrel/rooms/morning.png
     - assets/images/friends/motion/squirrel/rooms/day.png
     - assets/images/friends/motion/squirrel/rooms/evening.png

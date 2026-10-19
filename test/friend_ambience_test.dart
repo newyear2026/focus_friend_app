@@ -24,8 +24,8 @@ Future<void> loadArt(WidgetTester tester, FocusFriend friend) async {
   await tester.runAsync(() async {
     for (final asset in [
       for (final ambience in RoomAmbience.values)
-        friend.ambienceAsset(ambience),
-      if (friend.hasDeskMotion) '${friend.motionDirectory}/study.png',
+        friend.restRoomAsset(ambience),
+      if (friend.hasStudyMotion) '${friend.motionDirectory}/study.png',
     ]) {
       await precacheImage(AssetImage(asset), context);
     }
@@ -71,7 +71,7 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 2100));
         expect(scene().ambience, RoomAmbience.night);
-        if (friend.hasDeskMotion) {
+        if (friend.hasStudyMotion) {
           final painter =
               tester
                       .widget<CustomPaint>(
@@ -107,7 +107,7 @@ void main() {
     );
   }
 
-  for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+  for (final friend in friends) {
     testWidgets(
       '${friend.name}: a paused pose survives the two-second room fade',
       (tester) async {

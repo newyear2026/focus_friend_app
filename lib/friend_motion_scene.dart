@@ -42,9 +42,8 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
   }
 
   bool get ready =>
-      (!widget.friend.hasDeskMotion || images.containsKey('study')) &&
       currentRoom != null &&
-      (!widget.resting || images.containsKey('rest'));
+      images.containsKey(widget.resting ? 'rest' : 'study');
 
   void _load(String name, {String? asset}) {
     if (streams.containsKey(name)) return;
@@ -93,7 +92,7 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
     reduced = MediaQuery.disableAnimationsOf(context);
     enabled = TickerMode.valuesOf(context).enabled;
     _loadRoom();
-    if (widget.friend.hasDeskMotion) _load('study');
+    if (!widget.resting && widget.friend.hasStudyMotion) _load('study');
     if (widget.resting) _load('rest');
     _sync();
   }
@@ -129,8 +128,8 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.friend != widget.friend) {
       _releaseImages();
-      if (widget.friend.hasDeskMotion) _load('study');
     }
+    if (!widget.resting && widget.friend.hasStudyMotion) _load('study');
     if (oldWidget.friend != widget.friend ||
         oldWidget.ambience != widget.ambience) {
       _loadRoom();
@@ -371,6 +370,114 @@ class FriendMotionPainter extends CustomPainter {
   // Every rest drawing uses the same fixed ears, tail, hat and back.
   static const Set<int> windowTeaWholeCels = {};
 
+  // Authored connected forearms and paper move over an invariant study cel.
+  // Protect the face, ears, tail, backpack, mug and bottom book-cover edge.
+  static Path windowStudyRegion(
+    FocusFriend friend, {
+    required bool turningPage,
+    required int cel,
+  }) {
+    final points = friend == FocusFriend.squirrel
+        ? (turningPage
+              ? const [
+                  (151, 303),
+                  (198, 291),
+                  (258, 306),
+                  (287, 312),
+                  (328, 320),
+                  (360, 326),
+                  (388, 365),
+                  (388, 397),
+                  (123, 397),
+                  (124, 351),
+                ]
+              : const [
+                  (160, 300),
+                  (193, 289),
+                  (235, 298),
+                  (263, 320),
+                  (277, 350),
+                  (277, 383),
+                  (196, 381),
+                  (153, 348),
+                ])
+        : (turningPage
+              ? const [
+                  (111, 320),
+                  (151, 309),
+                  (177, 295),
+                  (199, 296),
+                  (239, 322),
+                  (299, 321),
+                  (338, 315),
+                  (364, 334),
+                  (389, 370),
+                  (390, 397),
+                  (121, 397),
+                  (108, 351),
+                ]
+              : const [
+                  (110, 315),
+                  (153, 302),
+                  (176, 292),
+                  (227, 300),
+                  (259, 328),
+                  (271, 360),
+                  (270, 387),
+                  (196, 391),
+                  (112, 377),
+                  (106, 345),
+                ]);
+    final moving = Path()
+      ..addPolygon([
+        for (final (x, y) in points) Offset(x.toDouble(), y.toDouble()),
+      ], true);
+    if (turningPage && cel >= 14 && cel <= 20) {
+      moving.addRect(
+        friend == FocusFriend.squirrel
+            ? const Rect.fromLTRB(245, 280, 360, 380)
+            : const Rect.fromLTRB(214, 290, 350, 380),
+      );
+    }
+    final fixed = Path()
+      ..addRect(
+        friend == FocusFriend.squirrel
+            ? const Rect.fromLTRB(362, 320, 470, 450)
+            : const Rect.fromLTRB(360, 340, 480, 450),
+      );
+    if (friend == FocusFriend.squirrel) {
+      fixed.addRect(const Rect.fromLTRB(110, 270, 160, 356));
+    }
+    return Path.combine(PathOperation.difference, moving, fixed);
+  }
+
+  void _windowStudy(Canvas canvas, ui.Image atlas, Size size) {
+    canvas.save();
+    canvas.scale(size.width / 512, size.height / 512);
+    final region = windowStudyRegion(
+      friend,
+      turningPage: pose.phase == FriendMotionPhase.pageTurn,
+      cel: pose.from,
+    );
+    final paint = Paint()..filterQuality = FilterQuality.medium;
+    canvas.save();
+    canvas.clipPath(
+      Path.combine(
+        PathOperation.difference,
+        Path()..addRect(stageBounds),
+        region,
+      ),
+      doAntiAlias: false,
+    );
+    _cel(canvas, atlas, 0, paint);
+    canvas.restore();
+    canvas.save();
+    canvas.clipPath(region, doAntiAlias: false);
+    _cel(canvas, atlas, pose.from, paint);
+    canvas.restore();
+    canvas.restore();
+  }
+
   // Graph-cut seams between the face, arms and cup and the resting body,
   // through the pixels where every lift drawing agrees with cel 0 (measured
   // in the 512px registered drawings). Each lift drawing redraws the whole
@@ -430,6 +537,10 @@ class FriendMotionPainter extends CustomPainter {
     if (atlas == null) return;
     if (tea && friend.hasWindowTeaMotion) {
       _windowTea(canvas, atlas, size);
+      return;
+    }
+    if (!tea && friend.hasWindowTeaMotion) {
+      _windowStudy(canvas, atlas, size);
       return;
     }
     final region = tea

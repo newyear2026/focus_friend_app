@@ -1,0 +1,228 @@
+{
+  "initialStudy": [
+    {
+      "currentTime": 8.844419,
+      "duration": 41.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/redpanda-study.mp4"
+    },
+    {
+      "currentTime": 8.844825,
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/penguin-study.mp4"
+    },
+    {
+      "currentTime": 8.835768,
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/otter-study.mp4"
+    },
+    {
+      "currentTime": 8.835991,
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/squirrel-study.mp4"
+    },
+    {
+      "currentTime": 8.844419,
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/fennec-study.mp4"
+    }
+  ],
+  "pageStep": [
+    {
+      "error": null,
+      "paused": true,
+      "ready": 4,
+      "src": "redpanda-study.mp4",
+      "time": 38.5
+    },
+    {
+      "error": null,
+      "paused": true,
+      "ready": 4,
+      "src": "penguin-study.mp4",
+      "time": 38.5
+    },
+    {
+      "error": null,
+      "paused": true,
+      "ready": 4,
+      "src": "otter-study.mp4",
+      "time": 38.5
+    },
+    {
+      "error": null,
+      "paused": true,
+      "ready": 4,
+      "src": "squirrel-study.mp4",
+      "time": 38.5
+    },
+    {
+      "error": null,
+      "paused": true,
+      "ready": 4,
+      "src": "fennec-study.mp4",
+      "time": 38.5
+    }
+  ],
+  "restLoaded": [
+    {
+      "duration": 10,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-rest.mp4",
+      "time": 0
+    },
+    {
+      "duration": 22.333333,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "penguin-rest.mp4",
+      "time": 0
+    },
+    {
+      "duration": 38,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "otter-rest.mp4",
+      "time": 0
+    },
+    {
+      "duration": 57,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-rest.mp4",
+      "time": 0
+    },
+    {
+      "duration": 57,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-rest.mp4",
+      "time": 0
+    }
+  ],
+  "restPlaying": [
+    {
+      "duration": 10,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-rest.mp4",
+      "time": 6.836433
+    },
+    {
+      "duration": 22.333333,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "penguin-rest.mp4",
+      "time": 22.194385
+    },
+    {
+      "duration": 38,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "otter-rest.mp4",
+      "time": 28.870832
+    },
+    {
+      "duration": 57,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-rest.mp4",
+      "time": 9.865734
+    },
+    {
+      "duration": 57,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-rest.mp4",
+      "time": 9.866123
+    }
+  ],
+  "modal": "squirrel focus modal opened, loaded and visually checked; close returned to gallery",
+  "finalStudy": [
+    {
+      "duration": 41.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-study.mp4",
+      "time": 36.890437
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "penguin-study.mp4",
+      "time": 36.890104
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "otter-study.mp4",
+      "time": 36.889828
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-study.mp4",
+      "time": 36.889701
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-study.mp4",
+      "time": 36.89088
+    }
+  ]
+}

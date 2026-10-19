@@ -17,6 +17,7 @@ enum FocusFriend {
   bool get hasDeskMotion => this == penguin || this == otter;
   bool get hasWindowTeaMotion => this == squirrel || this == fennec;
   bool get hasRestMotion => hasDeskMotion || hasWindowTeaMotion;
+  bool get hasStudyMotion => this == redpanda || hasRestMotion;
   bool get hasMotion => this == redpanda || hasRestMotion;
   String get motionDirectory => 'assets/images/friends/motion/$name';
 

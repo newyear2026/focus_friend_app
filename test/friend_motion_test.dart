@@ -34,7 +34,9 @@ void main() {
       FriendMotionClock.writingDuration.inSeconds *
           FriendMotionClock.framesPerSecond,
     );
-    for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+    for (final friend in FocusFriend.values.where(
+      (f) => f != FocusFriend.redpanda,
+    )) {
       final timeline = FriendMotionClock.restTimelineFor(friend);
       final duration = FriendMotionClock.restDurationFor(friend);
       expect((duration.inMicroseconds * 12 / 1000000).round(), timeline.length);
@@ -69,7 +71,9 @@ void main() {
   });
 
   test('desk friends show one complete drawing at a time', () {
-    for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+    for (final friend in FocusFriend.values.where(
+      (f) => f != FocusFriend.redpanda,
+    )) {
       for (final resting in [false, true]) {
         final cycle = resting
             ? FriendMotionClock.restDurationFor(friend)
@@ -94,7 +98,9 @@ void main() {
     }
   });
 
-  for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+  for (final friend in FocusFriend.values.where(
+    (f) => f != FocusFriend.redpanda,
+  )) {
     testWidgets(
       '${friend.name}: actual sprite writing keeps face, cup and book still',
       (tester) async {
@@ -154,6 +160,63 @@ void main() {
       },
     );
 
+    if (friend.hasWindowTeaMotion) {
+      testWidgets(
+        '${friend.name}: page turn moves paper while head, tail, mug and cover stay fixed',
+        (tester) async {
+          await tester.runAsync(() async {
+            final study = await _decode('${friend.motionDirectory}/study.png');
+            Future<List<int>> render(int cel) async {
+              final recorder = ui.PictureRecorder();
+              FriendMotionPainter(
+                friend: friend,
+                study: study,
+                pose: FriendMotionPose(cel, cel, 0, FriendMotionPhase.pageTurn),
+              ).paint(Canvas(recorder), const Size(512, 512));
+              final picture = recorder.endRecording();
+              final image = await picture.toImage(512, 512);
+              final bytes = List<int>.from(
+                (await image.toByteData(
+                  format: ui.ImageByteFormat.rawRgba,
+                ))!.buffer.asUint8List(),
+              );
+              image.dispose();
+              picture.dispose();
+              return bytes;
+            }
+
+            final base = await render(0);
+            var movement = 0;
+            for (final cel in FriendMotionClock.pageTurnTimeline.toSet()) {
+              final pixels = await render(cel);
+              var fixedChanges = 0;
+              for (final rect in [
+                const Rect.fromLTWH(90, 40, 350, 240),
+                const Rect.fromLTWH(30, 260, 65, 70),
+                const Rect.fromLTWH(380, 355, 45, 45),
+                const Rect.fromLTWH(160, 399, 180, 15),
+              ]) {
+                for (var y = rect.top.toInt(); y < rect.bottom; y++) {
+                  for (var x = rect.left.toInt(); x < rect.right; x++) {
+                    final i = (y * 512 + x) * 4;
+                    for (var c = 0; c < 4; c++) {
+                      if (pixels[i + c] != base[i + c]) fixedChanges++;
+                    }
+                  }
+                }
+              }
+              expect(fixedChanges, 0, reason: '${friend.name} cel $cel');
+              for (var i = 0; i < pixels.length; i++) {
+                if (pixels[i] != base[i]) movement++;
+              }
+            }
+            expect(movement, greaterThan(1000));
+            study.dispose();
+          });
+        },
+      );
+    }
+
     testWidgets(
       '${friend.name}: pause, background and reduced motion stop the visual clock',
       (tester) async {
@@ -176,7 +239,7 @@ void main() {
         await tester.pumpWidget(harness());
         await tester.runAsync(() async {
           for (final asset in [
-            friend.ambienceAsset(RoomAmbience.evening),
+            friend.restRoomAsset(RoomAmbience.evening),
             '${friend.motionDirectory}/study.png',
           ]) {
             await precacheImage(

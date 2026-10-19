@@ -1,0 +1,249 @@
+[
+  {
+    "cel": 1,
+    "phase": "writing",
+    "scale": 0.9975,
+    "offset": [
+      1,
+      1
+    ],
+    "featureDifference": 64.35948971298664,
+    "source": "authored cel 1"
+  },
+  {
+    "cel": 2,
+    "phase": "writing",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 64.98264595055413,
+    "source": "authored cel 2"
+  },
+  {
+    "cel": 3,
+    "phase": "writing",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 64.12047124183007,
+    "source": "authored cel 3"
+  },
+  {
+    "cel": 4,
+    "phase": "writing",
+    "scale": 0.9975,
+    "offset": [
+      1,
+      1
+    ],
+    "featureDifference": 65.87947294685989,
+    "source": "authored cel 4"
+  },
+  {
+    "cel": 5,
+    "phase": "writing",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 68.88089658994033,
+    "source": "authored cel 5"
+  },
+  {
+    "cel": 6,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 64.74607686842853,
+    "source": "authored cel 6"
+  },
+  {
+    "cel": 7,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 72.45256595623758,
+    "source": "authored cel 7"
+  },
+  {
+    "cel": 8,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 72.99382708155727,
+    "source": "authored cel 8"
+  },
+  {
+    "cel": 9,
+    "phase": "page",
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "featureDifference": 74.00936376811595,
+    "source": "authored cel 9"
+  },
+  {
+    "cel": 10,
+    "phase": "page",
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "featureDifference": 71.87615805626598,
+    "source": "authored cel 10"
+  },
+  {
+    "cel": 11,
+    "phase": "page",
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "featureDifference": 73.53306308610401,
+    "source": "authored cel 11"
+  },
+  {
+    "cel": 12,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 70.32631295822677,
+    "source": "authored cel 12"
+  },
+  {
+    "cel": 13,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 73.97753199772663,
+    "source": "authored cel 13"
+  },
+  {
+    "cel": 14,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 70.86393361750497,
+    "source": "authored cel 14"
+  },
+  {
+    "cel": 15,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 74.84470437624324,
+    "source": "authored cel 15"
+  },
+  {
+    "cel": 16,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 77.23090233020744,
+    "source": "authored cel 16"
+  },
+  {
+    "cel": 17,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 78.5142659278204,
+    "source": "authored cel 17"
+  },
+  {
+    "cel": 18,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      0,
+      1
+    ],
+    "featureDifference": 88.94219553850527,
+    "source": "authored cel 18"
+  },
+  {
+    "cel": 19,
+    "phase": "page",
+    "scale": 0.9875250000000001,
+    "offset": [
+      2,
+      3
+    ],
+    "featureDifference": 74.77645302642796,
+    "source": "authored cel 19"
+  },
+  {
+    "cel": 20,
+    "phase": "page",
+    "scale": 0.9875250000000001,
+    "offset": [
+      2,
+      3
+    ],
+    "featureDifference": 73.79632543336174,
+    "source": "authored cel 20"
+  },
+  {
+    "cel": 21,
+    "phase": "page",
+    "scale": 0.9875250000000001,
+    "offset": [
+      2,
+      3
+    ],
+    "featureDifference": 88.92811454958795,
+    "source": "authored cel 21"
+  },
+  {
+    "cel": 22,
+    "phase": "page",
+    "scale": 0.9975,
+    "offset": [
+      1,
+      1
+    ],
+    "featureDifference": 64.35948971298664,
+    "source": "writing cel 1 return bridge"
+  },
+  {
+    "cel": 23,
+    "phase": "page",
+    "source": "canonical loop closing pose"
+  }
+]

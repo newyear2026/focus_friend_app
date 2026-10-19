@@ -43,7 +43,7 @@ void main() {
       final manifest = <Map<String, Object>>[];
       for (final friend in FocusFriend.values) {
         for (final resting in [false, true]) {
-          final staticScene = !resting && friend.hasWindowTeaMotion;
+          final staticScene = !resting && !friend.hasStudyMotion;
           final mode = resting ? SessionMode.rest : SessionMode.focus;
           final stem = '${friend.name}-${resting ? 'rest' : 'study'}';
           final fps = FriendMotionClock.framesPerSecond;
@@ -137,7 +137,7 @@ void main() {
                 ? [friend.ambienceAsset(RoomAmbience.evening)]
                 : [
                     friend.restRoomAsset(RoomAmbience.evening),
-                    if (friend.hasDeskMotion)
+                    if (friend.hasStudyMotion)
                       '${friend.motionDirectory}/study.png',
                     if (resting) '${friend.motionDirectory}/rest.png',
                   ];

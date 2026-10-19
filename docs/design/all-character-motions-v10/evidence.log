@@ -1,0 +1,289 @@
+{
+  "frames": 4654,
+  "videos": [
+    {
+      "clip": "redpanda-study",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "498"
+        }
+      ],
+      "format": {
+        "duration": "41.500000"
+      }
+    },
+    {
+      "clip": "redpanda-rest",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "120"
+        }
+      ],
+      "format": {
+        "duration": "10.000000"
+      }
+    },
+    {
+      "clip": "penguin-study",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "486"
+        }
+      ],
+      "format": {
+        "duration": "40.500000"
+      }
+    },
+    {
+      "clip": "penguin-rest",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "268"
+        }
+      ],
+      "format": {
+        "duration": "22.333333"
+      }
+    },
+    {
+      "clip": "otter-study",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "486"
+        }
+      ],
+      "format": {
+        "duration": "40.500000"
+      }
+    },
+    {
+      "clip": "otter-rest",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "456"
+        }
+      ],
+      "format": {
+        "duration": "38.000000"
+      }
+    },
+    {
+      "clip": "squirrel-study",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "486"
+        }
+      ],
+      "format": {
+        "duration": "40.500000"
+      }
+    },
+    {
+      "clip": "squirrel-rest",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "684"
+        }
+      ],
+      "format": {
+        "duration": "57.000000"
+      }
+    },
+    {
+      "clip": "fennec-study",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "486"
+        }
+      ],
+      "format": {
+        "duration": "40.500000"
+      }
+    },
+    {
+      "clip": "fennec-rest",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 490,
+          "height": 462,
+          "avg_frame_rate": "12/1",
+          "nb_frames": "684"
+        }
+      ],
+      "format": {
+        "duration": "57.000000"
+      }
+    }
+  ],
+  "unchangedClips": [
+    {
+      "clip": "redpanda-study",
+      "frames": 498,
+      "decodedFrameSha256": "SHA256=d063af6785054967dad569bcf6b4cc8ef7a7510671fd41c47d687967ad90f039",
+      "matchesV9": true
+    },
+    {
+      "clip": "redpanda-rest",
+      "frames": 120,
+      "decodedFrameSha256": "SHA256=d8dc79510a22e958968eeba6e8ee43021b26ac729339b6f35e5854a36691e58b",
+      "matchesV9": true
+    },
+    {
+      "clip": "penguin-study",
+      "frames": 486,
+      "decodedFrameSha256": "SHA256=da92650e4deadd81022536e3463090571421e7062f4a20c62198cb0eb7ff4c07",
+      "matchesV9": true
+    },
+    {
+      "clip": "penguin-rest",
+      "frames": 268,
+      "decodedFrameSha256": "SHA256=b44086ec80b9027b5de9eb87e2428bb412bbf810ade34f5e0aa96f80ba8ce102",
+      "matchesV9": true
+    },
+    {
+      "clip": "otter-study",
+      "frames": 486,
+      "decodedFrameSha256": "SHA256=ae1a90ff392065682ae762c821c03b4d3869f93215ddf06c9a9b98875a22604f",
+      "matchesV9": true
+    },
+    {
+      "clip": "otter-rest",
+      "frames": 456,
+      "decodedFrameSha256": "SHA256=bc2127d8f2d72246e07ba766cd5cbeae1a7840570b19b0d8bc8f2372193f8ad8",
+      "matchesV9": true
+    },
+    {
+      "clip": "squirrel-rest",
+      "frames": 684,
+      "decodedFrameSha256": "SHA256=4744e97de1568df9501515b15b5fbbb589bdb1b93defdc7a2e2204cae7b3732b",
+      "matchesV9": true
+    },
+    {
+      "clip": "fennec-rest",
+      "frames": 684,
+      "decodedFrameSha256": "SHA256=8477540ebe1cc81c2ba2aa1c9bb6f4be5817db970e5ba987e12f7d129be59276",
+      "matchesV9": true
+    }
+  ],
+  "newStudy": [
+    {
+      "clip": "squirrel-study",
+      "seconds": 40.5,
+      "fps": 12,
+      "frames": 486,
+      "canonicalLoopSeamExact": true,
+      "phases": [
+        "writing",
+        "pageTurn"
+      ],
+      "seenCels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "clip": "fennec-study",
+      "seconds": 40.5,
+      "fps": 12,
+      "frames": 486,
+      "canonicalLoopSeamExact": true,
+      "phases": [
+        "writing",
+        "pageTurn"
+      ],
+      "seenCels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    }
+  ]
+}

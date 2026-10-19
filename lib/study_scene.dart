@@ -68,7 +68,7 @@ class DeskIllustration extends StatelessWidget {
             '${friendName(l10n, friend)} · ${friendRoom(l10n, friend)} · ${ambienceName(l10n, ambience)}',
         child: RepaintBoundary(
           key: const ValueKey('study-scene'),
-          child: friend.hasDeskMotion || (resting && friend.hasWindowTeaMotion)
+          child: friend.hasStudyMotion || (resting && friend.hasWindowTeaMotion)
               ? FriendMotionScene(
                   friend: friend,
                   ambience: ambience,

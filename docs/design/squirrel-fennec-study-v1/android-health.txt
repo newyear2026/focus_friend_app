@@ -1,0 +1,6 @@
+  mCurrentFocus=Window{bb86b37 u0 dev.jaewook.deskmate/dev.jaewook.prototype.focus_friend_app.MainActivity}
+  mFocusedApp=ActivityRecord{86497212 u0 dev.jaewook.deskmate/dev.jaewook.prototype.focus_friend_app.MainActivity t287}
+    topResumedActivity=ActivityRecord{86497212 u0 dev.jaewook.deskmate/dev.jaewook.prototype.focus_friend_app.MainActivity t287}
+      mVisibleRequested=true mVisible=true mClientVisible=true reportedDrawn=true reportedVisible=true
+        mVisibleRequested=false mVisible=false mClientVisible=false reportedDrawn=false reportedVisible=false
+5662
