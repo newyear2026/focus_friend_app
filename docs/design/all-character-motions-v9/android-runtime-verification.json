@@ -1,0 +1,16 @@
+{
+  "device": "emulator-5554",
+  "package": "dev.jaewook.deskmate",
+  "bootCompleted": true,
+  "foreground": true,
+  "focus": [
+    "mCurrentFocus=Window{b756919 u0 dev.jaewook.deskmate/dev.jaewook.prototype.focus_friend_app.MainActivity}",
+    "mFocusedApp=ActivityRecord{113387280 u0 dev.jaewook.deskmate/dev.jaewook.prototype.focus_friend_app.MainActivity t286}"
+  ],
+  "power": [
+    "mWakefulness=Awake",
+    "Display Power: com.android.server.power.PowerManagerService$1@9e8d037"
+  ],
+  "appFatalOrUnhandled": [],
+  "systemUiANR": false
+}

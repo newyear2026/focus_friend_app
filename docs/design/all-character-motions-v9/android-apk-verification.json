@@ -1,0 +1,18 @@
+{
+  "apk": "build/app/outputs/flutter-apk/app-debug.apk",
+  "package": "dev.jaewook.deskmate",
+  "device": "emulator-5554",
+  "assetChecks": [
+    {
+      "friend": "fennec",
+      "sha256": "27184ccdd44cd0b0472b869e980620e2b823a970d2ce58abd205da75d1213e8a",
+      "apkAssetMatchesSource": true
+    },
+    {
+      "friend": "squirrel",
+      "sha256": "2909d1c561448621481517f159bff10ba74f58fc69d4f0b5d24c57eb2af1681d",
+      "apkAssetMatchesSource": true
+    }
+  ],
+  "installation": "adb install -r: Success"
+}

@@ -25,6 +25,7 @@ void main() {
         'ALL_MOTION_OUTPUT',
         defaultValue: 'docs/design/all-character-motions-v8/capture',
       );
+      const fullStudyCycle = bool.fromEnvironment('ALL_MOTION_FULL_STUDY');
       final folder = Directory(output)..createSync(recursive: true);
       tester.view.physicalSize = const Size(780, 1688);
       tester.view.devicePixelRatio = 2;
@@ -63,12 +64,12 @@ void main() {
                             ReferenceStudyAnimation.fps,
                       )
                     : FriendMotionClock.studyDuration);
-          final start = resting || staticScene
+          final start = resting || staticScene || fullStudyCycle
               ? Duration.zero
               : const Duration(milliseconds: 32400);
           final duration = staticScene
               ? Duration.zero
-              : resting
+              : resting || fullStudyCycle
               ? cycle
               : cycle + const Duration(milliseconds: 3600) - start;
           final variants = resting && friend != FocusFriend.redpanda
@@ -78,7 +79,7 @@ void main() {
           // to microseconds in Duration. Do not ceil that into an extra tick.
           final count = staticScene
               ? 1
-              : resting
+              : resting || fullStudyCycle
               ? (duration.inMicroseconds * fps / 1000000).round()
               : (duration.inMicroseconds * fps / 1000000).ceil();
           if (variants.isNotEmpty) {
@@ -303,6 +304,7 @@ void main() {
             'cycleSeconds': cycle.inMicroseconds / 1000000,
             'phases': seenPhases.toList(),
             'source': 'fresh current FocusFriendApp widget capture',
+            'fullStudyCycle': fullStudyCycle && !resting && !staticScene,
             if (variants.isNotEmpty)
               'variants': [
                 for (final variant in variants)

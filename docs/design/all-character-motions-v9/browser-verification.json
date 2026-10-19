@@ -1,0 +1,51 @@
+{
+  "url": "http://127.0.0.1:8127/docs/design/all-character-motions-v9/",
+  "restVideos": [
+    {
+      "duration": 10,
+      "error": null,
+      "label": "랫서팬더 모션",
+      "paused": false,
+      "rate": 1,
+      "ready": 4
+    },
+    {
+      "duration": 22.333333,
+      "error": null,
+      "label": "펭귄 모션",
+      "paused": false,
+      "rate": 1,
+      "ready": 4
+    },
+    {
+      "duration": 38,
+      "error": null,
+      "label": "해달 모션",
+      "paused": false,
+      "rate": 1,
+      "ready": 4
+    },
+    {
+      "duration": 57,
+      "error": null,
+      "label": "다람쥐 모션",
+      "paused": false,
+      "rate": 1,
+      "ready": 4
+    },
+    {
+      "duration": 57,
+      "error": null,
+      "label": "사막여우 모션",
+      "paused": false,
+      "rate": 1,
+      "ready": 4
+    }
+  ],
+  "focusPageTurnSeekSeconds": 36.75,
+  "focusAnimatedCount": 3,
+  "focusStaticCount": 2,
+  "focusSwitchPassed": true,
+  "expandAndClosePassed": true,
+  "errors": []
+}

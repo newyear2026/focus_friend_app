@@ -1,0 +1,68 @@
+[
+  {
+    "friend": "squirrel",
+    "changedSlots": [
+      3,
+      16,
+      17,
+      18,
+      27
+    ],
+    "forbiddenSlotsChanged": [],
+    "fixed": [
+      {
+        "cel": 3,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 16,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 17,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 18,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 27,
+        "outsideChangedPixels": 0
+      }
+    ]
+  },
+  {
+    "friend": "fennec",
+    "changedSlots": [
+      3,
+      16,
+      17,
+      18,
+      27
+    ],
+    "forbiddenSlotsChanged": [],
+    "fixed": [
+      {
+        "cel": 3,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 16,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 17,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 18,
+        "outsideChangedPixels": 0
+      },
+      {
+        "cel": 27,
+        "outsideChangedPixels": 0
+      }
+    ]
+  }
+]

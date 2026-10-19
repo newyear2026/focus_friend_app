@@ -80,23 +80,13 @@ abstract final class FriendMotionClock {
   // variants can only add idle holds/blinks before and after it.
   static List<int> _teaAction(List<(int, double)> lift) => List.unmodifiable([
     ..._liftExposure(lift),
-    17,
-    17,
-    17,
-    18,
-    18,
-    18,
+    // Two authored inbetweens let lids and cup angle change gradually.
+    3, 3, 27, 27,
+    17, 17, 17, 18, 18, 18,
     ...[for (var i = 0; i < 18; i++) 16],
-    18,
-    18,
-    18,
-    17,
-    17,
-    17,
-    10,
-    10,
-    10,
-    10,
+    18, 18, 18, 17, 17, 17,
+    27, 27, 3, 3,
+    10, 10, 10, 10,
     ..._liftExposure(lift).reversed,
   ]);
 
@@ -108,9 +98,11 @@ abstract final class FriendMotionClock {
     List<int> idle(int first, int second) =>
         _exposures([(0, first), (1, 1), (2, 2), (1, 1), (0, second)]);
     return List.unmodifiable([
-      FriendRestVariant(idle(18, 49), action, idle(49, 18)), // 18s
-      FriendRestVariant(idle(20, 52), action, idle(54, 20)), // 19s
-      FriendRestVariant(idle(24, 55), action, idle(55, 24)), // 20s
+      // The eight added inbetween ticks replace four idle ticks on each side,
+      // preserving the authored 18/19/20s rhythm variants and 57s supercycle.
+      FriendRestVariant(idle(18, 45), action, idle(45, 18)), // 18s
+      FriendRestVariant(idle(20, 48), action, idle(50, 20)), // 19s
+      FriendRestVariant(idle(24, 51), action, idle(51, 24)), // 20s
     ]);
   }
 

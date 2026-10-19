@@ -10,9 +10,10 @@ List<int> exposures(List<(int, int)> holds) => [
     for (var tick = 0; tick < ticks; tick++) cel,
 ];
 
-// Frozen from 37cf920. These are authored action ticks, not regenerated
-// expectations from the new variants or measured only by duration.
-List<int> originalAction(FocusFriend friend) {
+// Lift/sip timings frozen from 37cf920, plus the two-tick A/B exposures
+// authored in e7ed48c on both sides of sipping. This independent fixture
+// checks that every rhythm variant uses the complete combined action.
+List<int> authoredAction(FocusFriend friend) {
   if (friend == FocusFriend.penguin) {
     return exposures([(4, 4), (5, 6), (6, 14), (5, 4), (4, 4)]);
   }
@@ -45,7 +46,18 @@ List<int> originalAction(FocusFriend friend) {
       : [0, 0, 0, 0, 0, 4, 4, 25, 5, 21, 6, 22, 22, 7, 7, 8, 9, 9, 10, 10];
   return [
     ...lift,
-    ...exposures([(17, 3), (18, 3), (16, 18), (18, 3), (17, 3), (10, 4)]),
+    ...exposures([
+      (3, 2),
+      (27, 2),
+      (17, 3),
+      (18, 3),
+      (16, 18),
+      (18, 3),
+      (17, 3),
+      (27, 2),
+      (3, 2),
+      (10, 4),
+    ]),
     ...lift.reversed,
   ];
 }
@@ -79,13 +91,13 @@ void main() {
         final idle = friend == FocusFriend.penguin ? 3 : 0;
         var start = 0;
         for (final variant in variants) {
-          expect(variant.action, originalAction(friend));
+          expect(variant.action, authoredAction(friend));
           expect(
             variant.timeline.sublist(
               variant.actionStartTick,
               variant.actionEndTick,
             ),
-            originalAction(friend),
+            authoredAction(friend),
           );
           expect(variant.timeline.first, idle);
           expect(variant.timeline.last, idle);

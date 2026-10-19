@@ -367,10 +367,9 @@ class FriendMotionPainter extends CustomPainter {
     );
   }
 
-  // The sipping drawings are authored in a different line weight and head
-  // angle, so they stay whole; the lift and blink drawings share the rest
-  // cel's ears, tail and back.
-  static const windowTeaWholeCels = {16, 17, 18};
+  // The edited sip cels now share the same registered canonical body.
+  // Every rest drawing uses the same fixed ears, tail, hat and back.
+  static const Set<int> windowTeaWholeCels = {};
 
   // Graph-cut seams between the face, arms and cup and the resting body,
   // through the pixels where every lift drawing agrees with cel 0 (measured
