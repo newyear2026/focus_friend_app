@@ -1,0 +1,13 @@
+{
+  "baselineCommit": "37cf920",
+  "allowedChangedCode": [
+    "lib/friend_motion_clock.dart",
+    "test/friend_motion_test.dart",
+    "test/rest_rhythm_test.dart",
+    "test/window_tea_test.dart",
+    "tool/capture_all_friend_motions_test.dart"
+  ],
+  "forbiddenScopeChanged": false,
+  "artifactsFolder": "docs/design/rest-rhythm-variants-v1",
+  "scope": "no assets, scene renderer, or panda rest changes"
+}

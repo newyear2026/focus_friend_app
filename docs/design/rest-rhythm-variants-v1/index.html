@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>휴식 리듬 변형</title>
+<style>body{margin:0;background:#f6f2e9;color:#302e2b;font:16px/1.65 system-ui,sans-serif}main{max-width:1120px;margin:0 auto;padding:32px 24px}h1{margin:0 0 12px;font-size:30px}p{margin:10px 0}button,a{font:inherit}button{border:0;border-radius:12px;padding:12px 18px;background:#e4bd7e;color:#302716;cursor:pointer;margin:10px 8px 20px 0}.secondary{background:#e4e2d9}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.card{background:#fffdf8;padding:18px;border-radius:20px;box-shadow:0 2px 12px #3f34290b}h2{margin:0 0 8px;font-size:22px}video{width:100%;display:block;border-radius:12px;background:#d1b58d}.meta{color:#6e675d;margin:8px 0 0}img{width:100%;border-radius:12px;margin:20px 0}a{color:#735923}footer{margin:28px 0;color:#6e675d}@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:24px 14px}}</style></head>
+<body><main><h1>캐릭터 휴식 리듬</h1>
+<p>정해진 변형을 순서대로 재생합니다. 잔을 들고 마시는 그림과 속도는 그대로 두고, 앞뒤 쉬는 시간과 눈 깜빡임만 바꿨습니다.</p>
+<p class="meta">모든 영상은 12fps · 1배속 · 전체 슈퍼주기입니다. 각 영상의 재생 길이가 달라 반복 시점은 서로 다릅니다.</p>
+<button id="play">모두 처음부터 재생</button><button class="secondary" id="pause">모두 일시정지</button>
+<div class="grid">
+<article class="card"><h2>펭귄</h2><video controls playsinline muted loop preload="metadata" poster="capture/penguin-rest-poster.png" src="penguin-rest.mp4"></video><p class="meta">7.17 → 7.50 → 7.67초 · 3변형 · 슈퍼주기 22.33초</p><p>깜빡임 원화가 없어 쉬는 시간만 다르게 했습니다. 최대 5초 유지를 지키는 길이 예외를 적용했습니다.</p></article>
+<article class="card"><h2>해달</h2><video controls playsinline muted loop preload="metadata" poster="capture/otter-rest-poster.png" src="otter-rest.mp4"></video><p class="meta">8 → 9 → 10 → 11초 · 4변형 · 슈퍼주기 38초</p><p>눈 깜빡임 0 → 1 → 2 → 2회와 위치가 달라집니다.</p></article>
+<article class="card"><h2>다람쥐</h2><video controls playsinline muted loop preload="metadata" poster="capture/squirrel-rest-poster.png" src="squirrel-rest.mp4"></video><p class="meta">18 → 19 → 20초 · 3변형 · 슈퍼주기 57초</p><p>눈 깜빡임은 2회씩 유지하고, 위치와 전후 쉬는 시간을 다르게 했습니다.</p></article>
+<article class="card"><h2>사막여우</h2><video controls playsinline muted loop preload="metadata" poster="capture/fennec-rest-poster.png" src="fennec-rest.mp4"></video><p class="meta">18 → 19 → 20초 · 3변형 · 슈퍼주기 57초</p><p>다람쥐와 같은 리듬 변형을 사용하며 원래 친구별 잔 들기 경로를 유지합니다.</p></article>
+</div>
+<img src="60-second-rhythm.png" alt="캐릭터별 1분 동안 쉬기, 동작, 깜빡임의 위치와 변형 경계">
+<p>이번 작업은 리듬 변화만 적용했습니다. 다람쥐·사막여우가 마실 때 보이는 원화의 몸 흔들림은 이 브랜치에서 수정하지 않았습니다.</p>
+<footer><a href="README.md">구현·검증 기록</a> · <a href="verification.json">프레임 동일성·리듬 수치</a> · <a href="capture/manifest.json">전체 캡처 기록</a></footer>
+</main><script>const videos=[...document.querySelectorAll('video')];document.getElementById('play').onclick=()=>videos.forEach(v=>{v.currentTime=0;v.playbackRate=1;v.play()});document.getElementById('pause').onclick=()=>videos.forEach(v=>v.pause());</script></body></html>

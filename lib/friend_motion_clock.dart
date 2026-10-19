@@ -9,13 +9,25 @@ class FriendMotionPose {
   final FriendMotionPhase phase;
 }
 
+/// One authored action with independently timed rests on either side.
+/// Only [before] and [after] vary; [action] is the unchanged cel/tick sequence.
+class FriendRestVariant {
+  FriendRestVariant(List<int> before, List<int> action, List<int> after)
+    : before = List.unmodifiable(before),
+      action = List.unmodifiable(action),
+      after = List.unmodifiable(after),
+      timeline = List.unmodifiable([...before, ...action, ...after]);
+
+  final List<int> before, action, after, timeline;
+  int get actionStartTick => before.length;
+  int get actionEndTick => before.length + action.length;
+}
+
 /// A visual clock only. Pausing it never affects the saved focus timer.
 abstract final class FriendMotionClock {
   static const writingLoops = 9;
   static const writingDuration = Duration(seconds: 36);
   static const studyDuration = Duration(milliseconds: 40500);
-  static const restDuration = Duration(seconds: 10);
-  static const windowTeaDuration = Duration(seconds: 22);
   // Like the panda: a 12fps timing grid selects one complete drawing.
   // Holds belong to the whole action; no per-cel easing or image blending.
   static const framesPerSecond = 12;
@@ -64,26 +76,54 @@ abstract final class FriendMotionClock {
         return (a.$2 - y).abs() <= (b.$2 - y).abs() ? a : b;
       }).$1,
   ];
-  static List<int> _teaTimeline(List<(int, double)> lift) => List.unmodifiable([
-    ...[for (var i = 0; i < 30; i++) 0],
-    1, 2, 2, 1,
-    ...[for (var i = 0; i < 26; i++) 0],
-    // Stop at the mouth. Old cels 11..15 raised the cup toward the nose.
+  // Freeze this entire action, including its endpoint exposures. Rhythm
+  // variants can only add idle holds/blinks before and after it.
+  static List<int> _teaAction(List<(int, double)> lift) => List.unmodifiable([
     ..._liftExposure(lift),
-    17, 17, 17, 18, 18, 18,
+    17,
+    17,
+    17,
+    18,
+    18,
+    18,
     ...[for (var i = 0; i < 18; i++) 16],
-    18, 18, 18, 17, 17, 17,
-    10, 10, 10, 10,
+    18,
+    18,
+    18,
+    17,
+    17,
+    17,
+    10,
+    10,
+    10,
+    10,
     ..._liftExposure(lift).reversed,
-    // The faster lift's spare time stays in these rests, keeping 22s.
-    ...[for (var i = 0; i < 44; i++) 0],
-    1, 2, 2, 1,
-    ...[for (var i = 0; i < 48; i++) 0],
-    1, 2, 2, 1,
-    ...[for (var i = 0; i < 30; i++) 0],
   ]);
-  static final List<int> windowTeaTimeline = _teaTimeline(fennecTeaLift);
-  static final List<int> squirrelTeaTimeline = _teaTimeline(squirrelTeaLift);
+
+  // Two blinks are needed in these longer rests to bound every unchanged
+  // drawing to five seconds. Locations and pre/post rests change each cycle.
+  // The five idle endpoint ticks in the squirrel action count toward the cap.
+  static List<FriendRestVariant> _teaVariants(List<(int, double)> lift) {
+    final action = _teaAction(lift);
+    List<int> idle(int first, int second) =>
+        _exposures([(0, first), (1, 1), (2, 2), (1, 1), (0, second)]);
+    return List.unmodifiable([
+      FriendRestVariant(idle(18, 49), action, idle(49, 18)), // 18s
+      FriendRestVariant(idle(20, 52), action, idle(54, 20)), // 19s
+      FriendRestVariant(idle(24, 55), action, idle(55, 24)), // 20s
+    ]);
+  }
+
+  static final List<FriendRestVariant> fennecRestVariants = _teaVariants(
+    fennecTeaLift,
+  );
+  static final List<FriendRestVariant> squirrelRestVariants = _teaVariants(
+    squirrelTeaLift,
+  );
+  static final List<int> windowTeaTimeline = _joinVariants(fennecRestVariants);
+  static final List<int> squirrelTeaTimeline = _joinVariants(
+    squirrelRestVariants,
+  );
   static List<int> windowTeaTimelineFor(FocusFriend friend) =>
       friend == FocusFriend.squirrel ? squirrelTeaTimeline : windowTeaTimeline;
 
@@ -101,29 +141,49 @@ abstract final class FriendMotionClock {
       framesPerSecond ~/
       Duration.microsecondsPerSecond;
 
-  static Duration restDurationFor(FocusFriend friend) =>
-      friend.hasWindowTeaMotion ? windowTeaDuration : restDuration;
+  static Duration restDurationFor(FocusFriend friend) {
+    // The panda uses its own clock; keep this legacy query unchanged as well.
+    if (friend == FocusFriend.redpanda) return const Duration(seconds: 10);
+    return Duration(
+      microseconds:
+          (restTimelineFor(friend).length *
+                  Duration.microsecondsPerSecond /
+                  framesPerSecond)
+              .ceil(),
+    );
+  }
+
   static List<int> _exposures(List<(int, int)> holds) => List.unmodifiable([
     for (final (cel, ticks) in holds)
       for (var tick = 0; tick < ticks; tick++) cel,
   ]);
-  // The panda's ten-second rhythm: a long rest, quick 4-6 tick steps through
-  // the lift, about a second at the cup and the same steps back down.
-  // Lower the cup through the same poses, avoiding the abrupt return drawings.
-  static final List<int> penguinRestTimeline = _exposures([
-    (3, 40),
+  static List<int> _joinVariants(List<FriendRestVariant> variants) =>
+      List.unmodifiable([for (final variant in variants) ...variant.timeline]);
+
+  // The original cup action is shared without retiming a single drawing.
+  static final List<int> _penguinAction = _exposures([
     (4, 4),
     (5, 6),
     (6, 14),
     (5, 4),
     (4, 4),
-    (3, 48),
   ]);
-  // Cel 3 holds the cup lower than cel 4, so it comes first on the way up.
-  static final List<int> otterRestTimeline = _exposures([
-    (0, 30),
-    (1, 2),
-    (0, 8),
+  // No blink art exists for the penguin. At least eight seconds plus its
+  // 32-tick action would force an idle hold over 60 ticks. The user approved
+  // 7-7.7s variants for this friend, retaining the five-second hold limit.
+  static final List<FriendRestVariant> penguinRestVariants = List.unmodifiable([
+    for (final before in [26, 30, 32])
+      FriendRestVariant(
+        _exposures([(3, before)]),
+        _penguinAction,
+        _exposures([(3, 28)]),
+      ),
+  ]);
+  static final List<int> penguinRestTimeline = _joinVariants(
+    penguinRestVariants,
+  );
+
+  static final List<int> _otterAction = _exposures([
     (3, 4),
     (4, 4),
     (6, 6),
@@ -131,8 +191,44 @@ abstract final class FriendMotionClock {
     (6, 4),
     (4, 4),
     (3, 4),
-    (0, 40),
   ]);
+  static final List<FriendRestVariant> otterRestVariants = List.unmodifiable([
+    FriendRestVariant(
+      _exposures([(0, 28)]),
+      _otterAction,
+      _exposures([(0, 28)]),
+    ), // 8s, no blink
+    FriendRestVariant(
+      _exposures([(0, 18), (1, 2), (0, 18)]),
+      _otterAction,
+      _exposures([(0, 30)]),
+    ), // 9s, one blink
+    FriendRestVariant(
+      _exposures([(0, 28), (1, 2), (0, 10)]),
+      _otterAction,
+      _exposures([(0, 20), (1, 2), (0, 18)]),
+    ), // 10s, two blinks
+    FriendRestVariant(
+      _exposures([(0, 22), (1, 2), (0, 26)]),
+      _otterAction,
+      _exposures([(0, 18), (1, 2), (0, 22)]),
+    ), // 11s, two blinks
+  ]);
+  static final List<int> otterRestTimeline = _joinVariants(otterRestVariants);
+
+  static List<FriendRestVariant> restVariantsFor(FocusFriend friend) =>
+      switch (friend) {
+        FocusFriend.penguin => penguinRestVariants,
+        FocusFriend.squirrel => squirrelRestVariants,
+        FocusFriend.fennec => fennecRestVariants,
+        _ => otterRestVariants,
+      };
+  static List<int> restTimelineFor(FocusFriend friend) => switch (friend) {
+    FocusFriend.penguin => penguinRestTimeline,
+    FocusFriend.squirrel => squirrelTeaTimeline,
+    FocusFriend.fennec => windowTeaTimeline,
+    _ => otterRestTimeline,
+  };
 
   // The panda's pen stroke: out and back through adjacent drawings in 4s,
   // with no snap from the last drawing to the first.
@@ -167,14 +263,9 @@ abstract final class FriendMotionClock {
     FocusFriend friend = FocusFriend.otter,
   }) {
     if (resting) {
-      if (friend.hasWindowTeaMotion) {
-        final frame = windowTeaFrameAt(elapsed, friend: friend);
-        return FriendMotionPose(frame, frame, 0, FriendMotionPhase.tea);
-      }
-      final timeline = friend == FocusFriend.penguin
-          ? penguinRestTimeline
-          : otterRestTimeline;
-      final frame = timeline[_tick(elapsed) % timeline.length];
+      final timeline = restTimelineFor(friend);
+      final tick = elapsed.isNegative ? 0 : _tick(elapsed);
+      final frame = timeline[tick % timeline.length];
       return FriendMotionPose(frame, frame, 0, FriendMotionPhase.tea);
     }
     final writingTicks = writingLoops * writingTimeline.length;

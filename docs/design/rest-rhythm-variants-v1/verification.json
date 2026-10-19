@@ -1,0 +1,159 @@
+{
+  "baselineCommit": "37cf920",
+  "fps": 12,
+  "unchanged": [
+    {
+      "clip": "redpanda-study",
+      "frames": 153,
+      "changedFrames": [],
+      "comparison": "exact PNG SHA-256 for each frame",
+      "baselineSequenceSha256": "9e2102e8e26c0a23f4f92de420b4322727b17ed398ae26f6d54a21f19625ed90",
+      "actualSequenceSha256": "9e2102e8e26c0a23f4f92de420b4322727b17ed398ae26f6d54a21f19625ed90"
+    },
+    {
+      "clip": "redpanda-rest",
+      "frames": 120,
+      "changedFrames": [],
+      "comparison": "exact PNG SHA-256 for each frame",
+      "baselineSequenceSha256": "0c8eef15882310866142aac9bf6d1fd7195d97281b90c1cd10bb230145ba7a78",
+      "actualSequenceSha256": "0c8eef15882310866142aac9bf6d1fd7195d97281b90c1cd10bb230145ba7a78"
+    },
+    {
+      "clip": "penguin-study",
+      "frames": 141,
+      "changedFrames": [],
+      "comparison": "exact PNG SHA-256 for each frame",
+      "baselineSequenceSha256": "1ce296f06fe8b81e7e16d507494c23c1ca4a8e16f41d5ff18ee398602c31ea23",
+      "actualSequenceSha256": "1ce296f06fe8b81e7e16d507494c23c1ca4a8e16f41d5ff18ee398602c31ea23"
+    },
+    {
+      "clip": "otter-study",
+      "frames": 141,
+      "changedFrames": [],
+      "comparison": "exact PNG SHA-256 for each frame",
+      "baselineSequenceSha256": "4e35634c1e2168c2432d412e04a155aee8dd010e065ae07c10adf88e1a83b7c3",
+      "actualSequenceSha256": "4e35634c1e2168c2432d412e04a155aee8dd010e065ae07c10adf88e1a83b7c3"
+    },
+    {
+      "clip": "squirrel-study",
+      "frames": 1,
+      "changedFrames": [],
+      "comparison": "exact PNG SHA-256 for each frame",
+      "baselineSequenceSha256": "260037e7a640342fb27776156d5a05378f0f680191bbb6139c5fb52c641b9d09",
+      "actualSequenceSha256": "260037e7a640342fb27776156d5a05378f0f680191bbb6139c5fb52c641b9d09"
+    },
+    {
+      "clip": "fennec-study",
+      "frames": 1,
+      "changedFrames": [],
+      "comparison": "exact PNG SHA-256 for each frame",
+      "baselineSequenceSha256": "bf874a758757e26678b931e3a7eb70cac7de1fece95cd44603d0e36abf85201c",
+      "actualSequenceSha256": "bf874a758757e26678b931e3a7eb70cac7de1fece95cd44603d0e36abf85201c"
+    }
+  ],
+  "restRhythms": [
+    {
+      "friend": "penguin",
+      "variantTicks": [
+        86,
+        90,
+        92
+      ],
+      "variantSeconds": [
+        7.166666666666667,
+        7.5,
+        7.666666666666667
+      ],
+      "supercycleTicks": 268,
+      "supercycleSeconds": 22.333333333333332,
+      "actionTicks": 32,
+      "actionMatchesBaseline": true,
+      "blinkCounts": [
+        0,
+        0,
+        0
+      ],
+      "actionCaptureChangedFrames": [],
+      "longestCyclicHoldTicks": 60,
+      "frameCount": 268
+    },
+    {
+      "friend": "otter",
+      "variantTicks": [
+        96,
+        108,
+        120,
+        132
+      ],
+      "variantSeconds": [
+        8.0,
+        9.0,
+        10.0,
+        11.0
+      ],
+      "supercycleTicks": 456,
+      "supercycleSeconds": 38.0,
+      "actionTicks": 40,
+      "actionMatchesBaseline": true,
+      "blinkCounts": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "actionCaptureChangedFrames": [],
+      "longestCyclicHoldTicks": 58,
+      "frameCount": 456
+    },
+    {
+      "friend": "squirrel",
+      "variantTicks": [
+        216,
+        228,
+        240
+      ],
+      "variantSeconds": [
+        18.0,
+        19.0,
+        20.0
+      ],
+      "supercycleTicks": 684,
+      "supercycleSeconds": 57.0,
+      "actionTicks": 74,
+      "actionMatchesBaseline": true,
+      "blinkCounts": [
+        2,
+        2,
+        2
+      ],
+      "actionCaptureChangedFrames": [],
+      "longestCyclicHoldTicks": 60,
+      "frameCount": 684
+    },
+    {
+      "friend": "fennec",
+      "variantTicks": [
+        216,
+        228,
+        240
+      ],
+      "variantSeconds": [
+        18.0,
+        19.0,
+        20.0
+      ],
+      "supercycleTicks": 684,
+      "supercycleSeconds": 57.0,
+      "actionTicks": 74,
+      "actionMatchesBaseline": true,
+      "blinkCounts": [
+        2,
+        2,
+        2
+      ],
+      "actionCaptureChangedFrames": [],
+      "longestCyclicHoldTicks": 57,
+      "frameCount": 684
+    }
+  ]
+}

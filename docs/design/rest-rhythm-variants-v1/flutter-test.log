@@ -1,0 +1,134 @@
+Resolving dependencies...
+Downloading packages...
+  clock 1.1.2 (1.1.3 available)
+  intl 0.20.2 (0.20.3 available)
+  matcher 0.12.19 (0.12.20 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.17.0 (1.19.0 available)
+  platform 3.1.6 (3.2.0 available)
+  stack_trace 1.12.1 (1.12.2 available)
+  test_api 0.7.10 (0.7.15 available)
+  vector_math 2.2.0 (2.4.3 available)
+  vm_service 15.3.0 (15.4.0 available)
+Got dependencies!
+10 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart
+00:00 +0: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +1: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +2: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +3: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +4: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +5: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +6: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +7: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +8: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +9: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +10: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +11: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +12: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +13: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +14: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +15: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +16: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +17: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +18: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +19: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +20: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +21: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +22: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +23: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +24: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +25: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +26: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +27: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +28: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +29: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +30: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +31: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +32: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/rest_rhythm_test.dart: penguin: rest rhythm freezes across pause, lifecycle and reduced motion
+00:00 +33: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_motion_test.dart: penguin: actual sprite writing keeps face, cup and book still
+00:00 +34: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:00 +35: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:00 +36: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +37: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +38: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +39: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +40: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +41: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_motion_test.dart: otter: pause, background and reduced motion stop the visual clock
+00:01 +42: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +43: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +44: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +45: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +46: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +47: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +48: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +49: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +50: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:03 +51: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:03 +52: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +53: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +54: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +55: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +56: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_ambience_test.dart: otter: idle boundary and resume change only lighting
+00:04 +57: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:04 +58: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:04 +59: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:04 +60: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:04 +61: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:04 +62: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:04 +63: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +64: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +65: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +66: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +67: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +68: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_ambience_test.dart: otter: a paused pose survives the two-second room fade
+00:05 +69: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_ambience_test.dart: otter: a paused pose survives the two-second room fade
+00:05 +70: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_ambience_test.dart: otter: a paused pose survives the two-second room fade
+00:05 +71: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: month tab shows totals, streak and six months
+00:05 +72: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: month tab shows totals, streak and six months
+00:05 +73: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: es screens fit a small phone with larger text
+00:05 +74: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: es screens fit a small phone with larger text
+00:05 +75: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: es screens fit a small phone with larger text
+00:05 +76: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: es screens fit a small phone with larger text
+00:05 +77: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: lift drawings keep the resting tail and ears
+00:05 +78: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/session_stop_sheet_test.dart: outside tap, downward swipe and back keep the session running
+00:05 +79: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/records_stats_test.dart: ja tabs fit a small phone with large text
+00:05 +80: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: ja screens fit a small phone with larger text
+00:05 +81: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: ja screens fit a small phone with larger text
+00:05 +82: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: ja screens fit a small phone with larger text
+00:05 +83: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: ja screens fit a small phone with larger text
+00:05 +84: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: ja screens fit a small phone with larger text
+00:05 +85: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: ja screens fit a small phone with larger text
+00:06 +86: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +87: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +88: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +89: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +90: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +91: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +92: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +93: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +94: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +95: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +96: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +97: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:07 +98: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:07 +99: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:07 +100: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:07 +101: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:07 +102: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:07 +103: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: tea break plays from the app, holds on pause and resumes
+00:07 +104: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/friend_picker_test.dart: en friend picker and preview fit large text on a small phone
+00:07 +105: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +106: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +107: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +108: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +109: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +110: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:08 +111: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:08 +112: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:08 +113: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:08 +114: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/widget_test.dart: small screen and large text keep controls reachable
+00:08 +115: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: pause, room changes and reduced motion preserve rest
+00:08 +116: /Users/jaewook/.codex/worktrees/rest-rhythm-variants/focus_friend_app/test/window_tea_test.dart: squirrel: pause, room changes and reduced motion preserve rest
+00:08 +117: All tests passed!

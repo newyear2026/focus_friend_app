@@ -1,0 +1,58 @@
+[
+  {
+    "file": "penguin-rest.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "avg_frame_rate": "12/1",
+        "nb_frames": "268"
+      }
+    ],
+    "format": {
+      "duration": "22.333333"
+    }
+  },
+  {
+    "file": "otter-rest.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "avg_frame_rate": "12/1",
+        "nb_frames": "456"
+      }
+    ],
+    "format": {
+      "duration": "38.000000"
+    }
+  },
+  {
+    "file": "squirrel-rest.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "avg_frame_rate": "12/1",
+        "nb_frames": "684"
+      }
+    ],
+    "format": {
+      "duration": "57.000000"
+    }
+  },
+  {
+    "file": "fennec-rest.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "avg_frame_rate": "12/1",
+        "nb_frames": "684"
+      }
+    ],
+    "format": {
+      "duration": "57.000000"
+    }
+  }
+]
