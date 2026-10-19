@@ -147,6 +147,79 @@ void main() {
       }
     },
   );
+  for (final (friend, fixed) in [
+    // Tail and ear tips.
+    (
+      FocusFriend.fennec,
+      [Rect.fromLTWH(90, 260, 80, 60), Rect.fromLTWH(150, 60, 40, 40)],
+    ),
+    // Tail and acorn hat.
+    (
+      FocusFriend.squirrel,
+      [Rect.fromLTWH(60, 150, 100, 150), Rect.fromLTWH(220, 100, 60, 25)],
+    ),
+  ]) {
+    testWidgets(
+      '${friend.name}: lift drawings keep the resting tail and ears',
+      (tester) async {
+        await tester.runAsync(() async {
+          final data = await rootBundle.load(
+            '${friend.motionDirectory}/rest.png',
+          );
+          final codec = await ui.instantiateImageCodec(
+            data.buffer.asUint8List(),
+          );
+          final atlas = (await codec.getNextFrame()).image;
+          codec.dispose();
+          Future<List<int>> render(int cel) async {
+            final recorder = ui.PictureRecorder();
+            FriendMotionPainter(
+              friend: friend,
+              study: null,
+              rest: atlas,
+              pose: FriendMotionPose(cel, cel, 0, FriendMotionPhase.tea),
+            ).paint(Canvas(recorder), const Size(512, 512));
+            final picture = recorder.endRecording();
+            final image = await picture.toImage(512, 512);
+            final pixels = List<int>.from(
+              (await image.toByteData(
+                format: ui.ImageByteFormat.rawRgba,
+              ))!.buffer.asUint8List(),
+            );
+            image.dispose();
+            picture.dispose();
+            return pixels;
+          }
+
+          bool same(List<int> a, List<int> b) {
+            for (final rect in fixed) {
+              for (var y = rect.top.toInt(); y < rect.bottom; y++) {
+                for (var x = rect.left.toInt(); x < rect.right; x++) {
+                  final i = (y * 512 + x) * 4;
+                  for (var c = 0; c < 4; c++) {
+                    if (a[i + c] != b[i + c]) return false;
+                  }
+                }
+              }
+            }
+            return true;
+          }
+
+          final base = await render(0);
+          final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
+          for (final cel in timeline.toSet()) {
+            final whole = FriendMotionPainter.windowTeaWholeCels.contains(cel);
+            expect(
+              same(await render(cel), base),
+              !whole,
+              reason: '${friend.name} cel $cel',
+            );
+          }
+          atlas.dispose();
+        });
+      },
+    );
+  }
   for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
     testWidgets(
       '${friend.name}: book stays fixed and connected cels change while sipping',

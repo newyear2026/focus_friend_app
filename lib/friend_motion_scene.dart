@@ -367,17 +367,60 @@ class FriendMotionPainter extends CustomPainter {
     );
   }
 
+  // The sipping drawings are authored in a different line weight and head
+  // angle, so they stay whole; the lift and blink drawings share the rest
+  // cel's ears, tail and back.
+  static const windowTeaWholeCels = {16, 17, 18};
+
+  // Graph-cut seams between the face, arms and cup and the resting body,
+  // through the pixels where every lift drawing agrees with cel 0 (measured
+  // in the 512px registered drawings). Each lift drawing redraws the whole
+  // outline, so a cut elsewhere leaves a step and the body shimmers.
+  static Path windowTeaRegion(FocusFriend friend) => Path()
+    ..addPolygon([
+      for (final (x, y)
+          in friend == FocusFriend.squirrel
+              ? const [
+                  (232, 198), (231, 215), (223, 223), (214, 225), (213, 245), //
+                  (207, 247), (207, 268), (210, 275), (206, 277), (206, 308),
+                  (196, 314), (192, 325), (186, 329), (187, 512), (512, 512),
+                  (512, 198), (285, 200), (284, 195), (252, 193),
+                ]
+              : const [
+                  (133, 138), (133, 223), (175, 227), (188, 237), (188, 321), //
+                  (183, 336), (183, 512), (512, 512), (512, 142), (368, 142),
+                  (355, 150), (293, 148), (288, 142), (260, 141), (256, 137),
+                  (197, 135), (196, 132),
+                ])
+        Offset(x.toDouble(), y.toDouble()),
+    ], true);
+
   void _windowTea(Canvas canvas, ui.Image atlas, Size size) {
     canvas.save();
     canvas.scale(size.width / 512, size.height / 512);
     // The full connected character and cup are authored together, as for the
     // panda. No mesh warping, crossfade, separate head or limb replacement.
-    _cel(
-      canvas,
-      atlas,
-      pose.from,
-      Paint()..filterQuality = FilterQuality.medium,
-    );
+    final paint = Paint()..filterQuality = FilterQuality.medium;
+    if (pose.from == 0 || windowTeaWholeCels.contains(pose.from)) {
+      _cel(canvas, atlas, pose.from, paint);
+    } else {
+      final region = windowTeaRegion(friend);
+      canvas.save();
+      canvas.clipPath(
+        Path.combine(
+          PathOperation.difference,
+          Path()..addRect(stageBounds),
+          region,
+        ),
+        doAntiAlias: false,
+      );
+      _cel(canvas, atlas, 0, paint);
+      canvas.restore();
+      canvas.save();
+      canvas.clipPath(region, doAntiAlias: false);
+      _cel(canvas, atlas, pose.from, paint);
+      canvas.restore();
+    }
     canvas.restore();
   }
 
