@@ -1,0 +1,183 @@
+{
+  "sourceGallery": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/",
+  "comparison": "http://127.0.0.1:8127/docs/design/study-continuity-audit-v1/",
+  "initialMedia": [
+    {
+      "duration": 41.5,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/redpanda-study.mp4",
+      "time": 38.834333
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/squirrel-study.mp4",
+      "time": 38.834333
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": true,
+      "rate": 1,
+      "ready": 4,
+      "src": "http://127.0.0.1:8127/docs/design/all-character-motions-v10/capture/fennec-study.mp4",
+      "time": 38.834333
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "scope": "writing",
+      "seconds": [
+        1.583333333,
+        1.916666667
+      ],
+      "screenshots": [
+        "02-writing-before.png",
+        "03-writing-after.png"
+      ]
+    },
+    {
+      "step": 2,
+      "scope": "page turn",
+      "seconds": [
+        37.083333333,
+        37.333333333,
+        39.083333333,
+        39.333333333
+      ],
+      "screenshots": [
+        "04-lift-before.png",
+        "05-lift-after.png",
+        "06-settle-before.png",
+        "07-settle-after.png"
+      ]
+    },
+    {
+      "step": 3,
+      "scope": "return",
+      "seconds": [
+        40.083333333
+      ],
+      "readback": [
+        {
+          "error": null,
+          "paused": true,
+          "rate": 1,
+          "ready": 4,
+          "src": "redpanda-study.mp4",
+          "time": 40.084333
+        },
+        {
+          "error": null,
+          "paused": true,
+          "rate": 1,
+          "ready": 4,
+          "src": "squirrel-study.mp4",
+          "time": 40.084333
+        },
+        {
+          "error": null,
+          "paused": true,
+          "rate": 1,
+          "ready": 4,
+          "src": "fennec-study.mp4",
+          "time": 40.084333
+        }
+      ],
+      "screenshot": "08-return.png"
+    }
+  ],
+  "playbackStart": [
+    {
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-study.mp4",
+      "time": 37.198837
+    },
+    {
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-study.mp4",
+      "time": 37.19886
+    },
+    {
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-study.mp4",
+      "time": 37.198353
+    }
+  ],
+  "playbackLater": [
+    {
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-study.mp4",
+      "time": 14.796951
+    },
+    {
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-study.mp4",
+      "time": 19.798206
+    },
+    {
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-study.mp4",
+      "time": 19.798467
+    }
+  ],
+  "frameStepNext": [
+    {
+      "paused": true,
+      "ready": 4,
+      "time": 38.917666
+    },
+    {
+      "paused": true,
+      "ready": 4,
+      "time": 38.917666
+    },
+    {
+      "paused": true,
+      "ready": 4,
+      "time": 38.917666
+    }
+  ],
+  "frameStepBack": [
+    {
+      "paused": true,
+      "ready": 4,
+      "time": 38.834333
+    },
+    {
+      "paused": true,
+      "ready": 4,
+      "time": 38.834333
+    },
+    {
+      "paused": true,
+      "ready": 4,
+      "time": 38.834333
+    }
+  ],
+  "notesScreenshot": "09-findings.png",
+  "inspectedSavedScreenshots": true,
+  "appCodeOrArtChanged": false
+}

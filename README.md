@@ -81,3 +81,5 @@ RandomFocus의 저장 코드를 복사하지 않았습니다. 종료 시각으�
 시안 비교, 작은 화면·큰 글자 캡처, 실제 Android 설치 화면, 데이터 보존 결과는 `docs/design/immersive-room/`에 있습니다. 홈·기록·설정·목표·소리·집중·일시정지·완료·휴식 장면은 `flutter test --no-pub tool/capture_immersive_preview_test.dart`로 다시 캡처할 수 있습니다.
 
 최신 [전체 캐릭터 모션 모아보기와 통합 검증](docs/design/all-character-motions-v10/README.md)은 다람쥐·사막여우에도 필기·페이지 넘김을 추가한 결과입니다. 다섯 친구 모두 집중과 휴식이 움직이며, 전체 주기를 1배속으로 기록했습니다. 두 친구의 집중은 필기 36초와 페이지 넘김 4.5초를 연결한 40.5초 주기입니다. [새 집중 원화와 생성 프롬프트](docs/design/squirrel-fennec-study-v1/README.md)에서 제작 자료를 확인할 수 있습니다.
+
+후속 [필기·페이지 넘김 연결 검토](docs/design/study-continuity-audit-v1/README.md)에서는 주기 경계는 연결되지만 사막여우 필기 방향과 두 친구의 종이 들기·내려놓기 원화에 보강이 필요한 점을 확인했습니다. 재생 시계·고정 영역 테스트 통과와 중간 자세의 자연스러움은 구분합니다. 현재 앱 원화는 이 검토에서 변경하지 않았습니다.

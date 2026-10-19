@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>필기·페이지 넘김 연결 비교</title>
+<style>
+@font-face{font-family:Pretendard;src:url('/assets/fonts/PretendardVariable.ttf');font-weight:100 900}
+*{box-sizing:border-box}body{margin:0;background:#fff8eb;color:#382b26;font-family:Pretendard,system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px}h1{margin:0 0 8px;font-size:27px}h2{font-size:21px;margin:0 0 12px}p,li{line-height:1.6}p{margin:8px 0}.intro{max-width:1000px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 10px}button,a{color:#62452c}button{font:inherit;min-height:44px;padding:10px 13px;border:1px solid #d9c7ab;border-radius:10px;background:#fffdf7;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #896847;outline-offset:3px}button[aria-pressed=true]{background:#ffc779}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}article{min-width:0;border:1px solid #dfcfb5;border-radius:15px;padding:14px;background:#fffcf5}video{display:block;width:100%;aspect-ratio:490/462;border-radius:10px;background:#4b3c31}article p{font-size:14px;color:#735b48}.findings{margin-top:22px;max-width:1000px}.findings li{margin-bottom:9px}.state{font-size:14px;color:#735b48}.image-links{display:flex;flex-wrap:wrap;gap:14px;font-size:14px}.limit{font-size:13px;color:#735b48;max-width:1000px}@media(max-width:700px){main{padding:18px 12px}.grid{grid-template-columns:1fr}}
+</style>
+<main>
+<h1>필기·페이지 넘김 연결 비교</h1>
+<p class="intro"><strong>반복은 연결되어 있지만, 두 친구의 페이지 넘김에는 보강할 부분이 있어요.</strong><br>현재 앱의 랫서팬더·다람쥐·사막여우를 같은 시점에서 비교합니다. 원래 속도는 1배이며, 버튼을 누르면 해당 순간에서 멈춰요.</p>
+<div class="controls" aria-label="검토 구간">
+  <button data-time="0">필기 시작</button><button data-time="1.583333333">필기 끝 방향</button><button data-time="1.916666667">필기 다음 자세</button>
+  <button data-time="37.083333333">종이 들기</button><button data-time="37.333333333">다음 종이 자세</button><button data-time="38.833333333">페이지 넘김 후반</button>
+  <button data-time="39.083333333">종이 놓기 직전</button><button data-time="39.333333333">종이 놓기 직후</button><button data-time="40.083333333">필기로 복귀</button>
+</div>
+<div class="controls" aria-label="재생 제어"><button id="play">모두 1배속 재생</button><button id="pause">모두 멈춤</button><button id="previous">이전 1프레임</button><button id="next">다음 1프레임</button></div>
+<p id="state" class="state" role="status" aria-live="polite"></p>
+<div class="grid">
+  <article><h2>랫서팬더 · 비교 기준</h2><video aria-label="랫서팬더 집중 모션" controls muted loop playsinline preload="auto" src="../all-character-motions-v10/capture/redpanda-study.mp4"></video><p>필기 4초 반복 · 페이지 넘김 5.5초<br>종이를 놓은 뒤 손이 원래 자리로 돌아오는 연결 자세가 더 많아요.</p></article>
+  <article><h2>다람쥐</h2><video aria-label="다람쥐 집중 모션" controls muted loop playsinline preload="auto" src="../all-character-motions-v10/capture/squirrel-study.mp4"></video><p>필기 4초 반복 · 페이지 넘김 4.5초<br>38.3–39.3초에 손·종이의 위치 변화가 커요. 종이가 책에 내려앉는 연결이 짧아요.</p></article>
+  <article><h2>사막여우</h2><video aria-label="사막여우 집중 모션" controls muted loop playsinline preload="auto" src="../all-character-motions-v10/capture/fennec-study.mp4"></video><p>필기 4초 반복 · 페이지 넘김 4.5초<br>필기 끝 방향에서 연필이 되돌아가고, 37.1→37.3초에 들던 종이가 낮아져요.</p></article>
+</div>
+<section class="findings"><h2>검토 결과</h2><ol>
+<li><strong>필기 반복 — 대체로 연결, 사막여우 보강 필요.</strong> 재생 리듬과 왕복 구조는 같지만 사막여우 4→5번 자세는 연필 끝의 진행 방향이 돌아갑니다. 필기 중 책·몸통이 크게 움직이지 않는 점은 좋아요.</li>
+<li><strong>페이지 넘김 — 두 친구 모두 보강 필요.</strong> 사막여우는 종이를 들다가 낮추는 자세가 끼어 있어요. 두 친구 모두 넘김 후반에 종이를 쥔 손과 종이의 이동 간격이 크고, 39.08→39.33초에 다람쥐의 종이는 갑자기 평평해지고, 사막여우의 종이는 크게 낮아져 내려앉는 동작이 짧아요.</li>
+<li><strong>필기 복귀·주기 경계 — 연결됨.</strong> 끝을 기본 자세로 닫아 갑자기 처음 위치로 리셋되지는 않아요. 다만 종이를 놓는 동작까지 자연스럽다는 뜻은 아니에요.</li>
+</ol><p>우선 종이 들기·반대편으로 넘기기·책에 내려놓기의 경로를 일관되게 다시 맞추고, 그다음 손의 복귀 자세를 보강하는 게 좋아요. 속도만 낮추면 현재의 큰 자세 차이가 더 오래 보일 수 있어요.</p></section>
+<div class="image-links"><a href="redpanda-page.jpg">랫서팬더 연속 자세</a><a href="squirrel-page.jpg">다람쥐 연속 자세</a><a href="fennec-page.jpg">사막여우 연속 자세</a><a href="README.md">검토 기록</a><a href="../all-character-motions-v10/">전체 모션 갤러리</a></div>
+<p class="limit">범위: V10에 표시되는 실제 Flutter 앱 위젯 캡처와 현재 원화·재생 시계. 영상의 자세 연결을 검토했으며, 기기별 실시간 프레임 드롭이나 전체 접근성 적합성을 확인한 것은 아닙니다. 앱의 기존 동작 줄이기·일시정지 로직은 유지되어 있습니다. 이번에는 앱 코드와 원화를 변경하지 않았습니다.</p>
+</main>
+<script>
+const videos=[...document.querySelectorAll('video')],state=document.querySelector('#state');let selected=38.833333333;
+function seek(time){selected=Math.max(0,Math.min(40.416666667,time));videos.forEach(v=>{v.pause();if(v.readyState>=1)v.currentTime=Math.min(selected+.001,v.duration-1/24);else v.addEventListener('loadedmetadata',()=>v.currentTime=Math.min(selected+.001,v.duration-1/24),{once:true});});document.querySelectorAll('[data-time]').forEach(b=>b.setAttribute('aria-pressed',String(Math.abs(Number(b.dataset.time)-selected)<.001)));state.textContent=selected.toFixed(3)+'초 · 일시정지 · 아래 영상의 재생 버튼으로도 확인할 수 있어요.';}
+document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>seek(Number(b.dataset.time)));
+document.querySelector('#play').onclick=()=>{videos.forEach(v=>{v.playbackRate=1;v.play().catch(()=>{});});state.textContent='모두 1배속 재생 중 · 캐릭터마다 전체 주기가 달라 반복 시점은 달라요.';};
+document.querySelector('#pause').onclick=()=>{videos.forEach(v=>v.pause());state.textContent='전체 일시정지';};
+function step(delta){const time=videos[0].readyState>=1?videos[0].currentTime:selected;seek((Math.floor(time*12+1e-4)+delta)/12);}
+document.querySelector('#previous').onclick=()=>step(-1);document.querySelector('#next').onclick=()=>step(1);seek(selected);
+</script>
+</html>

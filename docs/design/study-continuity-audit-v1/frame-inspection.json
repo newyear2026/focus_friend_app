@@ -1,0 +1,2874 @@
+{
+  "redpanda": {
+    "source": "docs/design/all-character-motions-v10/capture/redpanda-study.mp4",
+    "frames": 498,
+    "transitions": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "from": null,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.923430919363123
+      },
+      {
+        "frame": 6,
+        "seconds": 0.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0195514466700908
+      },
+      {
+        "frame": 11,
+        "seconds": 0.9166666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1363807567197397
+      },
+      {
+        "frame": 15,
+        "seconds": 1.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0605581236089712
+      },
+      {
+        "frame": 19,
+        "seconds": 1.5833333333333333,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.870679678137305
+      },
+      {
+        "frame": 23,
+        "seconds": 1.9166666666666667,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.530566683787023
+      },
+      {
+        "frame": 29,
+        "seconds": 2.4166666666666665,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.5202533812703303
+      },
+      {
+        "frame": 33,
+        "seconds": 2.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8627563773326483
+      },
+      {
+        "frame": 37,
+        "seconds": 3.0833333333333335,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.074904982023626
+      },
+      {
+        "frame": 42,
+        "seconds": 3.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.156076014381099
+      },
+      {
+        "frame": 48,
+        "seconds": 4.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0407327512412259
+      },
+      {
+        "frame": 54,
+        "seconds": 4.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0223591850710496
+      },
+      {
+        "frame": 59,
+        "seconds": 4.916666666666667,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1410785824345147
+      },
+      {
+        "frame": 63,
+        "seconds": 5.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0627563773326485
+      },
+      {
+        "frame": 67,
+        "seconds": 5.583333333333333,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.840054785139531
+      },
+      {
+        "frame": 71,
+        "seconds": 5.916666666666667,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.5012086971409007
+      },
+      {
+        "frame": 77,
+        "seconds": 6.416666666666667,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4906557096387605
+      },
+      {
+        "frame": 81,
+        "seconds": 6.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8428693716829314
+      },
+      {
+        "frame": 85,
+        "seconds": 7.083333333333333,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0747885636021228
+      },
+      {
+        "frame": 90,
+        "seconds": 7.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1499058380414313
+      },
+      {
+        "frame": 96,
+        "seconds": 8.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0300085601780518
+      },
+      {
+        "frame": 102,
+        "seconds": 8.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0222838555041944
+      },
+      {
+        "frame": 107,
+        "seconds": 8.916666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1545831193288822
+      },
+      {
+        "frame": 111,
+        "seconds": 9.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0501078582434513
+      },
+      {
+        "frame": 115,
+        "seconds": 9.583333333333334,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8404656736860123
+      },
+      {
+        "frame": 119,
+        "seconds": 9.916666666666666,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4778359869885294
+      },
+      {
+        "frame": 125,
+        "seconds": 10.416666666666666,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4956137647663073
+      },
+      {
+        "frame": 129,
+        "seconds": 10.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.849806539976031
+      },
+      {
+        "frame": 133,
+        "seconds": 11.083333333333334,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.068447183701421
+      },
+      {
+        "frame": 138,
+        "seconds": 11.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1572128060263653
+      },
+      {
+        "frame": 144,
+        "seconds": 12.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0316658106488614
+      },
+      {
+        "frame": 150,
+        "seconds": 12.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0198733093648347
+      },
+      {
+        "frame": 155,
+        "seconds": 12.916666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1438178394110599
+      },
+      {
+        "frame": 159,
+        "seconds": 13.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0627495291902072
+      },
+      {
+        "frame": 163,
+        "seconds": 13.583333333333334,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8405752439650747
+      },
+      {
+        "frame": 167,
+        "seconds": 13.916666666666666,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.501352508132169
+      },
+      {
+        "frame": 173,
+        "seconds": 14.416666666666666,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4950727615134394
+      },
+      {
+        "frame": 177,
+        "seconds": 14.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8491080294470126
+      },
+      {
+        "frame": 181,
+        "seconds": 15.083333333333334,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.05799007019346
+      },
+      {
+        "frame": 186,
+        "seconds": 15.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.148180106146208
+      },
+      {
+        "frame": 192,
+        "seconds": 16.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0299126861838725
+      },
+      {
+        "frame": 198,
+        "seconds": 16.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0086423557609998
+      },
+      {
+        "frame": 203,
+        "seconds": 16.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.150371511727444
+      },
+      {
+        "frame": 207,
+        "seconds": 17.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0571682931004964
+      },
+      {
+        "frame": 211,
+        "seconds": 17.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.842752953261428
+      },
+      {
+        "frame": 215,
+        "seconds": 17.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.491867830850882
+      },
+      {
+        "frame": 221,
+        "seconds": 18.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4829173086800207
+      },
+      {
+        "frame": 225,
+        "seconds": 18.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8427050162643384
+      },
+      {
+        "frame": 229,
+        "seconds": 19.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0783016606745421
+      },
+      {
+        "frame": 234,
+        "seconds": 19.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.144632768361582
+      },
+      {
+        "frame": 240,
+        "seconds": 20.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0241123095360383
+      },
+      {
+        "frame": 246,
+        "seconds": 20.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0130662557781203
+      },
+      {
+        "frame": 251,
+        "seconds": 20.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.145858585858586
+      },
+      {
+        "frame": 255,
+        "seconds": 21.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0602978941961994
+      },
+      {
+        "frame": 259,
+        "seconds": 21.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.845457969525766
+      },
+      {
+        "frame": 263,
+        "seconds": 21.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.497675055641157
+      },
+      {
+        "frame": 269,
+        "seconds": 22.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4826022941277177
+      },
+      {
+        "frame": 273,
+        "seconds": 22.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.838911145351823
+      },
+      {
+        "frame": 277,
+        "seconds": 23.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.059914398219483
+      },
+      {
+        "frame": 282,
+        "seconds": 23.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1623694572847116
+      },
+      {
+        "frame": 288,
+        "seconds": 24.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0140386920047937
+      },
+      {
+        "frame": 294,
+        "seconds": 24.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0197979797979797
+      },
+      {
+        "frame": 299,
+        "seconds": 24.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.139482965245677
+      },
+      {
+        "frame": 303,
+        "seconds": 25.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0508200650573531
+      },
+      {
+        "frame": 307,
+        "seconds": 25.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8452045882554358
+      },
+      {
+        "frame": 311,
+        "seconds": 25.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.503256291730868
+      },
+      {
+        "frame": 317,
+        "seconds": 26.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4816914911830166
+      },
+      {
+        "frame": 321,
+        "seconds": 26.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.845396336243794
+      },
+      {
+        "frame": 325,
+        "seconds": 27.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0532717000513612
+      },
+      {
+        "frame": 330,
+        "seconds": 27.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1528642355761
+      },
+      {
+        "frame": 336,
+        "seconds": 28.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.016161616161616
+      },
+      {
+        "frame": 342,
+        "seconds": 28.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0189625064201335
+      },
+      {
+        "frame": 347,
+        "seconds": 28.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.128964218455744
+      },
+      {
+        "frame": 351,
+        "seconds": 29.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.052984078068824
+      },
+      {
+        "frame": 355,
+        "seconds": 29.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.84090395480226
+      },
+      {
+        "frame": 359,
+        "seconds": 29.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4835747303543916
+      },
+      {
+        "frame": 365,
+        "seconds": 30.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4859304913542197
+      },
+      {
+        "frame": 369,
+        "seconds": 30.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8335764423900023
+      },
+      {
+        "frame": 373,
+        "seconds": 31.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0576545112138331
+      },
+      {
+        "frame": 378,
+        "seconds": 31.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1470433145009415
+      },
+      {
+        "frame": 384,
+        "seconds": 32.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0083136449238144
+      },
+      {
+        "frame": 390,
+        "seconds": 32.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0108063687724707
+      },
+      {
+        "frame": 395,
+        "seconds": 32.916666666666664,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.1314090053073105
+      },
+      {
+        "frame": 399,
+        "seconds": 33.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0490532443074816
+      },
+      {
+        "frame": 403,
+        "seconds": 33.583333333333336,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8428419791131656
+      },
+      {
+        "frame": 407,
+        "seconds": 33.916666666666664,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.495764423900017
+      },
+      {
+        "frame": 413,
+        "seconds": 34.416666666666664,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4788769046396166
+      },
+      {
+        "frame": 417,
+        "seconds": 34.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.8439993151857563
+      },
+      {
+        "frame": 421,
+        "seconds": 35.083333333333336,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.0582845403184387
+      },
+      {
+        "frame": 426,
+        "seconds": 35.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.160547851395309
+      },
+      {
+        "frame": 432,
+        "seconds": 36.0,
+        "from": 1,
+        "to": 0,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 1.019613079952063
+      },
+      {
+        "frame": 433,
+        "seconds": 36.083333333333336,
+        "from": 0,
+        "to": 18,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 4.305803800719055
+      },
+      {
+        "frame": 436,
+        "seconds": 36.333333333333336,
+        "from": 18,
+        "to": 19,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.683780174627632
+      },
+      {
+        "frame": 439,
+        "seconds": 36.583333333333336,
+        "from": 19,
+        "to": 20,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.7313199794555723
+      },
+      {
+        "frame": 442,
+        "seconds": 36.833333333333336,
+        "from": 20,
+        "to": 7,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.275295326142785
+      },
+      {
+        "frame": 445,
+        "seconds": 37.083333333333336,
+        "from": 7,
+        "to": 24,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.415511042629686
+      },
+      {
+        "frame": 447,
+        "seconds": 37.25,
+        "from": 24,
+        "to": 25,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.821742852251327
+      },
+      {
+        "frame": 449,
+        "seconds": 37.416666666666664,
+        "from": 25,
+        "to": 26,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.208806711179592
+      },
+      {
+        "frame": 451,
+        "seconds": 37.583333333333336,
+        "from": 26,
+        "to": 33,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.342235918507105
+      },
+      {
+        "frame": 453,
+        "seconds": 37.75,
+        "from": 33,
+        "to": 31,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.588536209553159
+      },
+      {
+        "frame": 455,
+        "seconds": 37.916666666666664,
+        "from": 31,
+        "to": 9,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.274555726759115
+      },
+      {
+        "frame": 457,
+        "seconds": 38.083333333333336,
+        "from": 9,
+        "to": 8,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.548406094846773
+      },
+      {
+        "frame": 459,
+        "seconds": 38.25,
+        "from": 8,
+        "to": 10,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.558678308508817
+      },
+      {
+        "frame": 461,
+        "seconds": 38.416666666666664,
+        "from": 10,
+        "to": 27,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.447019346002397
+      },
+      {
+        "frame": 463,
+        "seconds": 38.583333333333336,
+        "from": 27,
+        "to": 28,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.666714603663756
+      },
+      {
+        "frame": 465,
+        "seconds": 38.75,
+        "from": 28,
+        "to": 34,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.101605889402499
+      },
+      {
+        "frame": 467,
+        "seconds": 38.916666666666664,
+        "from": 34,
+        "to": 12,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 11.369416195856873
+      },
+      {
+        "frame": 470,
+        "seconds": 39.166666666666664,
+        "from": 12,
+        "to": 13,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.641006676938879
+      },
+      {
+        "frame": 473,
+        "seconds": 39.416666666666664,
+        "from": 13,
+        "to": 36,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 4.978558466016093
+      },
+      {
+        "frame": 476,
+        "seconds": 39.666666666666664,
+        "from": 36,
+        "to": 21,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 10.27096730011984
+      },
+      {
+        "frame": 479,
+        "seconds": 39.916666666666664,
+        "from": 21,
+        "to": 14,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.779078924841636
+      },
+      {
+        "frame": 482,
+        "seconds": 40.166666666666664,
+        "from": 14,
+        "to": 15,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.695860297894197
+      },
+      {
+        "frame": 485,
+        "seconds": 40.416666666666664,
+        "from": 15,
+        "to": 37,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.1930080465673685
+      },
+      {
+        "frame": 488,
+        "seconds": 40.666666666666664,
+        "from": 37,
+        "to": 29,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.54928950522171
+      },
+      {
+        "frame": 491,
+        "seconds": 40.916666666666664,
+        "from": 29,
+        "to": 22,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.910398904297209
+      },
+      {
+        "frame": 494,
+        "seconds": 41.166666666666664,
+        "from": 22,
+        "to": 23,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 2.5629310049649034
+      },
+      {
+        "frame": 497,
+        "seconds": 41.416666666666664,
+        "from": 23,
+        "to": 0,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.995035096730012
+      }
+    ],
+    "largestPageChanges": [
+      {
+        "frame": 467,
+        "seconds": 38.916666666666664,
+        "from": 34,
+        "to": 12,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 11.369416195856873
+      },
+      {
+        "frame": 476,
+        "seconds": 39.666666666666664,
+        "from": 36,
+        "to": 21,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 10.27096730011984
+      },
+      {
+        "frame": 479,
+        "seconds": 39.916666666666664,
+        "from": 21,
+        "to": 14,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.779078924841636
+      },
+      {
+        "frame": 488,
+        "seconds": 40.666666666666664,
+        "from": 37,
+        "to": 29,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.54928950522171
+      },
+      {
+        "frame": 470,
+        "seconds": 39.166666666666664,
+        "from": 12,
+        "to": 13,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.641006676938879
+      },
+      {
+        "frame": 453,
+        "seconds": 37.75,
+        "from": 33,
+        "to": 31,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.588536209553159
+      },
+      {
+        "frame": 461,
+        "seconds": 38.416666666666664,
+        "from": 10,
+        "to": 27,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.447019346002397
+      }
+    ]
+  },
+  "squirrel": {
+    "source": "docs/design/all-character-motions-v10/capture/squirrel-study.mp4",
+    "frames": 486,
+    "transitions": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "from": null,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8487930148947098
+      },
+      {
+        "frame": 6,
+        "seconds": 0.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8757404554014725
+      },
+      {
+        "frame": 11,
+        "seconds": 0.9166666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9561171032357472
+      },
+      {
+        "frame": 15,
+        "seconds": 1.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.299311761684643
+      },
+      {
+        "frame": 19,
+        "seconds": 1.5833333333333333,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.91316555384352
+      },
+      {
+        "frame": 23,
+        "seconds": 1.9166666666666667,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3127889060092452
+      },
+      {
+        "frame": 29,
+        "seconds": 2.4166666666666665,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3099674713234033
+      },
+      {
+        "frame": 33,
+        "seconds": 2.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9078103064543743
+      },
+      {
+        "frame": 37,
+        "seconds": 3.0833333333333335,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.289792843691149
+      },
+      {
+        "frame": 42,
+        "seconds": 3.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9431741140215717
+      },
+      {
+        "frame": 48,
+        "seconds": 4.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.860544427324088
+      },
+      {
+        "frame": 54,
+        "seconds": 4.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.846040061633282
+      },
+      {
+        "frame": 59,
+        "seconds": 4.916666666666667,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.936949152542373
+      },
+      {
+        "frame": 63,
+        "seconds": 5.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2926005820921074
+      },
+      {
+        "frame": 67,
+        "seconds": 5.583333333333333,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.900763567882212
+      },
+      {
+        "frame": 71,
+        "seconds": 5.916666666666667,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3150967300119842
+      },
+      {
+        "frame": 77,
+        "seconds": 6.416666666666667,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3134874165382637
+      },
+      {
+        "frame": 81,
+        "seconds": 6.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.918226331107687
+      },
+      {
+        "frame": 85,
+        "seconds": 7.083333333333333,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3045095017976374
+      },
+      {
+        "frame": 90,
+        "seconds": 7.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9368943674028418
+      },
+      {
+        "frame": 96,
+        "seconds": 8.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8898613251155625
+      },
+      {
+        "frame": 102,
+        "seconds": 8.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8521965416880668
+      },
+      {
+        "frame": 107,
+        "seconds": 8.916666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9437425098442047
+      },
+      {
+        "frame": 111,
+        "seconds": 9.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3051600753295667
+      },
+      {
+        "frame": 115,
+        "seconds": 9.583333333333334,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8985310734463277
+      },
+      {
+        "frame": 119,
+        "seconds": 9.916666666666666,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3090018832391714
+      },
+      {
+        "frame": 125,
+        "seconds": 10.416666666666666,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3050436569080635
+      },
+      {
+        "frame": 129,
+        "seconds": 10.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8948878616675227
+      },
+      {
+        "frame": 133,
+        "seconds": 11.083333333333334,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2998801575072763
+      },
+      {
+        "frame": 138,
+        "seconds": 11.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9362095531587056
+      },
+      {
+        "frame": 144,
+        "seconds": 12.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.877452491011813
+      },
+      {
+        "frame": 150,
+        "seconds": 12.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8445540147235062
+      },
+      {
+        "frame": 155,
+        "seconds": 12.916666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9361136791645264
+      },
+      {
+        "frame": 159,
+        "seconds": 13.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3144940934771443
+      },
+      {
+        "frame": 163,
+        "seconds": 13.583333333333334,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.910809792843691
+      },
+      {
+        "frame": 167,
+        "seconds": 13.916666666666666,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.316527991782229
+      },
+      {
+        "frame": 173,
+        "seconds": 14.416666666666666,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3029892141756547
+      },
+      {
+        "frame": 177,
+        "seconds": 14.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9113234035267936
+      },
+      {
+        "frame": 181,
+        "seconds": 15.083333333333334,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3062557781201847
+      },
+      {
+        "frame": 186,
+        "seconds": 15.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9469131997945555
+      },
+      {
+        "frame": 192,
+        "seconds": 16.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8676254066084574
+      },
+      {
+        "frame": 198,
+        "seconds": 16.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8499092621126518
+      },
+      {
+        "frame": 203,
+        "seconds": 16.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9496661530559833
+      },
+      {
+        "frame": 207,
+        "seconds": 17.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.300256805341551
+      },
+      {
+        "frame": 211,
+        "seconds": 17.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9096935456257491
+      },
+      {
+        "frame": 215,
+        "seconds": 17.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3052148604690976
+      },
+      {
+        "frame": 221,
+        "seconds": 18.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.306502311248074
+      },
+      {
+        "frame": 225,
+        "seconds": 18.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9129258688580721
+      },
+      {
+        "frame": 229,
+        "seconds": 19.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3121451806197568
+      },
+      {
+        "frame": 234,
+        "seconds": 19.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9417017633966787
+      },
+      {
+        "frame": 240,
+        "seconds": 20.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8800068481424415
+      },
+      {
+        "frame": 246,
+        "seconds": 20.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8471494607087828
+      },
+      {
+        "frame": 251,
+        "seconds": 20.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9296764252696457
+      },
+      {
+        "frame": 255,
+        "seconds": 21.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3106248929977744
+      },
+      {
+        "frame": 259,
+        "seconds": 21.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.906317411402157
+      },
+      {
+        "frame": 263,
+        "seconds": 21.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.3081595617188837
+      },
+      {
+        "frame": 269,
+        "seconds": 22.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.2996815613764765
+      },
+      {
+        "frame": 273,
+        "seconds": 22.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.904845060777264
+      },
+      {
+        "frame": 277,
+        "seconds": 23.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2964629344290362
+      },
+      {
+        "frame": 282,
+        "seconds": 23.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.936990241397021
+      },
+      {
+        "frame": 288,
+        "seconds": 24.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8560383495976716
+      },
+      {
+        "frame": 294,
+        "seconds": 24.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8534771443246019
+      },
+      {
+        "frame": 299,
+        "seconds": 24.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9410717342920734
+      },
+      {
+        "frame": 303,
+        "seconds": 25.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.307577469611368
+      },
+      {
+        "frame": 307,
+        "seconds": 25.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8991131655538436
+      },
+      {
+        "frame": 311,
+        "seconds": 25.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.308707413114193
+      },
+      {
+        "frame": 317,
+        "seconds": 26.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.2926759116589626
+      },
+      {
+        "frame": 321,
+        "seconds": 26.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9052080123266562
+      },
+      {
+        "frame": 325,
+        "seconds": 27.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2923472008217771
+      },
+      {
+        "frame": 330,
+        "seconds": 27.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9434001027221364
+      },
+      {
+        "frame": 336,
+        "seconds": 28.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8593049135422017
+      },
+      {
+        "frame": 342,
+        "seconds": 28.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8602157164869029
+      },
+      {
+        "frame": 347,
+        "seconds": 28.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.947241910631741
+      },
+      {
+        "frame": 351,
+        "seconds": 29.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2978668036295156
+      },
+      {
+        "frame": 355,
+        "seconds": 29.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9027495291902072
+      },
+      {
+        "frame": 359,
+        "seconds": 29.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.313679164526622
+      },
+      {
+        "frame": 365,
+        "seconds": 30.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.305872282143469
+      },
+      {
+        "frame": 369,
+        "seconds": 30.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9048382126348227
+      },
+      {
+        "frame": 373,
+        "seconds": 31.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2879986303715116
+      },
+      {
+        "frame": 378,
+        "seconds": 31.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9425303886320835
+      },
+      {
+        "frame": 384,
+        "seconds": 32.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8561342235918508
+      },
+      {
+        "frame": 390,
+        "seconds": 32.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.8510871426125661
+      },
+      {
+        "frame": 395,
+        "seconds": 32.916666666666664,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9328402670775553
+      },
+      {
+        "frame": 399,
+        "seconds": 33.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.3036260914227016
+      },
+      {
+        "frame": 403,
+        "seconds": 33.583333333333336,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9079678137305256
+      },
+      {
+        "frame": 407,
+        "seconds": 33.916666666666664,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.31648005478514
+      },
+      {
+        "frame": 413,
+        "seconds": 34.416666666666664,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.30276322547509
+      },
+      {
+        "frame": 417,
+        "seconds": 34.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9009553158705703
+      },
+      {
+        "frame": 421,
+        "seconds": 35.083333333333336,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.2871357644239
+      },
+      {
+        "frame": 426,
+        "seconds": 35.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.9442629686697481
+      },
+      {
+        "frame": 432,
+        "seconds": 36.0,
+        "from": 1,
+        "to": 0,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 1.8516897791474063
+      },
+      {
+        "frame": 433,
+        "seconds": 36.083333333333336,
+        "from": 0,
+        "to": 6,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.891532271871254
+      },
+      {
+        "frame": 436,
+        "seconds": 36.333333333333336,
+        "from": 6,
+        "to": 8,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 4.832425954459853
+      },
+      {
+        "frame": 439,
+        "seconds": 36.583333333333336,
+        "from": 8,
+        "to": 9,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 4.12869714090053
+      },
+      {
+        "frame": 442,
+        "seconds": 36.833333333333336,
+        "from": 9,
+        "to": 10,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.629714090053073
+      },
+      {
+        "frame": 445,
+        "seconds": 37.083333333333336,
+        "from": 10,
+        "to": 11,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 1.8174970039376819
+      },
+      {
+        "frame": 448,
+        "seconds": 37.333333333333336,
+        "from": 11,
+        "to": 12,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.19035096730012
+      },
+      {
+        "frame": 451,
+        "seconds": 37.583333333333336,
+        "from": 12,
+        "to": 13,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 2.788365005992125
+      },
+      {
+        "frame": 454,
+        "seconds": 37.833333333333336,
+        "from": 13,
+        "to": 14,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.409436740284197
+      },
+      {
+        "frame": 457,
+        "seconds": 38.083333333333336,
+        "from": 14,
+        "to": 15,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.001944872453347
+      },
+      {
+        "frame": 460,
+        "seconds": 38.333333333333336,
+        "from": 15,
+        "to": 16,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 10.243636363636364
+      },
+      {
+        "frame": 463,
+        "seconds": 38.583333333333336,
+        "from": 16,
+        "to": 17,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 13.009457284711521
+      },
+      {
+        "frame": 466,
+        "seconds": 38.833333333333336,
+        "from": 17,
+        "to": 18,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 12.539791131655539
+      },
+      {
+        "frame": 469,
+        "seconds": 39.083333333333336,
+        "from": 18,
+        "to": 19,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 11.379592535524738
+      },
+      {
+        "frame": 472,
+        "seconds": 39.333333333333336,
+        "from": 19,
+        "to": 20,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.065235404896422
+      },
+      {
+        "frame": 475,
+        "seconds": 39.583333333333336,
+        "from": 20,
+        "to": 21,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.193425783256291
+      },
+      {
+        "frame": 478,
+        "seconds": 39.833333333333336,
+        "from": 21,
+        "to": 22,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.220133538777607
+      },
+      {
+        "frame": 481,
+        "seconds": 40.083333333333336,
+        "from": 22,
+        "to": 23,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.0229207327512406
+      },
+      {
+        "frame": 484,
+        "seconds": 40.333333333333336,
+        "from": 23,
+        "to": 0,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 0.004423900017120356
+      }
+    ],
+    "largestPageChanges": [
+      {
+        "frame": 463,
+        "seconds": 38.583333333333336,
+        "from": 16,
+        "to": 17,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 13.009457284711521
+      },
+      {
+        "frame": 466,
+        "seconds": 38.833333333333336,
+        "from": 17,
+        "to": 18,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 12.539791131655539
+      },
+      {
+        "frame": 469,
+        "seconds": 39.083333333333336,
+        "from": 18,
+        "to": 19,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 11.379592535524738
+      },
+      {
+        "frame": 460,
+        "seconds": 38.333333333333336,
+        "from": 15,
+        "to": 16,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 10.243636363636364
+      },
+      {
+        "frame": 433,
+        "seconds": 36.083333333333336,
+        "from": 0,
+        "to": 6,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.891532271871254
+      },
+      {
+        "frame": 472,
+        "seconds": 39.333333333333336,
+        "from": 19,
+        "to": 20,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.065235404896422
+      },
+      {
+        "frame": 478,
+        "seconds": 39.833333333333336,
+        "from": 21,
+        "to": 22,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.220133538777607
+      }
+    ]
+  },
+  "fennec": {
+    "source": "docs/design/all-character-motions-v10/capture/fennec-study.mp4",
+    "frames": 486,
+    "transitions": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "from": null,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 1.7746618729669577
+      },
+      {
+        "frame": 6,
+        "seconds": 0.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.3091319979455576
+      },
+      {
+        "frame": 11,
+        "seconds": 0.9166666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4159356274610513
+      },
+      {
+        "frame": 15,
+        "seconds": 1.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.455867146036638
+      },
+      {
+        "frame": 19,
+        "seconds": 1.5833333333333333,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4084300633453175
+      },
+      {
+        "frame": 23,
+        "seconds": 1.9166666666666667,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.2043828111624726
+      },
+      {
+        "frame": 29,
+        "seconds": 2.4166666666666665,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.194932374593391
+      },
+      {
+        "frame": 33,
+        "seconds": 2.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.435466529703818
+      },
+      {
+        "frame": 37,
+        "seconds": 3.0833333333333335,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4667556925184044
+      },
+      {
+        "frame": 42,
+        "seconds": 3.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4212634822804318
+      },
+      {
+        "frame": 48,
+        "seconds": 4.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.329361410717343
+      },
+      {
+        "frame": 54,
+        "seconds": 4.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.2971545968156133
+      },
+      {
+        "frame": 59,
+        "seconds": 4.916666666666667,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.408519089197055
+      },
+      {
+        "frame": 63,
+        "seconds": 5.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4563259715802093
+      },
+      {
+        "frame": 67,
+        "seconds": 5.583333333333333,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4142852251326827
+      },
+      {
+        "frame": 71,
+        "seconds": 5.916666666666667,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.2126485190891976
+      },
+      {
+        "frame": 77,
+        "seconds": 6.416666666666667,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1989864749186783
+      },
+      {
+        "frame": 81,
+        "seconds": 6.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.404964903269988
+      },
+      {
+        "frame": 85,
+        "seconds": 7.083333333333333,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4439445300462252
+      },
+      {
+        "frame": 90,
+        "seconds": 7.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4175038520801233
+      },
+      {
+        "frame": 96,
+        "seconds": 8.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.326437253894881
+      },
+      {
+        "frame": 102,
+        "seconds": 8.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.283430919363122
+      },
+      {
+        "frame": 107,
+        "seconds": 8.916666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.411888375278206
+      },
+      {
+        "frame": 111,
+        "seconds": 9.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4532169149118297
+      },
+      {
+        "frame": 115,
+        "seconds": 9.583333333333334,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4224139702105805
+      },
+      {
+        "frame": 119,
+        "seconds": 9.916666666666666,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.201636706043486
+      },
+      {
+        "frame": 125,
+        "seconds": 10.416666666666666,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1848793014894707
+      },
+      {
+        "frame": 129,
+        "seconds": 10.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4222838555041943
+      },
+      {
+        "frame": 133,
+        "seconds": 11.083333333333334,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4578804999143977
+      },
+      {
+        "frame": 138,
+        "seconds": 11.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4205923643211777
+      },
+      {
+        "frame": 144,
+        "seconds": 12.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.3238007190549563
+      },
+      {
+        "frame": 150,
+        "seconds": 12.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.2965108714261255
+      },
+      {
+        "frame": 155,
+        "seconds": 12.916666666666666,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.419017291559664
+      },
+      {
+        "frame": 159,
+        "seconds": 13.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4636055469953777
+      },
+      {
+        "frame": 163,
+        "seconds": 13.583333333333334,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.409758602978942
+      },
+      {
+        "frame": 167,
+        "seconds": 13.916666666666666,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1982879643896593
+      },
+      {
+        "frame": 173,
+        "seconds": 14.416666666666666,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.186050333846944
+      },
+      {
+        "frame": 177,
+        "seconds": 14.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.428132169149118
+      },
+      {
+        "frame": 181,
+        "seconds": 15.083333333333334,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.475589796267762
+      },
+      {
+        "frame": 186,
+        "seconds": 15.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4137373737373737
+      },
+      {
+        "frame": 192,
+        "seconds": 16.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.328827255606917
+      },
+      {
+        "frame": 198,
+        "seconds": 16.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.2943194658448895
+      },
+      {
+        "frame": 203,
+        "seconds": 16.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.416367060434857
+      },
+      {
+        "frame": 207,
+        "seconds": 17.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.448183530217429
+      },
+      {
+        "frame": 211,
+        "seconds": 17.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4111967128916283
+      },
+      {
+        "frame": 215,
+        "seconds": 17.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.209669577127204
+      },
+      {
+        "frame": 221,
+        "seconds": 18.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1997055298750214
+      },
+      {
+        "frame": 225,
+        "seconds": 18.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.442458483136449
+      },
+      {
+        "frame": 229,
+        "seconds": 19.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4609347714432466
+      },
+      {
+        "frame": 234,
+        "seconds": 19.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4219346002396853
+      },
+      {
+        "frame": 240,
+        "seconds": 20.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.3092415682246195
+      },
+      {
+        "frame": 246,
+        "seconds": 20.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.292723848656052
+      },
+      {
+        "frame": 251,
+        "seconds": 20.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.422331792501284
+      },
+      {
+        "frame": 255,
+        "seconds": 21.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.43608286252354
+      },
+      {
+        "frame": 259,
+        "seconds": 21.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.450683102208526
+      },
+      {
+        "frame": 263,
+        "seconds": 21.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.213723677452491
+      },
+      {
+        "frame": 269,
+        "seconds": 22.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1718404382811163
+      },
+      {
+        "frame": 273,
+        "seconds": 22.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.437158020886834
+      },
+      {
+        "frame": 277,
+        "seconds": 23.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4626536551960285
+      },
+      {
+        "frame": 282,
+        "seconds": 23.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4485396336243794
+      },
+      {
+        "frame": 288,
+        "seconds": 24.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.304009587399418
+      },
+      {
+        "frame": 294,
+        "seconds": 24.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.3005512754665296
+      },
+      {
+        "frame": 299,
+        "seconds": 24.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.439582263311077
+      },
+      {
+        "frame": 303,
+        "seconds": 25.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.436658106488615
+      },
+      {
+        "frame": 307,
+        "seconds": 25.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4287279575415166
+      },
+      {
+        "frame": 311,
+        "seconds": 25.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.227960965588084
+      },
+      {
+        "frame": 317,
+        "seconds": 26.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1850025680534153
+      },
+      {
+        "frame": 321,
+        "seconds": 26.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.428412942989214
+      },
+      {
+        "frame": 325,
+        "seconds": 27.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.446204417051875
+      },
+      {
+        "frame": 330,
+        "seconds": 27.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4232973805855162
+      },
+      {
+        "frame": 336,
+        "seconds": 28.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.3141242937853104
+      },
+      {
+        "frame": 342,
+        "seconds": 28.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.2994213319637047
+      },
+      {
+        "frame": 347,
+        "seconds": 28.916666666666668,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.424714946070878
+      },
+      {
+        "frame": 351,
+        "seconds": 29.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4399383667180277
+      },
+      {
+        "frame": 355,
+        "seconds": 29.583333333333332,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4383906865262794
+      },
+      {
+        "frame": 359,
+        "seconds": 29.916666666666668,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.2186269474405065
+      },
+      {
+        "frame": 365,
+        "seconds": 30.416666666666668,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1671905495634305
+      },
+      {
+        "frame": 369,
+        "seconds": 30.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.424660160931347
+      },
+      {
+        "frame": 373,
+        "seconds": 31.083333333333332,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.4384317753809284
+      },
+      {
+        "frame": 378,
+        "seconds": 31.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4320698510529017
+      },
+      {
+        "frame": 384,
+        "seconds": 32.0,
+        "from": 1,
+        "to": 0,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.312227358329053
+      },
+      {
+        "frame": 390,
+        "seconds": 32.5,
+        "from": 0,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.294155110426297
+      },
+      {
+        "frame": 395,
+        "seconds": 32.916666666666664,
+        "from": 1,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.421818181818182
+      },
+      {
+        "frame": 399,
+        "seconds": 33.25,
+        "from": 2,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.451792501284027
+      },
+      {
+        "frame": 403,
+        "seconds": 33.583333333333336,
+        "from": 3,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4403355589796267
+      },
+      {
+        "frame": 407,
+        "seconds": 33.916666666666664,
+        "from": 4,
+        "to": 5,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.2203526793357304
+      },
+      {
+        "frame": 413,
+        "seconds": 34.416666666666664,
+        "from": 5,
+        "to": 4,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.1876048621811335
+      },
+      {
+        "frame": 417,
+        "seconds": 34.75,
+        "from": 4,
+        "to": 3,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4153535353535354
+      },
+      {
+        "frame": 421,
+        "seconds": 35.083333333333336,
+        "from": 3,
+        "to": 2,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 3.443506248929978
+      },
+      {
+        "frame": 426,
+        "seconds": 35.5,
+        "from": 2,
+        "to": 1,
+        "phase": "writing",
+        "roiMeanAbsoluteRgbDifference": 2.4228590994692687
+      },
+      {
+        "frame": 432,
+        "seconds": 36.0,
+        "from": 1,
+        "to": 0,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.239780859441877
+      },
+      {
+        "frame": 433,
+        "seconds": 36.083333333333336,
+        "from": 0,
+        "to": 6,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.9863721965416876
+      },
+      {
+        "frame": 436,
+        "seconds": 36.333333333333336,
+        "from": 6,
+        "to": 8,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.841821605889403
+      },
+      {
+        "frame": 439,
+        "seconds": 36.583333333333336,
+        "from": 8,
+        "to": 9,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 4.252073275124123
+      },
+      {
+        "frame": 442,
+        "seconds": 36.833333333333336,
+        "from": 9,
+        "to": 10,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.9203766478342756
+      },
+      {
+        "frame": 445,
+        "seconds": 37.083333333333336,
+        "from": 10,
+        "to": 11,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 1.7065365519602809
+      },
+      {
+        "frame": 448,
+        "seconds": 37.333333333333336,
+        "from": 11,
+        "to": 12,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.211251498031159
+      },
+      {
+        "frame": 451,
+        "seconds": 37.583333333333336,
+        "from": 12,
+        "to": 13,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.162355760999829
+      },
+      {
+        "frame": 454,
+        "seconds": 37.833333333333336,
+        "from": 13,
+        "to": 14,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.117397705872282
+      },
+      {
+        "frame": 457,
+        "seconds": 38.083333333333336,
+        "from": 14,
+        "to": 15,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 4.899633624379387
+      },
+      {
+        "frame": 460,
+        "seconds": 38.333333333333336,
+        "from": 15,
+        "to": 16,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.211545968156138
+      },
+      {
+        "frame": 463,
+        "seconds": 38.583333333333336,
+        "from": 16,
+        "to": 17,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 9.127464475261085
+      },
+      {
+        "frame": 466,
+        "seconds": 38.833333333333336,
+        "from": 17,
+        "to": 18,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 9.889142270159219
+      },
+      {
+        "frame": 469,
+        "seconds": 39.083333333333336,
+        "from": 18,
+        "to": 19,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.429159390515323
+      },
+      {
+        "frame": 472,
+        "seconds": 39.333333333333336,
+        "from": 19,
+        "to": 20,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.301133367574045
+      },
+      {
+        "frame": 475,
+        "seconds": 39.583333333333336,
+        "from": 20,
+        "to": 21,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 5.10155795240541
+      },
+      {
+        "frame": 478,
+        "seconds": 39.833333333333336,
+        "from": 21,
+        "to": 22,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.812696456086287
+      },
+      {
+        "frame": 481,
+        "seconds": 40.083333333333336,
+        "from": 22,
+        "to": 23,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 3.718178394110597
+      },
+      {
+        "frame": 484,
+        "seconds": 40.333333333333336,
+        "from": 23,
+        "to": 0,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 0.014785139530902243
+      }
+    ],
+    "largestPageChanges": [
+      {
+        "frame": 466,
+        "seconds": 38.833333333333336,
+        "from": 17,
+        "to": 18,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 9.889142270159219
+      },
+      {
+        "frame": 463,
+        "seconds": 38.583333333333336,
+        "from": 16,
+        "to": 17,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 9.127464475261085
+      },
+      {
+        "frame": 460,
+        "seconds": 38.333333333333336,
+        "from": 15,
+        "to": 16,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 8.211545968156138
+      },
+      {
+        "frame": 478,
+        "seconds": 39.833333333333336,
+        "from": 21,
+        "to": 22,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.812696456086287
+      },
+      {
+        "frame": 472,
+        "seconds": 39.333333333333336,
+        "from": 19,
+        "to": 20,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 7.301133367574045
+      },
+      {
+        "frame": 436,
+        "seconds": 36.333333333333336,
+        "from": 6,
+        "to": 8,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.841821605889403
+      },
+      {
+        "frame": 448,
+        "seconds": 37.333333333333336,
+        "from": 11,
+        "to": 12,
+        "phase": "pageTurn",
+        "roiMeanAbsoluteRgbDifference": 6.211251498031159
+      }
+    ]
+  }
+}
