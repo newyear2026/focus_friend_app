@@ -10,55 +10,37 @@ List<int> exposures(List<(int, int)> holds) => [
     for (var tick = 0; tick < ticks; tick++) cel,
 ];
 
-// Lift/sip timings frozen from 37cf920, plus the two-tick A/B exposures
-// authored in e7ed48c on both sides of sipping. This independent fixture
-// checks that every rhythm variant uses the complete combined action.
+// The panda's tea shape (4,4,2,2 ticks up, about a second at the mouth, the
+// same steps down), frozen independently so every rhythm variant must use the
+// complete action unchanged.
 List<int> authoredAction(FocusFriend friend) {
   if (friend == FocusFriend.penguin) {
     return exposures([(4, 4), (5, 6), (6, 14), (5, 4), (4, 4)]);
   }
   if (friend == FocusFriend.otter) {
-    return exposures([(3, 4), (4, 4), (6, 6), (7, 14), (6, 4), (4, 4), (3, 4)]);
+    return exposures([
+      (3, 4), (4, 4), (5, 4), (6, 6), //
+      (7, 12),
+      (6, 4), (5, 4), (4, 4), (3, 6),
+    ]);
   }
-  final lift = friend == FocusFriend.fennec
-      ? [
-          0,
-          0,
-          19,
-          19,
-          19,
-          20,
-          20,
-          5,
-          6,
-          7,
-          23,
-          23,
-          8,
-          25,
-          25,
-          9,
-          26,
-          26,
-          10,
-          10,
-        ]
-      : [0, 0, 0, 0, 0, 4, 4, 25, 5, 21, 6, 22, 22, 7, 7, 8, 9, 9, 10, 10];
+  final up = friend == FocusFriend.fennec
+      ? exposures([(20, 4), (6, 4), (23, 2), (9, 2), (10, 3)])
+      : exposures([(4, 4), (5, 4), (22, 2), (8, 2), (10, 3)]);
   return [
-    ...lift,
+    ...up,
     ...exposures([
       (3, 2),
       (27, 2),
-      (17, 3),
-      (18, 3),
-      (16, 18),
-      (18, 3),
-      (17, 3),
+      (17, 2),
+      (18, 2),
+      (16, 6),
+      (18, 2),
+      (17, 2),
       (27, 2),
       (3, 2),
-      (10, 4),
     ]),
-    ...lift.reversed,
+    ...up.reversed,
   ];
 }
 
@@ -106,9 +88,7 @@ void main() {
             seconds,
             friend == FocusFriend.penguin
                 ? inInclusiveRange(7.0, 7.7)
-                : friend.hasWindowTeaMotion
-                ? inInclusiveRange(18.0, 26.0)
-                : inInclusiveRange(8.0, 12.0),
+                : inInclusiveRange(9.0, 11.0),
           );
           final rests = [...variant.before, ...variant.after];
           expect(

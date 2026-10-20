@@ -11,7 +11,8 @@ void main() {
   test('window tea repeats its complete three-variant supercycle', () {
     for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
       final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
-      expect(timeline.length, 57 * FriendMotionClock.windowTeaFramesPerSecond);
+      // 10s + 11s + 9.5s variants, a drink about every ten seconds.
+      expect(timeline.length, 366);
       final cycle = FriendMotionClock.restDurationFor(friend);
       final start = FriendMotionClock.sample(
         Duration.zero,
@@ -34,7 +35,7 @@ void main() {
       );
       expect((end.from, end.to, end.blend), (0, 0, 0));
       for (final variant in FriendMotionClock.restVariantsFor(friend)) {
-        expect(variant.action.sublist(30, 48).toSet(), {16});
+        expect(variant.action.sublist(23, 29).toSet(), {16});
       }
     }
   });
@@ -43,7 +44,7 @@ void main() {
     () {
       for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
         final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
-        expect(timeline.length, 684);
+        expect(timeline.length, 366);
         expect(timeline.toSet(), containsAll([0, 1, 2, 3, 10, 16, 17, 18, 27]));
         expect(timeline.any((cel) => cel >= 19), isTrue);
         // These old drawings raised the upright rim from the lip to the nose.
@@ -121,13 +122,15 @@ void main() {
       };
       for (final friend in heights.keys) {
         for (final variant in FriendMotionClock.restVariantsFor(friend)) {
-          const lifted = FriendMotionClock.teaLiftTicks;
+          // Panda shape: 4,4,2,2,3 ticks up, about a second at the mouth.
+          const lifted = 15;
           final action = variant.action;
           final lift = action.sublist(0, lifted);
-          final lower = action.sublist(lifted + 42, lifted + 42 + lifted);
+          final lower = action.sublist(action.length - lifted);
           expect(lower, lift.reversed.toList());
           expect(action.sublist(lifted, lifted + 4), [3, 3, 27, 27]);
-          expect(action.sublist(lifted + 34, lifted + 38), [27, 27, 3, 3]);
+          expect(action.sublist(lifted + 18, lifted + 22), [27, 27, 3, 3]);
+          expect(action.length, lifted + 22 + lifted);
           var lastHeight = heights[friend]![0]!;
           for (final frame in [...lift, 3, 27, 17]) {
             final y = heights[friend]![frame]!;
@@ -138,9 +141,9 @@ void main() {
             );
             lastHeight = y;
           }
-          expect(lift.first, 0);
+          expect(lift.toSet().length, 5);
           expect(lift.last, 10);
-          expect(action.sublist(lifted + 10, lifted + 28).toSet(), {16});
+          expect(action.sublist(lifted + 8, lifted + 14).toSet(), {16});
         }
       }
     },

@@ -33,76 +33,34 @@ abstract final class FriendMotionClock {
   static const framesPerSecond = 12;
   static const windowTeaFramesPerSecond = framesPerSecond;
   static const windowTeaFrameCount = 28;
-  // Measured upright rim heights in the registered 512px drawings. A single
-  // ease spans the whole lift, so unequal drawing distances do not create a
-  // fresh stop/start at every cel. Candidates with a backwards path are unused.
-  static const fennecTeaLift = [
-    (0, 280.0),
-    (19, 277.0),
-    (20, 267.0),
-    (5, 261.0),
-    (6, 259.0),
-    (7, 253.0),
-    (23, 248.0),
-    (8, 241.0),
-    (24, 238.0),
-    (25, 237.0),
-    (9, 230.0),
-    (26, 227.0),
-    (10, 224.0),
-  ];
-  static const squirrelTeaLift = [
-    (0, 303.0),
-    (4, 293.0),
-    (25, 289.0),
-    (5, 285.0),
-    (21, 284.0),
-    (20, 282.0),
-    (6, 279.0),
-    (22, 276.0),
-    (7, 270.0),
-    (8, 266.0),
-    (9, 262.0),
-    (10, 261.0),
-  ];
-  // About 1.7s, close to the panda's 1.5s lift; 3.5s read as slow motion.
-  static const teaLiftTicks = 20;
-  static List<int> _liftExposure(List<(int, double)> poses) => [
-    for (var tick = 0; tick < teaLiftTicks; tick++)
-      poses.reduce((a, b) {
-        final y =
-            poses.first.$2 +
-            (poses.last.$2 - poses.first.$2) * _ease(tick / (teaLiftTicks - 1));
-        return (a.$2 - y).abs() <= (b.$2 - y).abs() ? a : b;
-      }).$1,
-  ];
-  // Freeze this entire action, including its endpoint exposures. Rhythm
-  // variants can only add idle holds/blinks before and after it.
-  static List<int> _teaAction(List<(int, double)> lift) => List.unmodifiable([
-    ..._liftExposure(lift),
+  // Five lift drawings each, picked by the measured upright rim height in the
+  // registered 512px drawings (fennec 267-224px, squirrel 293-261px) so the
+  // cup only rises. Other candidates sat too close together or ran backwards.
+  static const fennecTeaLift = [20, 6, 23, 9, 10];
+  static const squirrelTeaLift = [4, 5, 22, 8, 10];
+
+  // The panda's tea shape: 4,4,2,2 ticks through the lift with a short hold at
+  // the top, about a second at the mouth, and the same steps back down.
+  // Rhythm variants only change the idle holds and blinks around it.
+  static List<int> _teaAction(List<int> lift) => _exposures([
+    (lift[0], 4), (lift[1], 4), (lift[2], 2), (lift[3], 2), (lift[4], 3), //
     // Two authored inbetweens let lids and cup angle change gradually.
-    3, 3, 27, 27,
-    17, 17, 17, 18, 18, 18,
-    ...[for (var i = 0; i < 18; i++) 16],
-    18, 18, 18, 17, 17, 17,
-    27, 27, 3, 3,
-    10, 10, 10, 10,
-    ..._liftExposure(lift).reversed,
+    (3, 2), (27, 2),
+    (17, 2), (18, 2), (16, 6), (18, 2), (17, 2),
+    (27, 2), (3, 2),
+    (lift[4], 3), (lift[3], 2), (lift[2], 2), (lift[1], 4), (lift[0], 4),
   ]);
 
-  // Two blinks are needed in these longer rests to bound every unchanged
-  // drawing to five seconds. Locations and pre/post rests change each cycle.
-  // The five idle endpoint ticks in the squirrel action count toward the cap.
-  static List<FriendRestVariant> _teaVariants(List<(int, double)> lift) {
+  // A drink about every ten seconds, like the panda; the rest before and
+  // after it and the blink change each cycle.
+  static List<FriendRestVariant> _teaVariants(List<int> lift) {
     final action = _teaAction(lift);
-    List<int> idle(int first, int second) =>
+    List<int> blink(int first, int second) =>
         _exposures([(0, first), (1, 1), (2, 2), (1, 1), (0, second)]);
     return List.unmodifiable([
-      // The eight added inbetween ticks replace four idle ticks on each side,
-      // preserving the authored 18/19/20s rhythm variants and 57s supercycle.
-      FriendRestVariant(idle(18, 45), action, idle(45, 18)), // 18s
-      FriendRestVariant(idle(20, 48), action, idle(50, 20)), // 19s
-      FriendRestVariant(idle(24, 51), action, idle(51, 24)), // 20s
+      FriendRestVariant(blink(28, 8), action, _exposures([(0, 28)])), // 10s
+      FriendRestVariant(blink(20, 20), action, blink(22, 10)), // 11s
+      FriendRestVariant(_exposures([(0, 34)]), action, _exposures([(0, 28)])),
     ]);
   }
 
@@ -175,36 +133,29 @@ abstract final class FriendMotionClock {
     penguinRestVariants,
   );
 
+  // The panda's tea shape on the otter's own drawings. Cel 5 (cup high, eyes
+  // closing) sits between 4 and 6; cels 2 and 8-11 shift the whole body.
   static final List<int> _otterAction = _exposures([
-    (3, 4),
-    (4, 4),
-    (6, 6),
-    (7, 14),
-    (6, 4),
-    (4, 4),
-    (3, 4),
+    (3, 4), (4, 4), (5, 4), (6, 6), //
+    (7, 12),
+    (6, 4), (5, 4), (4, 4), (3, 6),
   ]);
   static final List<FriendRestVariant> otterRestVariants = List.unmodifiable([
     FriendRestVariant(
-      _exposures([(0, 28)]),
-      _otterAction,
-      _exposures([(0, 28)]),
-    ), // 8s, no blink
-    FriendRestVariant(
-      _exposures([(0, 18), (1, 2), (0, 18)]),
-      _otterAction,
-      _exposures([(0, 30)]),
-    ), // 9s, one blink
-    FriendRestVariant(
       _exposures([(0, 28), (1, 2), (0, 10)]),
       _otterAction,
-      _exposures([(0, 20), (1, 2), (0, 18)]),
-    ), // 10s, two blinks
+      _exposures([(0, 32)]),
+    ), // 10s, one blink
     FriendRestVariant(
-      _exposures([(0, 22), (1, 2), (0, 26)]),
+      _exposures([(0, 22), (1, 2), (0, 20)]),
       _otterAction,
-      _exposures([(0, 18), (1, 2), (0, 22)]),
+      _exposures([(0, 20), (1, 2), (0, 18)]),
     ), // 11s, two blinks
+    FriendRestVariant(
+      _exposures([(0, 30)]),
+      _otterAction,
+      _exposures([(0, 30)]),
+    ), // 9s, no blink
   ]);
   static final List<int> otterRestTimeline = _joinVariants(otterRestVariants);
 
@@ -262,8 +213,6 @@ abstract final class FriendMotionClock {
     FocusFriend.squirrel => squirrelPageTurnTimeline,
     _ => pageTurnTimeline,
   };
-
-  static double _ease(double value) => value * value * (3 - 2 * value);
 
   static FriendMotionPose sample(
     Duration elapsed, {
