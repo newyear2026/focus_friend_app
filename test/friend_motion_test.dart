@@ -29,6 +29,24 @@ void main() {
           FriendMotionClock.framesPerSecond ~/
           1000,
     );
+    for (final friend in FocusFriend.values) {
+      final turn = FriendMotionClock.pageTurnTimelineFor(friend);
+      // Reordered drawings only: same cels, same ticks, same rest endpoints.
+      expect(turn.length, FriendMotionClock.pageTurnTimeline.length);
+      expect(
+        [...turn]..sort(),
+        [...FriendMotionClock.pageTurnTimeline]..sort(),
+      );
+      expect((turn.first, turn.last), (0, 0));
+    }
+    expect(
+      FriendMotionClock.pageTurnTimelineFor(FocusFriend.fennec),
+      isNot(FriendMotionClock.pageTurnTimeline),
+    );
+    expect(
+      FriendMotionClock.pageTurnTimelineFor(FocusFriend.squirrel),
+      isNot(FriendMotionClock.pageTurnTimeline),
+    );
     expect(
       FriendMotionClock.writingLoops * FriendMotionClock.writingTimeline.length,
       FriendMotionClock.writingDuration.inSeconds *

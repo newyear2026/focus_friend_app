@@ -246,6 +246,22 @@ abstract final class FriendMotionClock {
       (cel, 3),
     (0, 2),
   ]);
+  // The window friends' drawings were authored out of order: the fennec's
+  // cel 12 holds the page lower than 10 and 11, and the squirrel's cel 18
+  // stands the falling page taller than 17. Same drawings and ticks.
+  static List<int> _pageTurn(List<int> cels) =>
+      _exposures([(0, 1), for (final cel in cels) (cel, 3), (0, 2)]);
+  static final List<int> fennecPageTurnTimeline = _pageTurn([
+    6, 8, 9, 12, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, //
+  ]);
+  static final List<int> squirrelPageTurnTimeline = _pageTurn([
+    6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 17, 19, 20, 21, 22, 23, //
+  ]);
+  static List<int> pageTurnTimelineFor(FocusFriend friend) => switch (friend) {
+    FocusFriend.fennec => fennecPageTurnTimeline,
+    FocusFriend.squirrel => squirrelPageTurnTimeline,
+    _ => pageTurnTimeline,
+  };
 
   static double _ease(double value) => value * value * (3 - 2 * value);
 
@@ -260,15 +276,16 @@ abstract final class FriendMotionClock {
       final frame = timeline[tick % timeline.length];
       return FriendMotionPose(frame, frame, 0, FriendMotionPhase.tea);
     }
+    final turn = pageTurnTimelineFor(friend);
     final writingTicks = writingLoops * writingTimeline.length;
     final tick = elapsed.isNegative
         ? 0
-        : _tick(elapsed) % (writingTicks + pageTurnTimeline.length);
+        : _tick(elapsed) % (writingTicks + turn.length);
     if (tick < writingTicks) {
       final cel = writingTimeline[tick % writingTimeline.length];
       return FriendMotionPose(cel, cel, 0, FriendMotionPhase.writing);
     }
-    final cel = pageTurnTimeline[tick - writingTicks];
+    final cel = turn[tick - writingTicks];
     return FriendMotionPose(cel, cel, 0, FriendMotionPhase.pageTurn);
   }
 }
