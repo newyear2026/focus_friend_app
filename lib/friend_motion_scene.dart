@@ -578,8 +578,40 @@ class FriendMotionPainter extends CustomPainter {
       _cel(canvas, atlas, 0, paint);
       canvas.restore();
     }
+    if (pose.phase == FriendMotionPhase.pageTurn &&
+        deskPencilGapCels.contains(pose.from)) {
+      canvas.save();
+      canvas.clipPath(deskPencilRegion(friend), doAntiAlias: false);
+      _cel(canvas, atlas, deskPencilSourceCel, paint);
+      canvas.restore();
+    }
     canvas.restore();
   }
+
+  // The penguin's and otter's page-turn cels 18 and 19 were drawn without the
+  // pencil lying on the desk in front of the book, so it vanished for half a
+  // second. Cel 17's pencil is laid back over them; its surroundings in this
+  // outline are transparent table, so neither book cover is replaced.
+  static const deskPencilGapCels = {18, 19};
+  static const deskPencilSourceCel = 17;
+  static Path deskPencilRegion(FocusFriend friend) => Path()
+    ..addPolygon([
+      for (final (x, y)
+          in friend == FocusFriend.penguin
+              ? const [
+                  (179, 404), (179, 412), (182, 415), (192, 416), (193, 417), //
+                  (264, 417), (282, 410), (282, 399), (269, 399), (268, 400),
+                  (265, 399), (221, 399), (220, 400), (210, 400), (203, 402),
+                ]
+              : const [
+                  (295, 422), (292, 417), (279, 415), (278, 412), (257, 413), //
+                  (253, 417), (246, 417), (245, 418), (241, 418), (237, 416),
+                  (223, 416), (222, 417), (188, 419), (187, 420), (180, 420),
+                  (180, 422), (178, 424), (178, 434), (183, 439), (189, 441),
+                  (244, 440), (245, 439), (289, 439), (293, 437), (295, 434),
+                ])
+        Offset(x.toDouble(), y.toDouble()),
+    ], true);
 
   @override
   bool shouldRepaint(covariant FriendMotionPainter oldDelegate) =>

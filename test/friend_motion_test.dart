@@ -116,6 +116,60 @@ void main() {
     }
   });
 
+  for (final friend in [FocusFriend.penguin, FocusFriend.otter]) {
+    testWidgets('${friend.name}: the desk pencil stays during the page turn', (
+      tester,
+    ) async {
+      await tester.runAsync(() async {
+        final study = await _decode('${friend.motionDirectory}/study.png');
+        Future<List<int>> render(int cel) async {
+          final recorder = ui.PictureRecorder();
+          FriendMotionPainter(
+            friend: friend,
+            study: study,
+            pose: FriendMotionPose(cel, cel, 0, FriendMotionPhase.pageTurn),
+          ).paint(Canvas(recorder), const Size(512, 512));
+          final picture = recorder.endRecording();
+          final image = await picture.toImage(512, 512);
+          final bytes = List<int>.from(
+            (await image.toByteData(
+              format: ui.ImageByteFormat.rawRgba,
+            ))!.buffer.asUint8List(),
+          );
+          image.dispose();
+          picture.dispose();
+          return bytes;
+        }
+
+        // Pencil pixels: yellow body inside the patch outline.
+        final bounds = FriendMotionPainter.deskPencilRegion(friend).getBounds();
+        int pencil(List<int> pixels) {
+          var count = 0;
+          for (var y = bounds.top.toInt(); y < bounds.bottom; y++) {
+            for (var x = bounds.left.toInt(); x < bounds.right; x++) {
+              final i = (y * 512 + x) * 4;
+              final (r, g, b) = (pixels[i], pixels[i + 1], pixels[i + 2]);
+              if (r > 190 && g > 120 && g < 210 && b < 110) count++;
+            }
+          }
+          return count;
+        }
+
+        final source = pencil(await render(17));
+        expect(source, greaterThan(150));
+        for (final cel in FriendMotionPainter.deskPencilGapCels) {
+          // A couple of anti-aliased edge pixels may fall outside the patch.
+          expect(
+            pencil(await render(cel)),
+            greaterThanOrEqualTo(source * .98),
+            reason: '${friend.name} cel $cel lost its pencil',
+          );
+        }
+        study.dispose();
+      });
+    });
+  }
+
   for (final friend in FocusFriend.values.where(
     (f) => f != FocusFriend.redpanda,
   )) {
