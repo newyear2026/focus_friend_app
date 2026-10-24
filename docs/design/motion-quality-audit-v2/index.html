@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>캐릭터 모션 추가 개선 검토</title>
+<style>
+@font-face{font-family:Pretendard;src:url('/assets/fonts/PretendardVariable.ttf');font-weight:100 900}
+*{box-sizing:border-box}body{margin:0;background:#fff8eb;color:#382b26;font-family:Pretendard,system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:26px 22px 44px}h1{font-size:27px;letter-spacing:-.6px;margin:0 0 10px}h2{font-size:22px;line-height:1.4;margin:0 0 10px}p,li{line-height:1.65}p{margin:8px 0}.muted{font-size:14px;color:#786354}.nav{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.nav a,button{min-height:44px;padding:11px 14px;border:1px solid #d9c7ab;border-radius:10px;background:#fffdf7;font:inherit;text-decoration:none;color:#62452c}a{color:#80552d}a:focus-visible,button:focus-visible{outline:3px solid #896847;outline-offset:3px}.section{scroll-margin-top:20px;margin-top:22px;border:1px solid #dfcfb5;border-radius:16px;padding:18px;background:#fffcf5}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.two{grid-template-columns:repeat(2,minmax(0,1fr))}figure{margin:12px 0;min-width:0}figure img{width:100%;height:325px;object-fit:contain;display:block;border-radius:10px;background:#f1e6d4}figcaption{font-size:14px;line-height:1.5;margin-top:8px}.evidence{width:100%;max-width:980px;display:block;margin:15px auto;border-radius:10px}#writing .evidence{max-width:760px}video{width:100%;display:block;aspect-ratio:490/462;border-radius:10px;background:#4b3c31}.tag{display:inline-block;font-size:13px;font-weight:700;background:#ffe0a7;border-radius:7px;padding:4px 8px;margin-bottom:9px}.small{font-size:13px;color:#786354}.preview img{height:420px}.good{color:#426647}@media(max-width:650px){main{padding:20px 12px}.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}figure img{height:350px}.section{padding:14px}}
+</style>
+<main>
+<h1>캐릭터 모션 추가 개선 검토</h1>
+<p>현재 버전에서 <strong>전환 중 장면 유지, 필기 글씨, 펭귄의 동작 밀도, 친구 미리보기</strong>를 더 다듬을 수 있어요.</p>
+<p class="muted">10월 24일 · 코드 3fa176e에서 새로 캡처 · 다섯 친구의 집중·휴식 10종 · 3,922프레임<br>페이지 넘김 순서와 해달·다람쥐·사막여우의 휴식 속도는 최근 수정이 반영된 상태예요.</p>
+<nav class="nav"><a href="#transition">1. 집중·휴식 전환</a><a href="#writing">2. 필기 글씨</a><a href="#rest">3. 펭귄 휴식</a><a href="#preview">4. 친구 미리보기</a><a href="motions.html">현재 전체 모션 보기</a></nav>
+<section id="transition" class="section">
+<span class="tag">우선 수정 · 로딩 상태 재현</span><h2>1. 집중 → 휴식 전환: 밤 장면을 유지해야 해요</h2>
+<p>휴식 PNG를 처음 읽는 동안 기본 정지 일러스트가 표시돼요. 밤에 집중하다 휴식을 시작하면 사막여우는 <strong>밤 → 노을 → 밤</strong>, 다람쥐는 <strong>밤 → 낮 → 밤</strong>으로 바뀌는 현상이 재현됐어요.</p>
+<div class="grid">
+<figure><img src="fixtures/fennec-01-night-focus.png" alt="전환 전 실제 밤 집중 장면"><figcaption>① 전환 전 · 밤에 필기</figcaption></figure>
+<figure><img src="fixtures/fennec-02-rest-loading.png" alt="휴식 원화 로딩 중 노을 정지 장면"><figcaption>② 휴식 원화 로딩 중 · 노을 정지 그림</figcaption></figure>
+<figure><img src="fixtures/fennec-03-night-rest.png" alt="휴식 원화가 준비된 뒤 실제 밤 휴식 장면"><figcaption>③ 로딩 완료 · 밤에 차 마시기</figcaption></figure>
+</div>
+<p><strong>개선:</strong> 새 원화가 준비될 때까지 현재 방과 자세를 유지하고 미리 불러오세요. 그다음 책을 덮고 컵을 잡는 연결 자세를 추가하면 집중·휴식도 한 장면처럼 이어질 수 있어요.</p>
+<p class="small">실제 앱 위젯의 로컬 PNG 읽기를 의도적으로 보류한 테스트예요. 실제 기기에서 이 화면이 얼마나 오래 보이는지나 얼마나 자주 나타나는지는 측정하지 않았어요. 전환 전후의 고개·책·컵도 즉시 바뀌므로, 로딩 문제와 행동 연결은 따로 다듬어야 해요.</p>
+</section>
+<section id="writing" class="section">
+<span class="tag">몰입감 개선</span><h2>2. 필기: 글씨가 조금씩 늘어나면 좋아요</h2>
+<p>랫서팬더는 쓰는 동안 글씨가 늘어요. 나머지 네 친구는 3.5초와 35.5초의 같은 필기 자세를 비교하면 <strong>화면 픽셀이 모두 같아요.</strong> 손은 움직이지만 종이 내용은 그대로여서 같은 곳을 계속 쓰는 느낌이 날 수 있어요.</p>
+<img class="evidence" src="writing-progress-comparison.jpg" alt="3.5초와 35.5초의 같은 자세 비교: 랫서팬더의 글씨만 증가">
+<p><strong>개선:</strong> 연필 끝에 맞춰 글씨를 조금씩 추가하고, 페이지가 넘어간 뒤 새 글씨로 시작하세요. 책 표지와 몸통은 지금처럼 고정하는 편이 좋아요.</p>
+</section>
+<section id="rest" class="section">
+<span class="tag">낮은 우선순위 · 작화 보강</span><h2>3. 펭귄 휴식: 동작을 조금 더 촘촘하게 만들 수 있어요</h2>
+<p>펭귄은 쉬기·들기·마시기를 네 그림(3·4·5·6번)으로 표현해요. 반복 자체는 이어지지만 다른 친구보다 동작이 단순해요. 큰 오류 수정 이후 컵을 드는 사이 자세와 깜빡임을 보강하면 좋아요.</p>
+<img class="evidence" src="penguin-lift.jpg" alt="현재 앱 펭귄의 컵 들기 네 자세">
+<div class="grid two"><figure><video aria-label="현재 펭귄 휴식" src="capture/penguin-rest.mp4" controls muted loop playsinline preload="metadata"></video><figcaption>펭귄 · 22.333초 전체 변형 주기</figcaption></figure><figure><video aria-label="비교 기준 랫서팬더 휴식" src="capture/redpanda-rest.mp4" controls muted loop playsinline preload="metadata"></video><figcaption>랫서팬더 · 10초 주기</figcaption></figure></div>
+<button id="rest-play">두 휴식 모션 1배속 재생</button>
+<p class="small">같은 그림 수나 같은 주기가 모든 캐릭터에 필요한 것은 아니에요. 이 항목은 오류 판정이 아니라 작화 완성도를 높이는 제안이에요.</p>
+</section>
+<section id="preview" class="section">
+<span class="tag">선택 경험 개선</span><h2>4. 친구 미리보기: 집중과 휴식을 모두 볼 수 있어야 해요</h2>
+<p>두 친구의 미리보기는 현재 <strong>휴식 동작만</strong> 보여줘요. 새 필기·페이지 넘김을 확인하려면 친구를 적용하고 집중을 시작해야 해요.</p>
+<div class="grid two preview"><figure><img src="fixtures/fennec-04-friend-preview.png" alt="휴식만 재생되는 사막여우 친구 미리보기"><figcaption>사막여우 미리보기 · 집중/휴식 선택 없음</figcaption></figure><figure><img src="fixtures/squirrel-04-friend-preview.png" alt="휴식만 재생되는 다람쥐 친구 미리보기"><figcaption>다람쥐 미리보기 · 집중/휴식 선택 없음</figcaption></figure></div>
+<p><strong>개선:</strong> 미리보기에 ‘집중 / 휴식’ 선택을 추가하세요. 나중에 캐릭터 장면을 판매할 때도 사용자가 두 동작을 보고 선택할 수 있어요.</p>
+</section>
+<p class="good">확인된 기반: 전체 앱 테스트 127개 통과 · 정적 분석 문제 없음 · 새 전체 캡처와 로딩 재현 검사 통과.</p>
+<p class="small">기존 일시정지·백그라운드·동작 줄이기 검사는 통과했어요. 이번 검토는 실제 Flutter 위젯 캡처와 코드 기준이며, 기기 GPU 녹화·TalkBack 실사용·전체 접근성 적합성 검사는 포함하지 않아요. 이번에는 앱 동작과 원화를 수정하지 않았어요.</p>
+<p><a href="README.md">근거와 상세 검토 기록</a> · <a href="verification.json">현재 영상·글씨 비교 수치</a> · <a href="fixtures/verification.json">로딩·미리보기 재현 기록</a></p>
+</main>
+<script>document.querySelector('#rest-play').onclick=()=>document.querySelectorAll('video').forEach(v=>{v.currentTime=0;v.playbackRate=1;v.play().catch(()=>{});});</script>
+</html>

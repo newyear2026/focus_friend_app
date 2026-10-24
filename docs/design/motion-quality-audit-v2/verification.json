@@ -1,0 +1,110 @@
+{
+  "sourceCommit": "3fa176e",
+  "captureDate": "2026-10-24",
+  "frames": 3922,
+  "modes": [
+    {
+      "clip": "redpanda-study",
+      "frames": 498,
+      "seconds": 41.5,
+      "sha256": "88a891be56d978492abf0f79df3cb523ebe69035b9eb6645aad61f8b438c1a13"
+    },
+    {
+      "clip": "redpanda-rest",
+      "frames": 120,
+      "seconds": 10.0,
+      "sha256": "05e22956f1f78cda2a9ef1f0b61bd58722e45aceb751c13c45bafa7e046d07bc"
+    },
+    {
+      "clip": "penguin-study",
+      "frames": 486,
+      "seconds": 40.5,
+      "sha256": "26d517ec0204b6e6c46ea815ed2ce0212377b0cd71ef291a9a92405d3f85dd7c"
+    },
+    {
+      "clip": "penguin-rest",
+      "frames": 268,
+      "seconds": 22.333333333333332,
+      "sha256": "80c2a68e7785957801e00b5da5524ce713ff3961c043d2514e77106378a7c8e2"
+    },
+    {
+      "clip": "otter-study",
+      "frames": 486,
+      "seconds": 40.5,
+      "sha256": "1289bdfb187968d924bc3dd472e47e06975699d9f75f520fc0a780636da36788"
+    },
+    {
+      "clip": "otter-rest",
+      "frames": 360,
+      "seconds": 30.0,
+      "sha256": "71358123dc8839d85b603b736d3aca30c0ef92c2eb63512f97ec2520d9565641"
+    },
+    {
+      "clip": "squirrel-study",
+      "frames": 486,
+      "seconds": 40.5,
+      "sha256": "cbe780cbe6a656129b2df9006518e38e4910bd411dd69b2d795be4c7bc734f0a"
+    },
+    {
+      "clip": "squirrel-rest",
+      "frames": 366,
+      "seconds": 30.5,
+      "sha256": "d71d992cdbdb56a708f9e8f48a9afe49fe319f09656b4a234b13ea86d2c96d67"
+    },
+    {
+      "clip": "fennec-study",
+      "frames": 486,
+      "seconds": 40.5,
+      "sha256": "64243e86808dba416cee425b42f575acdd466b776b54cafa919f2e59a68223fa"
+    },
+    {
+      "clip": "fennec-rest",
+      "frames": 366,
+      "seconds": 30.5,
+      "sha256": "8c1ec6543bfc2c332e3aec4605dfd97aebac1c935c818228304002fb5db40c52"
+    }
+  ],
+  "writing": {
+    "redpanda": {
+      "beforeSeconds": 3.5,
+      "afterSeconds": 35.5,
+      "sameWritingCel": 1,
+      "changedPixels": 350,
+      "fullSceneIdentical": false
+    },
+    "penguin": {
+      "beforeSeconds": 3.5,
+      "afterSeconds": 35.5,
+      "sameWritingCel": 1,
+      "changedPixels": 0,
+      "fullSceneIdentical": true
+    },
+    "otter": {
+      "beforeSeconds": 3.5,
+      "afterSeconds": 35.5,
+      "sameWritingCel": 1,
+      "changedPixels": 0,
+      "fullSceneIdentical": true
+    },
+    "squirrel": {
+      "beforeSeconds": 3.5,
+      "afterSeconds": 35.5,
+      "sameWritingCel": 1,
+      "changedPixels": 0,
+      "fullSceneIdentical": true
+    },
+    "fennec": {
+      "beforeSeconds": 3.5,
+      "afterSeconds": 35.5,
+      "sameWritingCel": 1,
+      "changedPixels": 0,
+      "fullSceneIdentical": true
+    }
+  },
+  "penguinRestDistinctCels": [
+    3,
+    4,
+    5,
+    6
+  ]
+}

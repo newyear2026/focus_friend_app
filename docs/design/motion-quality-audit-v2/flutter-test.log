@@ -1,0 +1,145 @@
+Resolving dependencies...
+Downloading packages...
+  clock 1.1.2 (1.1.3 available)
+  intl 0.20.2 (0.20.3 available)
+  matcher 0.12.19 (0.12.20 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.17.0 (1.19.0 available)
+  platform 3.1.6 (3.2.0 available)
+  stack_trace 1.12.1 (1.12.2 available)
+  test_api 0.7.10 (0.7.15 available)
+  vector_math 2.2.0 (2.4.3 available)
+  vm_service 15.3.0 (15.4.0 available)
+  web 1.1.1 (1.1.2 available)
+Got dependencies!
+11 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart
+00:00 +0: /Users/jaewook/dev_app/focus_friend_app/test/session_engine_test.dart: restart preserves ID, deadline and active time before deadline
+00:00 +1: /Users/jaewook/dev_app/focus_friend_app/test/rest_rhythm_test.dart: penguin: deterministic variants preserve every authored action tick
+00:00 +2: /Users/jaewook/dev_app/focus_friend_app/test/rest_rhythm_test.dart: penguin: deterministic variants preserve every authored action tick
+00:00 +3: /Users/jaewook/dev_app/focus_friend_app/test/rest_rhythm_test.dart: penguin: deterministic variants preserve every authored action tick
+00:00 +4: /Users/jaewook/dev_app/focus_friend_app/test/rest_rhythm_test.dart: penguin: deterministic variants preserve every authored action tick
+00:00 +5: /Users/jaewook/dev_app/focus_friend_app/test/rest_rhythm_test.dart: penguin: deterministic variants preserve every authored action tick
+00:00 +6: /Users/jaewook/dev_app/focus_friend_app/test/friend_motion_test.dart: slow study and tea loops join the exact canonical cel
+00:00 +7: /Users/jaewook/dev_app/focus_friend_app/test/friend_motion_test.dart: slow study and tea loops join the exact canonical cel
+00:00 +8: /Users/jaewook/dev_app/focus_friend_app/test/friend_motion_test.dart: slow study and tea loops join the exact canonical cel
+00:00 +9: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +10: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +11: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +12: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +13: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +14: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +15: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +16: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +17: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +18: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +19: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +20: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +21: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +22: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: daily ledger survives history pruning and restart without duplicate stamps
+00:00 +23: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +24: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +25: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +26: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +27: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +28: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +29: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +30: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +31: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +32: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +33: /Users/jaewook/dev_app/focus_friend_app/test/reference_companion_test.dart: writing keeps the body still while the wrist and pencil move
+00:00 +34: /Users/jaewook/dev_app/focus_friend_app/test/rest_rhythm_test.dart: penguin: rest rhythm freezes across pause, lifecycle and reduced motion
+00:00 +35: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:00 +36: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:00 +37: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:00 +38: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +39: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +40: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +41: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +42: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +43: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: keep screen on holds only while a focus or rest timer runs
+00:01 +44: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:01 +45: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:01 +46: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:01 +47: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +48: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: goal save waits for restore and commit before closing
+00:02 +49: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: three tabs, calendar month, goal persistence and home shortcut
+00:02 +50: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: three tabs, calendar month, goal persistence and home shortcut
+00:02 +51: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: three tabs, calendar month, goal persistence and home shortcut
+00:02 +52: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:02 +53: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:02 +54: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +55: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +56: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +57: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: Settings language choice applies, persists and can go back
+00:03 +58: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: goal deletion waits for restore and preserves focus records
+00:03 +59: /Users/jaewook/dev_app/focus_friend_app/test/friend_motion_test.dart: fennec: actual sprite writing keeps face, cup and book still
+00:03 +60: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: small screen and large text keep records, sound, and goal actions reachable
+00:03 +61: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: small screen and large text keep records, sound, and goal actions reachable
+00:03 +62: /Users/jaewook/dev_app/focus_friend_app/test/focus_features_test.dart: small screen and large text keep records, sound, and goal actions reachable
+00:03 +63: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: sound save also waits for an in-flight timer completion
+00:03 +64: /Users/jaewook/dev_app/focus_friend_app/test/goal_save_test.dart: sound save also waits for an in-flight timer completion
+00:03 +65: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: penguin: idle boundary and resume change only lighting
+00:04 +66: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: penguin: idle boundary and resume change only lighting
+00:04 +67: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: penguin: idle boundary and resume change only lighting
+00:04 +68: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: penguin: idle boundary and resume change only lighting
+00:04 +69: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: penguin: idle boundary and resume change only lighting
+00:04 +70: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: penguin: idle boundary and resume change only lighting
+00:04 +71: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: es screens fit a small phone with larger text
+00:04 +72: /Users/jaewook/dev_app/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:04 +73: /Users/jaewook/dev_app/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:05 +74: /Users/jaewook/dev_app/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:05 +75: /Users/jaewook/dev_app/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:05 +76: /Users/jaewook/dev_app/focus_friend_app/test/records_stats_test.dart: calendar tab adds this week next to the month totals
+00:05 +77: /Users/jaewook/dev_app/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +78: /Users/jaewook/dev_app/focus_friend_app/test/session_stop_sheet_test.dart: landscape keeps both actions fully visible inside the frame
+00:05 +79: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:05 +80: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:05 +81: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:05 +82: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:05 +83: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:05 +84: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +85: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +86: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +87: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +88: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +89: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +90: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +91: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: book stays fixed and connected cels change while sipping
+00:06 +92: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: otter: a paused pose survives the two-second room fade
+00:06 +93: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: otter: a paused pose survives the two-second room fade
+00:06 +94: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: leaving the app holds the writing pose until it returns
+00:06 +95: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: leaving the app holds the writing pose until it returns
+00:06 +96: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:06 +97: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:06 +98: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:06 +99: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:06 +100: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:06 +101: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: fennec: pause, room changes and reduced motion preserve rest
+00:06 +102: /Users/jaewook/dev_app/focus_friend_app/test/friend_ambience_test.dart: fennec: a paused pose survives the two-second room fade
+00:07 +103: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: tea break plays from the app, holds on pause and resumes
+00:07 +104: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: tea break plays from the app, holds on pause and resumes
+00:07 +105: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: tea break plays from the app, holds on pause and resumes
+00:07 +106: /Users/jaewook/dev_app/focus_friend_app/test/widget_test.dart: tea break plays from the app, holds on pause and resumes
+00:07 +107: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +108: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +109: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +110: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +111: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +112: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +113: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +114: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +115: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +116: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +117: /Users/jaewook/dev_app/focus_friend_app/test/window_tea_test.dart: squirrel: book stays fixed and connected cels change while sipping
+00:07 +118: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:07 +119: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:07 +120: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:07 +121: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:08 +122: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: preview can be cancelled; failed apply retries and returns to the desk
+00:08 +123: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: ko friend picker and preview fit large text on a small phone
+00:08 +124: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: en friend picker and preview fit large text on a small phone
+00:08 +125: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: es friend picker and preview fit large text on a small phone
+00:08 +126: /Users/jaewook/dev_app/focus_friend_app/test/friend_picker_test.dart: ja friend picker and preview fit large text on a small phone
+00:09 +127: All tests passed!

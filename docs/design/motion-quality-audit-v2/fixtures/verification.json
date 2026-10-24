@@ -1,0 +1,36 @@
+[
+  {
+    "friend": "fennec",
+    "controlledCondition": "rest PNG held pending; animation disabled to isolate loading",
+    "requestedAmbience": "night",
+    "fallbackAssetWhileLoading": "assets/images/friends/fennec-scene.png",
+    "restRendererResumesAfterDecode": true,
+    "previewStudying": false,
+    "previewResting": true,
+    "previewButtons": [
+      "사막여우",
+      "노을빛 사막 서재",
+      "캐릭터와 방이 함께 바뀌어요",
+      "창밖을 보며 차를 마시는 휴식 동작이 있어요",
+      "이 친구와 함께하기",
+      "친구의 방"
+    ]
+  },
+  {
+    "friend": "squirrel",
+    "controlledCondition": "rest PNG held pending; animation disabled to isolate loading",
+    "requestedAmbience": "night",
+    "fallbackAssetWhileLoading": "assets/images/friends/squirrel-scene.png",
+    "restRendererResumesAfterDecode": true,
+    "previewStudying": false,
+    "previewResting": true,
+    "previewButtons": [
+      "다람쥐",
+      "초록 숲속 기록방",
+      "캐릭터와 방이 함께 바뀌어요",
+      "창밖을 보며 차를 마시는 휴식 동작이 있어요",
+      "이 친구와 함께하기",
+      "친구의 방"
+    ]
+  }
+]

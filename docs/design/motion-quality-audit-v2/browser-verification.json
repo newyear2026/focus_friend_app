@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-24",
+  "appCommit": "3fa176e",
+  "report": "http://127.0.0.1:8127/docs/design/motion-quality-audit-v2/",
+  "steps": [
+    "transition",
+    "writing",
+    "rest",
+    "preview"
+  ],
+  "screenshotFiles": [
+    "01-transition-browser.png",
+    "02-writing-browser.png",
+    "03-rest-browser.png",
+    "04-preview-browser.png"
+  ],
+  "restComparisonReady": [
+    {
+      "duration": 22.333333,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "penguin-rest.mp4",
+      "time": 3.7582
+    },
+    {
+      "duration": 10,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-rest.mp4",
+      "time": 8.5322
+    }
+  ],
+  "currentStudy": [
+    {
+      "duration": 41.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-study.mp4",
+      "time": 26.4453
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "penguin-study.mp4",
+      "time": 29.4293
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "otter-study.mp4",
+      "time": 29.4295
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-study.mp4",
+      "time": 29.4295
+    },
+    {
+      "duration": 40.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-study.mp4",
+      "time": 29.426
+    }
+  ],
+  "currentRest": [
+    {
+      "duration": 10,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "redpanda-rest.mp4",
+      "time": 4.815
+    },
+    {
+      "duration": 22.333333,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "penguin-rest.mp4",
+      "time": 20.1535
+    },
+    {
+      "duration": 30,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "otter-rest.mp4",
+      "time": 4.8223
+    },
+    {
+      "duration": 30.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "squirrel-rest.mp4",
+      "time": 3.8187
+    },
+    {
+      "duration": 30.5,
+      "error": null,
+      "paused": false,
+      "rate": 1,
+      "ready": 4,
+      "src": "fennec-rest.mp4",
+      "time": 3.8196
+    }
+  ]
+}
