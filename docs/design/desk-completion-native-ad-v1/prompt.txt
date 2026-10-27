@@ -1,0 +1,24 @@
+Use case: ui-mockup.
+Asset type: ONE selected mobile app screen proposal, a post-focus-completion state for the existing Korean Deskmate app.
+Create a realistic, production-quality UI image with clear hierarchy, readable typography and purposeful spacing. This request is for one faithful continuation of the existing app, not alternative design directions.
+
+Input image 1 is the EXISTING DESK SCREEN and is the visual source to preserve: the same cute 2D red panda in green overalls, warm wooden desk, plants, window, sunset city view, cream Korean typography, golden amber buttons, charcoal-plum overlays, and four bottom tabs.
+Input image 2 is a SUPPORTING STYLE REFERENCE ONLY for the single native ad card. Use its ad label, subdued plum treatment, fictional notebook advertiser, and quiet outlined CTA. Do not copy its Records screen, graph, headings, mascot-on-books or numbers.
+
+Target dimensions: 780 x 1688 portrait, matching image 1 (390 x 844 logical mobile viewport at 2x). Output app content only. No phone body, bezel, notch, OS status bar, browser chrome, home indicator, device shadow, outside annotations, presentation board or second screen. Current date anchor 2026-10-27, but no date needs to be printed.
+
+Primary request: show what the Desk tab looks like just AFTER a 25-minute focus session finishes, with the session result first, ONE clearly marked native advertisement underneath, and the next action beneath that with generous separation. This is an optional visible advertisement, not a rewarded ad or a blocking step.
+
+Composition:
+- Preserve the top centered title "나의 책상", the small top-left room-switch icon and top-right muted-sound icon from the source.
+- Replace the source timer, duration picker and focus-start controls with this completed state. Do not show "25:00", "집중 중", "잠시 멈추기" or 25/50-minute selectors.
+- Near the upper part of the room, display the large warm-cream completion heading "25분 집중했어요". Under it put the quieter line "오늘도 수고했어요".
+- Keep the SAME red panda recognizable and fully visible above the lower panel, resting its paws naturally on the open notebook. Preserve its connected arms, head proportions, eyes, orange fur, green overalls and striped tail. It should appear calm and pleased. Keep its face and ears unobstructed by any panel. Preserve the room perspective and softly lit 2D hand-drawn animation aesthetic from the original screenshot. Recompose the room illustration to fit if necessary, without stretching it.
+- A simple charcoal-plum completion surface occupies approximately the lower half, starting around y=850, with softly rounded upper corners, blending with the dark lower part of the room. It is an app completion panel, not a separate phone or inset mockup.
+- At the top of this completion surface, around y=885 to 965, show ONE clean two-column result row: left label "이번 집중" and bold value "25분"; right label "오늘 누적" and bold value "50분". Use spacing and typography, not separate metric cards.
+- Immediately below the result row, around x=48, y=1000, width=684, height=248, place exactly ONE native ad card. Rounded plum surface with a subtle border, not amber-filled. At its upper left show an easily readable badge "광고", followed by "예시 광고주" in subdued text. At upper right show a clearly visible AdChoices-style information triangle. Include a small square photographic thumbnail of an ivory notebook and dark pen on a neutral desk. To its right use the exact headline "오늘의 생각을 담는 노트", a short supporting line "매일 쓰기 좋은 기록 노트", and a small quiet outlined CTA "자세히 보기". Keep all text legible and within the card. This card must clearly look like an advertisement distinct from session results and app controls.
+- Leave at least 48 image pixels of plain non-ad space below the ad. Then one prominent full-width warm-amber app button, approximately x=48, y=1300, width=684, height=112, text "다음 집중 시작", with the existing dark circular play icon at the right.
+- Beneath the primary button, a small cream text action "책상으로 돌아가기" around y=1450, clearly outside the ad.
+- Preserve the source's four bottom navigation items at the bottom, separated from content: "책상", "친구", "기록", "설정". The desk tab alone is selected amber with its short amber underline; the others use muted cream. Use the source's desk, paw, calendar and gear icons. Do not add new tabs.
+
+Make the completed focus result visually primary; the ad is secondary and quieter than the main amber app action. Maintain comfortable padding, realistic 14–16 logical-pixel body text and clear Korean text. No text clipping or overlap. No artificial blur on text. No extra panels, timers, ratings, subscription, rewards, ad-watch countdowns, fake discounts, purchase offers, commercial logos, close-X, or claims that seeing/clicking the advertisement unlocks the next session. Do not use the red panda as part of the advertisement. One screen and one ad only.
