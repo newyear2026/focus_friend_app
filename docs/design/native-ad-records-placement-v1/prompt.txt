@@ -1,0 +1,17 @@
+Use case: ui-mockup / precise-object-edit.
+Edit the attached EXISTING Korean Deskmate app screenshot into ONE faithful mobile UI proposal showing exactly where a native advertising card would go.
+
+The input screenshot is the edit target, not loose inspiration. Preserve its full 780 x 1688 portrait canvas, all existing app content, the charcoal-plum background (#292630), warm cream Pretendard-like Korean typography, amber highlight, red panda reading mascot, current layout, chart, dates, metrics, and four-item bottom navigation. Do NOT redesign or shrink the chart. Do NOT add a phone bezel, OS status bar, device frame, shadow, browser chrome or extra panels. Keep this as an app-content-only screenshot.
+
+ONLY add one native ad card to the unused blank area BELOW the line "가장 많이 한 날 · 10월 9일 2시간 5분" and ABOVE the bottom navigation. This is part of the scrolling records content, never a fixed bottom banner or overlay. Leave a generous visible gap to the navigation so the ad CTA and tabs cannot be confused. Keep the line about the best day fully visible. At approximately source coordinates, card left=36, right=744, top=1190, bottom=1435. All existing content outside that inserted card remains unchanged.
+
+Design the card with a slightly lighter muted plum surface, subtle pale-plum border and 16px-equivalent corners, matching the statistical cards in the source. This is a CLEAR AD, not a statistics or reward card:
+- At the top left, a readily readable warm-cream badge containing the exact Korean word "광고".
+- Next to the badge, smaller muted text "예시 광고주".
+- At the upper right, a small but clearly visible AdChoices-style information/triangle icon. No close-X pretending the user can remove a paid native ad.
+- An advertiser-supplied-looking square photograph thumbnail of a simple ivory notebook and dark pen on a neutral desk. This is a fictional stationery advertisement example, NOT another cute app mascot and NOT a replica of an existing brand.
+- A strong but modest readable headline "오늘의 생각을 담는 노트".
+- Secondary readable copy "매일 쓰기 좋은 심플한 기록 노트".
+- A small outlined CTA "자세히 보기", clearly separated from the bottom navigation and visually quieter than the main app's amber actions. Fit all text without clipping.
+
+The ad is a compact content card, approximately 120 logical px tall at 2x resolution. Keep padding and Korean body type readable. No price, rewards, timers, free character offers, fake rating stars, app purchase buttons or claims about ad removal. No arrows or explanatory annotations inside the app. The ad badge is sufficient to show the new location. Do not add additional ads elsewhere. Preserve the original 2026년 10월 context and every original metric exactly. The final image must make it obvious that the reader finishes the monthly summary, then encounters ONE ad card before reaching the navigation.
