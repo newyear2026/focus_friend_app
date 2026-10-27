@@ -92,7 +92,9 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
     reduced = MediaQuery.disableAnimationsOf(context);
     enabled = TickerMode.valuesOf(context).enabled;
     _loadRoom();
-    if (!widget.resting && widget.friend.hasStudyMotion) _load('study');
+    // Load study during rest too, so the return to the desk never falls back
+    // to the still scene while the atlas decodes.
+    if (widget.friend.hasStudyMotion) _load('study');
     if (widget.resting) _load('rest');
     _sync();
   }
@@ -128,8 +130,8 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.friend != widget.friend) {
       _releaseImages();
+      if (widget.friend.hasStudyMotion) _load('study');
     }
-    if (!widget.resting && widget.friend.hasStudyMotion) _load('study');
     if (oldWidget.friend != widget.friend ||
         oldWidget.ambience != widget.ambience) {
       _loadRoom();

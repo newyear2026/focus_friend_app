@@ -194,7 +194,10 @@ class _FocusRecordsState extends State<FocusRecords> {
       const SizedBox(height: 6),
       ..._total(
         _duration(l10n, stats.totalMs),
-        _comparison(l10n, stats.totalMs, stats.comparedMs, week: true),
+        // A week that has not started yet has nothing to compare.
+        stats.start.isAfter(today)
+            ? null
+            : _comparison(l10n, stats.totalMs, stats.comparedMs, week: true),
       ),
       _Bars(
         key: const ValueKey('week-bars'),
@@ -304,7 +307,10 @@ class _FocusRecordsState extends State<FocusRecords> {
       const SizedBox(height: 6),
       ..._total(
         _duration(l10n, stats.totalMs),
-        _comparison(l10n, stats.totalMs, stats.comparedMs, week: false),
+        // A month that has not started yet has nothing to compare.
+        stats.month.isAfter(widget.now)
+            ? null
+            : _comparison(l10n, stats.totalMs, stats.comparedMs, week: false),
       ),
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,

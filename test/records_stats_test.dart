@@ -92,6 +92,8 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('next-week')));
     await tester.pumpAndSettle();
     expect(find.text('이 주에는 아직 집중 기록이 없어요.'), findsOneWidget);
+    // Next week has not started, so it is not compared with this one.
+    expect(find.textContaining('지난주'), findsNothing);
     semantics.dispose();
   });
 
@@ -118,6 +120,8 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('next-month')));
     await tester.pumpAndSettle();
     expect(find.text('이 달에는 아직 집중 기록이 없어요.'), findsOneWidget);
+    // November has not started, so it is not compared with October.
+    expect(find.textContaining('지난달'), findsNothing);
     await tester.tap(find.byKey(const ValueKey('records-tab-calendar')));
     await tester.pumpAndSettle();
     expect(find.text('2026년 11월'), findsOneWidget);

@@ -361,4 +361,56 @@ void main() {
       },
     );
   }
+
+  for (final friend in [
+    FocusFriend.penguin,
+    FocusFriend.otter,
+    FocusFriend.squirrel,
+    FocusFriend.fennec,
+  ]) {
+    testWidgets(
+      '${friend.name}: the study atlas loads during rest, so the desk returns at once',
+      (tester) async {
+        var resting = true;
+        Widget harness() => MaterialApp(
+          home: FriendMotionScene(
+            friend: friend,
+            animate: true,
+            studying: !resting,
+            resting: resting,
+            paused: false,
+          ),
+        );
+        await tester.pumpWidget(harness());
+        // Only the scene itself asks for study.png; nothing precaches it.
+        await tester.runAsync(() async {
+          for (final asset in [
+            friend.restRoomAsset(RoomAmbience.evening),
+            '${friend.motionDirectory}/rest.png',
+          ]) {
+            await precacheImage(
+              AssetImage(asset),
+              tester.element(find.byType(FriendMotionScene)),
+            );
+          }
+          await Future<void>.delayed(const Duration(milliseconds: 500));
+        });
+        await tester.pump();
+        final cels = find.byKey(const ValueKey('friend-motion-cels'));
+        expect(cels, findsOneWidget);
+        resting = false;
+        await tester.pumpWidget(harness());
+        expect(cels, findsOneWidget);
+        expect(
+          (tester.widget<CustomPaint>(cels).painter!
+                  as FriendMotionScenePainter)
+              .actor
+              .pose
+              .phase,
+          FriendMotionPhase.writing,
+        );
+        await tester.pumpWidget(const SizedBox.shrink());
+      },
+    );
+  }
 }

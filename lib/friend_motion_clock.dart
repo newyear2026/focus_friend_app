@@ -92,7 +92,8 @@ abstract final class FriendMotionClock {
       Duration.microsecondsPerSecond;
 
   static Duration restDurationFor(FocusFriend friend) {
-    // The panda uses its own clock; keep this legacy query unchanged as well.
+    // The panda uses its own clock and nothing reads this for it. The early
+    // return keeps it off the otter's timeline in restTimelineFor's fallback.
     if (friend == FocusFriend.redpanda) return const Duration(seconds: 10);
     return Duration(
       microseconds:
