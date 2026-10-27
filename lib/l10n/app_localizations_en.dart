@@ -310,6 +310,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nextMonth => 'Next month';
 
   @override
+  String get backToThisMonth => 'Back to this month';
+
+  @override
   String get dayFocusDone => 'focus done';
 
   @override
@@ -633,6 +636,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nextWeek => 'Next week';
+
+  @override
+  String get backToThisWeek => 'Back to this week';
 
   @override
   String statsMoreThanLastWeek(String duration) {

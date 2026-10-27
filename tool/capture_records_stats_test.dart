@@ -66,11 +66,14 @@ FocusState _sample() {
 }
 
 void main() {
-  for (final (name, tab, size, scale) in [
-    ('calendar', 'calendar', const Size(390, 844), 1.0),
-    ('week', 'week', const Size(390, 844), 1.0),
-    ('month', 'month', const Size(390, 844), 1.0),
-    ('week-compact-large-text', 'week', const Size(360, 740), 1.6),
+  for (final (name, tab, size, scale, back) in [
+    ('calendar', 'calendar', const Size(390, 844), 1.0, 0),
+    ('week', 'week', const Size(390, 844), 1.0, 0),
+    ('month', 'month', const Size(390, 844), 1.0, 0),
+    ('week-compact-large-text', 'week', const Size(360, 740), 1.6, 0),
+    // A past period shows the way back; the current one dims its next arrow.
+    ('week-past', 'week', const Size(390, 844), 1.0, 1),
+    ('month-past-large-text', 'month', const Size(360, 740), 1.6, 1),
   ]) {
     testWidgets('capture records $name', (tester) async {
       tester.view.physicalSize = size * 2;
@@ -107,6 +110,10 @@ void main() {
       );
       await tester.tap(find.byKey(ValueKey('records-tab-$tab')));
       await tester.pumpAndSettle();
+      for (var i = 0; i < back; i++) {
+        await tester.tap(find.byKey(ValueKey('previous-$tab')));
+        await tester.pumpAndSettle();
+      }
       expect(tester.takeException(), isNull);
       await tester.runAsync(() async {
         final boundary =

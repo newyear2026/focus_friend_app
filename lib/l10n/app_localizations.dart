@@ -618,6 +618,12 @@ abstract class AppLocalizations {
   /// **'Next month'**
   String get nextMonth;
 
+  /// No description provided for @backToThisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to this month'**
+  String get backToThisMonth;
+
   /// No description provided for @dayFocusDone.
   ///
   /// In en, this message translates to:
@@ -1211,6 +1217,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next week'**
   String get nextWeek;
+
+  /// No description provided for @backToThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to this week'**
+  String get backToThisWeek;
 
   /// Compared with the previous week up to the same weekday.
   ///

@@ -166,6 +166,7 @@
   },
   "previousMonth": "Previous month",
   "nextMonth": "Next month",
+  "backToThisMonth": "Back to this month",
   "dayFocusDone": "focus done",
   "today": "Today",
   "dayFocusMinutes": "{minutes} min focused",
@@ -342,6 +343,7 @@
   "thisWeek": "This week",
   "previousWeek": "Previous week",
   "nextWeek": "Next week",
+  "backToThisWeek": "Back to this week",
   "statsMoreThanLastWeek": "{duration} more than last week",
   "@statsMoreThanLastWeek": {
     "description": "Compared with the previous week up to the same weekday.",

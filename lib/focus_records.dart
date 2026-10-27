@@ -38,6 +38,13 @@ class _FocusRecordsState extends State<FocusRecords> {
     () => week = DateTime(week.year, week.month, week.day + 7 * delta),
   );
 
+  void showThisMonth() => setState(() {
+    month = DateTime(widget.now.year, widget.now.month);
+    selected = DateUtils.dateOnly(widget.now);
+  });
+
+  void showThisWeek() => setState(() => week = weekStart(widget.now));
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -129,7 +136,8 @@ class _FocusRecordsState extends State<FocusRecords> {
     required Key previousKey,
     required Key nextKey,
     required VoidCallback onPrevious,
-    required VoidCallback onNext,
+    // Null dims the arrow: weeks and months ahead have nothing to show yet.
+    required VoidCallback? onNext,
   }) => Row(
     children: [
       IconButton(
@@ -153,6 +161,28 @@ class _FocusRecordsState extends State<FocusRecords> {
       ),
     ],
   );
+
+  /// One tap back from any past week or month, however far away it is.
+  Widget _backToCurrent(String label, Key key, VoidCallback onPressed) =>
+      Center(
+        child: TextButton.icon(
+          key: key,
+          onPressed: onPressed,
+          icon: const Icon(Icons.undo_rounded, size: 17),
+          // Style the Text itself: a button textStyle would drop the app font.
+          label: Text(
+            label,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+          ),
+          style: TextButton.styleFrom(
+            backgroundColor: deskInk,
+            foregroundColor: deskPaper,
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            minimumSize: const Size(0, 36),
+            shape: const StadiumBorder(),
+          ),
+        ),
+      );
 
   List<Widget> _total(String total, String? comparison) => [
     Text(
@@ -189,8 +219,16 @@ class _FocusRecordsState extends State<FocusRecords> {
         previousKey: const ValueKey('previous-week'),
         nextKey: const ValueKey('next-week'),
         onPrevious: () => moveWeek(-1),
-        onNext: () => moveWeek(1),
+        onNext: stats.start.isBefore(weekStart(today))
+            ? () => moveWeek(1)
+            : null,
       ),
+      if (!current)
+        _backToCurrent(
+          l10n.backToThisWeek,
+          const ValueKey('this-week'),
+          showThisWeek,
+        ),
       const SizedBox(height: 6),
       ..._total(
         _duration(l10n, stats.totalMs),
@@ -292,6 +330,7 @@ class _FocusRecordsState extends State<FocusRecords> {
 
   List<Widget> _month(AppLocalizations l10n, String locale) {
     final stats = monthStats(widget.state, month, widget.now);
+    final thisMonth = DateTime(widget.now.year, widget.now.month);
     final hours = NumberFormat('0.#', locale);
     final best = stats.bestDay;
     return [
@@ -302,8 +341,14 @@ class _FocusRecordsState extends State<FocusRecords> {
         previousKey: const ValueKey('previous-month'),
         nextKey: const ValueKey('next-month'),
         onPrevious: () => moveMonth(-1),
-        onNext: () => moveMonth(1),
+        onNext: month.isBefore(thisMonth) ? () => moveMonth(1) : null,
       ),
+      if (month != thisMonth)
+        _backToCurrent(
+          l10n.backToThisMonth,
+          const ValueKey('this-month'),
+          showThisMonth,
+        ),
       const SizedBox(height: 6),
       ..._total(
         _duration(l10n, stats.totalMs),

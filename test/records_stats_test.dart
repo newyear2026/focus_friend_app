@@ -49,6 +49,9 @@ Widget harness(FocusState state, {Locale locale = const Locale('ko')}) =>
       ),
     );
 
+bool nextEnabled(WidgetTester tester, String key) =>
+    tester.widget<IconButton>(find.byKey(ValueKey(key))).onPressed != null;
+
 void main() {
   testWidgets('calendar tab adds this week next to the month totals', (
     tester,
@@ -88,12 +91,27 @@ void main() {
     expect(find.text('5시간 25분'), findsOneWidget);
     expect(find.text('지난주보다 5시간 25분 더'), findsNothing);
 
-    await tester.tap(find.byKey(const ValueKey('next-week')));
+    expect(find.byKey(const ValueKey('this-week')), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('next-week')));
     await tester.pumpAndSettle();
+    expect(find.text('10월 11일 – 10월 17일'), findsOneWidget);
+    expect(find.byKey(const ValueKey('this-week')), findsNothing);
+    // This week is the last one: the next arrow is dimmed and does nothing.
+    expect(nextEnabled(tester, 'next-week'), isFalse);
+    await tester.tap(find.byKey(const ValueKey('next-week')));
+    await tester.pumpAndSettle();
+    expect(find.text('10월 11일 – 10월 17일'), findsOneWidget);
+
+    for (var i = 0; i < 3; i++) {
+      await tester.tap(find.byKey(const ValueKey('previous-week')));
+    }
+    await tester.pumpAndSettle();
+    expect(find.text('9월 20일 – 9월 26일'), findsOneWidget);
     expect(find.text('이 주에는 아직 집중 기록이 없어요.'), findsOneWidget);
-    // Next week has not started, so it is not compared with this one.
-    expect(find.textContaining('지난주'), findsNothing);
+    // One tap back from three weeks ago.
+    await tester.tap(find.byKey(const ValueKey('this-week')));
+    await tester.pumpAndSettle();
+    expect(find.text('10월 11일 – 10월 17일'), findsOneWidget);
     semantics.dispose();
   });
 
@@ -117,14 +135,36 @@ void main() {
     expect(find.bySemanticsLabel('9월 1시간'), findsOneWidget);
     expect(find.text('가장 많이 한 날 · 10월 9일 2시간 5분'), findsOneWidget);
 
+    expect(find.byKey(const ValueKey('this-month')), findsNothing);
+    // This month is the last one: the next arrow is dimmed and does nothing.
+    expect(nextEnabled(tester, 'next-month'), isFalse);
     await tester.tap(find.byKey(const ValueKey('next-month')));
     await tester.pumpAndSettle();
+    expect(find.text('2026년 10월'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('previous-month')));
+    await tester.tap(find.byKey(const ValueKey('previous-month')));
+    await tester.pumpAndSettle();
+    expect(find.text('2026년 8월'), findsOneWidget);
     expect(find.text('이 달에는 아직 집중 기록이 없어요.'), findsOneWidget);
-    // November has not started, so it is not compared with October.
-    expect(find.textContaining('지난달'), findsNothing);
+    expect(nextEnabled(tester, 'next-month'), isTrue);
+    await tester.tap(find.byKey(const ValueKey('this-month')));
+    await tester.pumpAndSettle();
+    expect(find.text('2026년 10월'), findsOneWidget);
+    expect(find.byKey(const ValueKey('this-month')), findsNothing);
+
+    // The calendar shares the month and can still look ahead. The month tab
+    // then offers the way back and does not compare November with October.
     await tester.tap(find.byKey(const ValueKey('records-tab-calendar')));
     await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('next-month')));
+    await tester.pumpAndSettle();
     expect(find.text('2026년 11월'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('records-tab-month')));
+    await tester.pumpAndSettle();
+    expect(find.text('이 달에는 아직 집중 기록이 없어요.'), findsOneWidget);
+    expect(find.textContaining('지난달'), findsNothing);
+    expect(find.byKey(const ValueKey('this-month')), findsOneWidget);
     semantics.dispose();
   });
 

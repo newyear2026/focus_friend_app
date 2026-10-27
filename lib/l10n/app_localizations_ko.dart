@@ -297,6 +297,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get nextMonth => '다음 달';
 
   @override
+  String get backToThisMonth => '이번 달로';
+
+  @override
   String get dayFocusDone => '집중 완료';
 
   @override
@@ -614,6 +617,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get nextWeek => '다음 주';
+
+  @override
+  String get backToThisWeek => '이번 주로';
 
   @override
   String statsMoreThanLastWeek(String duration) {

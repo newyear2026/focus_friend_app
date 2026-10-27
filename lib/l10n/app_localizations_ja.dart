@@ -296,6 +296,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get nextMonth => '次の月';
 
   @override
+  String get backToThisMonth => '今月に戻る';
+
+  @override
   String get dayFocusDone => '集中完了';
 
   @override
@@ -612,6 +615,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get nextWeek => '次の週';
+
+  @override
+  String get backToThisWeek => '今週に戻る';
 
   @override
   String statsMoreThanLastWeek(String duration) {
