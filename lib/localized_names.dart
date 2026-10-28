@@ -39,6 +39,12 @@ String propName(AppLocalizations l10n, String key) => switch (key) {
   _ => l10n.propLamp,
 };
 
+String propShortName(AppLocalizations l10n, String key) => switch (key) {
+  'plant' => l10n.propShortPlant,
+  'mug' => l10n.propShortMug,
+  _ => l10n.propShortLamp,
+};
+
 String ambienceName(AppLocalizations l10n, RoomAmbience ambience) =>
     switch (ambience) {
       RoomAmbience.morning => l10n.ambienceMorning,

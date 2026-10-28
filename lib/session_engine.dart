@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+import 'desk_props.dart';
 import 'focus_preferences.dart';
 import 'focus_friend.dart';
 export 'focus_preferences.dart';
@@ -362,14 +363,11 @@ class SessionEngine {
     if (a.mode == SessionMode.focus) {
       s.completedMs += a.actualMs;
       s.completedCount++;
-      for (final entry in {
-        'plant': 0,
-        'mug': 60 * 60000,
-        'lamp': 120 * 60000,
-      }.entries) {
-        if (s.completedMs >= entry.value && !s.unlocks.containsKey(entry.key)) {
-          s.unlocks[entry.key] = a.finishedAt!;
-          a.rewards = [...a.rewards, entry.key];
+      for (final prop in deskProps) {
+        if (s.completedMs >= prop.unlockMs &&
+            !s.unlocks.containsKey(prop.key)) {
+          s.unlocks[prop.key] = a.finishedAt!;
+          a.rewards = [...a.rewards, prop.key];
         }
       }
       _record(s, a);

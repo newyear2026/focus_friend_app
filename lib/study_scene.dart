@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'desk_props.dart';
 import 'l10n/app_localizations.dart';
 import 'localized_names.dart';
 import 'room_ambience.dart';
@@ -93,9 +94,8 @@ class DeskIllustration extends StatelessWidget {
             ? l10n.poseWriting
             : l10n.poseWaiting,
         [
-          if (unlocked.contains('plant')) l10n.propShortPlant,
-          if (unlocked.contains('mug')) l10n.propShortMug,
-          if (unlocked.contains('lamp')) l10n.propShortLamp,
+          for (final prop in deskProps)
+            if (unlocked.contains(prop.key)) propShortName(l10n, prop.key),
         ].join(' '),
       ),
       child: ExcludeSemantics(
@@ -225,45 +225,22 @@ class DeskIllustration extends StatelessWidget {
                 ),
               ),
             ],
-            if (unlocked.contains('lamp'))
-              Positioned(
-                left: 608,
-                top: 739,
-                width: 266,
-                height: 400,
-                child: Image.asset(
-                  'assets/images/immersive/reward-lamp.png',
-                  fit: BoxFit.fill,
-                  color: _foregroundTint,
-                  colorBlendMode: BlendMode.modulate,
+            for (final prop in [
+              ...deskProps,
+            ]..sort((a, b) => a.layer.compareTo(b.layer)))
+              if (unlocked.contains(prop.key))
+                Positioned(
+                  left: prop.left,
+                  top: prop.top,
+                  width: prop.width,
+                  height: prop.height,
+                  child: Image.asset(
+                    prop.asset,
+                    fit: prop.contain ? BoxFit.contain : BoxFit.fill,
+                    color: _foregroundTint,
+                    colorBlendMode: BlendMode.modulate,
+                  ),
                 ),
-              ),
-            if (unlocked.contains('plant'))
-              Positioned(
-                left: 648,
-                top: 957,
-                width: 115,
-                height: 138,
-                child: Image.asset(
-                  'assets/images/immersive/reward-plant.png',
-                  fit: BoxFit.contain,
-                  color: _foregroundTint,
-                  colorBlendMode: BlendMode.modulate,
-                ),
-              ),
-            if (unlocked.contains('mug'))
-              Positioned(
-                left: 613,
-                top: 1010,
-                width: 156,
-                height: 170,
-                child: Image.asset(
-                  'assets/images/immersive/reward-mug.png',
-                  fit: BoxFit.fill,
-                  color: _foregroundTint,
-                  colorBlendMode: BlendMode.modulate,
-                ),
-              ),
             const Positioned.fill(child: ColoredBox(color: Color(0x0A11131F))),
           ],
         ),

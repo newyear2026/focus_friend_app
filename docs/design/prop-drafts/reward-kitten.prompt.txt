@@ -1,0 +1,9 @@
+Tool: gpt_image_2_5 (Higgsfield) or built-in image_gen; background=transparent; aspect 4:3
+References (style and camera only, do not copy objects): assets/images/immersive/room-day.png, assets/images/immersive/reward-lamp.png
+Target asset: assets/images/immersive/reward-kitten.png (고양이 친구, unlocks at 4200 min)
+
+Asset type: transparent raster prop sprite for a cozy 2D animated mobile focus-timer room.
+Subject: one small navy-blue kitten curled up asleep in a loaf pose, cream muzzle and chest, pointed ears, eyes closed with a calm smile, tail wrapped around its paws. Same navy cat character as the mug and pencil-holder sticker in the references. Soft fur painted with simple cel shading. Readable at about 70 px wide.
+Style: hand-drawn cozy 2D animation background prop matching the references, clean slightly irregular dark brown outlines, soft painterly cel shading, subtle paper grain, warm golden sunlight from the upper right. Not photorealistic, not 3D render, not a flat icon.
+Composition: single complete object, front three-quarter view seen clearly from above, matching a desk viewed about 30 degrees downward (top surfaces visible). Centered, tightly framed with a small transparent margin.
+Background: true transparent alpha outside the silhouette. No table, no room, no other objects, no cast shadow, no glow or halo, no text, no numbers, no UI, no watermark.

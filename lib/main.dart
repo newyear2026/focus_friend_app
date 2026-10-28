@@ -6,6 +6,7 @@ import 'session_engine.dart';
 import 'room_ambience.dart';
 import 'desk_components.dart';
 import 'desk_home.dart';
+import 'desk_props.dart';
 import 'focus_records.dart';
 import 'goal_editor.dart';
 import 'l10n/app_localizations.dart';
@@ -733,10 +734,10 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              for (final key in ['plant', 'mug', 'lamp'])
-                if (state.unlocks.containsKey(key))
+              for (final prop in deskProps)
+                if (state.unlocks.containsKey(prop.key))
                   Image.asset(
-                    'assets/images/immersive/reward-$key.png',
+                    prop.asset,
                     width: 30,
                     height: 30,
                     fit: BoxFit.contain,
@@ -869,11 +870,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
             ),
           ),
         ),
-        for (final e in {
-          'plant': l10n.unlockFirstFocus,
-          'mug': l10n.unlockAfterMinutes(60),
-          'lamp': l10n.unlockAfterMinutes(120),
-        }.entries)
+        for (final prop in deskProps)
           Container(
             margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
             padding: const EdgeInsets.all(18),
@@ -883,16 +880,15 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
             ),
             child: Row(
               children: [
-                Icon(
-                  e.key == 'plant'
-                      ? Icons.spa_outlined
-                      : e.key == 'mug'
-                      ? Icons.coffee_outlined
-                      : Icons.light_outlined,
-                  color: s.unlocks.containsKey(e.key)
-                      ? sage
-                      : const Color(0xFFB5ADA0),
-                  size: 29,
+                Opacity(
+                  opacity: s.unlocks.containsKey(prop.key) ? 1 : 0.35,
+                  child: Image.asset(
+                    prop.asset,
+                    width: 34,
+                    height: 34,
+                    fit: BoxFit.contain,
+                    excludeFromSemantics: true,
+                  ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -900,18 +896,20 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        propName(l10n, e.key),
+                        propName(l10n, prop.key),
                         style: const TextStyle(fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        e.value,
+                        prop.unlockMinutes == 0
+                            ? l10n.unlockFirstFocus
+                            : l10n.unlockAfterMinutes(prop.unlockMinutes),
                         style: const TextStyle(fontSize: 12, color: deskMuted),
                       ),
                     ],
                   ),
                 ),
                 Icon(
-                  s.unlocks.containsKey(e.key)
+                  s.unlocks.containsKey(prop.key)
                       ? Icons.check_circle
                       : Icons.lock_outline,
                   color: sage,
