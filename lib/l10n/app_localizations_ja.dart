@@ -132,6 +132,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get demoButton => '1分お試し・記録とごほうびなしでのぞいてみる';
 
   @override
+  String get adPrivacyTile => '広告のプライバシー設定';
+
+  @override
   String get soundCreditsTile => 'サウンドの出典とライセンス';
 
   @override

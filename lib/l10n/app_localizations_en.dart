@@ -141,6 +141,9 @@ class AppLocalizationsEn extends AppLocalizations {
       '1-minute trial · look around without records or rewards';
 
   @override
+  String get adPrivacyTile => 'Ad privacy choices';
+
+  @override
   String get soundCreditsTile => 'Sound sources & licenses';
 
   @override

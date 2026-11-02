@@ -36,6 +36,7 @@
   "quickFocusStart": "Iniciar enfoque de {minutes} minutos",
   "quickFocusLabel": "{minutes} min de enfoque",
   "demoButton": "Prueba de 1 minuto · explora sin registro ni recompensas",
+  "adPrivacyTile": "Privacidad de anuncios",
   "soundCreditsTile": "Fuentes y licencias de sonido",
   "soundCreditsTitle": "Fuentes de sonido",
   "soundCreditsIntro": "Los tres sonidos se publicaron con licencia CC0 1.0. Vienen incluidos en la app y suenan sin conexión.",

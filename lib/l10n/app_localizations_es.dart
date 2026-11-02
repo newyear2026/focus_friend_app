@@ -143,6 +143,9 @@ class AppLocalizationsEs extends AppLocalizations {
       'Prueba de 1 minuto · explora sin registro ni recompensas';
 
   @override
+  String get adPrivacyTile => 'Privacidad de anuncios';
+
+  @override
   String get soundCreditsTile => 'Fuentes y licencias de sonido';
 
   @override

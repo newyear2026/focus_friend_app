@@ -88,6 +88,7 @@
     }
   },
   "demoButton": "1-minute trial · look around without records or rewards",
+  "adPrivacyTile": "Ad privacy choices",
   "soundCreditsTile": "Sound sources & licenses",
   "soundCreditsTitle": "Sound sources",
   "soundCreditsIntro": "All three sounds are released under CC0 1.0. They ship with the app and play offline.",

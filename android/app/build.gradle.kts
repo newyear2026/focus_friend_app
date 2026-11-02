@@ -13,6 +13,11 @@ plugins {
 val dartDefines = (project.findProperty("dart-defines") as? String).orEmpty()
     .split(',').mapNotNull { runCatching { String(Base64.getDecoder().decode(it)) }.getOrNull() }
 val verificationApp = dartDefines.contains("FOCUS_FRIEND_VERIFICATION=true")
+// Real AdMob app ID from admob.json (--dart-define-from-file); Google's sample
+// app ID otherwise, which only serves test ads.
+val admobAppId = dartDefines.firstOrNull { it.startsWith("ADMOB_APP_ID=") }
+    ?.substringAfter('=')?.takeIf { it.isNotBlank() }
+    ?: "ca-app-pub-3940256099942544~3347511713"
 
 // Play upload key. android/key.properties is git-ignored; copy key.properties.example.
 // Without it, release builds fall back to the debug key, which Play rejects.
@@ -42,6 +47,7 @@ android {
         applicationId = if (verificationApp) "dev.jaewook.deskmate.verification"
             else "dev.jaewook.deskmate"
         manifestPlaceholders["appLabel"] = if (verificationApp) "Deskmate 검증" else "Deskmate"
+        manifestPlaceholders["admobAppId"] = admobAppId
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

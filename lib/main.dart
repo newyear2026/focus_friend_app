@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'ads.dart';
 import 'android_bridge.dart';
 import 'session_engine.dart';
 import 'room_ambience.dart';
@@ -29,6 +30,7 @@ void main() {
       sounds: FocusSoundPlayer(),
       screen: ScreenAwake(),
       language: AppLanguageStore(),
+      ads: AdsConsent(),
     ),
   );
 }
@@ -42,6 +44,7 @@ class FocusFriendApp extends StatefulWidget {
     this.screen,
     this.language,
     this.locale,
+    this.ads,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
@@ -50,6 +53,9 @@ class FocusFriendApp extends StatefulWidget {
 
   /// Keeps the Settings language choice; null keeps it for this run only.
   final AppLanguageStore? language;
+
+  /// Null in tests: no ad consent form and no ad SDK.
+  final AdsConsent? ads;
 
   /// Forces a language regardless of the choice. Null follows the choice, or
   /// the phone when there is none; English covers unsupported languages.
@@ -68,6 +74,9 @@ class _FocusFriendAppState extends State<FocusFriendApp>
     WidgetsBinding.instance.addObserver(this);
     system = WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag();
     unawaited(_loadLanguage());
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => unawaited(widget.ads?.start()),
+    );
   }
 
   @override
@@ -120,6 +129,7 @@ class _FocusFriendAppState extends State<FocusFriendApp>
       language: chosen,
       systemLanguage: system,
       onLanguage: _setLanguage,
+      ads: widget.ads,
     ),
   );
 }
@@ -134,6 +144,7 @@ class RoomScreen extends StatefulWidget {
     this.language,
     this.systemLanguage,
     this.onLanguage,
+    this.ads,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
@@ -143,6 +154,7 @@ class RoomScreen extends StatefulWidget {
   /// The chosen language tag, or null when following the phone.
   final String? language, systemLanguage;
   final Future<void> Function(String?)? onLanguage;
+  final AdsConsent? ads;
   @override
   State<RoomScreen> createState() => _RoomScreenState();
 }
@@ -150,6 +162,7 @@ class RoomScreen extends StatefulWidget {
 class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   bool ready = false, busy = false, notifications = false;
   bool foreground = true;
+  bool adPrivacy = false;
   String? error;
   String? alertError;
   String? soundError;
@@ -164,6 +177,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     unawaited(_restore());
+    unawaited(_loadAdPrivacy());
     ticker = Timer.periodic(const Duration(milliseconds: 250), (_) {
       if (!ready || busy || !mounted || !foreground || error != null) return;
       final a = engine.state.active;
@@ -190,6 +204,18 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     setState(() => foreground = state == AppLifecycleState.resumed);
     if (foreground) unawaited(_restore());
+  }
+
+  Future<void> _loadAdPrivacy() async {
+    final ads = widget.ads;
+    if (ads == null) return;
+    await ads.ready;
+    try {
+      final required = await ads.privacyOptionsRequired();
+      if (mounted) setState(() => adPrivacy = required);
+    } catch (_) {
+      // Without a status the tile stays hidden, as outside the EEA/UK.
+    }
   }
 
   Future<void> _restore() async {
@@ -820,6 +846,15 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
           child: Text(l10n.demoButton),
         ),
         const Divider(height: 28),
+        if (adPrivacy)
+          ListTile(
+            key: const ValueKey('ad-privacy'),
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.privacy_tip_outlined, color: deskMuted),
+            title: Text(l10n.adPrivacyTile),
+            trailing: const Icon(Icons.chevron_right_rounded),
+            onTap: () => unawaited(widget.ads!.showPrivacyOptions()),
+          ),
         ListTile(
           contentPadding: EdgeInsets.zero,
           leading: const Icon(Icons.info_outline_rounded, color: deskMuted),

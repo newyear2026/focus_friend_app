@@ -12,6 +12,9 @@
         android:localeConfig="@xml/locales_config">
         <receiver android:name=".RoomAlarmReceiver" android:exported="false"/>
         <service android:name=".FocusSoundService" android:exported="false" android:foregroundServiceType="mediaPlayback"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -132,6 +132,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get demoButton => '1분 체험 · 기록과 보상 없이 둘러보기';
 
   @override
+  String get adPrivacyTile => '광고 개인정보 설정';
+
+  @override
   String get soundCreditsTile => '사운드 출처와 라이선스';
 
   @override

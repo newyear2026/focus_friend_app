@@ -318,6 +318,12 @@ abstract class AppLocalizations {
   /// **'1-minute trial · look around without records or rewards'**
   String get demoButton;
 
+  /// No description provided for @adPrivacyTile.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad privacy choices'**
+  String get adPrivacyTile;
+
   /// No description provided for @soundCreditsTile.
   ///
   /// In en, this message translates to:

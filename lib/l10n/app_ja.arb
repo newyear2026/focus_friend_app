@@ -36,6 +36,7 @@
   "quickFocusStart": "{minutes}分の集中を始める",
   "quickFocusLabel": "{minutes}分集中",
   "demoButton": "1分お試し・記録とごほうびなしでのぞいてみる",
+  "adPrivacyTile": "広告のプライバシー設定",
   "soundCreditsTile": "サウンドの出典とライセンス",
   "soundCreditsTitle": "サウンドの出典",
   "soundCreditsIntro": "3つの音源はCC0 1.0で公開されています。アプリに含まれているので、オフラインでも再生できます。",

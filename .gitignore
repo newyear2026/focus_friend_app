@@ -48,3 +48,6 @@ app.*.map.json
 *.apk
 *.aab
 /.tmp-library-reference/
+
+# Real AdMob IDs; copy admob.example.json
+/admob.json
