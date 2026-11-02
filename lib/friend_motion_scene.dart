@@ -333,11 +333,20 @@ class FriendMotionPainter extends CustomPainter {
   static const stageBounds = Rect.fromLTWH(0, 0, 512, 512);
 
   // The canonical face, scarf/whiskers, torso and cup never move while writing.
+  // The right edge follows the pencil as it leans out in cels 2-5; a cut
+  // through it let cel 0's chest show over the eraser and shaft.
   static Path get writingRegion => Path()
     ..moveTo(137, 302)
     ..lineTo(186, 300)
-    ..lineTo(224, 352)
-    ..lineTo(237, 390)
+    ..lineTo(221, 298)
+    ..lineTo(228, 325)
+    ..lineTo(235, 352)
+    ..lineTo(240, 372)
+    ..lineTo(243, 386)
+    ..lineTo(241, 396)
+    ..lineTo(236, 397)
+    ..lineTo(229, 393)
+    ..lineTo(225, 390)
     ..lineTo(177, 390)
     ..lineTo(130, 357)
     ..close()
