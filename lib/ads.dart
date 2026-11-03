@@ -14,8 +14,8 @@ abstract final class AdUnits {
     const String.fromEnvironment('ADMOB_NATIVE_RECORDS_ID'),
     'ca-app-pub-3940256099942544/2247696110',
   );
-  static String get nativeDesk => _pick(
-    const String.fromEnvironment('ADMOB_NATIVE_DESK_ID'),
+  static String get nativeSettings => _pick(
+    const String.fromEnvironment('ADMOB_NATIVE_SETTINGS_ID'),
     'ca-app-pub-3940256099942544/2247696110',
   );
 
