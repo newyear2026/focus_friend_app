@@ -12,6 +12,7 @@ import 'focus_records.dart';
 import 'goal_editor.dart';
 import 'l10n/app_localizations.dart';
 import 'language_sheet.dart';
+import 'native_ad_card.dart';
 import 'localized_names.dart';
 import 'sound_sheet.dart';
 import 'session_stop_sheet.dart';
@@ -410,6 +411,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
                             now: DateTime.fromMillisecondsSinceEpoch(
                               engine.clock(),
                             ),
+                            footer: _nativeAd(AdUnits.nativeRecords),
                           )
                         : _settings(state),
                   ),
@@ -783,6 +785,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
             ),
           ),
         ),
+        ?_nativeAd(AdUnits.nativeSettings),
         const Divider(height: 36),
         Text(
           l10n.quickFocusTitle,
@@ -865,6 +868,16 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       ],
     );
   }
+
+  /// Null in tests, where there is no ad SDK.
+  Widget? _nativeAd(String adUnitId) => switch (widget.ads) {
+    final ads? => NativeAdCard(
+      key: ValueKey(adUnitId),
+      adUnitId: adUnitId,
+      ready: ads.ready,
+    ),
+    null => null,
+  };
 
   void _showSoundCredits() => showDialog<void>(
     context: context,

@@ -12,9 +12,17 @@ import 'desk_components.dart';
 enum _RecordsView { calendar, week, month }
 
 class FocusRecords extends StatefulWidget {
-  const FocusRecords({super.key, required this.state, required this.now});
+  const FocusRecords({
+    super.key,
+    required this.state,
+    required this.now,
+    this.footer,
+  });
   final FocusState state;
   final DateTime now;
+
+  /// Shown after every view's content (the records native ad).
+  final Widget? footer;
   @override
   State<FocusRecords> createState() => _FocusRecordsState();
 }
@@ -95,6 +103,7 @@ class _FocusRecordsState extends State<FocusRecords> {
           _RecordsView.week => _week(l10n, locale),
           _RecordsView.month => _month(l10n, locale),
         },
+        ?widget.footer,
       ],
     );
   }
