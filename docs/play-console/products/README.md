@@ -4,11 +4,11 @@ Play Console → 수익 창출 → 제품 → 일회성 제품 → 만들기. �
 
 | 제품 ID | 이미지 | 한국 | 멕시코 |
 | --- | --- | --- | --- |
-| `friend_otter` | [friend_otter.png](friend_otter.png) | ₩1,500 | MX$15 |
-| `friend_squirrel` | [friend_squirrel.png](friend_squirrel.png) | ₩1,500 | MX$15 |
-| `friend_fennec` | [friend_fennec.png](friend_fennec.png) | ₩1,500 | MX$15 |
+| `friend_otter` | [friend_otter.png](friend_otter.png) | ₩1,500 | MX$10 |
+| `friend_squirrel` | [friend_squirrel.png](friend_squirrel.png) | ₩1,500 | MX$10 |
+| `friend_fennec` | [friend_fennec.png](friend_fennec.png) | ₩1,500 | MX$10 |
 | `remove_ads` | [remove_ads.png](remove_ads.png) | ₩1,000 | MX$10 |
-| `all_friends` | [all_friends.png](all_friends.png) | ₩3,500 | MX$35 |
+| `all_friends` | [all_friends.png](all_friends.png) | ₩3,500 | MX$29 |
 
 ## 다섯 제품 공통 입력값
 
