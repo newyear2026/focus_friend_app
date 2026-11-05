@@ -118,29 +118,37 @@ class PlayPurchases extends Purchases {
   final InAppPurchase _store;
   final _details = <String, ProductDetails>{};
   final _waiting = <String, Completer<PurchaseOutcome>>{};
+  final _lastUpdate = <String, int>{};
+  int _revision = 0;
+  bool _disposed = false;
   StreamSubscription<List<PurchaseDetails>>? _updates;
   Future<bool>? _refreshing;
 
   @override
   Future<void> start() async {
+    if (_disposed) return;
     try {
-      if (!await _store.isAvailable()) return;
-      _updates = _store.purchaseStream.listen(
+      _updates ??= _store.purchaseStream.listen(
         _onUpdates,
-        onError: (Object _) {},
+        onError: (Object _) => _finishWaiting(PurchaseOutcome.failed),
       );
-      await Future.wait([_loadPrices(), refresh()]);
+      await refresh();
     } catch (_) {
       // No Play Store or no network: free friends and ads still work.
     }
   }
 
   Future<void> _loadPrices() async {
-    final response = await _store.queryProductDetails(Products.all);
-    for (final product in response.productDetails) {
-      _details[product.id] = product;
+    try {
+      final response = await _store.queryProductDetails(Products.all);
+      if (_disposed || response.error != null) return;
+      _details
+        ..clear()
+        ..addEntries(response.productDetails.map((p) => MapEntry(p.id, p)));
+      update(prices: {for (final p in _details.values) p.id: p.price});
+    } catch (_) {
+      // Retry on resume/restore, independently of the ownership query.
     }
-    update(prices: {for (final p in _details.values) p.id: p.price});
   }
 
   @override
@@ -149,27 +157,63 @@ class PlayPurchases extends Purchases {
 
   Future<bool> _refresh() async {
     try {
+      if (_disposed || !await _store.isAvailable() || _disposed) return false;
+      final results = await Future.wait([
+        _loadPrices().then((_) => true),
+        _loadOwned(),
+      ]);
+      return results.last;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<bool> _loadOwned() async {
+    final revision = _revision;
+    try {
       final addition = _store
           .getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
       final response = await addition.queryPastPurchases();
-      if (response.error != null) return false;
+      if (_disposed || response.error != null) return false;
       final owned = <String>{}, pending = <String>{};
+      final toAcknowledge = <PurchaseDetails>[];
       for (final purchase in response.pastPurchases) {
+        if (!Products.all.contains(purchase.productID)) continue;
         switch (purchase.status) {
           case PurchaseStatus.purchased || PurchaseStatus.restored:
             owned.add(purchase.productID);
-            await _acknowledge(purchase);
+            toAcknowledge.add(purchase);
           case PurchaseStatus.pending:
             pending.add(purchase.productID);
           case PurchaseStatus.error || PurchaseStatus.canceled:
             break;
         }
       }
+      // A checkout update received while this query was in flight is newer
+      // than its snapshot. Preserve those products, including pending removals.
+      for (final entry in _lastUpdate.entries) {
+        if (entry.value <= revision) continue;
+        final id = entry.key;
+        owned.remove(id);
+        pending.remove(id);
+        if (entitlements.owned.contains(id)) owned.add(id);
+        if (entitlements.pending.contains(id)) pending.add(id);
+      }
       // Replace rather than merge so a refund also locks the item again.
       update(
         entitlements: Entitlements(owned: owned, pending: pending),
         checked: true,
       );
+      // Resume can recover a result whose stream callback was missed while
+      // the app was in the background. An absent item is not a cancellation.
+      for (final id in _waiting.keys.toList()) {
+        if (has(id)) {
+          _waiting.remove(id)?.complete(PurchaseOutcome.owned);
+        } else if (isPending(id)) {
+          _waiting.remove(id)?.complete(PurchaseOutcome.pending);
+        }
+      }
+      await Future.wait(toAcknowledge.map(_acknowledge));
       return true;
     } catch (_) {
       return false;
@@ -185,9 +229,29 @@ class PlayPurchases extends Purchases {
     }
   }
 
-  Future<void> _onUpdates(List<PurchaseDetails> purchases) async {
+  void _finishWaiting(PurchaseOutcome outcome) {
+    final waiting = _waiting.values.toList();
+    _waiting.clear();
+    for (final waiter in waiting) {
+      waiter.complete(outcome);
+    }
+  }
+
+  void _onUpdates(List<PurchaseDetails> purchases) {
+    if (_disposed) return;
     for (final purchase in purchases) {
       final id = purchase.productID;
+      // Android reports a dismissed/failed checkout with no product ID when
+      // its purchase list is empty. There is only one active checkout.
+      if (id.isEmpty) {
+        if (purchase.status == PurchaseStatus.canceled) {
+          _finishWaiting(PurchaseOutcome.cancelled);
+        } else if (purchase.status == PurchaseStatus.error) {
+          _finishWaiting(PurchaseOutcome.failed);
+        }
+        continue;
+      }
+      if (!Products.all.contains(id)) continue;
       final owned = {...entitlements.owned};
       final pending = {...entitlements.pending};
       final PurchaseOutcome outcome;
@@ -196,7 +260,6 @@ class PlayPurchases extends Purchases {
           owned.add(id);
           pending.remove(id);
           outcome = PurchaseOutcome.owned;
-          await _acknowledge(purchase);
         case PurchaseStatus.pending:
           pending.add(id);
           outcome = PurchaseOutcome.pending;
@@ -207,17 +270,24 @@ class PlayPurchases extends Purchases {
           pending.remove(id);
           outcome = PurchaseOutcome.failed;
       }
+      _lastUpdate[id] = ++_revision;
       update(
         entitlements: Entitlements(owned: owned, pending: pending),
       );
       _waiting.remove(id)?.complete(outcome);
+      // Apply the entitlement before awaiting the store so overlapping updates
+      // cannot overwrite one another with an old copy of the owned set.
+      if (outcome == PurchaseOutcome.owned) unawaited(_acknowledge(purchase));
     }
   }
 
   @override
   Future<PurchaseOutcome> buy(String id) async {
+    if (_disposed || !Products.all.contains(id)) return PurchaseOutcome.failed;
+    if (has(id)) return PurchaseOutcome.owned;
+    if (isPending(id)) return PurchaseOutcome.pending;
     final product = _details[id];
-    if (product == null || _waiting.containsKey(id)) {
+    if (product == null || _waiting.isNotEmpty) {
       return PurchaseOutcome.failed;
     }
     final waiter = Completer<PurchaseOutcome>();
@@ -229,14 +299,18 @@ class PlayPurchases extends Purchases {
       if (!opened) _waiting.remove(id)?.complete(PurchaseOutcome.failed);
     } on Exception catch (_) {
       // Play says "already owned" this way when our copy is out of date.
-      _waiting.remove(id)?.complete(PurchaseOutcome.failed);
       await refresh();
+      _waiting
+          .remove(id)
+          ?.complete(has(id) ? PurchaseOutcome.owned : PurchaseOutcome.failed);
     }
     return waiter.future;
   }
 
   @override
   void dispose() {
+    _disposed = true;
+    _finishWaiting(PurchaseOutcome.failed);
     unawaited(_updates?.cancel());
     super.dispose();
   }

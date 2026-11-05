@@ -743,4 +743,85 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get restoreFailed => 'Google Play에 연결하지 못했어요. 잠시 후 다시 시도해 주세요.';
+
+  @override
+  String get updateNewsTitle => '업데이트 소식';
+
+  @override
+  String get updateNewsSettingsSubtitle => '이번 업데이트에서 달라진 점';
+
+  @override
+  String get updateNewsHeading => '작은 방이\n새로워졌어요';
+
+  @override
+  String get updateNewsIntro => '이번에 달라진 점을 확인해 보세요.';
+
+  @override
+  String get updateNewsMotionTitle => '더 자연스러운 친구의 움직임';
+
+  @override
+  String get updateNewsMotionBody => '책상에서 보내는 시간이 더 포근해졌어요.';
+
+  @override
+  String get updateNewsRecordsTitle => '한눈에 보는 집중 기록';
+
+  @override
+  String get updateNewsRecordsBody => '차곡차곡 쌓인 시간을 확인해 보세요.';
+
+  @override
+  String get updateNewsFixesTitle => '작은 오류를 고쳤어요';
+
+  @override
+  String get updateNewsFixesBody => '더 편안하게 집중할 수 있도록 다듬었어요.';
+
+  @override
+  String get updateNewsDone => '내 책상으로';
+
+  @override
+  String get ourAppsTitle => '추천 앱';
+
+  @override
+  String get ourAppsSettingsSubtitle => '일상에 도움이 되는 다른 앱';
+
+  @override
+  String get ourAppsEyebrow => 'DESKMATE & FRIENDS';
+
+  @override
+  String get ourAppsHeading => '하루를 함께하는\n작은 도구들';
+
+  @override
+  String get ourAppsIntro => '함께 쓰기 좋은 앱을 만나보세요.';
+
+  @override
+  String get ourAppsViewOnPlay => 'Google Play에서 보기';
+
+  @override
+  String get ourAppsOpening => 'Google Play를 여는 중';
+
+  @override
+  String get ourAppsOpenFailed => 'Google Play를 열지 못했어요. 잠시 후 다시 시도해 주세요.';
+
+  @override
+  String get ourAppsLoopetCategory => '루틴 관리';
+
+  @override
+  String get ourAppsLoopetDescription => '지금 할 루틴과\n다음 루틴을 한눈에';
+
+  @override
+  String get ourAppsSobritaCategory => '가계부';
+
+  @override
+  String get ourAppsSobritaDescription => '픽셀 친구들과\n수입·지출을 기록해요';
+
+  @override
+  String get ourAppsRandomFocusCategory => '집중 타이머';
+
+  @override
+  String get ourAppsRandomFocusDescription => '룰렛으로 집중\n시간을 정해요';
+
+  @override
+  String get ourAppsMultiCalCategory => '계산기';
+
+  @override
+  String get ourAppsMultiCalDescription => '계산부터 팁·\n단위 변환까지';
 }

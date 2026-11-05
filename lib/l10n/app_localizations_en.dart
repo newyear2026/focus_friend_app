@@ -766,4 +766,91 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get restoreFailed =>
       'Couldn\'t reach Google Play. Please try again later.';
+
+  @override
+  String get updateNewsTitle => 'What\'s new';
+
+  @override
+  String get updateNewsSettingsSubtitle => 'See what changed in this update';
+
+  @override
+  String get updateNewsHeading => 'A little room,\na little better';
+
+  @override
+  String get updateNewsIntro => 'Here\'s what\'s new in this update.';
+
+  @override
+  String get updateNewsMotionTitle => 'More natural friend movements';
+
+  @override
+  String get updateNewsMotionBody => 'Time at your desk feels a little cozier.';
+
+  @override
+  String get updateNewsRecordsTitle => 'Your focus, at a glance';
+
+  @override
+  String get updateNewsRecordsBody => 'Look back on the time you\'ve built up.';
+
+  @override
+  String get updateNewsFixesTitle => 'Little fixes along the way';
+
+  @override
+  String get updateNewsFixesBody =>
+      'A few refinements to help you focus comfortably.';
+
+  @override
+  String get updateNewsDone => 'Back to my desk';
+
+  @override
+  String get ourAppsTitle => 'Recommended apps';
+
+  @override
+  String get ourAppsSettingsSubtitle => 'More useful apps for everyday life';
+
+  @override
+  String get ourAppsEyebrow => 'DESKMATE & FRIENDS';
+
+  @override
+  String get ourAppsHeading => 'Little tools for\nyour everyday';
+
+  @override
+  String get ourAppsIntro => 'Meet apps that work well alongside your day.';
+
+  @override
+  String get ourAppsViewOnPlay => 'View on Google Play';
+
+  @override
+  String get ourAppsOpening => 'Opening Google Play';
+
+  @override
+  String get ourAppsOpenFailed =>
+      'We couldn\'t open Google Play. Please try again shortly.';
+
+  @override
+  String get ourAppsLoopetCategory => 'Routines';
+
+  @override
+  String get ourAppsLoopetDescription =>
+      'See your current routine\nand what\'s next at a glance.';
+
+  @override
+  String get ourAppsSobritaCategory => 'Expense tracker';
+
+  @override
+  String get ourAppsSobritaDescription =>
+      'Track income and spending\nwith pixel friends.';
+
+  @override
+  String get ourAppsRandomFocusCategory => 'Focus timer';
+
+  @override
+  String get ourAppsRandomFocusDescription =>
+      'Spin the wheel to choose\nyour focus time.';
+
+  @override
+  String get ourAppsMultiCalCategory => 'Calculator';
+
+  @override
+  String get ourAppsMultiCalDescription =>
+      'Calculations, tips\nand unit conversions.';
 }

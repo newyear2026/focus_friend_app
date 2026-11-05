@@ -28,6 +28,10 @@ flutter:
   uses-material-design: true
   assets:
     # List files one by one: these folders also hold unused drafts and prompts.
+    - assets/apps/loopet.png
+    - assets/apps/sobrita.png
+    - assets/apps/randomfocus.png
+    - assets/apps/multical.png
     - assets/audio/
     - assets/images/immersive/room-morning.png
     - assets/images/immersive/room-day.png

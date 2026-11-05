@@ -741,4 +741,85 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get restoreFailed => 'Google Play に接続できませんでした。しばらくしてからお試しください。';
+
+  @override
+  String get updateNewsTitle => 'アップデートのお知らせ';
+
+  @override
+  String get updateNewsSettingsSubtitle => '今回のアップデートで変わったこと';
+
+  @override
+  String get updateNewsHeading => '小さな部屋が\n新しくなりました';
+
+  @override
+  String get updateNewsIntro => '今回の変更点をご覧ください。';
+
+  @override
+  String get updateNewsMotionTitle => '友だちの動きがより自然に';
+
+  @override
+  String get updateNewsMotionBody => '机で過ごす時間が、もっと心地よくなりました。';
+
+  @override
+  String get updateNewsRecordsTitle => '集中の記録をひと目で';
+
+  @override
+  String get updateNewsRecordsBody => '少しずつ積み重ねた時間を振り返れます。';
+
+  @override
+  String get updateNewsFixesTitle => '小さな不具合を修正しました';
+
+  @override
+  String get updateNewsFixesBody => 'より快適に集中できるように整えました。';
+
+  @override
+  String get updateNewsDone => '自分の机へ';
+
+  @override
+  String get ourAppsTitle => 'おすすめアプリ';
+
+  @override
+  String get ourAppsSettingsSubtitle => '毎日に役立つほかのアプリ';
+
+  @override
+  String get ourAppsEyebrow => 'DESKMATE & FRIENDS';
+
+  @override
+  String get ourAppsHeading => '毎日に寄り添う\n小さな道具たち';
+
+  @override
+  String get ourAppsIntro => '一緒に使うと便利なアプリをご紹介します。';
+
+  @override
+  String get ourAppsViewOnPlay => 'Google Playで見る';
+
+  @override
+  String get ourAppsOpening => 'Google Playを開いています';
+
+  @override
+  String get ourAppsOpenFailed => 'Google Playを開けませんでした。しばらくしてからお試しください。';
+
+  @override
+  String get ourAppsLoopetCategory => 'ルーティン管理';
+
+  @override
+  String get ourAppsLoopetDescription => '今の予定と次の予定を\nひと目で確認できます。';
+
+  @override
+  String get ourAppsSobritaCategory => '家計簿';
+
+  @override
+  String get ourAppsSobritaDescription => 'ピクセルの友だちと\n収入・支出を記録します。';
+
+  @override
+  String get ourAppsRandomFocusCategory => '集中タイマー';
+
+  @override
+  String get ourAppsRandomFocusDescription => 'ルーレットを回して\n集中する時間を決めます。';
+
+  @override
+  String get ourAppsMultiCalCategory => '計算機';
+
+  @override
+  String get ourAppsMultiCalDescription => '計算からチップ、\n単位の変換まで。';
 }

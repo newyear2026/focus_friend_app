@@ -20,6 +20,9 @@ import 'sound_sheet.dart';
 import 'session_stop_sheet.dart';
 import 'focus_friend.dart';
 import 'friend_picker.dart';
+import 'update_news.dart';
+import 'update_news_sheet.dart';
+import 'our_apps_screen.dart';
 
 const ink = Color(0xFF50473D);
 const sage = Color(0xFF78856B);
@@ -36,6 +39,7 @@ void main() {
       language: AppLanguageStore(),
       ads: AdsConsent(),
       purchases: PlayPurchases(),
+      updateNews: UpdateNews(AndroidUpdateNewsStore()),
     ),
   );
 }
@@ -51,6 +55,7 @@ class FocusFriendApp extends StatefulWidget {
     this.locale,
     this.ads,
     this.purchases,
+    this.updateNews,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
@@ -59,6 +64,9 @@ class FocusFriendApp extends StatefulWidget {
 
   /// Null in tests: every friend is owned and nothing is for sale.
   final Purchases? purchases;
+
+  /// Null in tests and previews unless update detection is being exercised.
+  final UpdateNews? updateNews;
 
   /// Keeps the Settings language choice; null keeps it for this run only.
   final AppLanguageStore? language;
@@ -76,6 +84,7 @@ class FocusFriendApp extends StatefulWidget {
 class _FocusFriendAppState extends State<FocusFriendApp>
     with WidgetsBindingObserver {
   String? chosen, system;
+  bool languageLoaded = false;
 
   @override
   void initState() {
@@ -100,8 +109,8 @@ class _FocusFriendAppState extends State<FocusFriendApp>
   void didChangeLocales(List<Locale>? locales) => unawaited(_loadLanguage());
 
   Future<void> _loadLanguage() async {
-    if (widget.language == null) return;
     try {
+      if (widget.language == null) return;
       final saved = await widget.language!.load();
       if (mounted) {
         setState(() {
@@ -111,6 +120,8 @@ class _FocusFriendAppState extends State<FocusFriendApp>
       }
     } catch (_) {
       // The phone language is a safe default.
+    } finally {
+      if (mounted) setState(() => languageLoaded = true);
     }
   }
 
@@ -141,6 +152,8 @@ class _FocusFriendAppState extends State<FocusFriendApp>
       onLanguage: _setLanguage,
       ads: widget.ads,
       purchases: widget.purchases,
+      updateNews: widget.updateNews,
+      languageLoaded: widget.locale != null || languageLoaded,
     ),
   );
 }
@@ -157,6 +170,8 @@ class RoomScreen extends StatefulWidget {
     this.onLanguage,
     this.ads,
     this.purchases,
+    this.updateNews,
+    this.languageLoaded = true,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
@@ -168,6 +183,8 @@ class RoomScreen extends StatefulWidget {
   final Future<void> Function(String?)? onLanguage;
   final AdsConsent? ads;
   final Purchases? purchases;
+  final UpdateNews? updateNews;
+  final bool languageLoaded;
   @override
   State<RoomScreen> createState() => _RoomScreenState();
 }
@@ -176,6 +193,10 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   bool ready = false, busy = false, notifications = false;
   bool foreground = true;
   bool adPrivacy = false;
+  bool _newsLoaded = false, _newsLoading = false;
+  bool _newsShowing = false, _newsShown = false;
+  bool _newsConsentReady = false;
+  bool _soundFlowOpen = false;
   String? error;
   String? alertError;
   String? soundError;
@@ -189,11 +210,17 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    final lifecycle = WidgetsBinding.instance.lifecycleState;
+    foreground = lifecycle == null || lifecycle == AppLifecycleState.resumed;
+    _newsConsentReady = widget.ads == null;
     unawaited(_restore());
     unawaited(_loadAdPrivacy());
+    unawaited(_prepareUpdateNews());
+    unawaited(_waitForNewsConsent());
     widget.purchases?.addListener(_purchasesChanged);
     ticker = Timer.periodic(const Duration(milliseconds: 250), (_) {
       if (!ready || busy || !mounted || !foreground || error != null) return;
+      _tryShowUpdateNews();
       final a = engine.state.active;
       final minute = engine.clock() ~/ 60000;
       final changedMinute = displayedMinute != minute;
@@ -222,6 +249,74 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       unawaited(_restore());
       // A cash payment may have cleared, or a refund gone through.
       unawaited(widget.purchases?.refresh());
+      unawaited(_prepareUpdateNews());
+    }
+  }
+
+  Future<void> _waitForNewsConsent() async {
+    if (widget.ads == null) return;
+    // UMP can present a native form outside Flutter's route stack. Both true
+    // and false mean its startup flow has finished; neither blocks the news.
+    try {
+      await widget.ads!.ready;
+    } catch (_) {
+      // An unavailable ads SDK must not hide local release notes.
+    }
+    if (mounted) setState(() => _newsConsentReady = true);
+  }
+
+  Future<void> _prepareUpdateNews() async {
+    final news = widget.updateNews;
+    if (news == null || _newsLoaded || _newsLoading) return;
+    _newsLoading = true;
+    try {
+      await news.prepare();
+      if (mounted) setState(() => _newsLoaded = true);
+    } catch (_) {
+      // Settings remains usable. Retry version storage on the next resume.
+    } finally {
+      _newsLoading = false;
+    }
+  }
+
+  void _tryShowUpdateNews() {
+    if (!mounted ||
+        !_newsLoaded ||
+        _newsShown ||
+        _newsShowing ||
+        _soundFlowOpen ||
+        !widget.languageLoaded ||
+        !_newsConsentReady ||
+        widget.updateNews?.pending != true ||
+        !ready ||
+        busy ||
+        error != null ||
+        !foreground ||
+        page != 0 ||
+        engine.state.active != null ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
+    unawaited(_showUpdateNews());
+  }
+
+  Future<void> _showUpdateNews() async {
+    if (_newsShowing || _soundFlowOpen || !mounted) return;
+    setState(() {
+      _newsShowing = true;
+      _newsShown = true;
+      // The same cozy desk is behind the sheet when reopened from Settings.
+      page = 0;
+    });
+    try {
+      await showUpdateNewsSheet(context);
+      // All dismissal paths count as read, including back, swipe, and X.
+      await widget.updateNews?.acknowledge();
+    } catch (_) {
+      // A failed acknowledgement may retry next launch, never repeatedly in
+      // this launch. Release notes must not affect the focus snapshot.
+    } finally {
+      if (mounted) setState(() => _newsShowing = false);
     }
   }
 
@@ -608,6 +703,16 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   }
 
   Future<void> _showSound() async {
+    if (_soundFlowOpen) return;
+    _soundFlowOpen = true;
+    try {
+      await _editSound();
+    } finally {
+      _soundFlowOpen = false;
+    }
+  }
+
+  Future<void> _editSound() async {
     var wasPlaying = false;
     try {
       wasPlaying = (await widget.sounds?.status())?['playing'] == true;
@@ -894,6 +999,27 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
           child: Text(l10n.demoButton),
         ),
         const Divider(height: 28),
+        ListTile(
+          key: const ValueKey('open-update-news'),
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.menu_book_outlined, color: deskMuted),
+          title: Text(l10n.updateNewsTitle),
+          subtitle: Text(l10n.updateNewsSettingsSubtitle),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: busy || !_newsConsentReady ? null : _showUpdateNews,
+        ),
+        ListTile(
+          key: const ValueKey('open-our-apps'),
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.apps_rounded, color: deskMuted),
+          title: Text(l10n.ourAppsTitle),
+          subtitle: Text(l10n.ourAppsSettingsSubtitle),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: () => Navigator.push<void>(
+            context,
+            MaterialPageRoute(builder: (_) => const OurAppsScreen()),
+          ),
+        ),
         if (adPrivacy)
           ListTile(
             key: const ValueKey('ad-privacy'),

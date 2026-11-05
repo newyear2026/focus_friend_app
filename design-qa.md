@@ -1,5 +1,7 @@
 # 랫서팬더 홈 · 필기 동작 구현 검증
 
+> 2026-11-05 업데이트 소식: [선택 시안·실제 화면 비교](docs/design/update-news-v1/design-qa.md) — final result: passed. 크림색 하단 안내, 빌드별 1회 표시, 설정 재진입, 4개 언어·확대 글자, 전체 199개 테스트와 Android 통합 검증을 완료했습니다.
+
 > 최신 네 친구의 아침·낮·저녁·밤 적용: [friend-time-of-day-implementation/design-qa.md](docs/design/friend-time-of-day-implementation/design-qa.md) — final result: passed. 승인한 4단계 시안과 16개 실제 Flutter·Android 화면, 필기·휴식 유지, 시간대 전환·복귀, 전체 테스트 92개, 업데이트 후 저장 데이터 보존을 확인했습니다.
 
 > 최신 집중 종료 패널의 책장·책갈피 테두리: [book-frame/design-qa.md](docs/design/session-stop/book-frame/design-qa.md) — final result: passed. 선택 원본과 같은 크기의 전체·확대 비교, 작은 화면·큰 글자·가로 화면 및 종료 동작을 확인했습니다.
@@ -116,3 +118,8 @@ final result: passed
 ## 사막여우 · 다람쥐 창가 찻잔 휴식 — 2026-10-15
 
 승인한 창밖을 보며 차 마시는 시안을 휴식과 친구 미리보기에 적용했습니다. 22초 반복, 연결 원화·고정된 책과 방, 일시정지·재개·네 시간대 전환을 검증했습니다. [제작·QA 기록](docs/design/fennec-squirrel-window-tea-v1/README.md)에 실제 앱 캡처와 전체 영상을 보관했습니다. 테스트 98개 통과, 분석 이상 없음, Android 업데이트 후 저장 JSON과 revision 30·기록 4개가 동일합니다. 원화별 작은 몸통·꼬리 윤곽 차이와 중간 혼합 흔적은 P3입니다.
+
+
+## 추천 앱 — 2026-11-05
+
+선택한 크림색 2열 카드 시안을 설정의 추천 앱 메뉴에 연결했습니다. 실제 원본 아이콘 네 개, Google Play 연결·실패 안내, 네 언어와 큰 글자 대응을 구현했습니다. [시안 비교와 검증 기록](docs/design/recommended-apps-v1/README.md)에 실제 Flutter 캡처를 보관했습니다. 전체 213개 테스트 통과 후 제목 줄바꿈을 다듬었고, 기능·플랫폼·캡처 20개를 다시 통과했습니다. 미해결 P0/P1/P2 없음. 종이 질감·버튼 그라데이션의 단순화와 원본 아이콘 여백은 P3 차이입니다.

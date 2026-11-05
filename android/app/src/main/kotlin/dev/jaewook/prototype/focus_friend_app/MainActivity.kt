@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.database.sqlite.*
+import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
 import android.view.WindowManager
@@ -60,6 +61,20 @@ class MainActivity : FlutterActivity() {
                     }
                 } catch (e: Exception) { result.error("AUDIO", e.message, null) }
             }
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "focus_friend/store")
+            .setMethodCallHandler { call, result ->
+                if (call.method != "openListing") {
+                    result.notImplemented()
+                    return@setMethodCallHandler
+                }
+                // This channel runs on the main thread; opening another
+                // activity must not use the local-storage worker below.
+                try {
+                    result.success(RecommendedPlayListings.open(this, call.argument<String>("packageName")))
+                } catch (_: Exception) {
+                    result.success(false)
+                }
+            }
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "focus_friend/local")
             .setMethodCallHandler { call, result ->
                 if (call.method == "requestAlerts") {
@@ -109,6 +124,11 @@ class MainActivity : FlutterActivity() {
                             }
                             "alertsEnabled" -> RoomAlerts.enabled(this)
                             "syncAlerts" -> { RoomAlerts.sync(this); null }
+                            "getUpdateNews" -> AppUpdateNews.read(this)
+                            "acknowledgeUpdateNews" -> {
+                                AppUpdateNews.acknowledge(this, call.argument<Number>("build")!!.toLong())
+                                null
+                            }
                             else -> throw IllegalArgumentException("Unknown operation")
                         }
                         runOnUiThread { result.success(value) }
@@ -117,6 +137,77 @@ class MainActivity : FlutterActivity() {
                     }
                 }
             }
+    }
+}
+
+/** Only the four curated app listings can be opened through this channel. */
+object RecommendedPlayListings {
+    private val PACKAGES = setOf(
+        "com.dayround.app",
+        "com.sobra.app.sobra_app",
+        "com.randomfocus.app",
+        "com.casewen.multi_calc"
+    )
+
+    fun open(activity: Activity, packageName: String?): Boolean {
+        if (packageName !in PACKAGES) return false
+        val marketUri = Uri.Builder().scheme("market").authority("details")
+            .appendQueryParameter("id", packageName).build()
+        val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+            .setPackage("com.android.vending")
+        if (launch(activity, marketIntent)) return true
+
+        val webUri = Uri.Builder().scheme("https").authority("play.google.com")
+            .appendPath("store").appendPath("apps").appendPath("details")
+            .appendQueryParameter("id", packageName).build()
+        return launch(activity, Intent(Intent.ACTION_VIEW, webUri)
+            .addCategory(Intent.CATEGORY_BROWSABLE))
+    }
+
+    private fun launch(activity: Activity, intent: Intent): Boolean = try {
+        // Attempting directly works without package-visibility queries. This
+        // also handles devices with no Play Store or no browser installed.
+        activity.startActivity(intent)
+        true
+    } catch (_: Exception) {
+        // Includes ActivityNotFoundException and SecurityException. If the
+        // Play attempt fails, the caller tries the HTTPS listing next.
+        false
+    }
+}
+
+/** Announcement history follows installed builds, independently of focus data. */
+object AppUpdateNews {
+    private const val PREFS = "app_update_news"
+    private const val LAST_BUILD = "last_acknowledged_build"
+
+    @Suppress("DEPRECATION")
+    private fun packageInfo(context: Context) =
+        context.packageManager.getPackageInfo(context.packageName, 0)
+
+    @Suppress("DEPRECATION")
+    private fun buildCode(info: android.content.pm.PackageInfo): Long =
+        if (Build.VERSION.SDK_INT >= 28) info.longVersionCode else info.versionCode.toLong()
+
+    fun read(context: Context): Map<String, Any?> {
+        val info = packageInfo(context)
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        return mapOf(
+            "currentBuild" to buildCode(info),
+            "lastAcknowledgedBuild" to if (prefs.contains(LAST_BUILD)) prefs.getLong(LAST_BUILD, 0) else null,
+            "wasUpdated" to (info.lastUpdateTime > info.firstInstallTime)
+        )
+    }
+
+    fun acknowledge(context: Context, build: Long) {
+        require(build > 0 && build <= buildCode(packageInfo(context)))
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val previous = prefs.getLong(LAST_BUILD, 0)
+        // Never lower the watermark after a downgrade or a stale callback.
+        if (build <= previous) return
+        check(prefs.edit().putLong(LAST_BUILD, build).commit()) {
+            "Could not save update-news acknowledgement"
+        }
     }
 }
 

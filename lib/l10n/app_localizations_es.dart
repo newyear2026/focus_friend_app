@@ -772,4 +772,94 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get restoreFailed =>
       'No se pudo conectar con Google Play. Inténtalo más tarde.';
+
+  @override
+  String get updateNewsTitle => 'Novedades';
+
+  @override
+  String get updateNewsSettingsSubtitle =>
+      'Descubre qué cambió en esta actualización';
+
+  @override
+  String get updateNewsHeading => 'Tu rincón,\nun poco mejor';
+
+  @override
+  String get updateNewsIntro => 'Descubre las novedades de esta actualización.';
+
+  @override
+  String get updateNewsMotionTitle => 'Amigos que se mueven con naturalidad';
+
+  @override
+  String get updateNewsMotionBody =>
+      'El tiempo en tu escritorio se siente más acogedor.';
+
+  @override
+  String get updateNewsRecordsTitle => 'Tu concentración, de un vistazo';
+
+  @override
+  String get updateNewsRecordsBody =>
+      'Repasa el tiempo que has ido acumulando.';
+
+  @override
+  String get updateNewsFixesTitle => 'Pequeños errores corregidos';
+
+  @override
+  String get updateNewsFixesBody =>
+      'Hicimos algunos ajustes para que te concentres a gusto.';
+
+  @override
+  String get updateNewsDone => 'Volver a mi escritorio';
+
+  @override
+  String get ourAppsTitle => 'Apps recomendadas';
+
+  @override
+  String get ourAppsSettingsSubtitle => 'Más apps útiles para el día a día';
+
+  @override
+  String get ourAppsEyebrow => 'DESKMATE & FRIENDS';
+
+  @override
+  String get ourAppsHeading => 'Pequeñas herramientas\npara tu día';
+
+  @override
+  String get ourAppsIntro => 'Descubre apps que acompañan tu día a día.';
+
+  @override
+  String get ourAppsViewOnPlay => 'Ver en Google Play';
+
+  @override
+  String get ourAppsOpening => 'Abriendo Google Play';
+
+  @override
+  String get ourAppsOpenFailed =>
+      'No se pudo abrir Google Play. Inténtalo de nuevo en un momento.';
+
+  @override
+  String get ourAppsLoopetCategory => 'Rutinas';
+
+  @override
+  String get ourAppsLoopetDescription =>
+      'Ve de un vistazo tu rutina\nactual y la siguiente.';
+
+  @override
+  String get ourAppsSobritaCategory => 'Gastos e ingresos';
+
+  @override
+  String get ourAppsSobritaDescription =>
+      'Registra ingresos y gastos\ncon amigos de píxeles.';
+
+  @override
+  String get ourAppsRandomFocusCategory => 'Temporizador de concentración';
+
+  @override
+  String get ourAppsRandomFocusDescription =>
+      'Gira la ruleta para elegir\ntu tiempo de concentración.';
+
+  @override
+  String get ourAppsMultiCalCategory => 'Calculadora';
+
+  @override
+  String get ourAppsMultiCalDescription =>
+      'Cálculos, propinas\ny conversión de unidades.';
 }

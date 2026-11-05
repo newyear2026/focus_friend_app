@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:focus_friend_app/ads.dart';
 import 'package:focus_friend_app/focus_friend.dart';
 import 'package:focus_friend_app/friend_picker.dart';
 import 'package:focus_friend_app/main.dart';
+import 'package:focus_friend_app/native_ad_card.dart';
 import 'package:focus_friend_app/purchase_sheet.dart';
 import 'package:focus_friend_app/purchases.dart';
 import 'package:focus_friend_app/session_engine.dart';
@@ -48,6 +50,18 @@ class FakePurchases extends Purchases {
     );
     return next;
   }
+}
+
+/// Keeps the ad placements in the tree without calling the advertising SDK.
+class _TestAdsConsent extends AdsConsent {
+  @override
+  Future<bool> get ready => Future.value(false);
+
+  @override
+  Future<void> start() async {}
+
+  @override
+  Future<bool> privacyOptionsRequired() async => false;
 }
 
 Future<void> _openFriends(WidgetTester tester, FocusFriendApp app) async {
@@ -171,6 +185,91 @@ void main() {
     await tester.pumpWidget(const SizedBox.shrink());
   });
 
+  for (final outcome in [PurchaseOutcome.cancelled, PurchaseOutcome.failed]) {
+    testWidgets('a ${outcome.name} friend purchase can be retried', (
+      tester,
+    ) async {
+      final purchases = FakePurchases()..next = outcome;
+      final engine = SessionEngine(MemoryStore());
+      await _openFriends(
+        tester,
+        FocusFriendApp(
+          engine: engine,
+          purchases: purchases,
+          locale: const Locale('ko'),
+        ),
+      );
+      await tester.tap(find.byKey(const ValueKey('friend-card-otter')));
+      await tester.tap(find.byKey(const ValueKey('friend-preview')));
+      await pumpPreviewTransition(tester);
+      final buy = find.byKey(const ValueKey('friend-buy'));
+      await tester.tap(buy);
+      await pumpPreviewTransition(tester);
+
+      expect(engine.state.friend, FocusFriend.redpanda);
+      expect(purchases.has(Products.otter), isFalse);
+      expect(find.byType(FriendPreview), findsOneWidget);
+      expect(
+        tester
+            .widget<FilledButton>(
+              find.descendant(of: buy, matching: find.byType(FilledButton)),
+            )
+            .onPressed,
+        isNotNull,
+      );
+      expect(
+        find.text('결제를 마치지 못했어요. 다시 시도해 주세요.'),
+        outcome == PurchaseOutcome.failed ? findsOneWidget : findsNothing,
+      );
+
+      purchases.next = PurchaseOutcome.owned;
+      await tester.tap(buy);
+      await pumpPreviewTransition(tester);
+      expect(purchases.bought, [Products.otter, Products.otter]);
+      expect(engine.state.friend, FocusFriend.otter);
+      expect(find.byType(FriendPreview), findsNothing);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+    });
+
+    testWidgets('a ${outcome.name} bundle purchase can be retried', (
+      tester,
+    ) async {
+      final purchases = FakePurchases()..next = outcome;
+      await _openFriends(
+        tester,
+        FocusFriendApp(
+          engine: SessionEngine(MemoryStore()),
+          purchases: purchases,
+          locale: const Locale('ko'),
+        ),
+      );
+      await tester.tap(find.byKey(const ValueKey('bundle-banner')));
+      await tester.pumpAndSettle();
+      final buy = find.byKey(const ValueKey('bundle-buy'));
+      await tester.tap(buy);
+      await tester.pumpAndSettle();
+
+      expect(purchases.has(Products.allFriends), isFalse);
+      expect(find.byType(BundleSheet), findsOneWidget);
+      expect(tester.widget<FilledButton>(buy).onPressed, isNotNull);
+      expect(
+        find.text('결제를 마치지 못했어요. 다시 시도해 주세요.'),
+        outcome == PurchaseOutcome.failed ? findsOneWidget : findsNothing,
+      );
+
+      purchases.next = PurchaseOutcome.owned;
+      await tester.tap(buy);
+      await tester.pumpAndSettle();
+      expect(purchases.bought, [Products.allFriends, Products.allFriends]);
+      expect(purchases.adsRemoved, isTrue);
+      expect(find.byType(BundleSheet), findsNothing);
+      expect(find.byType(LockChip), findsNothing);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+    });
+  }
+
   testWidgets('the bundle sheet lists what it unlocks and buys it', (
     tester,
   ) async {
@@ -277,6 +376,55 @@ void main() {
     expect(find.text('₩3,500'), findsOneWidget);
     expect(find.text('결제 대기 중'), findsOneWidget);
     expect(find.byKey(const ValueKey('restore-purchases')), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
+  testWidgets('buying ad removal removes settings and records ad placements', (
+    tester,
+  ) async {
+    final purchases = FakePurchases();
+    await _openFriends(
+      tester,
+      FocusFriendApp(
+        engine: SessionEngine(MemoryStore()),
+        purchases: purchases,
+        ads: _TestAdsConsent(),
+        locale: const Locale('ko'),
+      ),
+    );
+    await tester.tap(find.byKey(const ValueKey('desk-navigation-2')));
+    await tester.pumpAndSettle();
+    expect(find.byType(NativeAdCard), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('desk-navigation-3')));
+    await tester.pumpAndSettle();
+    final removeAds = find.byKey(const ValueKey('buy-remove-ads'));
+    await tester.scrollUntilVisible(
+      removeAds,
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(NativeAdCard), findsOneWidget);
+    await tester.tap(removeAds);
+    await tester.pumpAndSettle();
+
+    expect(purchases.bought, [Products.removeAds]);
+    expect(purchases.adsRemoved, isTrue);
+    expect(find.byType(NativeAdCard), findsNothing);
+    expect(tester.widget<ListTile>(removeAds).onTap, isNull);
+    expect(
+      find.descendant(of: removeAds, matching: find.text('보유')),
+      findsOneWidget,
+    );
+    for (final id in Products.friends) {
+      expect(purchases.has(id), isFalse);
+    }
+
+    await tester.tap(find.byKey(const ValueKey('desk-navigation-2')));
+    await tester.pumpAndSettle();
+    expect(find.byType(NativeAdCard), findsNothing);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox.shrink());
   });

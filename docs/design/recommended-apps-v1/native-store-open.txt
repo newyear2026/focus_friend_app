@@ -1,0 +1,8 @@
+2026-11-05 — Android emulator-5554, dev.jaewook.deskmate.verification
+Settings → Recommended apps → first View on Google Play button (LOOPET).
+Observed foreground activity after tap:
+topResumedActivity=ActivityRecord{24168329 u0 com.android.vending/com.google.android.finsky.unauthenticated.activity.UnauthenticatedMainActivity t401}
+Observed UI: Sign in to find the latest Android apps, games, movies, music, & more / Sign in
+Google Play launch succeeded; this emulator has no signed-in Play account, so listing rendering was not verified.
+After Android Back navigation: verified Deskmate settings foreground again; Recommended apps and What's new entries present.
+topResumedActivity=ActivityRecord{35585976 u0 dev.jaewook.deskmate.verification/dev.jaewook.prototype.focus_friend_app.MainActivity t405}

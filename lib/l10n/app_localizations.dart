@@ -1433,6 +1433,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t reach Google Play. Please try again later.'**
   String get restoreFailed;
+
+  /// No description provided for @updateNewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s new'**
+  String get updateNewsTitle;
+
+  /// No description provided for @updateNewsSettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'See what changed in this update'**
+  String get updateNewsSettingsSubtitle;
+
+  /// No description provided for @updateNewsHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'A little room,\na little better'**
+  String get updateNewsHeading;
+
+  /// No description provided for @updateNewsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s what\'s new in this update.'**
+  String get updateNewsIntro;
+
+  /// No description provided for @updateNewsMotionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'More natural friend movements'**
+  String get updateNewsMotionTitle;
+
+  /// No description provided for @updateNewsMotionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Time at your desk feels a little cozier.'**
+  String get updateNewsMotionBody;
+
+  /// No description provided for @updateNewsRecordsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your focus, at a glance'**
+  String get updateNewsRecordsTitle;
+
+  /// No description provided for @updateNewsRecordsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Look back on the time you\'ve built up.'**
+  String get updateNewsRecordsBody;
+
+  /// No description provided for @updateNewsFixesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Little fixes along the way'**
+  String get updateNewsFixesTitle;
+
+  /// No description provided for @updateNewsFixesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A few refinements to help you focus comfortably.'**
+  String get updateNewsFixesBody;
+
+  /// No description provided for @updateNewsDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to my desk'**
+  String get updateNewsDone;
+
+  /// No description provided for @ourAppsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended apps'**
+  String get ourAppsTitle;
+
+  /// No description provided for @ourAppsSettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'More useful apps for everyday life'**
+  String get ourAppsSettingsSubtitle;
+
+  /// No description provided for @ourAppsEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'DESKMATE & FRIENDS'**
+  String get ourAppsEyebrow;
+
+  /// No description provided for @ourAppsHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Little tools for\nyour everyday'**
+  String get ourAppsHeading;
+
+  /// No description provided for @ourAppsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Meet apps that work well alongside your day.'**
+  String get ourAppsIntro;
+
+  /// No description provided for @ourAppsViewOnPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'View on Google Play'**
+  String get ourAppsViewOnPlay;
+
+  /// No description provided for @ourAppsOpening.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening Google Play'**
+  String get ourAppsOpening;
+
+  /// No description provided for @ourAppsOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t open Google Play. Please try again shortly.'**
+  String get ourAppsOpenFailed;
+
+  /// No description provided for @ourAppsLoopetCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Routines'**
+  String get ourAppsLoopetCategory;
+
+  /// No description provided for @ourAppsLoopetDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'See your current routine\nand what\'s next at a glance.'**
+  String get ourAppsLoopetDescription;
+
+  /// No description provided for @ourAppsSobritaCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Expense tracker'**
+  String get ourAppsSobritaCategory;
+
+  /// No description provided for @ourAppsSobritaDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Track income and spending\nwith pixel friends.'**
+  String get ourAppsSobritaDescription;
+
+  /// No description provided for @ourAppsRandomFocusCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus timer'**
+  String get ourAppsRandomFocusCategory;
+
+  /// No description provided for @ourAppsRandomFocusDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Spin the wheel to choose\nyour focus time.'**
+  String get ourAppsRandomFocusDescription;
+
+  /// No description provided for @ourAppsMultiCalCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculator'**
+  String get ourAppsMultiCalCategory;
+
+  /// No description provided for @ourAppsMultiCalDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculations, tips\nand unit conversions.'**
+  String get ourAppsMultiCalDescription;
 }
 
 class _AppLocalizationsDelegate
