@@ -364,7 +364,8 @@ class SessionEngine {
       s.completedMs += a.actualMs;
       s.completedCount++;
       for (final prop in deskProps) {
-        if (s.completedMs >= prop.unlockMs &&
+        if (!prop.availableByDefault &&
+            s.completedMs >= prop.unlockMs &&
             !s.unlocks.containsKey(prop.key)) {
           s.unlocks[prop.key] = a.finishedAt!;
           a.rewards = [...a.rewards, prop.key];

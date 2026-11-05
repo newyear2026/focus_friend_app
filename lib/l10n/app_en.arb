@@ -97,7 +97,8 @@
   "propMug": "Warm mug",
   "propLamp": "Cozy lamp",
   "collectionHeading": "Filling the room, slowly",
-  "collectionSubtitle": "Three set spots, filled by your focus.",
+  "collectionSubtitle": "Start with a lamp. Add more items as you focus.",
+  "unlockDefault": "Included from the start",
   "unlockFirstFocus": "First completed focus",
   "unlockAfterMinutes": "{minutes} min of completed focus in total",
   "@unlockAfterMinutes": {
@@ -270,7 +271,7 @@
   "propShortPlant": "plant",
   "propShortMug": "mug",
   "propShortLamp": "lamp",
-  "sceneLabel": "{ambience} desk. A red panda {pose}. Earned items: {props}",
+  "sceneLabel": "{ambience} desk. A red panda {pose}. Desk items: {props}",
   "@sceneLabel": {
     "description": "Screen reader description of the room illustration.",
     "placeholders": {
@@ -416,5 +417,37 @@
         "type": "String"
       }
     }
-  }
+  },
+  "friendBuy": "Join this friend · {price}",
+  "@friendBuy": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "friendLocked": "Locked",
+  "purchasePending": "Payment pending",
+  "purchasePendingNotice": "Waiting for your payment. It unlocks on its own once paid.",
+  "purchaseUnavailable": "Not available to buy right now",
+  "purchaseFailed": "The purchase didn't go through. Please try again.",
+  "purchaseOwned": "Owned",
+  "purchasesTitle": "Purchases",
+  "bundleTitle": "All friends bundle",
+  "bundleSubtitle": "Ad removal included · one-time purchase",
+  "bundleNote": "Friends added later are sold separately.",
+  "bundleBuy": "Get them all · {price}",
+  "@bundleBuy": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "removeAdsTitle": "Remove ads",
+  "removeAdsSubtitle": "Turns off ads in Records and Settings",
+  "restorePurchases": "Restore purchases",
+  "restoreSubtitle": "After reinstalling or changing phones",
+  "restoreDone": "Your purchases are up to date.",
+  "restoreFailed": "Couldn't reach Google Play. Please try again later."
 }

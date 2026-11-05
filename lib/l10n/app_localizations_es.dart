@@ -171,7 +171,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String get collectionHeading => 'Llenando el cuarto, poco a poco';
 
   @override
-  String get collectionSubtitle => 'Tres lugares fijos, llenos con tu enfoque.';
+  String get collectionSubtitle =>
+      'Empieza con una lámpara. Añade objetos al concentrarte.';
+
+  @override
+  String get unlockDefault => 'Incluida desde el inicio';
 
   @override
   String get unlockFirstFocus => 'Primer enfoque completado';
@@ -523,7 +527,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String sceneLabel(String ambience, String pose, String props) {
-    return 'El escritorio $ambience. Un panda rojo $pose. Objetos obtenidos: $props';
+    return 'El escritorio $ambience. Un panda rojo $pose. Objetos del escritorio: $props';
   }
 
   @override
@@ -705,4 +709,67 @@ class AppLocalizationsEs extends AppLocalizations {
   String hoursShort(String hours) {
     return '$hours h';
   }
+
+  @override
+  String friendBuy(String price) {
+    return 'Elegir este amigo · $price';
+  }
+
+  @override
+  String get friendLocked => 'Bloqueado';
+
+  @override
+  String get purchasePending => 'Pago pendiente';
+
+  @override
+  String get purchasePendingNotice =>
+      'Esperando tu pago. Se desbloquea solo cuando se complete.';
+
+  @override
+  String get purchaseUnavailable => 'No se puede comprar ahora';
+
+  @override
+  String get purchaseFailed =>
+      'No se pudo completar la compra. Inténtalo de nuevo.';
+
+  @override
+  String get purchaseOwned => 'Comprado';
+
+  @override
+  String get purchasesTitle => 'Compras';
+
+  @override
+  String get bundleTitle => 'Paquete de todos los amigos';
+
+  @override
+  String get bundleSubtitle => 'Incluye quitar anuncios · pago único';
+
+  @override
+  String get bundleNote =>
+      'Los amigos que lleguen después se venden por separado.';
+
+  @override
+  String bundleBuy(String price) {
+    return 'Obtener todo · $price';
+  }
+
+  @override
+  String get removeAdsTitle => 'Quitar anuncios';
+
+  @override
+  String get removeAdsSubtitle => 'Quita los anuncios de Registros y Ajustes';
+
+  @override
+  String get restorePurchases => 'Restaurar compras';
+
+  @override
+  String get restoreSubtitle =>
+      'Si reinstalaste la app o cambiaste de teléfono';
+
+  @override
+  String get restoreDone => 'Tus compras están al día.';
+
+  @override
+  String get restoreFailed =>
+      'No se pudo conectar con Google Play. Inténtalo más tarde.';
 }

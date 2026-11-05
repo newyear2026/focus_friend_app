@@ -375,8 +375,14 @@ abstract class AppLocalizations {
   /// No description provided for @collectionSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Three set spots, filled by your focus.'**
+  /// **'Start with a lamp. Add more items as you focus.'**
   String get collectionSubtitle;
+
+  /// No description provided for @unlockDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Included from the start'**
+  String get unlockDefault;
 
   /// No description provided for @unlockFirstFocus.
   ///
@@ -999,7 +1005,7 @@ abstract class AppLocalizations {
   /// Screen reader description of the room illustration.
   ///
   /// In en, this message translates to:
-  /// **'{ambience} desk. A red panda {pose}. Earned items: {props}'**
+  /// **'{ambience} desk. A red panda {pose}. Desk items: {props}'**
   String sceneLabel(String ambience, String pose, String props);
 
   /// No description provided for @navFriends.
@@ -1319,6 +1325,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{hours} h'**
   String hoursShort(String hours);
+
+  /// No description provided for @friendBuy.
+  ///
+  /// In en, this message translates to:
+  /// **'Join this friend · {price}'**
+  String friendBuy(String price);
+
+  /// No description provided for @friendLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Locked'**
+  String get friendLocked;
+
+  /// No description provided for @purchasePending.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment pending'**
+  String get purchasePending;
+
+  /// No description provided for @purchasePendingNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for your payment. It unlocks on its own once paid.'**
+  String get purchasePendingNotice;
+
+  /// No description provided for @purchaseUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available to buy right now'**
+  String get purchaseUnavailable;
+
+  /// No description provided for @purchaseFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The purchase didn\'t go through. Please try again.'**
+  String get purchaseFailed;
+
+  /// No description provided for @purchaseOwned.
+  ///
+  /// In en, this message translates to:
+  /// **'Owned'**
+  String get purchaseOwned;
+
+  /// No description provided for @purchasesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases'**
+  String get purchasesTitle;
+
+  /// No description provided for @bundleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All friends bundle'**
+  String get bundleTitle;
+
+  /// No description provided for @bundleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad removal included · one-time purchase'**
+  String get bundleSubtitle;
+
+  /// No description provided for @bundleNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Friends added later are sold separately.'**
+  String get bundleNote;
+
+  /// No description provided for @bundleBuy.
+  ///
+  /// In en, this message translates to:
+  /// **'Get them all · {price}'**
+  String bundleBuy(String price);
+
+  /// No description provided for @removeAdsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove ads'**
+  String get removeAdsTitle;
+
+  /// No description provided for @removeAdsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns off ads in Records and Settings'**
+  String get removeAdsSubtitle;
+
+  /// No description provided for @restorePurchases.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases'**
+  String get restorePurchases;
+
+  /// No description provided for @restoreSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'After reinstalling or changing phones'**
+  String get restoreSubtitle;
+
+  /// No description provided for @restoreDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Your purchases are up to date.'**
+  String get restoreDone;
+
+  /// No description provided for @restoreFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t reach Google Play. Please try again later.'**
+  String get restoreFailed;
 }
 
 class _AppLocalizationsDelegate

@@ -160,7 +160,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get collectionHeading => '방을 채우는 시간';
 
   @override
-  String get collectionSubtitle => '정해진 세 자리에, 나의 집중이 남아요.';
+  String get collectionSubtitle => '조명과 함께 시작하고, 집중으로 소품을 더해요.';
+
+  @override
+  String get unlockDefault => '기본 제공';
 
   @override
   String get unlockFirstFocus => '첫 정상 집중 완료';
@@ -503,7 +506,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String sceneLabel(String ambience, String pose, String props) {
-    return '$ambience의 책상. $pose 랫서팬더. 얻은 소품 $props';
+    return '$ambience의 책상. $pose 랫서팬더. 책상 소품 $props';
   }
 
   @override
@@ -682,4 +685,62 @@ class AppLocalizationsKo extends AppLocalizations {
   String hoursShort(String hours) {
     return '$hours시간';
   }
+
+  @override
+  String friendBuy(String price) {
+    return '$price에 함께하기';
+  }
+
+  @override
+  String get friendLocked => '잠김';
+
+  @override
+  String get purchasePending => '결제 대기 중';
+
+  @override
+  String get purchasePendingNotice => '결제를 기다리고 있어요. 결제가 끝나면 자동으로 열려요.';
+
+  @override
+  String get purchaseUnavailable => '지금은 구매할 수 없어요';
+
+  @override
+  String get purchaseFailed => '결제를 마치지 못했어요. 다시 시도해 주세요.';
+
+  @override
+  String get purchaseOwned => '보유';
+
+  @override
+  String get purchasesTitle => '구매';
+
+  @override
+  String get bundleTitle => '모든 친구 묶음';
+
+  @override
+  String get bundleSubtitle => '광고 제거 포함 · 한 번 결제';
+
+  @override
+  String get bundleNote => '앞으로 나올 친구는 따로 판매해요.';
+
+  @override
+  String bundleBuy(String price) {
+    return '$price에 모두 가지기';
+  }
+
+  @override
+  String get removeAdsTitle => '광고 제거';
+
+  @override
+  String get removeAdsSubtitle => '기록과 설정의 광고를 꺼요';
+
+  @override
+  String get restorePurchases => '구매 복원';
+
+  @override
+  String get restoreSubtitle => '다시 설치했거나 기기를 바꿨을 때';
+
+  @override
+  String get restoreDone => '구매 내역을 다시 불러왔어요.';
+
+  @override
+  String get restoreFailed => 'Google Play에 연결하지 못했어요. 잠시 후 다시 시도해 주세요.';
 }

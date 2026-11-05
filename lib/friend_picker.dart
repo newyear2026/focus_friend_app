@@ -3,6 +3,8 @@ import 'desk_style.dart';
 import 'focus_friend.dart';
 import 'l10n/app_localizations.dart';
 import 'localized_names.dart';
+import 'purchase_sheet.dart';
+import 'purchases.dart';
 import 'room_ambience.dart';
 import 'study_scene.dart';
 
@@ -17,11 +19,15 @@ class FriendPicker extends StatefulWidget {
     required this.unlocked,
     required this.onApply,
     required this.onApplied,
+    this.purchases,
   });
   final FocusFriend current;
   final Set<String> unlocked;
   final Future<void> Function(FocusFriend) onApply;
   final VoidCallback onApplied;
+
+  /// Null means every friend is owned (tests and builds without billing).
+  final Purchases? purchases;
 
   @override
   State<FriendPicker> createState() => _FriendPickerState();
@@ -36,6 +42,7 @@ class _FriendPickerState extends State<FriendPicker> {
         builder: (_) => FriendPreview(
           friend: selected,
           unlocked: widget.unlocked,
+          purchases: widget.purchases,
           onApply: () => widget.onApply(selected),
         ),
       ),
@@ -44,8 +51,19 @@ class _FriendPickerState extends State<FriendPicker> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: widget.purchases ?? Listenable.merge(const []),
+    builder: _build,
+  );
+
+  Widget _build(BuildContext context, Widget? _) {
     final l10n = AppLocalizations.of(context);
+    final purchases = widget.purchases;
+    final showBundle =
+        purchases != null &&
+        purchases.sells &&
+        !purchases.has(Products.allFriends) &&
+        FocusFriend.values.any((f) => !purchases.hasFriend(f));
     return ColoredBox(
       color: _paper,
       child: DefaultTextStyle(
@@ -76,6 +94,11 @@ class _FriendPickerState extends State<FriendPicker> {
                 ],
               ),
             ),
+            if (showBundle)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                child: BundleBanner(purchases: purchases),
+              ),
             Expanded(
               child: LayoutBuilder(
                 builder: (context, constraints) {
@@ -128,11 +151,15 @@ class _FriendPickerState extends State<FriendPicker> {
                     itemBuilder: (context, index) {
                       final friend = FocusFriend.values[index];
                       final chosen = selected == friend;
+                      final tag = lockTag(l10n, purchases, friend);
                       return Semantics(
                         selected: chosen,
                         button: true,
-                        label:
-                            '${friendName(l10n, friend)}, ${friendRoom(l10n, friend)}',
+                        label: [
+                          friendName(l10n, friend),
+                          friendRoom(l10n, friend),
+                          ?tag,
+                        ].join(', '),
                         child: Material(
                           color: _paper,
                           shape: RoundedRectangleBorder(
@@ -184,6 +211,12 @@ class _FriendPickerState extends State<FriendPicker> {
                                               ),
                                             ),
                                           ),
+                                        ),
+                                      if (tag != null)
+                                        Positioned(
+                                          top: 8,
+                                          left: 8,
+                                          child: LockChip(text: tag),
                                         ),
                                       if (chosen && friend != widget.current)
                                         const Positioned(
@@ -307,10 +340,12 @@ class FriendPreview extends StatefulWidget {
     required this.friend,
     required this.unlocked,
     required this.onApply,
+    this.purchases,
   });
   final FocusFriend friend;
   final Set<String> unlocked;
   final Future<void> Function() onApply;
+  final Purchases? purchases;
 
   @override
   State<FriendPreview> createState() => _FriendPreviewState();
@@ -319,6 +354,83 @@ class FriendPreview extends StatefulWidget {
 class _FriendPreviewState extends State<FriendPreview> {
   bool saving = false;
   bool failed = false;
+  bool buying = false;
+
+  Future<void> _buy(String id) async {
+    if (buying || saving) return;
+    setState(() => buying = true);
+    final outcome = await widget.purchases!.buy(id);
+    if (!mounted) return;
+    setState(() => buying = false);
+    final l10n = AppLocalizations.of(context);
+    switch (outcome) {
+      case PurchaseOutcome.owned:
+        await _apply();
+      case PurchaseOutcome.pending:
+        _notice(l10n.purchasePendingNotice);
+      case PurchaseOutcome.failed:
+        _notice(l10n.purchaseFailed);
+      case PurchaseOutcome.cancelled:
+        break;
+    }
+  }
+
+  void _notice(String text) => ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(behavior: SnackBarBehavior.floating, content: Text(text)),
+    );
+
+  Widget _action(AppLocalizations l10n) {
+    final purchases = widget.purchases;
+    final id = Products.forFriend(widget.friend);
+    if (purchases == null || id == null || purchases.hasFriend(widget.friend)) {
+      return _FriendButton(
+        key: const ValueKey('friend-apply'),
+        onPressed: saving ? null : _apply,
+        text: saving ? l10n.saving : l10n.friendApply,
+      );
+    }
+    final price = purchases.price(id);
+    final pending = purchases.isPending(id);
+    final bundle = purchases.price(Products.allFriends);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (pending)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Text(
+              l10n.purchasePendingNotice,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: _muted, fontSize: 13, height: 1.5),
+            ),
+          ),
+        _FriendButton(
+          key: const ValueKey('friend-buy'),
+          onPressed: pending || price == null || buying || saving
+              ? null
+              : () => _buy(id),
+          text: pending
+              ? l10n.purchasePending
+              : price == null
+              ? l10n.purchaseUnavailable
+              : l10n.friendBuy(price),
+        ),
+        if (bundle != null && !purchases.isPending(Products.allFriends))
+          TextButton(
+            key: const ValueKey('friend-open-bundle'),
+            style: TextButton.styleFrom(
+              foregroundColor: const Color(0xFFA26030),
+            ),
+            onPressed: buying || saving
+                ? null
+                : () => showBundleSheet(context, purchases),
+            child: Text('${l10n.bundleTitle} · $bundle'),
+          ),
+      ],
+    );
+  }
 
   Future<void> _apply() async {
     if (saving) return;
@@ -400,10 +512,9 @@ class _FriendPreviewState extends State<FriendPreview> {
               ),
             ),
           const SizedBox(height: 22),
-          _FriendButton(
-            key: const ValueKey('friend-apply'),
-            onPressed: saving ? null : _apply,
-            text: saving ? l10n.saving : l10n.friendApply,
+          ListenableBuilder(
+            listenable: widget.purchases ?? Listenable.merge(const []),
+            builder: (context, _) => _action(l10n),
           ),
         ],
       ),
@@ -422,7 +533,7 @@ class _FriendPreviewState extends State<FriendPreview> {
       animate: widget.friend.hasRestMotion,
     );
     return PopScope(
-      canPop: !saving,
+      canPop: !saving && !buying,
       child: Scaffold(
         backgroundColor: _paper,
         appBar: scrollPage

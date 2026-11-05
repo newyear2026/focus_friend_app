@@ -169,7 +169,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get collectionHeading => 'Filling the room, slowly';
 
   @override
-  String get collectionSubtitle => 'Three set spots, filled by your focus.';
+  String get collectionSubtitle =>
+      'Start with a lamp. Add more items as you focus.';
+
+  @override
+  String get unlockDefault => 'Included from the start';
 
   @override
   String get unlockFirstFocus => 'First completed focus';
@@ -520,7 +524,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String sceneLabel(String ambience, String pose, String props) {
-    return '$ambience desk. A red panda $pose. Earned items: $props';
+    return '$ambience desk. A red panda $pose. Desk items: $props';
   }
 
   @override
@@ -701,4 +705,65 @@ class AppLocalizationsEn extends AppLocalizations {
   String hoursShort(String hours) {
     return '$hours h';
   }
+
+  @override
+  String friendBuy(String price) {
+    return 'Join this friend · $price';
+  }
+
+  @override
+  String get friendLocked => 'Locked';
+
+  @override
+  String get purchasePending => 'Payment pending';
+
+  @override
+  String get purchasePendingNotice =>
+      'Waiting for your payment. It unlocks on its own once paid.';
+
+  @override
+  String get purchaseUnavailable => 'Not available to buy right now';
+
+  @override
+  String get purchaseFailed =>
+      'The purchase didn\'t go through. Please try again.';
+
+  @override
+  String get purchaseOwned => 'Owned';
+
+  @override
+  String get purchasesTitle => 'Purchases';
+
+  @override
+  String get bundleTitle => 'All friends bundle';
+
+  @override
+  String get bundleSubtitle => 'Ad removal included · one-time purchase';
+
+  @override
+  String get bundleNote => 'Friends added later are sold separately.';
+
+  @override
+  String bundleBuy(String price) {
+    return 'Get them all · $price';
+  }
+
+  @override
+  String get removeAdsTitle => 'Remove ads';
+
+  @override
+  String get removeAdsSubtitle => 'Turns off ads in Records and Settings';
+
+  @override
+  String get restorePurchases => 'Restore purchases';
+
+  @override
+  String get restoreSubtitle => 'After reinstalling or changing phones';
+
+  @override
+  String get restoreDone => 'Your purchases are up to date.';
+
+  @override
+  String get restoreFailed =>
+      'Couldn\'t reach Google Play. Please try again later.';
 }

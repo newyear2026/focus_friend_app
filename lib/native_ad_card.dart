@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'desk_style.dart';
 
-/// One native ad in Google's small template, dressed in the desk colors.
+/// One native ad with Google's media-capable template in the desk colors.
 /// Takes no space until an ad has loaded, so a refused consent, no network
 /// or no fill leaves the screen as it was.
 class NativeAdCard extends StatefulWidget {
@@ -41,7 +41,9 @@ class _NativeAdCardState extends State<NativeAdCard> {
         },
       ),
       nativeTemplateStyle: NativeTemplateStyle(
-        templateType: TemplateType.small,
+        // The small template has no MediaView and fails native-ad validation
+        // when AdMob returns an image/video creative that needs one.
+        templateType: TemplateType.medium,
         mainBackgroundColor: deskCream,
         cornerRadius: 16,
         callToActionTextStyle: NativeTemplateTextStyle(
@@ -79,7 +81,9 @@ class _NativeAdCardState extends State<NativeAdCard> {
     if (!loaded || ad == null) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      child: SizedBox(height: 96, child: AdWidget(ad: ad)),
+      // Match the Android medium template's 350 dp height so its MediaView,
+      // attribution, text and call to action are all inside the ad bounds.
+      child: SizedBox(height: 350, child: AdWidget(ad: ad)),
     );
   }
 }

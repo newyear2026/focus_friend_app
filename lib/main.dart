@@ -14,8 +14,11 @@ import 'l10n/app_localizations.dart';
 import 'language_sheet.dart';
 import 'native_ad_card.dart';
 import 'localized_names.dart';
+import 'purchase_sheet.dart';
+import 'purchases.dart';
 import 'sound_sheet.dart';
 import 'session_stop_sheet.dart';
+import 'focus_friend.dart';
 import 'friend_picker.dart';
 
 const ink = Color(0xFF50473D);
@@ -32,6 +35,7 @@ void main() {
       screen: ScreenAwake(),
       language: AppLanguageStore(),
       ads: AdsConsent(),
+      purchases: PlayPurchases(),
     ),
   );
 }
@@ -46,11 +50,15 @@ class FocusFriendApp extends StatefulWidget {
     this.language,
     this.locale,
     this.ads,
+    this.purchases,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
   final FocusSoundPlayer? sounds;
   final ScreenAwake? screen;
+
+  /// Null in tests: every friend is owned and nothing is for sale.
+  final Purchases? purchases;
 
   /// Keeps the Settings language choice; null keeps it for this run only.
   final AppLanguageStore? language;
@@ -75,9 +83,10 @@ class _FocusFriendAppState extends State<FocusFriendApp>
     WidgetsBinding.instance.addObserver(this);
     system = WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag();
     unawaited(_loadLanguage());
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => unawaited(widget.ads?.start()),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      unawaited(widget.ads?.start());
+      unawaited(widget.purchases?.start());
+    });
   }
 
   @override
@@ -131,6 +140,7 @@ class _FocusFriendAppState extends State<FocusFriendApp>
       systemLanguage: system,
       onLanguage: _setLanguage,
       ads: widget.ads,
+      purchases: widget.purchases,
     ),
   );
 }
@@ -146,6 +156,7 @@ class RoomScreen extends StatefulWidget {
     this.systemLanguage,
     this.onLanguage,
     this.ads,
+    this.purchases,
   });
   final SessionEngine engine;
   final LocalAlerts? alerts;
@@ -156,6 +167,7 @@ class RoomScreen extends StatefulWidget {
   final String? language, systemLanguage;
   final Future<void> Function(String?)? onLanguage;
   final AdsConsent? ads;
+  final Purchases? purchases;
   @override
   State<RoomScreen> createState() => _RoomScreenState();
 }
@@ -179,6 +191,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     unawaited(_restore());
     unawaited(_loadAdPrivacy());
+    widget.purchases?.addListener(_purchasesChanged);
     ticker = Timer.periodic(const Duration(milliseconds: 250), (_) {
       if (!ready || busy || !mounted || !foreground || error != null) return;
       final a = engine.state.active;
@@ -197,6 +210,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   @override
   void dispose() {
     ticker?.cancel();
+    widget.purchases?.removeListener(_purchasesChanged);
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -204,7 +218,28 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     setState(() => foreground = state == AppLifecycleState.resumed);
-    if (foreground) unawaited(_restore());
+    if (foreground) {
+      unawaited(_restore());
+      // A cash payment may have cleared, or a refund gone through.
+      unawaited(widget.purchases?.refresh());
+    }
+  }
+
+  void _purchasesChanged() {
+    if (!mounted) return;
+    setState(() {});
+    _leaveLockedFriend();
+  }
+
+  /// A friend that Google Play says is not owned (never bought, or refunded)
+  /// goes back to the red panda. Waits for a definite answer from Play so a
+  /// slow or offline launch never takes a bought friend away.
+  void _leaveLockedFriend() {
+    final purchases = widget.purchases;
+    final state = engine.state;
+    if (purchases == null || !purchases.checked || !ready) return;
+    if (state.active != null || purchases.hasFriend(state.friend)) return;
+    unawaited(_act(() => engine.saveFriend(FocusFriend.redpanda)));
   }
 
   Future<void> _loadAdPrivacy() async {
@@ -226,6 +261,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       setState(() {
         ready = true;
       });
+      _leaveLockedFriend();
     }
   }
 
@@ -402,6 +438,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
                         ? FriendPicker(
                             current: state.friend,
                             unlocked: state.unlocks.keys.toSet(),
+                            purchases: widget.purchases,
                             onApply: engine.saveFriend,
                             onApplied: () => setState(() => page = 0),
                           )
@@ -752,18 +789,25 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
         ),
         const Divider(),
         ListTile(
+          key: const ValueKey('collection-tile'),
           contentPadding: EdgeInsets.zero,
           leading: _settingTile(Icons.weekend_rounded),
           title: Text(
             l10n.collectionTitle,
             style: const TextStyle(fontWeight: FontWeight.w700),
           ),
-          subtitle: Text(l10n.collectionCount(state.unlocks.length)),
+          subtitle: Text(
+            l10n.collectionCount(
+              deskProps
+                  .where((prop) => prop.isAvailable(state.unlocks.keys))
+                  .length,
+            ),
+          ),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               for (final prop in deskProps)
-                if (state.unlocks.containsKey(prop.key))
+                if (prop.isAvailable(state.unlocks.keys))
                   Image.asset(
                     prop.asset,
                     width: 30,
@@ -785,6 +829,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
             ),
           ),
         ),
+        ..._purchaseTiles(),
         ?_nativeAd(AdUnits.nativeSettings),
         const Divider(height: 36),
         Text(
@@ -869,8 +914,105 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     );
   }
 
-  /// Null in tests, where there is no ad SDK.
+  List<Widget> _purchaseTiles() {
+    final purchases = widget.purchases;
+    if (purchases == null || !purchases.sells) return const [];
+    final l10n = AppLocalizations.of(context);
+    Widget status(String id) {
+      if (purchases.has(id)) {
+        return Text(
+          l10n.purchaseOwned,
+          style: const TextStyle(color: deskGreen, fontWeight: FontWeight.w700),
+        );
+      }
+      if (purchases.isPending(id)) {
+        return Text(
+          l10n.purchasePending,
+          style: const TextStyle(color: deskMuted, fontSize: 13),
+        );
+      }
+      final price = purchases.price(id);
+      return price == null
+          ? const Icon(Icons.chevron_right_rounded)
+          : Text(price, style: const TextStyle(fontWeight: FontWeight.w800));
+    }
+
+    bool open(String id) =>
+        !purchases.has(id) &&
+        !purchases.isPending(id) &&
+        purchases.price(id) != null;
+    return [
+      const Divider(),
+      Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 2),
+        child: _label(l10n.purchasesTitle),
+      ),
+      ListTile(
+        key: const ValueKey('open-bundle'),
+        contentPadding: EdgeInsets.zero,
+        leading: _settingTile(Icons.pets_rounded),
+        title: Text(
+          l10n.bundleTitle,
+          style: const TextStyle(fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(l10n.bundleSubtitle),
+        trailing: status(Products.allFriends),
+        onTap: () => showBundleSheet(context, purchases),
+      ),
+      ListTile(
+        key: const ValueKey('buy-remove-ads'),
+        contentPadding: EdgeInsets.zero,
+        leading: _settingTile(Icons.hide_source_rounded),
+        title: Text(
+          l10n.removeAdsTitle,
+          style: const TextStyle(fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(l10n.removeAdsSubtitle),
+        trailing: status(Products.removeAds),
+        onTap: open(Products.removeAds)
+            ? () => _buyInSettings(Products.removeAds)
+            : null,
+      ),
+      ListTile(
+        key: const ValueKey('restore-purchases'),
+        contentPadding: EdgeInsets.zero,
+        leading: _settingTile(Icons.restore_rounded),
+        title: Text(
+          l10n.restorePurchases,
+          style: const TextStyle(fontWeight: FontWeight.w700),
+        ),
+        subtitle: Text(l10n.restoreSubtitle),
+        onTap: () async {
+          final ok = await purchases.refresh();
+          if (mounted) _snack(ok ? l10n.restoreDone : l10n.restoreFailed);
+        },
+      ),
+    ];
+  }
+
+  Future<void> _buyInSettings(String id) async {
+    final l10n = AppLocalizations.of(context);
+    final outcome = await widget.purchases!.buy(id);
+    if (!mounted) return;
+    switch (outcome) {
+      case PurchaseOutcome.pending:
+        _snack(l10n.purchasePendingNotice);
+      case PurchaseOutcome.failed:
+        _snack(l10n.purchaseFailed);
+      case PurchaseOutcome.owned || PurchaseOutcome.cancelled:
+        break;
+    }
+  }
+
+  void _snack(String text) => ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(behavior: SnackBarBehavior.floating, content: Text(text)),
+    );
+
+  /// Null in tests, where there is no ad SDK, and once ads are bought off.
   Widget? _nativeAd(String adUnitId) => switch (widget.ads) {
+    _ when widget.purchases?.adsRemoved == true => null,
     final ads? => NativeAdCard(
       key: ValueKey(adUnitId),
       adUnitId: adUnitId,
@@ -920,6 +1062,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
         ),
         for (final prop in deskProps)
           Container(
+            key: ValueKey('collection-item-${prop.key}'),
             margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
             padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
@@ -929,7 +1072,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
             child: Row(
               children: [
                 Opacity(
-                  opacity: s.unlocks.containsKey(prop.key) ? 1 : 0.35,
+                  opacity: prop.isAvailable(s.unlocks.keys) ? 1 : 0.35,
                   child: Image.asset(
                     prop.asset,
                     width: 34,
@@ -948,7 +1091,9 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
                         style: const TextStyle(fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        prop.unlockMinutes == 0
+                        prop.availableByDefault
+                            ? l10n.unlockDefault
+                            : prop.unlockMinutes == 0
                             ? l10n.unlockFirstFocus
                             : l10n.unlockAfterMinutes(prop.unlockMinutes),
                         style: const TextStyle(fontSize: 12, color: deskMuted),
@@ -957,7 +1102,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
                   ),
                 ),
                 Icon(
-                  s.unlocks.containsKey(prop.key)
+                  prop.isAvailable(s.unlocks.keys)
                       ? Icons.check_circle
                       : Icons.lock_outline,
                   color: sage,

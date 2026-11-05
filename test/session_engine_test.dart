@@ -286,7 +286,8 @@ void main() {
       await start(15 * 60);
       now += 15 * 60000;
       await engine.complete(id());
-      expect(engine.state.unlocks.keys, contains('lamp'));
+      expect(engine.state.unlocks.keys, isNot(contains('lamp')));
+      expect(engine.state.active!.rewards, isEmpty);
     },
   );
   test('corrupt save fails visibly instead of wiping data', () async {

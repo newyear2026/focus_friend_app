@@ -8,6 +8,12 @@ import 'desk_components.dart';
 import 'l10n/app_localizations.dart';
 import 'localized_names.dart';
 
+// Keep the small desk label legible over the warmly lit notebook pages.
+const _deskLabelShadows = [
+  Shadow(color: Color(0xE6171B32), blurRadius: 3, offset: Offset(0, 1)),
+  Shadow(color: Color(0x99171B32), blurRadius: 8),
+];
+
 int todayFocusMinutes(FocusState state, DateTime now) =>
     (state.dailyFocus[calendarKey(now)]?.milliseconds ?? 0) ~/ 60000;
 
@@ -236,7 +242,11 @@ class DeskHome extends StatelessWidget {
                               children: [
                                 Text(
                                   '${l10n.todayFocus} ',
-                                  style: const TextStyle(fontSize: 15),
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    shadows: _deskLabelShadows,
+                                  ),
                                 ),
                                 Text(
                                   l10n.minutesShort(
@@ -246,6 +256,7 @@ class DeskHome extends StatelessWidget {
                                   style: const TextStyle(
                                     fontSize: 23,
                                     fontWeight: FontWeight.w800,
+                                    shadows: _deskLabelShadows,
                                   ),
                                 ),
                               ],

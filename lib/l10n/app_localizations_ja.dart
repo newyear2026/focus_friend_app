@@ -160,7 +160,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get collectionHeading => '部屋が満ちていく時間';
 
   @override
-  String get collectionSubtitle => '決まった3つの場所に、わたしの集中が残ります。';
+  String get collectionSubtitle => 'はじめは明かりと一緒に。集中して小物を増やしましょう。';
+
+  @override
+  String get unlockDefault => 'はじめから使えます';
 
   @override
   String get unlockFirstFocus => 'はじめての集中を完了';
@@ -501,7 +504,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String sceneLabel(String ambience, String pose, String props) {
-    return '$ambienceの机。$poseレッサーパンダ。手に入れた小物: $props';
+    return '$ambienceの机。$poseレッサーパンダ。机の小物: $props';
   }
 
   @override
@@ -680,4 +683,62 @@ class AppLocalizationsJa extends AppLocalizations {
   String hoursShort(String hours) {
     return '$hours時間';
   }
+
+  @override
+  String friendBuy(String price) {
+    return '$priceで一緒に過ごす';
+  }
+
+  @override
+  String get friendLocked => 'ロック中';
+
+  @override
+  String get purchasePending => '支払い待ち';
+
+  @override
+  String get purchasePendingNotice => 'お支払いを待っています。支払いが終わると自動で使えます。';
+
+  @override
+  String get purchaseUnavailable => 'いまは購入できません';
+
+  @override
+  String get purchaseFailed => '購入を完了できませんでした。もう一度お試しください。';
+
+  @override
+  String get purchaseOwned => '購入済み';
+
+  @override
+  String get purchasesTitle => '購入';
+
+  @override
+  String get bundleTitle => '友だち全員セット';
+
+  @override
+  String get bundleSubtitle => '広告なしつき・買い切り';
+
+  @override
+  String get bundleNote => '今後増える友だちは別売りです。';
+
+  @override
+  String bundleBuy(String price) {
+    return '$priceで全部そろえる';
+  }
+
+  @override
+  String get removeAdsTitle => '広告を消す';
+
+  @override
+  String get removeAdsSubtitle => '記録と設定の広告を消します';
+
+  @override
+  String get restorePurchases => '購入を復元';
+
+  @override
+  String get restoreSubtitle => '再インストールや機種変更のあとに';
+
+  @override
+  String get restoreDone => '購入内容を読み込み直しました。';
+
+  @override
+  String get restoreFailed => 'Google Play に接続できませんでした。しばらくしてからお試しください。';
 }

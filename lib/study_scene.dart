@@ -29,13 +29,14 @@ class DeskIllustration extends StatelessWidget {
   final FocusFriend friend;
 
   Color get _foregroundTint => switch (ambience) {
-    RoomAmbience.night => const Color(0xFFBCC3E4),
-    RoomAmbience.evening => const Color(0xFFFFDDCA),
+    RoomAmbience.night => const Color(0xFFFFF0D9),
+    RoomAmbience.evening => const Color(0xFFFFF3E4),
     _ => Colors.white,
   };
 
   // Keep the authored cels intact. A gentle room light crosses the whole
   // silhouette, so every writing, page-turn and tea frame shares one light.
+  // Apply it once: a second blue night tint used to muddy the orange fur.
   Widget _roomLitCompanion(Widget child) => ShaderMask(
     blendMode: BlendMode.modulate,
     shaderCallback: (bounds) => LinearGradient(
@@ -43,14 +44,14 @@ class DeskIllustration extends StatelessWidget {
       end: Alignment.centerRight,
       colors: switch (ambience) {
         RoomAmbience.evening => const [
-          Color(0xFFD9BCC0),
-          Color(0xFFF5D3BF),
-          Color(0xFFFFE7BC),
+          Color(0xFFFFE8D6),
+          Color(0xFFFFF4DF),
+          Color(0xFFFFF5D5),
         ],
         RoomAmbience.night => const [
-          Color(0xFFC4B6C8),
-          Color(0xFFD8C6C5),
-          Color(0xFFF4D9B4),
+          Color(0xFFFFDFBD),
+          Color(0xFFFFF1D3),
+          Color(0xFFFFFFE8),
         ],
         _ => const [Color(0xFFE8DADB), Color(0xFFFFF1DE), Color(0xFFFFF1D2)],
       },
@@ -95,7 +96,7 @@ class DeskIllustration extends StatelessWidget {
             : l10n.poseWaiting,
         [
           for (final prop in deskProps)
-            if (unlocked.contains(prop.key)) propShortName(l10n, prop.key),
+            if (prop.isAvailable(unlocked)) propShortName(l10n, prop.key),
         ].join(' '),
       ),
       child: ExcludeSemantics(
@@ -127,8 +128,91 @@ class DeskIllustration extends StatelessWidget {
     );
   }
 
-  // The foreground books are a clipped copy of the room, so both copies must
-  // change together. The new room fades in over the opaque previous one.
+  Widget _roomImage() =>
+      Image.asset(ambience.asset, width: 853, height: 1844, fit: BoxFit.fill);
+
+  // Light the desk and nearby furniture while keeping the upper night sky
+  // untouched. Grading the plate here also keeps the foreground cutouts aligned.
+  Widget _litRoomPlate() => SizedBox(
+    key: ValueKey(ambience),
+    width: 853,
+    height: 1844,
+    child: Stack(
+      fit: StackFit.expand,
+      children: [
+        _roomImage(),
+        if (ambience == RoomAmbience.night || ambience == RoomAmbience.evening)
+          ShaderMask(
+            blendMode: BlendMode.dstIn,
+            shaderCallback: (bounds) => const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.transparent,
+                Colors.transparent,
+                Colors.white,
+                Colors.white,
+                Colors.transparent,
+              ],
+              stops: [0, .43, .56, .70, 1],
+            ).createShader(bounds),
+            child: ColorFiltered(
+              colorFilter: ColorFilter.matrix(
+                ambience == RoomAmbience.night
+                    ? const [
+                        1.32,
+                        0,
+                        0,
+                        0,
+                        10,
+                        0,
+                        1.17,
+                        0,
+                        0,
+                        5,
+                        0,
+                        0,
+                        .99,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                      ]
+                    : const [
+                        1.13,
+                        0,
+                        0,
+                        0,
+                        3,
+                        0,
+                        1.08,
+                        0,
+                        0,
+                        2,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                      ],
+              ),
+              child: _roomImage(),
+            ),
+          ),
+      ],
+    ),
+  );
+
+  // Foreground books and the pen cup are clipped copies of this same lit plate.
+  // The new room fades in over the opaque previous one.
   Widget _room(BuildContext context) => AnimatedSwitcher(
     duration: MediaQuery.disableAnimationsOf(context)
         ? Duration.zero
@@ -136,13 +220,7 @@ class DeskIllustration extends StatelessWidget {
     transitionBuilder: (child, animation) => child.key == ValueKey(ambience)
         ? FadeTransition(opacity: animation, child: child)
         : child,
-    child: Image.asset(
-      ambience.asset,
-      key: ValueKey(ambience),
-      width: 853,
-      height: 1844,
-      fit: BoxFit.fill,
-    ),
+    child: _litRoomPlate(),
   );
 
   Widget _scene(BuildContext context) => ClipRect(
@@ -165,16 +243,10 @@ class DeskIllustration extends StatelessWidget {
                 width: 580,
                 height: 580,
                 child: _roomLitCompanion(
-                  ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                      _foregroundTint,
-                      BlendMode.modulate,
-                    ),
-                    child: ReferenceCompanion(
-                      studying: studying,
-                      animate: animate,
-                      paused: paused,
-                    ),
+                  ReferenceCompanion(
+                    studying: studying,
+                    animate: animate,
+                    paused: paused,
                   ),
                 ),
               ),
@@ -202,13 +274,7 @@ class DeskIllustration extends StatelessWidget {
                     minHeight: 490,
                     maxHeight: 490,
                     child: _roomLitCompanion(
-                      ColorFiltered(
-                        colorFilter: ColorFilter.mode(
-                          _foregroundTint,
-                          BlendMode.modulate,
-                        ),
-                        child: RestCompanion(animate: animate, paused: paused),
-                      ),
+                      RestCompanion(animate: animate, paused: paused),
                     ),
                   ),
                 ),
@@ -228,7 +294,12 @@ class DeskIllustration extends StatelessWidget {
             for (final prop in [
               ...deskProps,
             ]..sort((a, b) => a.layer.compareTo(b.layer)))
-              if (unlocked.contains(prop.key))
+              if (prop.isAvailable(unlocked)) ...[
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: _DeskPropContactShadowPainter(prop),
+                  ),
+                ),
                 Positioned(
                   left: prop.left,
                   top: prop.top,
@@ -241,12 +312,53 @@ class DeskIllustration extends StatelessWidget {
                     colorBlendMode: BlendMode.modulate,
                   ),
                 ),
-            const Positioned.fill(child: ColoredBox(color: Color(0x0A11131F))),
+              ],
+            Positioned.fill(
+              child: ClipPath(
+                clipper: _ForegroundPenCupClipper(),
+                child: _room(context),
+              ),
+            ),
           ],
         ),
       ),
     ),
   );
+}
+
+class _DeskPropContactShadowPainter extends CustomPainter {
+  const _DeskPropContactShadowPainter(this.prop);
+
+  final DeskProp prop;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.scale(size.width / 853, size.height / 1844);
+    // These footprints follow the opaque bases inside the sprite padding.
+    // Each shadow is drawn directly beneath its prop in the same depth order.
+    final footprint = switch (prop.key) {
+      'plant' => const Rect.fromLTWH(.265, .818, .50, .06),
+      'mug' => const Rect.fromLTWH(.11, .836, .66, .06),
+      _ => const Rect.fromLTWH(.51, .89, .47, .045),
+    };
+    canvas.drawOval(
+      Rect.fromLTWH(
+        prop.left + prop.width * footprint.left,
+        prop.top + prop.height * footprint.top,
+        prop.width * footprint.width,
+        prop.height * footprint.height,
+      ),
+      Paint()
+        ..color = const Color(0x66282031)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
+    );
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant _DeskPropContactShadowPainter oldDelegate) =>
+      prop != oldDelegate.prop;
 }
 
 class _DeskContactShadowPainter extends CustomPainter {
@@ -312,4 +424,43 @@ class _ForegroundBooksClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant _ForegroundBooksClipper oldClipper) => false;
+}
+
+// The pen cup belongs to the room plate. Repaint its silhouette over the lamp
+// so the lamp base can sit behind it instead of crossing the middle of the cup.
+class _ForegroundPenCupClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path()
+      ..moveTo(778, 1043)
+      ..quadraticBezierTo(792, 1031, 853, 1035)
+      ..lineTo(853, 1145)
+      ..quadraticBezierTo(812, 1146, 780, 1133)
+      ..close()
+      ..addPolygon(const [
+        Offset(770, 1012),
+        Offset(778, 947),
+        Offset(839, 959),
+        Offset(833, 1027),
+      ], true)
+      ..addPolygon(const [
+        Offset(789, 1010),
+        Offset(806, 1005),
+        Offset(820, 1048),
+        Offset(799, 1048),
+      ], true)
+      ..addPolygon(const [
+        Offset(825, 1046),
+        Offset(838, 970),
+        Offset(849, 967),
+        Offset(853, 977),
+        Offset(841, 1048),
+      ], true);
+    return path.transform(
+      Matrix4.diagonal3Values(size.width / 853, size.height / 1844, 1).storage,
+    );
+  }
+
+  @override
+  bool shouldReclip(covariant _ForegroundPenCupClipper oldClipper) => false;
 }

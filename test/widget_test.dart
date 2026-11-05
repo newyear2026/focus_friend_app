@@ -56,9 +56,9 @@ void main() {
           ),
         )
         .toList();
-    // One incoming night room for the background and one for the books; the
-    // outgoing evening copies stay opaque underneath.
-    expect(fades, hasLength(2));
+    // Incoming night copies for the room, books and the pen cup in front of
+    // the default lamp; outgoing evening copies stay opaque underneath.
+    expect(fades, hasLength(3));
     for (final fade in fades) {
       expect(fade.opacity.value, closeTo(.5, .01));
       expect(fade.child!.key, const ValueKey(RoomAmbience.night));
