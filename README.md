@@ -102,17 +102,18 @@ flutter build appbundle --release --dart-define-from-file=admob.json
 
 ## 구매 (Google Play Billing)
 
-`in_app_purchase`로 한 번 사면 계속 쓰는(비소모성) 상품 5개를 팝니다. 계정·서버 없이 Google Play가 영수증을 보관하고, 앱이 실행·복귀할 때마다 `queryPastPurchases`로 다시 확인합니다. 새 구매는 바로 승인(acknowledge)해서 Play가 3일 뒤 자동 환불하지 않게 합니다. 코드는 `lib/purchases.dart`(상품·보유 판단·Play 연결), `lib/purchase_sheet.dart`(묶음 시트·잠금 표시)에 있습니다. 결정 근거와 시안은 `docs/design/bm-mockup/bm-v5.png`, 실제 화면 캡처는 `docs/design/purchases-v1/`에 있습니다.
+`in_app_purchase`로 한 번 사면 계속 쓰는(비소모성) 상품 6개를 팝니다. 계정·서버 없이 Google Play가 영수증을 보관하고, 앱이 실행·복귀할 때마다 `queryPastPurchases`로 다시 확인합니다. 새 구매는 바로 승인(acknowledge)해서 Play가 3일 뒤 자동 환불하지 않게 합니다. 코드는 `lib/purchases.dart`(상품·보유 판단·Play 연결), `lib/purchase_sheet.dart`(묶음 시트·잠금 표시)에 있습니다. 결정 근거와 시안은 `docs/design/bm-mockup/bm-v5.png`, 실제 화면 캡처는 `docs/design/purchases-v1/`에 있습니다.
 
-| 상품 ID | 내용 | 한국 가격 |
-| --- | --- | --- |
-| `friend_otter` | 해달 | ₩1,500 |
-| `friend_squirrel` | 다람쥐 | ₩1,500 |
-| `friend_fennec` | 사막여우 | ₩1,500 |
-| `remove_ads` | 기록·설정의 광고 제거 | ₩1,000 |
-| `all_friends` | 위 친구 3명 + 광고 제거. 앞으로 나올 친구는 포함하지 않음 | ₩3,500 |
+| 상품 ID | 내용 | 기본 가격 | 멕시코 |
+| --- | --- | --- | --- |
+| `friend_penguin` | 펭귄 | MX$15 | MX$10 |
+| `friend_otter` | 해달 | MX$15 | MX$10 |
+| `friend_squirrel` | 다람쥐 | MX$15 | MX$10 |
+| `friend_fennec` | 사막여우 | MX$15 | MX$10 |
+| `remove_ads` | 기록·설정의 광고 제거 | MX$10 | MX$10 |
+| `all_friends` | 위 친구 4명 + 광고 제거. 앞으로 나올 친구는 포함하지 않음 | MX$35 | MX$29 |
 
-- 랫서팬더와 펭귄은 무료입니다. 가격은 앱에 적지 않고 Play가 알려준 현지 가격을 그대로 보여줍니다. 국가별 가격(예: 멕시코 친구 MX$10 / 광고 제거 MX$10 / 묶음 MX$29)은 Play Console에서 정합니다.
+- 무료 친구는 랫서팬더 하나입니다. 가격은 앱에 적지 않고 Play가 알려준 현지 가격을 그대로 보여줍니다. 가격은 Play Console에서 정하고, 기본 가격을 다른 나라는 Play가 환산하며 멕시코만 직접 내립니다. 등록표는 `docs/play-console/products/README.md`에 있습니다.
 - OXXO 현금 결제처럼 돈이 나중에 들어오는 결제는 "결제 대기 중"으로 보이고, 결제가 끝나면 앱 복귀 때 자동으로 열립니다.
 - Play가 보유하지 않았다고 확실히 답한 친구(구매 전이거나 환불)를 쓰고 있으면 랫서팬더로 돌아갑니다. 오프라인이거나 Play가 답하지 않으면 아무것도 빼앗지 않습니다.
 - Play 상품 하나는 가격이 고정이라, 친구 하나를 이미 산 사람에게도 묶음은 같은 가격입니다. 묶음 시트에서 이미 가진 항목에 "보유"를 표시합니다.

@@ -7,6 +7,7 @@ import 'focus_friend.dart';
 /// One-time Google Play products. The ids must match Play Console exactly and
 /// can never be reused once created, so do not rename them.
 abstract final class Products {
+  static const penguin = 'friend_penguin';
   static const otter = 'friend_otter';
   static const squirrel = 'friend_squirrel';
   static const fennec = 'friend_fennec';
@@ -16,12 +17,13 @@ abstract final class Products {
   /// separately, so this list stays fixed.
   static const allFriends = 'all_friends';
 
-  static const all = {otter, squirrel, fennec, removeAds, allFriends};
-  static const friends = [otter, squirrel, fennec];
+  static const all = {penguin, otter, squirrel, fennec, removeAds, allFriends};
+  static const friends = [penguin, otter, squirrel, fennec];
 
-  /// Null for the free friends.
+  /// Null for the free red panda.
   static String? forFriend(FocusFriend friend) => switch (friend) {
-    FocusFriend.redpanda || FocusFriend.penguin => null,
+    FocusFriend.redpanda => null,
+    FocusFriend.penguin => penguin,
     FocusFriend.otter => otter,
     FocusFriend.squirrel => squirrel,
     FocusFriend.fennec => fennec,

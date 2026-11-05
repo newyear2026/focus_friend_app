@@ -11,6 +11,7 @@ import 'session_engine_test.dart' show MemoryStore;
 import 'widget_test.dart' show loadAppFont;
 
 const _prices = {
+  Products.penguin: '₩1,500',
   Products.otter: '₩1,500',
   Products.squirrel: '₩1,500',
   Products.fennec: '₩1,500',
@@ -63,11 +64,12 @@ Future<void> _openFriends(WidgetTester tester, FocusFriendApp app) async {
 
 void main() {
   group('entitlements', () {
-    test('red panda and penguin are free; the others are sold', () {
+    test('only the red panda is free; the others are sold', () {
       const none = Entitlements();
       expect(none.hasFriend(FocusFriend.redpanda), isTrue);
-      expect(none.hasFriend(FocusFriend.penguin), isTrue);
+      expect(Products.forFriend(FocusFriend.redpanda), isNull);
       for (final friend in [
+        FocusFriend.penguin,
         FocusFriend.otter,
         FocusFriend.squirrel,
         FocusFriend.fennec,
@@ -120,7 +122,7 @@ void main() {
       ),
     );
     expect(find.byType(BundleBanner), findsOneWidget);
-    expect(find.byType(LockChip), findsNWidgets(2)); // otter, squirrel visible
+    expect(find.byType(LockChip), findsNWidgets(3)); // penguin, otter, squirrel
     await tester.tap(find.byKey(const ValueKey('friend-card-otter')));
     await tester.tap(find.byKey(const ValueKey('friend-preview')));
     await pumpPreviewTransition(tester);
