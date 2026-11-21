@@ -33,28 +33,41 @@ abstract final class FriendMotionClock {
   static const framesPerSecond = 12;
   static const windowTeaFramesPerSecond = framesPerSecond;
   static const windowTeaFrameCount = 28;
-  // Five lift drawings each, picked by the measured upright rim height in the
-  // registered 512px drawings (fennec 267-224px, squirrel 293-261px) so the
-  // cup only rises. Other candidates sat too close together or ran backwards.
-  static const fennecTeaLift = [20, 6, 23, 9, 10];
-  static const squirrelTeaLift = [4, 5, 22, 8, 10];
+  // Five lift drawings each that sit where the resting drawing sits: head,
+  // ears and body within a pixel of cel 0 in the registered 512px drawings,
+  // and the upright rim only rises (fennec 273-226px, squirrel 293-262px).
+  // Cels 19-26 were drawn 2-5px higher, so the whole body hopped and came
+  // off the book.
+  static const fennecTeaLift = [4, 6, 8, 9, 10];
+  static const squirrelTeaLift = [4, 6, 7, 9, 10];
+  // 22 ticks at the mouth, eyes closed for 14. Cel 18 dipped the fennec's cup
+  // 5px and paled the squirrel's lids; the squirrel's cel 17 threw its cup
+  // 10px sideways.
+  static const fennecTeaSip = [
+    (3, 2), (27, 2), (17, 2), (16, 10), (17, 2), (27, 2), (3, 2), //
+  ];
+  static const squirrelTeaSip = [(3, 2), (27, 2), (16, 14), (27, 2), (3, 2)];
+  // The atlas slots these drawings and the blink (1, 2) sit in are baked by
+  // docs/design/rest-body-motion-fix-v1/bake.py: cel 0 everywhere except the
+  // arms, cup and eyes, so nothing else moves when the friend drinks or blinks.
 
   // The panda's tea shape: 4,4,2,2 ticks through the lift with a short hold at
   // the top, about a second at the mouth, and the same steps back down.
   // Rhythm variants only change the idle holds and blinks around it.
-  static List<int> _teaAction(List<int> lift) => _exposures([
-    (lift[0], 4), (lift[1], 4), (lift[2], 2), (lift[3], 2), (lift[4], 3), //
-    // Two authored inbetweens let lids and cup angle change gradually.
-    (3, 2), (27, 2),
-    (17, 2), (18, 2), (16, 6), (18, 2), (17, 2),
-    (27, 2), (3, 2),
-    (lift[4], 3), (lift[3], 2), (lift[2], 2), (lift[1], 4), (lift[0], 4),
-  ]);
+  static List<int> _teaAction(List<int> lift, List<(int, int)> sip) =>
+      _exposures([
+        (lift[0], 4), (lift[1], 4), (lift[2], 2), (lift[3], 2), (lift[4], 3), //
+        ...sip,
+        (lift[4], 3), (lift[3], 2), (lift[2], 2), (lift[1], 4), (lift[0], 4),
+      ]);
 
   // A drink about every ten seconds, like the panda; the rest before and
   // after it and the blink change each cycle.
-  static List<FriendRestVariant> _teaVariants(List<int> lift) {
-    final action = _teaAction(lift);
+  static List<FriendRestVariant> _teaVariants(
+    List<int> lift,
+    List<(int, int)> sip,
+  ) {
+    final action = _teaAction(lift, sip);
     List<int> blink(int first, int second) =>
         _exposures([(0, first), (1, 1), (2, 2), (1, 1), (0, second)]);
     return List.unmodifiable([
@@ -66,9 +79,11 @@ abstract final class FriendMotionClock {
 
   static final List<FriendRestVariant> fennecRestVariants = _teaVariants(
     fennecTeaLift,
+    fennecTeaSip,
   );
   static final List<FriendRestVariant> squirrelRestVariants = _teaVariants(
     squirrelTeaLift,
+    squirrelTeaSip,
   );
   static final List<int> windowTeaTimeline = _joinVariants(fennecRestVariants);
   static final List<int> squirrelTeaTimeline = _joinVariants(

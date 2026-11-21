@@ -45,12 +45,18 @@ void main() {
       for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
         final timeline = FriendMotionClock.windowTeaTimelineFor(friend);
         expect(timeline.length, 366);
-        expect(timeline.toSet(), containsAll([0, 1, 2, 3, 10, 16, 17, 18, 27]));
-        expect(timeline.any((cel) => cel >= 19), isTrue);
+        expect(timeline.toSet(), containsAll([0, 1, 2, 3, 10, 16, 27]));
         // These old drawings raised the upright rim from the lip to the nose.
         for (var cel = 11; cel <= 15; cel++) {
           expect(timeline, isNot(contains(cel)));
         }
+        // Cel 18 dips the fennec's cup 5px and pales the squirrel's lids, and
+        // 19-26 sit 2-5px above the resting drawing: the whole body hopped.
+        for (var cel = 18; cel <= 26; cel++) {
+          expect(timeline, isNot(contains(cel)));
+        }
+        // The squirrel's cel 17 throws its cup 10px sideways.
+        expect(timeline.contains(17), friend == FocusFriend.fennec);
         var longest = 0, current = 0, previous = -1;
         // Two cycles include the otherwise easy-to-miss wraparound hold.
         for (var tick = 0; tick < timeline.length * 2; tick++) {
@@ -79,10 +85,13 @@ void main() {
     () {
       // Top cream pixels inside the rim, measured consistently in the final
       // 384px atlas enlarged to 512px with LANCZOS. Values decrease upward.
+      // The fennec's 10, 3, 27, 17 and 16 are slid 1-2px onto the resting
+      // head by docs/design/rest-body-motion-fix-v1/bake.py.
       const heights = {
         FocusFriend.fennec: {
           0: 280,
           19: 277,
+          4: 273,
           20: 267,
           5: 261,
           6: 259,
@@ -93,12 +102,12 @@ void main() {
           25: 237,
           9: 230,
           26: 227,
-          10: 225,
-          3: 225,
-          27: 217,
-          17: 217,
+          10: 226,
+          3: 227,
+          27: 218,
+          17: 218,
           18: 218,
-          16: 217,
+          16: 218,
         },
         FocusFriend.squirrel: {
           0: 303,
@@ -132,11 +141,18 @@ void main() {
           expect(action.sublist(lifted + 18, lifted + 22), [27, 27, 3, 3]);
           expect(action.length, lifted + 22 + lifted);
           var lastHeight = heights[friend]![0]!;
-          for (final frame in [...lift, 3, 27, 17]) {
+          for (final frame in [
+            ...lift,
+            3,
+            27,
+            if (friend == FocusFriend.fennec) 17,
+          ]) {
             final y = heights[friend]![frame]!;
+            // A pixel is the error of measuring a rim top: the fennec's cup
+            // print sits 1px higher in cel 3 than in cel 10, its rim 1px lower.
             expect(
               y,
-              lessThanOrEqualTo(lastHeight),
+              lessThanOrEqualTo(lastHeight + 1),
               reason: '${friend.name}: cup reversed while lifting',
             );
             lastHeight = y;
@@ -149,10 +165,16 @@ void main() {
     },
   );
   for (final (friend, fixed) in [
-    // Tail and ear tips.
+    // Tail and ear tips, then the parts each drawing traced 1-3px apart
+    // inside the repainted region: ear edge and cheek fluff.
     (
       FocusFriend.fennec,
-      [Rect.fromLTWH(90, 260, 80, 60), Rect.fromLTWH(150, 60, 40, 40)],
+      [
+        Rect.fromLTWH(90, 260, 80, 60),
+        Rect.fromLTWH(150, 60, 40, 40),
+        Rect.fromLTRB(136, 140, 196, 200),
+        Rect.fromLTRB(150, 196, 214, 240),
+      ],
     ),
     // Tail and acorn hat.
     (
@@ -161,7 +183,7 @@ void main() {
     ),
   ]) {
     testWidgets(
-      '${friend.name}: lift drawings keep the resting tail and ears',
+      '${friend.name}: drinking and blinking keep the resting head, ears and tail',
       (tester) async {
         await tester.runAsync(() async {
           final data = await rootBundle.load(
@@ -220,6 +242,37 @@ void main() {
         });
       },
     );
+  }
+  for (final (friend, seat) in [
+    // The strip under the middle of the body, where it sits on the closed book.
+    (FocusFriend.fennec, Rect.fromLTRB(220, 330, 335, 346)),
+    (FocusFriend.squirrel, Rect.fromLTRB(220, 348, 335, 362)),
+  ]) {
+    testWidgets('${friend.name}: the body never lifts off the book', (
+      tester,
+    ) async {
+      await tester.runAsync(() async {
+        final atlas = await _restAtlas(friend);
+        final base = await _paintTea(atlas, friend, 0);
+        for (final cel in FriendMotionClock.windowTeaTimelineFor(
+          friend,
+        ).toSet()) {
+          final pixels = await _paintTea(atlas, friend, cel);
+          for (var y = seat.top.toInt(); y < seat.bottom; y++) {
+            for (var x = seat.left.toInt(); x < seat.right; x++) {
+              final alpha = (y * 512 + x) * 4 + 3;
+              // The room showed through here when a drawing sat higher.
+              expect(
+                pixels[alpha],
+                greaterThanOrEqualTo(base[alpha] - 8),
+                reason: '${friend.name} cel $cel is see-through at $x,$y',
+              );
+            }
+          }
+        }
+        atlas.dispose();
+      });
+    });
   }
   for (final friend in [FocusFriend.fennec, FocusFriend.squirrel]) {
     testWidgets(
@@ -378,4 +431,33 @@ void main() {
       },
     );
   }
+}
+
+Future<ui.Image> _restAtlas(FocusFriend friend) async {
+  final data = await rootBundle.load('${friend.motionDirectory}/rest.png');
+  final codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
+  final atlas = (await codec.getNextFrame()).image;
+  codec.dispose();
+  return atlas;
+}
+
+/// The rest cel as the app paints it on the 512px stage, as RGBA bytes.
+Future<List<int>> _paintTea(ui.Image atlas, FocusFriend friend, int cel) async {
+  final recorder = ui.PictureRecorder();
+  FriendMotionPainter(
+    friend: friend,
+    study: null,
+    rest: atlas,
+    pose: FriendMotionPose(cel, cel, 0, FriendMotionPhase.tea),
+  ).paint(Canvas(recorder), const Size(512, 512));
+  final picture = recorder.endRecording();
+  final image = await picture.toImage(512, 512);
+  final pixels = List<int>.from(
+    (await image.toByteData(
+      format: ui.ImageByteFormat.rawRgba,
+    ))!.buffer.asUint8List(),
+  );
+  image.dispose();
+  picture.dispose();
+  return pixels;
 }

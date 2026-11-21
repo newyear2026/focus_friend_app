@@ -24,22 +24,18 @@ List<int> authoredAction(FocusFriend friend) {
       (6, 4), (5, 4), (4, 4), (3, 6),
     ]);
   }
+  // Drawings that sit where the resting drawing sits, and a sip without the
+  // drawings that dipped or threw the cup: 22 ticks, eyes closed for 14.
   final up = friend == FocusFriend.fennec
-      ? exposures([(20, 4), (6, 4), (23, 2), (9, 2), (10, 3)])
-      : exposures([(4, 4), (5, 4), (22, 2), (8, 2), (10, 3)]);
+      ? exposures([(4, 4), (6, 4), (8, 2), (9, 2), (10, 3)])
+      : exposures([(4, 4), (6, 4), (7, 2), (9, 2), (10, 3)]);
   return [
     ...up,
-    ...exposures([
-      (3, 2),
-      (27, 2),
-      (17, 2),
-      (18, 2),
-      (16, 6),
-      (18, 2),
-      (17, 2),
-      (27, 2),
-      (3, 2),
-    ]),
+    ...exposures(
+      friend == FocusFriend.fennec
+          ? [(3, 2), (27, 2), (17, 2), (16, 10), (17, 2), (27, 2), (3, 2)]
+          : [(3, 2), (27, 2), (16, 14), (27, 2), (3, 2)],
+    ),
     ...up.reversed,
   ];
 }
