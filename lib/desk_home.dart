@@ -5,6 +5,7 @@ export 'study_scene.dart' show DeskIllustration;
 export 'desk_style.dart';
 import 'desk_style.dart';
 import 'desk_components.dart';
+import 'desk_props.dart';
 import 'l10n/app_localizations.dart';
 import 'localized_names.dart';
 
@@ -37,6 +38,7 @@ class DeskHome extends StatelessWidget {
     this.onSound,
     this.onGoal,
     this.systemBottomInset = 0,
+    this.bottomAdInset = 0,
   });
   final FocusState state;
   final DateTime now;
@@ -47,6 +49,9 @@ class DeskHome extends StatelessWidget {
   final VoidCallback onDismiss, onRest, onNext;
   final VoidCallback? onSound, onGoal;
   final double systemBottomInset;
+
+  /// Clip scrolling above the ad footer without shifting the room or controls.
+  final double bottomAdInset;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +101,10 @@ class DeskHome extends StatelessWidget {
         : rest
         ? l10n.messageRest
         : l10n.messageFocus;
+    // Only finished focus earns props, so trials and breaks don't preview one.
+    final nextGift = demo || rest
+        ? null
+        : nextDeskGift(state.unlocks.keys, state.completedMs);
     return DefaultTextStyle(
       style: const TextStyle(fontFamily: 'Pretendard', color: deskInk),
       child: LayoutBuilder(
@@ -106,240 +115,262 @@ class DeskHome extends StatelessWidget {
             700 + math.max(0.0, scale - 1) * 300,
           );
           final bottomReserve =
-              DeskNavigation.contentHeight + systemBottomInset + 24;
-          return SingleChildScrollView(
-            child: SizedBox(
-              height: height,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 26),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        IconButton(
-                          key: const ValueKey('random-focus'),
-                          tooltip: l10n.randomTooltip,
-                          onPressed: enabled && active == null
-                              ? onRandomMinutes
-                              : null,
-                          icon: const Icon(Icons.shuffle_rounded, size: 20),
-                          color: deskInk.withValues(alpha: .75),
-                          disabledColor: Colors.transparent,
-                        ),
-                        Expanded(
-                          child: Text(
-                            l10n.deskTitle,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: -.8,
+              DeskNavigation.contentHeight +
+              systemBottomInset +
+              24 -
+              bottomAdInset;
+          return Padding(
+            padding: EdgeInsets.only(bottom: bottomAdInset),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: height - bottomAdInset,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 26),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          IconButton(
+                            key: const ValueKey('random-focus'),
+                            tooltip: l10n.randomTooltip,
+                            onPressed: enabled && active == null
+                                ? onRandomMinutes
+                                : null,
+                            icon: const Icon(Icons.shuffle_rounded, size: 20),
+                            color: deskInk.withValues(alpha: .75),
+                            disabledColor: Colors.transparent,
+                          ),
+                          Expanded(
+                            child: Text(
+                              l10n.deskTitle,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: -.8,
+                              ),
                             ),
                           ),
-                        ),
-                        IconButton(
-                          key: const ValueKey('open-sound'),
-                          tooltip: l10n.focusSound,
-                          onPressed: enabled ? onSound : null,
-                          color: deskInk,
-                          icon: Icon(
-                            state.sound.enabled
-                                ? Icons.volume_up_rounded
-                                : Icons.volume_off_rounded,
-                            size: 27,
+                          IconButton(
+                            key: const ValueKey('open-sound'),
+                            tooltip: l10n.focusSound,
+                            onPressed: enabled ? onSound : null,
+                            color: deskInk,
+                            icon: Icon(
+                              state.sound.enabled
+                                  ? Icons.volume_up_rounded
+                                  : Icons.volume_off_rounded,
+                              size: 27,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: height * .04),
-                    Text(
-                      caption,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        shadows: [
-                          Shadow(color: Color(0x990C1227), blurRadius: 12),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 7),
-                    SizedBox(
-                      height: 92 * math.min(scale, 1.2),
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          value,
-                          key: ValueKey(
-                            active == null ? 'ready-timer' : 'timer',
-                          ),
-                          style: const TextStyle(
-                            fontSize: 72,
-                            fontWeight: FontWeight.w800,
-                            height: 1.06,
-                            letterSpacing: -2,
-                            fontFeatures: [FontFeature.tabularFigures()],
-                            shadows: [
-                              Shadow(color: Color(0x550C1227), blurRadius: 18),
-                            ],
-                          ),
+                      SizedBox(height: height * .04),
+                      Text(
+                        caption,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          shadows: [
+                            Shadow(color: Color(0x990C1227), blurRadius: 12),
+                          ],
                         ),
                       ),
-                    ),
-                    if (message != null)
-                      Container(
-                        margin: const EdgeInsets.only(top: 9),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 7,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xB3292630),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          message,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            height: 1.4,
-                            color: deskInk,
-                          ),
-                        ),
-                      ),
-                    if (state.goal case final goal? when goal.showOnHome)
-                      Center(
-                        child: TextButton.icon(
-                          key: const ValueKey('home-goal'),
-                          onPressed: enabled ? onGoal : null,
-                          icon: const Icon(Icons.flag_outlined, size: 16),
-                          label: Text(
-                            '${goal.countdown(now)} · ${goal.name}',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          style: TextButton.styleFrom(foregroundColor: deskInk),
-                        ),
-                      ),
-                    const Spacer(),
-                    Container(
-                      padding: scale > 1.2
-                          ? const EdgeInsets.all(12)
-                          : EdgeInsets.zero,
-                      decoration: scale > 1.2
-                          ? BoxDecoration(
-                              color: const Color(0xED292630),
-                              borderRadius: BorderRadius.circular(18),
-                            )
-                          : null,
-                      child: Column(
-                        children: [
-                          if (active == null) ...[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '${l10n.todayFocus} ',
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                    shadows: _deskLabelShadows,
-                                  ),
-                                ),
-                                Text(
-                                  l10n.minutesShort(
-                                    todayFocusMinutes(state, now),
-                                  ),
-                                  key: const ValueKey('today-focus'),
-                                  style: const TextStyle(
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.w800,
-                                    shadows: _deskLabelShadows,
-                                  ),
+                      const SizedBox(height: 7),
+                      SizedBox(
+                        height: 92 * math.min(scale, 1.2),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            value,
+                            key: ValueKey(
+                              active == null ? 'ready-timer' : 'timer',
+                            ),
+                            style: const TextStyle(
+                              fontSize: 72,
+                              fontWeight: FontWeight.w800,
+                              height: 1.06,
+                              letterSpacing: -2,
+                              fontFeatures: [FontFeature.tabularFigures()],
+                              shadows: [
+                                Shadow(
+                                  color: Color(0x550C1227),
+                                  blurRadius: 18,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 13),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: scale > 1.2 ? 0 : 16,
-                              ),
-                              child: Row(
+                          ),
+                        ),
+                      ),
+                      if (message != null)
+                        Container(
+                          margin: const EdgeInsets.only(top: 9),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 7,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xB3292630),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            message,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              height: 1.4,
+                              color: deskInk,
+                            ),
+                          ),
+                        ),
+                      if (state.goal case final goal? when goal.showOnHome)
+                        Center(
+                          child: TextButton.icon(
+                            key: const ValueKey('home-goal'),
+                            onPressed: enabled ? onGoal : null,
+                            icon: const Icon(Icons.flag_outlined, size: 16),
+                            label: Text(
+                              '${goal.countdown(now)} · ${goal.name}',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            style: TextButton.styleFrom(
+                              foregroundColor: deskInk,
+                            ),
+                          ),
+                        ),
+                      const Spacer(),
+                      Container(
+                        padding: scale > 1.2
+                            ? const EdgeInsets.all(12)
+                            : EdgeInsets.zero,
+                        decoration: scale > 1.2
+                            ? BoxDecoration(
+                                color: const Color(0xED292630),
+                                borderRadius: BorderRadius.circular(18),
+                              )
+                            : null,
+                        child: Column(
+                          children: [
+                            if (active == null) ...[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  for (final value in [25, 50]) ...[
-                                    if (value == 50) const SizedBox(width: 12),
+                                  Text(
+                                    '${l10n.todayFocus} ',
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      shadows: _deskLabelShadows,
+                                    ),
+                                  ),
+                                  Text(
+                                    l10n.minutesShort(
+                                      todayFocusMinutes(state, now),
+                                    ),
+                                    key: const ValueKey('today-focus'),
+                                    style: const TextStyle(
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.w800,
+                                      shadows: _deskLabelShadows,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              if (nextGift != null) ...[
+                                const SizedBox(height: 4),
+                                NextGiftLine(gift: nextGift),
+                              ],
+                              const SizedBox(height: 13),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: scale > 1.2 ? 0 : 16,
+                                ),
+                                child: Row(
+                                  children: [
+                                    for (final value in [25, 50]) ...[
+                                      if (value == 50)
+                                        const SizedBox(width: 12),
+                                      Expanded(
+                                        child: _DurationChoice(
+                                          minutes: value,
+                                          selected: minutes == value,
+                                          onPressed: enabled
+                                              ? () => onSelectMinutes(value)
+                                              : null,
+                                        ),
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 13),
+                              _primary(
+                                l10n.startFocus,
+                                Icons.play_arrow_rounded,
+                                onStart,
+                                key: const ValueKey('start-focus'),
+                              ),
+                            ] else if (completed) ...[
+                              if (nextGift != null) ...[
+                                NextGiftLine(gift: nextGift),
+                                const SizedBox(height: 10),
+                              ],
+                              _primary(
+                                l10n.confirm,
+                                Icons.check_rounded,
+                                onDismiss,
+                              ),
+                              const SizedBox(height: 8),
+                              if (!demo && !rest)
+                                Row(
+                                  children: [
                                     Expanded(
-                                      child: _DurationChoice(
-                                        minutes: value,
-                                        selected: minutes == value,
-                                        onPressed: enabled
-                                            ? () => onSelectMinutes(value)
-                                            : null,
+                                      child: TextButton(
+                                        onPressed: enabled ? onRest : null,
+                                        style: _secondaryStyle,
+                                        child: Text(l10n.startRest),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: TextButton(
+                                        onPressed: enabled ? onNext : null,
+                                        style: _secondaryStyle,
+                                        child: Text(l10n.nextFocus),
                                       ),
                                     ),
                                   ],
-                                ],
+                                )
+                              else
+                                const SizedBox(height: 48),
+                            ] else ...[
+                              _primary(
+                                paused
+                                    ? (rest
+                                          ? l10n.resumeRest
+                                          : l10n.resumeFocus)
+                                    : l10n.pause,
+                                paused
+                                    ? Icons.play_arrow_rounded
+                                    : Icons.pause_rounded,
+                                onPauseResume,
                               ),
-                            ),
-                            const SizedBox(height: 13),
-                            _primary(
-                              l10n.startFocus,
-                              Icons.play_arrow_rounded,
-                              onStart,
-                              key: const ValueKey('start-focus'),
-                            ),
-                          ] else if (completed) ...[
-                            _primary(
-                              l10n.confirm,
-                              Icons.check_rounded,
-                              onDismiss,
-                            ),
-                            const SizedBox(height: 8),
-                            if (!demo && !rest)
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: TextButton(
-                                      onPressed: enabled ? onRest : null,
-                                      style: _secondaryStyle,
-                                      child: Text(l10n.startRest),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: TextButton(
-                                      onPressed: enabled ? onNext : null,
-                                      style: _secondaryStyle,
-                                      child: Text(l10n.nextFocus),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            else
-                              const SizedBox(height: 48),
-                          ] else ...[
-                            _primary(
-                              paused
-                                  ? (rest ? l10n.resumeRest : l10n.resumeFocus)
-                                  : l10n.pause,
-                              paused
-                                  ? Icons.play_arrow_rounded
-                                  : Icons.pause_rounded,
-                              onPauseResume,
-                            ),
-                            const SizedBox(height: 8),
-                            TextButton(
-                              onPressed: enabled ? onStop : null,
-                              style: _secondaryStyle,
-                              child: Text(l10n.endThisSession),
-                            ),
+                              const SizedBox(height: 8),
+                              TextButton(
+                                onPressed: enabled ? onStop : null,
+                                style: _secondaryStyle,
+                                child: Text(l10n.endThisSession),
+                              ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: bottomReserve),
-                  ],
+                      SizedBox(height: bottomReserve),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -369,6 +400,72 @@ class DeskHome extends StatelessWidget {
     icon: icon,
     onPressed: enabled ? action : null,
   );
+}
+
+/// One quiet line under today's total: the next prop and the time it needs.
+class NextGiftLine extends StatelessWidget {
+  const NextGiftLine({super.key, required this.gift});
+  final NextDeskGift gift;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    // Large text keeps the minutes visible by using the short item name.
+    final large = MediaQuery.textScalerOf(context).scale(16) / 16 > 1.2;
+    final short = propShortName(l10n, gift.prop.key);
+    final name = large
+        ? short.substring(0, 1).toUpperCase() + short.substring(1)
+        : propName(l10n, gift.prop.key);
+    final minutes = gift.remainingMinutes;
+    final duration = minutes < 60
+        ? l10n.minutesShort(minutes)
+        : minutes % 60 == 0
+        ? l10n.hoursShort('${minutes ~/ 60}')
+        : l10n.hoursMinutes(minutes ~/ 60, minutes % 60);
+    return Row(
+      key: ValueKey('next-gift-${gift.prop.key}'),
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          gift.prop.asset,
+          width: 20,
+          height: 20,
+          fit: BoxFit.contain,
+          excludeFromSemantics: true,
+        ),
+        const SizedBox(width: 6),
+        Flexible(
+          child: Text(
+            gift.needsFirstFocus
+                ? l10n.nextGiftFirstFocus(name)
+                : l10n.nextGiftIn(name, duration),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 13.5,
+              fontWeight: FontWeight.w600,
+              shadows: _deskLabelShadows,
+            ),
+          ),
+        ),
+        if (!gift.needsFirstFocus) ...[
+          const SizedBox(width: 9),
+          ExcludeSemantics(
+            child: SizedBox(
+              width: 64,
+              child: LinearProgressIndicator(
+                value: gift.progress,
+                minHeight: 5,
+                borderRadius: BorderRadius.circular(5),
+                color: deskAccent,
+                backgroundColor: const Color(0x66FFFFFF),
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
 }
 
 class _DurationChoice extends StatelessWidget {

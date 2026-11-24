@@ -102,6 +102,36 @@ abstract class AppLocalizations {
     Locale('ko'),
   ];
 
+  /// No description provided for @exitAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'See you tomorrow'**
+  String get exitAppTitle;
+
+  /// No description provided for @exitAppConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Would you like to close the app?'**
+  String get exitAppConfirm;
+
+  /// No description provided for @exitAppAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit app'**
+  String get exitAppAction;
+
+  /// No description provided for @exitTimerContinues.
+  ///
+  /// In en, this message translates to:
+  /// **'Your running timer will continue.'**
+  String get exitTimerContinues;
+
+  /// No description provided for @adLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad'**
+  String get adLabel;
+
   /// App name shown in the task switcher. Kept as the brand name in every language.
   ///
   /// In en, this message translates to:
@@ -143,6 +173,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Checking your saved room.'**
   String get restoringRoom;
+
+  /// Shown on the startup screen while the saved room and language load.
+  ///
+  /// In en, this message translates to:
+  /// **'Getting your focus space ready.'**
+  String get startupLoading;
 
   /// No description provided for @errorSoundPlay.
   ///
@@ -1407,7 +1443,7 @@ abstract class AppLocalizations {
   /// No description provided for @removeAdsSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Turns off ads in Records and Settings'**
+  /// **'Removes ads from Focus, Rest, Records and Settings'**
   String get removeAdsSubtitle;
 
   /// No description provided for @restorePurchases.
@@ -1595,6 +1631,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calculations, tips\nand unit conversions.'**
   String get ourAppsMultiCalDescription;
+
+  /// Home/completion line: the next desk prop earned by finished focus time and the time still needed.
+  ///
+  /// In en, this message translates to:
+  /// **'{prop} in {duration}'**
+  String nextGiftIn(String prop, String duration);
+
+  /// Home line before the first finished focus: which prop it earns.
+  ///
+  /// In en, this message translates to:
+  /// **'{prop} after your first focus'**
+  String nextGiftFirstFocus(String prop);
+
+  /// No description provided for @collectionProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} min'**
+  String collectionProgress(int done, int total);
 }
 
 class _AppLocalizationsDelegate

@@ -8,6 +8,7 @@ enum RoomAmbience {
   const RoomAmbience(this.assetName);
   final String assetName;
   String get asset => 'assets/images/immersive/room-$assetName.png';
+  bool get lampsOn => this == evening || this == night;
 
   static RoomAmbience at(DateTime localTime) {
     final minute = localTime.hour * 60 + localTime.minute;

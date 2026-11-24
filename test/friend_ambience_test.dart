@@ -40,7 +40,7 @@ void main() {
     () async {
       for (final friend in friends) {
         for (final ambience in RoomAmbience.values) {
-          final data = await rootBundle.load(friend.ambienceAsset(ambience));
+          final data = await rootBundle.load(friend.restRoomAsset(ambience));
           expect(data.getUint32(0, Endian.big), 0x89504e47);
           expect(data.getUint32(16, Endian.big), 853);
           expect(data.getUint32(20, Endian.big), 1844);

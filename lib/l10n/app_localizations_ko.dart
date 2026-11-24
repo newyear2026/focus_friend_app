@@ -9,6 +9,21 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
+  String get exitAppTitle => '내일 또 만나요';
+
+  @override
+  String get exitAppConfirm => '앱을 종료할까요?';
+
+  @override
+  String get exitAppAction => '앱 종료';
+
+  @override
+  String get exitTimerContinues => '진행 중인 타이머는 계속 이어집니다.';
+
+  @override
+  String get adLabel => '광고';
+
+  @override
   String get appTitle => 'Deskmate';
 
   @override
@@ -32,6 +47,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get restoringRoom => '저장된 방을 확인하고 있어요.';
+
+  @override
+  String get startupLoading => '집중할 공간을 준비하고 있어요.';
 
   @override
   String get errorSoundPlay => '소리를 재생하지 못했어요. 사운드 설정에서 다시 선택해 주세요.';
@@ -730,7 +748,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get removeAdsTitle => '광고 제거';
 
   @override
-  String get removeAdsSubtitle => '기록과 설정의 광고를 꺼요';
+  String get removeAdsSubtitle => '집중·휴식·기록·설정 화면의 광고를 꺼요';
 
   @override
   String get restorePurchases => '구매 복원';
@@ -824,4 +842,19 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get ourAppsMultiCalDescription => '계산부터 팁·\n단위 변환까지';
+
+  @override
+  String nextGiftIn(String prop, String duration) {
+    return '$prop까지 $duration';
+  }
+
+  @override
+  String nextGiftFirstFocus(String prop) {
+    return '첫 집중을 마치면 $prop';
+  }
+
+  @override
+  String collectionProgress(int done, int total) {
+    return '$done/$total분';
+  }
 }

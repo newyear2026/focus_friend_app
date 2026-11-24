@@ -14,6 +14,7 @@ import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugins.googlemobileads.GoogleMobileAdsPlugin
 import org.json.JSONObject
 import java.util.Locale
 import java.util.concurrent.Executors
@@ -49,8 +50,13 @@ class SnapshotDb(context: Context, scope: String = "focus") :
 
 class MainActivity : FlutterActivity() {
     private val worker = Executors.newSingleThreadExecutor()
+    override fun cleanUpFlutterEngine(flutterEngine: FlutterEngine) {
+        GoogleMobileAdsPlugin.unregisterNativeAdFactory(flutterEngine, "focusFriendExit")
+        super.cleanUpFlutterEngine(flutterEngine)
+    }
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        GoogleMobileAdsPlugin.registerNativeAdFactory(flutterEngine, "focusFriendExit", ExitNativeAdFactory(this))
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "focus_friend/sound")
             .setMethodCallHandler { call, result ->
                 try {

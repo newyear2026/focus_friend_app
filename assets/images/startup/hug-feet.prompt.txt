@@ -1,0 +1,9 @@
+Generated with built-in Image Gen; output 1254x1254 RGBA.
+
+Use case: background-extraction.
+Asset type: registered foreground feet layer for a 2D loading-screen puppet.
+Input image: edit target, the original red panda on a transparent 1254x1254 canvas.
+Extract ONLY the two visible brown feet with their pink/orange pads. Preserve these two feet in precisely their ORIGINAL pixel positions, size, orientation, outlines, lighting, colors and internal detail. This is an exact isolated overlay, not a new composition.
+Canvas dimensions: 1254x1254. Keep the enormous empty transparent space above/left. Viewer-left foot occupies approximately x465..660,y920..1118; viewer-right foot x897..1048,y902..1097. Do not center or reposition either foot, do not crop, do not zoom or resize either foot.
+Delete EVERYTHING other than those two feet: remove entire head, face, ears, torso, all teal clothing, arms/hands, book, tail, contact shadow. The background and all removed areas must be actual alpha transparency. Preserve complete dark brown outlines of both feet; do not retain teal clothing fragments around them. Exactly two feet, no extra parts, no labels, no checkerboard painted into the image.
+The feet will be drawn over a moving book at the exact original coordinates. Source-registration accuracy is critical.

@@ -6,6 +6,12 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 /// (`--dart-define-from-file`); everything else uses Google's test units so
 /// nobody taps a real ad on their own phone.
 abstract final class AdUnits {
+  static String get sessionBanner => _pick(
+    const String.fromEnvironment('ADMOB_BANNER_SESSION_ID'),
+    defaultTargetPlatform == TargetPlatform.iOS
+        ? 'ca-app-pub-3940256099942544/2934735716'
+        : 'ca-app-pub-3940256099942544/6300978111',
+  );
   static String get rewarded => _pick(
     const String.fromEnvironment('ADMOB_REWARDED_ID'),
     'ca-app-pub-3940256099942544/5224354917',
@@ -18,6 +24,10 @@ abstract final class AdUnits {
     const String.fromEnvironment('ADMOB_NATIVE_SETTINGS_ID'),
     'ca-app-pub-3940256099942544/2247696110',
   );
+  static String get nativeExit => _pick(
+    const String.fromEnvironment('ADMOB_NATIVE_EXIT_ID'),
+    'ca-app-pub-3940256099942544/2247696110',
+  );
 
   static String _pick(String live, String test) =>
       kReleaseMode && live.isNotEmpty ? live : test;
@@ -25,7 +35,10 @@ abstract final class AdUnits {
 
 /// Google UMP consent (the GDPR message set up in AdMob) and SDK start.
 /// Outside the EEA/UK the consent check passes without showing anything.
-class AdsConsent {
+class AdsConsent extends ChangeNotifier {
+  bool? _canRequestAds;
+  bool? get canRequestAds => _canRequestAds;
+
   /// `--dart-define=ADMOB_DEBUG_EEA=true` shows the EEA flow on an emulator
   /// or registered test device. Release builds ignore it.
   static const _debugEea =
@@ -62,7 +75,9 @@ class AdsConsent {
       // The app works the same without ads.
       allowed = false;
     }
-    _ready.complete(allowed);
+    _canRequestAds = allowed;
+    if (!_ready.isCompleted) _ready.complete(allowed);
+    notifyListeners();
   }
 
   /// Settings must offer a way back to the form where the law requires it.
@@ -70,6 +85,15 @@ class AdsConsent {
       await ConsentInformation.instance.getPrivacyOptionsRequirementStatus() ==
       PrivacyOptionsRequirementStatus.required;
 
-  Future<void> showPrivacyOptions() =>
-      ConsentForm.showPrivacyOptionsForm((_) {});
+  Future<void> showPrivacyOptions() async {
+    await ConsentForm.showPrivacyOptionsForm((_) {});
+    try {
+      final allowed = await ConsentInformation.instance.canRequestAds();
+      if (allowed) await MobileAds.instance.initialize();
+      _canRequestAds = allowed;
+    } catch (_) {
+      _canRequestAds = false;
+    }
+    notifyListeners();
+  }
 }

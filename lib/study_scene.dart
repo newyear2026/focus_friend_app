@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'desk_props.dart';
+import 'desk_prop_layer.dart';
 import 'l10n/app_localizations.dart';
 import 'localized_names.dart';
 import 'room_ambience.dart';
@@ -66,13 +67,19 @@ class DeskIllustration extends StatelessWidget {
     if (friend != FocusFriend.redpanda) {
       return Semantics(
         image: true,
-        label:
-            '${friendName(l10n, friend)} · ${friendRoom(l10n, friend)} · ${ambienceName(l10n, ambience)}',
+        label: [
+          friendName(l10n, friend),
+          friendRoom(l10n, friend),
+          ambienceName(l10n, ambience),
+          for (final prop in deskProps)
+            if (prop.isAvailable(unlocked)) propShortName(l10n, prop.key),
+        ].join(' · '),
         child: RepaintBoundary(
           key: const ValueKey('study-scene'),
           child: friend.hasStudyMotion || (resting && friend.hasWindowTeaMotion)
               ? FriendMotionScene(
                   friend: friend,
+                  unlocked: unlocked,
                   ambience: ambience,
                   animate: animate,
                   studying: studying,
@@ -291,28 +298,13 @@ class DeskIllustration extends StatelessWidget {
                 ),
               ),
             ],
-            for (final prop in [
-              ...deskProps,
-            ]..sort((a, b) => a.layer.compareTo(b.layer)))
-              if (prop.isAvailable(unlocked)) ...[
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: _DeskPropContactShadowPainter(prop),
-                  ),
-                ),
-                Positioned(
-                  left: prop.left,
-                  top: prop.top,
-                  width: prop.width,
-                  height: prop.height,
-                  child: Image.asset(
-                    prop.asset,
-                    fit: prop.contain ? BoxFit.contain : BoxFit.fill,
-                    color: _foregroundTint,
-                    colorBlendMode: BlendMode.modulate,
-                  ),
-                ),
-              ],
+            Positioned.fill(
+              child: DeskPropLayer(
+                friend: friend,
+                unlocked: unlocked,
+                ambience: ambience,
+              ),
+            ),
             Positioned.fill(
               child: ClipPath(
                 clipper: _ForegroundPenCupClipper(),
@@ -324,41 +316,6 @@ class DeskIllustration extends StatelessWidget {
       ),
     ),
   );
-}
-
-class _DeskPropContactShadowPainter extends CustomPainter {
-  const _DeskPropContactShadowPainter(this.prop);
-
-  final DeskProp prop;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.save();
-    canvas.scale(size.width / 853, size.height / 1844);
-    // These footprints follow the opaque bases inside the sprite padding.
-    // Each shadow is drawn directly beneath its prop in the same depth order.
-    final footprint = switch (prop.key) {
-      'plant' => const Rect.fromLTWH(.265, .818, .50, .06),
-      'mug' => const Rect.fromLTWH(.11, .836, .66, .06),
-      _ => const Rect.fromLTWH(.51, .89, .47, .045),
-    };
-    canvas.drawOval(
-      Rect.fromLTWH(
-        prop.left + prop.width * footprint.left,
-        prop.top + prop.height * footprint.top,
-        prop.width * footprint.width,
-        prop.height * footprint.height,
-      ),
-      Paint()
-        ..color = const Color(0x66282031)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
-    );
-    canvas.restore();
-  }
-
-  @override
-  bool shouldRepaint(covariant _DeskPropContactShadowPainter oldDelegate) =>
-      prop != oldDelegate.prop;
 }
 
 class _DeskContactShadowPainter extends CustomPainter {

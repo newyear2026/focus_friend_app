@@ -67,10 +67,10 @@ Play Console → 수익 창출 → 제품 → 일회성 제품 → 만들기. �
 
 | 언어 | 이름 | 설명 |
 | --- | --- | --- |
-| 한국어 | 광고 제거 | 기록과 설정 화면의 광고를 없애요. 한 번 결제로 계속 적용돼요. |
-| English | Remove ads | Removes the ads in Records and Settings. One-time purchase. |
-| Español | Quitar anuncios | Quita los anuncios de Registros y Ajustes. Pago único. |
-| 日本語 | 広告を消す | 記録と設定画面の広告を消します。買い切りです。 |
+| 한국어 | 광고 제거 | 집중·휴식·기록·설정 화면의 광고를 없애요. 한 번 결제로 계속 적용돼요. |
+| English | Remove ads | Removes ads from Focus, Rest, Records and Settings. One-time purchase. |
+| Español | Quitar anuncios | Quita los anuncios de concentración, descanso, Registros y Ajustes. Pago único. |
+| 日本語 | 広告を消す | 集中・休憩・記録・設定画面の広告を消します。買い切りです。 |
 
 ## all_friends
 

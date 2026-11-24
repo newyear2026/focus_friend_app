@@ -9,6 +9,21 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get exitAppTitle => 'Hasta mañana';
+
+  @override
+  String get exitAppConfirm => '¿Quieres cerrar la aplicación?';
+
+  @override
+  String get exitAppAction => 'Salir';
+
+  @override
+  String get exitTimerContinues => 'El temporizador seguirá en marcha.';
+
+  @override
+  String get adLabel => 'Anuncio';
+
+  @override
   String get appTitle => 'Deskmate';
 
   @override
@@ -34,6 +49,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get restoringRoom => 'Revisando tu cuarto guardado.';
+
+  @override
+  String get startupLoading => 'Preparando tu espacio para concentrarte.';
 
   @override
   String get errorSoundPlay =>
@@ -757,7 +775,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get removeAdsTitle => 'Quitar anuncios';
 
   @override
-  String get removeAdsSubtitle => 'Quita los anuncios de Registros y Ajustes';
+  String get removeAdsSubtitle =>
+      'Quita los anuncios de concentración, descanso, Registros y Ajustes';
 
   @override
   String get restorePurchases => 'Restaurar compras';
@@ -862,4 +881,19 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get ourAppsMultiCalDescription =>
       'Cálculos, propinas\ny conversión de unidades.';
+
+  @override
+  String nextGiftIn(String prop, String duration) {
+    return '$prop: faltan $duration';
+  }
+
+  @override
+  String nextGiftFirstFocus(String prop) {
+    return '$prop al completar tu primer enfoque';
+  }
+
+  @override
+  String collectionProgress(int done, int total) {
+    return '$done/$total min';
+  }
 }

@@ -1,0 +1,9 @@
+{
+  "native_exit_id": "ca-app-pub-2706404530136726/5712437115",
+  "exit_id_in_release_binary": true,
+  "configured_app_id_in_manifest": true,
+  "production_package_in_manifest": true,
+  "verification_package_absent": true,
+  "apk": "/Users/jaewook/dev_app/focus_friend_app/build/app/outputs/flutter-apk/app-release.apk",
+  "apk_sha256": "07da6902a71cdc35fe3c489413a3b17c200c7f9bbf92b0cba2f2ca75418f8e55"
+}

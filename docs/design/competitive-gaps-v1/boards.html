@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Competitive Gaps v1</title>
+<style>
+:root{
+  --navy:#1d2030; --navy2:#262a3d; --cream:#fbf1e1; --cream2:#f3e6cf; --ink:#2b2420; --ink2:#6d6158;
+  --orange:#fdbd6b; --orange2:#f29a3a; --teal:#3f9c94; --plum:#8a6bb8; --rose:#d9776b; --line:#e4d5bb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#efe6d6;font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:var(--ink)}
+.board{display:none;width:1180px;padding:44px 48px 40px;background:#f6eedf}
+.board.on{display:block}
+.head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:6px}
+.tag{font:700 13px/1 inherit;letter-spacing:.14em;color:var(--orange2);text-transform:uppercase}
+h1{font-size:34px;font-weight:800;margin-top:8px}
+.why{font-size:16px;color:var(--ink2);margin-top:8px;line-height:1.5;max-width:1000px}
+.why b{color:var(--ink)}
+.prio{font-size:14px;font-weight:700;padding:8px 14px;border-radius:99px;background:var(--navy);color:var(--cream);white-space:nowrap}
+.row{display:flex;gap:28px;margin-top:26px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:12px}
+.cap{font-size:15px;font-weight:700;text-align:center}
+.cap small{display:block;font-weight:500;color:var(--ink2);margin-top:4px;font-size:13px;line-height:1.45;max-width:330px}
+.wrap{width:335px;height:725px;position:relative;border-radius:34px;overflow:hidden;box-shadow:0 14px 30px rgba(60,40,20,.22),0 0 0 6px #2a2522}
+.phone{position:absolute;left:0;top:0;width:390px;height:844px;transform:scale(.859);transform-origin:0 0;background-size:390px 844px;overflow:hidden}
+.abs{position:absolute}
+.new{outline:2.5px dashed var(--orange2);outline-offset:3px}
+.badge{position:absolute;background:var(--orange2);color:#fff;font:800 12px/1 inherit;padding:5px 8px;border-radius:7px;z-index:9}
+.notes{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.note{background:#fffaf0;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.55;color:var(--ink2)}
+.note h4{font-size:14px;color:var(--ink);margin-bottom:4px}
+.bar{height:8px;border-radius:9px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--orange)}
+.cream-card{background:rgba(251,241,225,.96);color:var(--ink);border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.dark-pill{background:rgba(29,32,48,.78);border-radius:16px;color:var(--cream)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 13px;border-radius:99px;font-size:14px;font-weight:700;border:1.5px solid rgba(251,241,225,.55);color:var(--cream)}
+.chip.sel{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.dot{width:9px;height:9px;border-radius:50%}
+.navbar{position:absolute;left:0;right:0;bottom:0;height:96px;background:var(--navy);display:flex;justify-content:space-around;padding-top:18px;color:#c9c3b8;font-size:13px}
+.navbar div{text-align:center}
+.navbar .on{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. 다음 소품까지 진행 + 소품 로드맵 ============ -->
+<section class="board" id="b1">
+  <div class="head"><div><div class="tag">제안 1 · 성장 루프</div><h1>다음 선물까지 얼마나 남았는지 보여주기</h1></div><div class="prio">우선순위 1 · 작업 S~M</div></div>
+  <p class="why">지금은 화분(첫 완료)·머그컵(60분) 뒤에 <b>다음 목표가 보이지 않아요.</b> Forest는 나무, Focus Friend는 뜨개질한 양말로 “쌓이는 것”을 늘 보여줍니다. 이미 그려 둔 시계·테라리움 시안(docs/design/prop-drafts)을 로드맵으로 이어 붙여 다음 목표를 늘 보이게 합니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/completed.png)">
+        <div class="abs cream-card new" style="left:30px;right:30px;top:500px;padding:12px 14px;display:flex;gap:12px;align-items:center">
+          <img src="../../../assets/images/immersive/reward-mug.png" style="width:46px;height:54px;object-fit:contain">
+          <div style="flex:1">
+            <div style="font-size:12px;font-weight:700;color:var(--orange2)">다음 선물</div>
+            <div style="font-size:16px;font-weight:800;margin:2px 0 7px">따뜻한 머그컵 · 35분 남았어요</div>
+            <div class="bar" style="background:#eadcc4"><i style="width:42%"></i></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap">완료 화면<small>보상을 받은 직후 다음 목표를 바로 보여줘서 “한 번 더”를 유도</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/home-evening.png)">
+        <div class="abs" style="left:40px;right:40px;top:548px;height:40px;background:#1f2030;border-radius:12px"></div>
+        <div class="abs dark-pill new" style="left:34px;right:34px;top:540px;padding:9px 14px">
+          <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:6px"><span>오늘의 집중 <b style="font-size:17px">25분</b></span><span style="color:var(--orange)">머그컵까지 35분</span></div>
+          <div class="bar"><i style="width:42%"></i></div>
+        </div>
+      </div></div>
+      <div class="cap">홈 · 대기 상태<small>‘오늘의 집중’ 줄에 다음 선물 진행도를 같이 표시 (공간 추가 없음)</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/collection.png)">
+        <div class="abs" style="left:0;right:0;top:420px;bottom:0;background:#1d1f2e;padding:12px 22px">
+          <div style="color:var(--cream);font-size:13px;font-weight:700;opacity:.7;margin:2px 0 8px">모은 소품 2 / 7</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">
+            <div style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:var(--cream);font-size:11px"><img src="../../../assets/images/immersive/reward-plant.png" style="width:54px;height:54px;object-fit:contain"><br>화분 ✓</div>
+            <div style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:var(--cream);font-size:11px"><img src="../../../assets/images/immersive/reward-lamp.png" style="width:54px;height:54px;object-fit:contain"><br>조명 ✓</div>
+            <div class="new" style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:var(--cream);font-size:11px;border:1.5px solid var(--orange)"><img src="../../../assets/images/immersive/reward-mug.png" style="width:54px;height:54px;object-fit:contain;opacity:.55"><br><span style="color:var(--orange)">25/60분</span></div>
+            <div style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:#9a94a8;font-size:11px"><img src="../prop-drafts/draft-clock.png" style="width:54px;height:54px;object-fit:cover;border-radius:10px;filter:grayscale(1) brightness(.55);opacity:.8"><br>3시간</div>
+            <div style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:#9a94a8;font-size:11px"><img src="../prop-drafts/draft-terrarium.png" style="width:54px;height:54px;object-fit:cover;border-radius:10px;filter:grayscale(1) brightness(.55);opacity:.8"><br>5시간</div>
+            <div style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:#9a94a8;font-size:11px"><div style="width:54px;height:54px;margin:auto;border-radius:12px;background:#3a3d55;display:grid;place-items:center;font-size:24px;color:#6f6a80">?</div>8시간</div>
+            <div style="background:#2c2f45;border-radius:14px;height:92px;padding:6px;text-align:center;color:#9a94a8;font-size:11px"><div style="width:54px;height:54px;margin:auto;border-radius:12px;background:#3a3d55;display:grid;place-items:center;font-size:24px;color:#6f6a80">?</div>12시간</div>
+          </div>
+          <div class="cream-card" style="margin-top:14px;padding:12px 14px;font-size:13px;line-height:1.5">
+            <b>지금까지 함께한 시간 1시간 25분</b><br><span style="color:var(--ink2)">다음은 따뜻한 머그컵 · 그다음은 탁상시계(3시간)</span>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap">모은 소품 · 로드맵<small>잠긴 소품을 실루엣으로 미리 보여주기. 3개 → 7개 이상으로 장기 목표 확보</small></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note"><h4>왜 1순위인가</h4>지난 10/14 리뷰의 추천 2번이 아직 남아 있어요. 기존 사용자는 60분이면 보상이 끝나 재방문 이유가 사라집니다.</div>
+    <div class="note"><h4>필요한 것</h4>desk_props 카탈로그에 해금 분 추가, 소품 이미지 4장 이상 제작(시안 프롬프트 있음), 책상 자리 배치.</div>
+    <div class="note"><h4>지킬 원칙</h4>BM 결정대로 소품은 유료 판매하지 않고 집중으로만 얻어요. 중도 종료·체험은 계속 제외.</div>
+  </div>
+</section>
+
+<!-- ============ 2. 진행 중 알림 + 홈 위젯 ============ -->
+<section class="board" id="b2">
+  <div class="head"><div><div class="tag">제안 2 · 앱 밖에서도 보이는 타이머</div><h1>진행 중 알림과 홈 화면 위젯</h1></div><div class="prio">우선순위 2 · 작업 M</div></div>
+  <p class="why">지금은 <b>완료 알림만</b> 있고, 집중 중에 홈으로 나가면 남은 시간을 볼 수 없어요(소리를 켰을 때만 재생 알림이 뜸). Focus Friend는 최근 위젯을 추가했고, Forest 사용자 리뷰에도 “잠금화면에 남은 시간”을 원하는 요청이 있습니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:#15161f">
+        <div class="abs" style="inset:0;background:url(../competitive-review-2026-10-14/fresh/focusing.png) 0 0/390px 844px;filter:blur(14px) brightness(.45)"></div>
+        <div class="abs" style="left:24px;right:24px;top:18px;color:#e9e4f2;font-size:15px;display:flex;justify-content:space-between"><b>17:24</b><span>11월 19일 목</span></div>
+        <div class="abs" style="left:18px;right:18px;top:58px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+          <div style="height:62px;border-radius:20px;background:#3b3f56"></div><div style="height:62px;border-radius:20px;background:#3b3f56"></div><div style="height:62px;border-radius:20px;background:#3b3f56"></div><div style="height:62px;border-radius:20px;background:#3b3f56"></div>
+        </div>
+        <div class="abs new" style="left:14px;right:14px;top:150px;background:#2b2e42;border-radius:24px;padding:16px;color:#ece7f5">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#b9b3c8"><span style="width:20px;height:20px;border-radius:50%;background:var(--orange2);display:inline-block"></span>Deskmate · 집중 중</div>
+          <div style="display:flex;gap:12px;margin-top:10px;align-items:center">
+            <div style="flex:1"><div style="font-size:17px;font-weight:800">랫서팬더와 25분 집중</div><div style="font-size:30px;font-weight:800;margin-top:2px">18:42 <span style="font-size:14px;font-weight:600;color:#b9b3c8">남음</span></div></div>
+            <div style="width:62px;height:62px;border-radius:16px;background:url(../competitive-review-2026-10-14/fresh/focusing.png) -106px -236px/260px 563px"></div>
+          </div>
+          <div class="bar" style="margin-top:12px;height:6px;background:#44485f"><i style="width:25%"></i></div>
+          <div style="display:flex;gap:10px;margin-top:14px">
+            <div style="flex:1;text-align:center;padding:10px;border-radius:99px;background:#3d4158;font-weight:700;font-size:14px">잠시 멈추기</div>
+            <div style="flex:1;text-align:center;padding:10px;border-radius:99px;background:#3d4158;font-weight:700;font-size:14px">앱 열기</div>
+          </div>
+        </div>
+        <div class="abs" style="left:14px;right:14px;top:418px;background:#2b2e42;border-radius:22px;padding:14px 16px;color:#b9b3c8;font-size:13px">다른 알림 …</div>
+      </div></div>
+      <div class="cap">진행 중 알림 (잠금화면에도 표시)<small>Android 기본 Chronometer 카운트다운 → 매초 갱신 없이 배터리 부담 적음. 종료 버튼은 넣지 않고 앱에서만.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:linear-gradient(170deg,#c9b8e6,#f4c9a8 70%,#f7dfc3)">
+        <div class="abs" style="left:24px;right:24px;top:18px;color:#2b2420;font-size:15px;display:flex;justify-content:space-between"><b>09:10</b><span>●●●</span></div>
+        <div class="abs new" style="left:20px;right:20px;top:70px;height:172px;border-radius:28px;overflow:hidden;background:var(--cream);display:flex;box-shadow:0 8px 20px rgba(0,0,0,.18)">
+          <div style="width:150px;background:url(../competitive-review-2026-10-14/fresh/home-evening.png) -130px -310px/390px 844px"></div>
+          <div style="flex:1;padding:14px 14px">
+            <div style="font-size:12px;color:var(--ink2);font-weight:700">오늘의 집중</div>
+            <div style="font-size:26px;font-weight:800">1시간 15분</div>
+            <div style="font-size:12px;color:var(--teal);font-weight:700;margin-top:2px">D-12 · 자격증 시험</div>
+            <div style="margin-top:12px;background:var(--orange);border-radius:99px;padding:9px 0;text-align:center;font-weight:800;font-size:14px">25분 집중 시작 ▶</div>
+          </div>
+        </div>
+        <div class="abs" style="left:20px;top:262px;display:grid;grid-template-columns:repeat(4,64px);gap:22px 20px">
+          <div style="height:64px;border-radius:18px;background:#fff7"></div><div style="height:64px;border-radius:18px;background:#fff7"></div><div style="height:64px;border-radius:18px;background:#fff7"></div><div style="height:64px;border-radius:18px;background:#fff7"></div>
+        </div>
+        <div class="abs new" style="left:20px;top:372px;width:166px;height:166px;border-radius:28px;background:#262a3d;color:var(--cream);padding:16px;box-shadow:0 8px 20px rgba(0,0,0,.18)">
+          <div style="font-size:12px;opacity:.7">집중 중 · 랫서팬더</div>
+          <div style="width:96px;height:96px;margin:8px auto 0;border-radius:50%;background:conic-gradient(var(--orange) 0 75%,#44485f 0);display:grid;place-items:center"><div style="width:80px;height:80px;border-radius:50%;background:#262a3d;display:grid;place-items:center;font-size:21px;font-weight:800">18:42</div></div>
+        </div>
+        <div class="abs" style="left:204px;top:372px;display:grid;grid-template-columns:repeat(2,64px);gap:38px 20px">
+          <div style="height:64px;border-radius:18px;background:#fff7"></div><div style="height:64px;border-radius:18px;background:#fff7"></div><div style="height:64px;border-radius:18px;background:#fff7"></div><div style="height:64px;border-radius:18px;background:#fff7"></div>
+        </div>
+      </div></div>
+      <div class="cap">홈 화면 위젯 2종<small>4×2: 오늘 합계·D-day·바로 시작 / 2×2: 집중 중 남은 시간. 원 배경은 친구 방 일러스트 그대로 사용.</small></div>
+    </div>
+    <div class="col" style="width:330px;padding-top:12px">
+      <div class="note" style="width:100%"><h4>지금 앱과의 차이</h4>완료 알림(AlarmManager)과 사운드용 foreground 알림은 이미 있음. 사운드를 끈 사용자는 집중 중 상태를 앱 밖에서 볼 방법이 없어요.</div>
+      <div class="note" style="width:100%;margin-top:14px"><h4>구현 메모</h4>• 알림: setUsesChronometer + setChronometerCountDown, ongoing, 일시정지 시 갱신<br>• 위젯: Glance 또는 home_widget 패키지, 시작 버튼은 앱을 열어 시작(위젯에서 바로 기록 저장하지 않음)<br>• 기존 “저장 성공 후 UI 반영” 원칙 유지</div>
+      <div class="note" style="width:100%;margin-top:14px"><h4>주의</h4>알림 권한을 거부한 사용자는 위젯만으로도 확인 가능하게. Play 정책상 foreground service 유형 추가는 필요 없음(일반 ongoing 알림).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 과목 태그 ============ -->
+<section class="board" id="b3">
+  <div class="head"><div><div class="tag">제안 3 · 기록을 더 의미 있게</div><h1>무엇에 집중했는지 태그로 남기기</h1></div><div class="prio">우선순위 3 · 작업 M</div></div>
+  <p class="why">Forest는 <b>태그별 시간 분포</b>, 열품타는 과목별 타이머가 핵심 기능이에요. 지금 기록은 “얼마나”만 있고 “무엇을”이 없어, 주간·월간 통계가 금방 단조로워집니다. 시작 흐름은 그대로 두고 태그는 선택 사항으로.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/home-evening.png)">
+        <div class="abs new" style="left:22px;right:22px;top:478px;display:flex;gap:7px;padding:8px 8px;border-radius:99px;background:rgba(29,32,48,.82)">
+          <span class="chip sel"><span class="dot" style="background:var(--teal)"></span>공부</span>
+          <span class="chip"><span class="dot" style="background:var(--plum)"></span>작업</span>
+          <span class="chip"><span class="dot" style="background:var(--rose)"></span>독서</span>
+          <span class="chip" style="padding:0 12px">＋</span>
+        </div>
+      </div></div>
+      <div class="cap">홈 · 시작 전 태그 고르기<small>마지막 태그를 기억해서 대부분은 손대지 않고 바로 시작. 태그 없이도 시작 가능.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:var(--navy)">
+        <div class="abs" style="left:24px;top:28px;color:var(--cream)"><div style="font-size:30px;font-weight:800">차곡차곡 기록</div><div style="font-size:14px;opacity:.75;margin-top:4px">함께 집중한 날을 모았어요</div></div>
+        <div class="abs" style="left:24px;right:24px;top:112px;display:flex;background:#2c2f45;border-radius:12px;padding:4px;color:#c9c3b8;font-size:14px;font-weight:700;text-align:center">
+          <div style="flex:1;padding:8px">달력</div><div style="flex:1;padding:8px;background:var(--orange);color:var(--ink);border-radius:9px">주간</div><div style="flex:1;padding:8px">월간</div>
+        </div>
+        <div class="abs" style="left:24px;right:24px;top:172px;color:var(--cream)">
+          <div style="font-size:14px;opacity:.75">이번 주</div><div style="font-size:30px;font-weight:800">6시간 40분</div><div style="font-size:13px;color:var(--orange);margin-top:2px">지난주보다 1시간 10분 더</div>
+        </div>
+        <div class="abs new" style="left:24px;right:24px;top:270px;height:190px;display:flex;align-items:flex-end;gap:14px;padding:0 6px;border-bottom:1px solid #44485f">
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:30px;background:var(--rose);border-radius:6px 6px 0 0"></i><i style="height:50px;background:var(--teal)"></i></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:40px;background:var(--plum);border-radius:6px 6px 0 0"></i><i style="height:80px;background:var(--teal)"></i></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:100px;background:var(--teal);border-radius:6px 6px 0 0"></i></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:40px;background:var(--plum);border-radius:6px 6px 0 0"></i><i style="height:60px;background:var(--teal)"></i></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:150px;background:var(--teal);border-radius:6px 6px 0 0"></i></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:30px;background:var(--rose);border-radius:6px 6px 0 0"></i></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px"><i style="height:4px;background:#44485f;border-radius:4px"></i></div>
+        </div>
+        <div class="abs" style="left:30px;right:30px;top:468px;display:flex;justify-content:space-between;color:#9c97a8;font-size:12px"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        <div class="abs new" style="left:24px;right:24px;top:504px;background:#2c2f45;border-radius:16px;padding:6px 16px;color:var(--cream);font-size:15px">
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #3c3f57"><span class="dot" style="background:var(--teal)"></span><b style="flex:1">공부</b>4시간 10분<span style="width:44px;text-align:right;color:#9c97a8;font-size:13px">63%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #3c3f57"><span class="dot" style="background:var(--plum)"></span><b style="flex:1">작업</b>1시간 50분<span style="width:44px;text-align:right;color:#9c97a8;font-size:13px">27%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0"><span class="dot" style="background:var(--rose)"></span><b style="flex:1">독서</b>40분<span style="width:44px;text-align:right;color:#9c97a8;font-size:13px">10%</span></div>
+        </div>
+        <div class="navbar"><div>책상</div><div class="on">기록</div><div>설정</div></div>
+      </div></div>
+      <div class="cap">기록 · 주간 탭<small>기존 주간 막대를 태그 색으로 쌓고, 아래에 태그별 합계 추가</small></div>
+    </div>
+    <div class="col" style="width:330px;padding-top:12px">
+      <div class="note" style="width:100%"><h4>범위 제안</h4>기본 태그 3개(공부·작업·독서) + 사용자 추가 최대 6개. 이름·색만. 태그 삭제 시 기록은 “태그 없음”으로.</div>
+      <div class="note" style="width:100%;margin-top:14px"><h4>데이터</h4>세션 기록과 일별 합계에 tagId 추가 → 스키마 버전 올림. 기존 기록은 “태그 없음”으로 이관. 최근 100개 제한과 별도인 일별 합계에 태그별 분 저장 필요.</div>
+      <div class="note" style="width:100%;margin-top:14px"><h4>목표와 연결 (선택)</h4>“목표와 다짐”의 D-day 목표에 태그를 연결하면 “자격증 시험까지 공부 12시간” 같은 표시도 가능.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. 친구가 기다려요 ============ -->
+<section class="board" id="b4">
+  <div class="head"><div><div class="tag">제안 4 · 부드러운 딥 포커스</div><h1>다른 앱으로 새면, 친구가 조용히 불러요</h1></div><div class="prio">우선순위 4 · 작업 S</div></div>
+  <p class="why">Forest는 앱을 나가면 나무가 죽고, Focus Friend는 친구가 슬퍼합니다. 이게 경쟁 앱들의 <b>핵심 동기 장치</b>예요. 우리는 지금 앱 밖에 있어도 아무 반응이 없어요. 벌을 주지 않는 Deskmate 톤으로: 잠깐 나가면 알림으로 부르고, 돌아오면 반겨줍니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:#f4f1ec">
+        <div class="abs" style="left:24px;right:24px;top:18px;color:#333;font-size:15px;display:flex;justify-content:space-between"><b>17:31</b><span>●●●</span></div>
+        <div class="abs" style="left:18px;right:18px;top:120px;display:flex;flex-direction:column;gap:14px">
+          <div style="height:200px;border-radius:16px;background:#e2ddd5"></div>
+          <div style="height:16px;width:70%;border-radius:8px;background:#ddd7cd"></div>
+          <div style="height:16px;width:90%;border-radius:8px;background:#ddd7cd"></div>
+          <div style="height:200px;border-radius:16px;background:#e2ddd5"></div>
+        </div>
+        <div class="abs new" style="left:12px;right:12px;top:48px;background:#2b2e42;border-radius:22px;padding:14px 16px;color:#ece7f5;display:flex;gap:12px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,.3)">
+          <div style="width:52px;height:52px;border-radius:14px;flex:none;background:url(../competitive-review-2026-10-14/fresh/focusing.png) -111px -241px/260px 563px"></div>
+          <div><div style="font-size:12px;color:#b9b3c8">Deskmate · 지금</div><div style="font-size:15px;font-weight:800;margin-top:2px">랫서팬더가 책상에서 기다려요</div><div style="font-size:13px;color:#d7d1e3;margin-top:2px">18:42 남았어요. 같이 마저 써요 ✏️</div></div>
+        </div>
+      </div></div>
+      <div class="cap">① 집중 중 다른 앱 10초 이상<small>한 세션에 한 번만, 조용한 알림으로 부르기 (진동·소리 없음)</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/focusing.png)">
+        <div class="abs" style="left:30px;right:30px;top:226px;height:36px;background:#2e2a3c;border-radius:12px"></div>
+        <div class="abs dark-pill new" style="left:40px;right:40px;top:224px;padding:9px 14px;text-align:center;font-size:15px">돌아왔네요! 같이 이어서 써요</div>
+        <div class="abs new" style="left:228px;top:286px;background:var(--cream);color:var(--ink);font-size:14px;font-weight:700;padding:9px 12px;border-radius:16px 16px 16px 4px;box-shadow:0 4px 12px rgba(0,0,0,.25)">반가워요 🧡</div>
+      </div></div>
+      <div class="cap">② 돌아왔을 때<small>메시지 줄과 말풍선으로 반기기. 타이머는 그대로 진행(지금 규칙 유지).</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/completed.png)">
+        <div class="abs" style="left:40px;right:40px;top:226px;height:36px;background:#2e2a3c;border-radius:12px"></div>
+        <div class="abs dark-pill" style="left:30px;right:30px;top:224px;padding:9px 14px;text-align:center;font-size:15px">잘했어요. 책상에 집중이 쌓였어요</div>
+        <div class="abs cream-card new" style="left:30px;right:30px;top:505px;padding:12px 16px;display:flex;justify-content:space-around;text-align:center">
+          <div><div style="font-size:12px;color:var(--ink2);font-weight:700">책상에 함께</div><div style="font-size:20px;font-weight:800">22분</div></div>
+          <div style="width:1px;background:var(--line)"></div>
+          <div><div style="font-size:12px;color:var(--ink2);font-weight:700">잠깐 자리 비움</div><div style="font-size:20px;font-weight:800">3분 · 1번</div></div>
+        </div>
+      </div></div>
+      <div class="cap">③ 완료 요약<small>“함께 있던 시간”만 부드럽게 알려줌. 보상·기록 기준은 바꾸지 않음.</small></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note"><h4>설정</h4>설정 → “집중 중 나가면 친구가 부르기” (기본 켜짐 / 알림 권한 필요). 끄면 지금과 동일.</div>
+    <div class="note"><h4>구현</h4>AppLifecycle paused 시각을 기록하고 10초 뒤 알림 예약, 복귀 시 취소. 기존 알림 채널과 분리된 낮은 중요도 채널.</div>
+    <div class="note"><h4>하지 않을 것</h4>앱 차단·사용 기록 권한·세션 실패 처리 없음. Deskmate는 “혼내지 않는 친구” 포지션을 유지.</div>
+  </div>
+</section>
+
+<!-- ============ 5. 공유 카드 ============ -->
+<section class="board" id="b5">
+  <div class="head"><div><div class="tag">제안 5 · 자연 유입</div><h1>오늘의 책상을 카드로 공유하기</h1></div><div class="prio">우선순위 5 · 작업 S</div></div>
+  <p class="why">스터디 계정·스터디윗미 문화에서 <b>“오늘 공부 인증”</b> 이미지는 가장 흔한 공유 형태예요. Focus Friend도 SNS 확산으로 차트 1위를 했습니다. 우리 일러스트는 그대로 예쁘니, 완료 후 인증 카드 한 장으로 광고비 없는 유입 경로를 만듭니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background-image:url(../competitive-review-2026-10-14/fresh/completed.png)">
+        <div class="abs" style="left:52px;right:52px;top:676px;height:40px;background:#3a2e28;border-radius:10px"></div>
+        <div class="abs new" style="left:26px;right:26px;top:672px;display:flex;justify-content:space-around;color:var(--cream);font-size:16px;font-weight:800">
+          <span style="padding:10px 0">5분 휴식</span><span style="padding:10px 0;color:var(--orange)">↗ 인증 카드</span><span style="padding:10px 0">다음 집중</span>
+        </div>
+      </div></div>
+      <div class="cap">완료 화면<small>보조 버튼 줄에 ‘인증 카드’ 추가 (확인 버튼 우선순위는 유지)</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:#141520">
+        <div class="abs new" style="left:45px;top:30px;width:300px;height:533px;border-radius:22px;overflow:hidden;background:var(--cream);box-shadow:0 10px 30px rgba(0,0,0,.5)">
+          <div style="height:330px;background:url(../competitive-review-2026-10-14/fresh/completed.png) -80px -330px/450px 974px"></div>
+          <div style="padding:16px 18px">
+            <div style="font-size:12px;font-weight:700;color:var(--orange2)">11월 19일 목요일</div>
+            <div style="font-size:24px;font-weight:800;margin-top:2px">오늘 2시간 5분 집중</div>
+            <div style="display:flex;gap:6px;margin-top:10px">
+              <span style="width:26px;height:26px;border-radius:50%;background:var(--orange)"></span><span style="width:26px;height:26px;border-radius:50%;background:var(--orange)"></span><span style="width:26px;height:26px;border-radius:50%;border:2px dashed #cbbb9f"></span><span style="width:26px;height:26px;border-radius:50%;background:var(--orange)"></span><span style="width:26px;height:26px;border-radius:50%;background:var(--orange)"></span><span style="width:26px;height:26px;border-radius:50%;background:var(--orange)"></span><span style="width:26px;height:26px;border-radius:50%;background:var(--orange);outline:2px solid var(--ink);outline-offset:2px"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:14px;font-size:12px;color:var(--ink2)"><span>랫서팬더와 함께 · 5일 연속</span><b style="color:var(--ink)">Deskmate</b></div>
+          </div>
+        </div>
+        <div class="abs" style="left:0;right:0;bottom:0;height:250px;background:#2b2e42;border-radius:26px 26px 0 0;padding:20px;color:#ece7f5">
+          <div style="font-size:14px;font-weight:700;margin-bottom:16px">공유</div>
+          <div style="display:flex;gap:18px">
+            <div style="text-align:center;font-size:11px"><div style="width:54px;height:54px;border-radius:16px;background:#3d4158;margin-bottom:6px"></div>인스타 스토리</div>
+            <div style="text-align:center;font-size:11px"><div style="width:54px;height:54px;border-radius:16px;background:#3d4158;margin-bottom:6px"></div>메시지</div>
+            <div style="text-align:center;font-size:11px"><div style="width:54px;height:54px;border-radius:16px;background:#3d4158;margin-bottom:6px"></div>이미지 저장</div>
+            <div style="text-align:center;font-size:11px"><div style="width:54px;height:54px;border-radius:16px;background:#3d4158;margin-bottom:6px"></div>더보기</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap">9:16 인증 카드 + 시스템 공유<small>현재 친구·시간대 방 + 오늘 합계 + 최근 7일 스탬프 + 작은 앱 이름</small></div>
+    </div>
+    <div class="col" style="width:330px;padding-top:12px">
+      <div class="note" style="width:100%"><h4>구현</h4>RepaintBoundary로 카드 위젯을 PNG로 렌더 → share_plus로 시스템 공유 시트. 서버·계정 불필요.</div>
+      <div class="note" style="width:100%;margin-top:14px"><h4>연속 일수</h4>카드에 “5일 연속”을 쓰려면 연속 집중 일수를 홈/기록에도 보여주는 게 자연스러움 (기록 월간 탭엔 ‘최장 연속’만 있음).</div>
+      <div class="note" style="width:100%;margin-top:14px"><h4>개인정보</h4>목표 이름·다짐 문구는 기본으로 카드에서 빼고, 사용자가 켤 때만 포함.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+const id=(location.hash||'#b1').slice(1);
+document.getElementById(id).classList.add('on');
+</script>
+</body>
+</html>

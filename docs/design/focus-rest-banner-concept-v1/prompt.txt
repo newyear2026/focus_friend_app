@@ -1,0 +1,24 @@
+Use case: ui-mockup
+Asset type: high-fidelity Korean mobile app ad-placement comparison board, a single landscape image, approximately 2048 x 1536.
+Primary request: Show exactly how a small anchored bottom banner would look while using the existing cozy focus timer app. This is a proposal for the real app, not a redesign.
+Input images: Image 1 is the precise existing focus-screen reference with a red panda writing at a wooden desk by a sunset window. Image 2 is the precise rest-screen reference with the same red panda holding a tea cup. Preserve these existing illustrations, character identity, room geometry, UI colors, Korean typography, and overall layout very faithfully. Do not invent a new app style.
+
+Board layout: warm off-white flat background; title at top left "집중·휴식 화면 하단 배너 시안". Three equally sized tall mobile screens in one row, straight-on, no perspective, thin rounded dark borders and subtle shadows. Each screen has the same aspect ratio as the input screenshots (about 390:844), approximately 500 px wide. Keep generous gutters. Above each screen set readable dark Korean section labels:
+Left "01  광고 없는 집중 화면"
+Middle "02  집중 중 · 하단 배너"
+Right "03  휴식 중 · 하단 배너"
+
+Left screen: faithful copy of Image 1 without any ad. Existing cream "나의 책상", muted-speaker icon, "25분 집중 중", timer "25:00", message "차근차근, 함께 써 내려가요", original red panda writing, large amber "잠시 멈추기" button and pause icon, cream text "이번 시간 종료". Preserve the rich sunset illustration. No bottom navigation during a session.
+
+Middle screen: same focus state and SAME room/character size and alignment as the left screen, same timer "25:00" and all the same controls. Add one modest standard anchored banner in a dedicated white footer at the very bottom, about 55-60 dp high out of 844 dp. Keep a subtle separator and a small bottom system-safe-area strip below the banner. The banner must never cover the character, book, timer, pause button, or end-session text. There is a generous band of unoccupied room background between the end-session text and the banner. Do not move the character or compress the artwork upward. The screen has enough empty lower space for this footer.
+Example banner creative, clearly an ad and unlike app controls: small outlined "광고" badge at far left; small blue vocabulary app icon; bold dark "하루 영어 10분" with smaller gray "오늘의 단어를 가볍게"; blue rectangular "보기" button at the right; tiny ad information icon. Fit the creative as a single compact horizontal strip, NOT a large native card or modal. Realistically resemble a small white display banner.
+
+Right screen: use Image 2, same illustrated sunset room and tea-drinking red panda. Preserve "나의 책상", muted-speaker icon, "쉬어가는 시간", "05:00", "차 한 잔, 천천히 쉬어가요", large amber "잠시 멈추기" pause button, "이번 시간 종료". Add the exact same compact white banner footer as the middle screen at exactly the same height. No bottom navigation.
+
+Under the screens, short external captions in Korean:
+Left "광고 제거 구매 시에도 이 모습"
+Middle "버튼과 광고 사이에 충분한 여백"
+Right "휴식 중에도 같은 위치 유지"
+Bottom board footer, smaller but readable: "배치 시안 · 광고 문구와 색상은 예시입니다."
+
+Constraints: crisp Korean sans-serif lettering, natural exact Hangul. Preserve original app illustration and visual identity, do not redesign or add new scenery/characters. No extra app features, no revenue figures, no new purchase buttons, no popups, no decorative arrows covering screens, no giant ads, no fake close icon, no ad inside the room as a prop. Footer banner is the only app UI addition. Match focus-screen positions across the first two panels so the difference is immediately clear. Entire screens and all captions must fit inside the board without cropping.

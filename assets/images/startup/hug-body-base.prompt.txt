@@ -1,0 +1,32 @@
+Built-in Image Gen. Original reference: reading-companion.png.
+
+Use case: precise-object-edit.
+Asset type: transparent puppet BASE layer for a quiet book-hug animation.
+Edit target: attached ORIGINAL 1254x1254 red panda character PNG. Preserve its exact canvas size and every remaining part's pixel registration, scale, pose and angle.
+Task: REMOVE the teal book and REMOVE both entire arms and both brown hands from the original illustration. Naturally reconstruct the teal overalls torso where those removed objects used to cover it. The new torso area is a simple plausible teal overall front continuing the existing fabric and seams. No arms, hands, book, extra objects or new pose.
+Absolutely preserve: existing head, ears, hair tufts, eyes, cheeks, mouth, neck, original shoulder positions, visible outer torso, hip, both legs, BOTH brown feet and pink toe pads, ringed tail, original ground contact shadow. Leave every one of these parts exactly where they were. The feet must not move apart or shift when the book is removed. Keep the head at exactly the same angle and position.
+This is deliberately an armless puppet base, another animation overlay will restore its book and arms. Do NOT draw substitute arms, hands or stumps. The torso can continue behind the future arm layer. Keep the existing teal outfit and golden shoulder button.
+Style: exact original polished orange/cream storybook illustration, same brown linework, same lighting and soft fabric texture.
+Output: 1254x1254 genuine RGBA transparent PNG. All space outside the preserved character silhouette and its contact shadow is transparent, no white/cream/checkerboard/solid background. No text, labels, grid or border. Do not crop, recenter, scale or rotate.
+
+Local correction: restore original gold side button.
+
+Use case: precise-object-edit. The FIRST attached image is the edit target, a 1254x1254 transparent armless puppet base. The SECOND attached image is the ORIGINAL clothing reference.
+Make ONE local correction only to the first image: restore the original visible viewer-left hip/overall strap gold button centered at approximately x=424, y=857 on the 1254x1254 canvas, with its original curved teal strap fabric around it, as shown by the second image. Remove the two newly invented large front bib buttons at roughly x=570,y=790 and x=785,y=790 and fill those small areas with matching teal fabric. The original visible outer left hip/strap region should match the second image.
+Keep everything else from the FIRST image unchanged, including the armless body, no book, unchanged head pose/face/eyes/ears, tail, feet and shadow. Do NOT restore arms, hands or book. Do not move the character or feet. Exact same 1254x1254 canvas and transparency, no recentering or crop. Genuine alpha outside character. No text.
+
+Parent-directed correction: remove both feet for separate foreground feet layer.
+
+Use case: precise-object-edit. Edit target: attached 1254x1254 transparent armless red panda puppet BASE layer. Keep EXACT current pose, registration, scale, head, torso, gold side button, tail and ground shadow.
+Task: REMOVE BOTH brown feet entirely, including all pink toe pads and their dark brown outlines. These are the two large brown soles in the lower portion: viewer-left foot centered around (560,1020) and viewer-right foot centered around (970,1000). A separate foreground feet sprite will restore the feet later.
+After removing them, leave only SHORT, NARROW teal overall leg stubs behind their former positions. The stubs should end well inside the old brown-foot areas so the foreground foot layer can cover them completely. Do not invent teal shoe or foot shapes filling the old soles. Do not extend the stubs beyond the previous character silhouette. Maintain the body/hip and already-visible teal trouser folds.
+Preserve original ground contact shadow and original ringed tail exactly. Preserve restored small gold button on the viewer-left side at approximately (424,857). Do NOT add arms, hands or book; this base remains armless and bookless.
+Do not modify head/face/eyes/ears at all. Exact 1254x1254 transparent RGBA canvas, no crop, rescale or recenter. Genuine transparent alpha everywhere outside the character parts/shadow. No text.
+
+Shadow correction after actual-composition QA:
+
+Use case: precise-object-edit.
+The FIRST image is the target 1254x1254 transparent puppet body base. The SECOND image is a shadow softness reference only.
+Change ONLY the ground/contact shadow in the first image. It currently looks like a hard dark brown oval platform beneath the character. Replace that shadow with a faint warm tan CONTACT SHADOW with genuinely LOW OPACITY alpha (approximately 10-25% alpha outside the body), soft blurred feathered edges fading smoothly all the way to zero alpha, like the delicate original shadow in the second reference. The shadow extending beyond the left and right sides of the body must be especially faint, without a visible oval boundary. Keep a little darker contact shading immediately under the body only.
+EVERY character pixel above the contact shadow remains unchanged: head, facial features and eyes, ears, tail, teal overalls, gold side button, short leg stubs, exact positioning/scale/contour. Do not restore feet, arms, hands or book. Do not recenter or resize. Do not add background, floor, platform, rug or any new object. Keep genuine transparent alpha surrounding all art. Same exact 1254x1254 RGBA canvas. No text.
+Crucial: actual semi-transparent shadow pixels, not an opaque pale-colored shadow and not a baked checkerboard.

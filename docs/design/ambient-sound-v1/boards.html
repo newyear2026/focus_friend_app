@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Deskmate 소리 확장 시안</title>
+<style>
+@font-face{
+  font-family:Pretendard;
+  src:url("../../../assets/fonts/PretendardVariable.ttf") format("truetype");
+  font-weight:100 900;
+}
+:root{
+  --ink:#2b2420; --ink2:#6d6158; --orange2:#e5922f; --line:#e4d5bb; --navy:#1d2030;
+  /* app colors, lib/desk_style.dart */
+  --paper:#292630; --aink:#FFEBC5; --acream:#403943; --ablue:#E5CAB0; --accent:#FFC16F; --muted:#C5B8BA; --divider:#554A54;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#efe6d6;font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;color:var(--ink)}
+.board{display:none;width:1180px;padding:34px 40px 30px;background:#f6eedf}
+.board.on{display:block}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.kicker{font-weight:700;font-size:13px;letter-spacing:.12em;color:var(--orange2)}
+h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-top:6px}
+.why{margin-top:8px;font-size:15.5px;line-height:1.55;color:var(--ink2);max-width:930px}
+.why b{color:var(--ink);font-weight:700}
+.prio{flex:none;font-size:13px;font-weight:700;padding:8px 14px;border-radius:99px;background:var(--navy);color:#fbf6ee}
+.row{display:flex;gap:26px;margin-top:22px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.cap{font-size:15px;font-weight:800;text-align:center;letter-spacing:-.02em}
+.cap small{display:block;font-weight:500;color:var(--ink2);margin-top:3px;font-size:12.5px;line-height:1.45;max-width:318px}
+.wrap{width:318px;height:688px;position:relative;border-radius:32px;overflow:hidden;box-shadow:0 16px 34px rgba(60,40,20,.2),0 0 0 6px #2a2522}
+.phone{position:absolute;left:0;top:0;width:390px;height:844px;transform:scale(.8154);transform-origin:0 0;overflow:hidden;background:#141522;color:var(--aink)}
+.shot{position:absolute;inset:0;background-size:390px 844px;background-repeat:no-repeat}
+.abs{position:absolute}
+.new{outline:2.5px dashed var(--orange2);outline-offset:3px;border-radius:14px}
+.side{flex:1;display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.note{background:#fffaf3;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.note h4{font-size:14px;margin-bottom:4px}
+.note p{font-size:13.5px;line-height:1.55;color:var(--ink2)}
+.note p b{color:var(--ink)}
+.cost{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;line-height:1.5;color:var(--ink2)}
+.cost dt{font-weight:700;color:var(--ink)}
+
+/* app sheet */
+.scrim{position:absolute;inset:0;background:rgba(10,10,18,.55)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--paper);border-radius:28px 28px 0 0;padding:8px 20px 20px;color:var(--aink)}
+.handle{width:44px;height:4px;border-radius:2px;background:rgba(197,184,186,.4);margin:0 auto 6px}
+.stitle{display:flex;align-items:center;justify-content:center;position:relative;height:40px;font-size:26px;font-weight:900}
+.stitle .x{position:absolute;right:4px;top:6px;width:24px;height:24px}
+.ssub{text-align:center;font-size:14px;color:var(--ablue);margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.tile{position:relative;border:1px solid var(--divider);border-radius:12px;padding:6px 6px 7px;background:var(--paper)}
+.tile.sel{border:1.5px solid var(--accent);background:var(--acream)}
+.tile .art{height:58px;border-radius:7px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:26px}
+.tile .nm{font-size:13px;font-weight:800;margin-top:6px;text-align:center;letter-spacing:-.02em}
+.tile .ck{position:absolute;right:-6px;top:-6px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#292630;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.tile .tag{position:absolute;left:10px;top:10px;font-size:10px;font-weight:800;background:rgba(41,38,48,.85);color:var(--accent);padding:1px 6px;border-radius:99px}
+.lbl{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-top:14px}
+.lbl span{font-weight:500;color:var(--muted);font-size:13px}
+.mix{display:flex;align-items:center;gap:10px;margin-top:9px}
+.mix .th{width:30px;height:30px;border-radius:7px;background-size:cover;flex:none}
+.mix .n{width:74px;font-size:13px;font-weight:700;flex:none}
+.mix .tr{flex:1;height:4px;border-radius:2px;background:var(--divider);position:relative}
+.mix .tr i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:2px}
+.mix .tr b{position:absolute;top:-8px;width:20px;height:20px;border-radius:50%;background:var(--accent);margin-left:-10px;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.mix .p{width:36px;text-align:right;font-size:13px;color:var(--muted)}
+.chips{display:flex;gap:7px;margin-top:9px}
+.chips div{flex:1;height:36px;border-radius:12px;border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--muted)}
+.chips .on{border:1.5px solid var(--accent);background:var(--acream);color:var(--aink)}
+.btn{margin-top:14px;height:54px;border-radius:16px;background:var(--accent);color:#24202b;font-size:19px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:8px}
+.hr{height:1px;background:var(--divider);margin-top:14px}
+.frow{display:flex;align-items:center;gap:11px;border:1px solid var(--divider);border-radius:12px;padding:7px;margin-top:8px}
+.frow .th{width:52px;height:52px;border-radius:8px;background-size:260% auto;background-position:72% 18%;flex:none}
+.frow .t{flex:1}
+.frow .t b{display:block;font-size:15px;font-weight:800}
+.frow .t span{font-size:12px;color:var(--muted)}
+.frow .r{font-size:12px;font-weight:700;color:var(--accent);text-align:right;line-height:1.3}
+.frow.lock{opacity:.92}
+.frow.lock .th{filter:saturate(.75) brightness(.8)}
+.pillx{position:absolute;display:flex;align-items:center;justify-content:center;gap:7px;height:34px;border-radius:999px;background:rgba(20,20,32,.72);color:var(--aink);font-size:13.5px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. 섞기 ============ -->
+<section class="board" id="b1">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 1 · 소리 섞기</div>
+      <h1>비 + 장작처럼, 두세 개를 섞어 내 방 소리 만들기</h1>
+    </div>
+    <div class="prio">먼저 · 작업 중간</div>
+  </div>
+  <p class="why">지금은 소리를 <b>하나만</b> 고릅니다. Calm·BetterSleep·Noisli 같은 소리 앱의 기본은 <b>섞기와 소리별 음량</b>입니다. 이미 있는 3개에 무료 3개를 더해 6개, 최대 3개까지 섞습니다. 끄는 시점도 ‘집중 끝나면’ 하나에서 시간 선택으로 넓힙니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(base/night-focus.png)"></div>
+        <div class="pillx new" style="left:100px;right:100px;top:266px">🌧 창밖의 비 · 🔥 장작</div>
+      </div></div>
+      <div class="cap">집중 중에 무엇이 켜졌는지 보임<small>타이머 아래 한 줄. 누르면 오른쪽 시트가 열립니다. 친구·책상·버튼은 그대로.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" id="p1b"></div></div>
+      <div class="cap">새 사운드 시트<small>위: 고르기(6개 중 최대 3개). 아래: 켜진 소리마다 음량, 끄는 시점.</small></div>
+    </div>
+    <div class="side">
+      <div class="note"><h4>왜 섞기부터인가</h4><p>소리 앱을 따로 만들지 판단하려면, 먼저 <b>Deskmate 안에서 소리를 얼마나 쓰는지</b> 봐야 합니다. 섞기는 소리 앱이라면 다 있는 기능이라, 없으면 “소리 기능이 약하다”는 신호만 남습니다.</p></div>
+      <div class="note"><h4>새 무료 소리 3개</h4><p>☕ 조용한 카페 · ✏️ 연필 사각사각 · 〰 낮은 백색소음. 연필 소리는 친구가 필기하는 장면과 맞습니다. 지금 3개처럼 Freesound <b>CC0</b>에서 골라 <code>docs/audio-sources</code>에 출처를 남깁니다.</p></div>
+      <div class="note"><h4>바꿀 곳</h4>
+        <dl class="cost">
+          <dt>저장</dt><dd><code>SoundPreferences.sound</code> 하나 → 소리별 음량 목록. 예전 저장값은 그 소리 하나로 옮김</dd>
+          <dt>재생</dt><dd>Android 네이티브 플레이어를 최대 3개 동시에, 반복과 끝 페이드는 지금 방식 그대로</dd>
+          <dt>그림</dt><dd>새 소리 타일 3장(지금 비·숲·장작 타일과 같은 그림체)</dd>
+        </dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. 잠들기 ============ -->
+<section class="board" id="b2">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 2 · 잠들기 전</div>
+      <h1>밤에는 “잠들 때까지” 틀어두고, 방도 같이 어두워지기</h1>
+    </div>
+    <div class="prio">다음 · 수면 앱을 만들지 정하는 시험</div>
+  </div>
+  <p class="why">수면 소리 앱을 따로 만들기 전에, <b>Deskmate 사용자가 밤에 소리를 켜고 잠드는지</b> 먼저 확인합니다. 밤 9시 이후에만 ‘잠들 때까지’가 보이고, 누르면 화면이 어두운 방으로 바뀌고 소리가 정한 시간 동안 천천히 작아집니다. 집중 기록에는 넣지 않습니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" id="p2a"></div></div>
+      <div class="cap">밤에만 보이는 ‘잠들 때까지’<small>끄는 시점 아래 한 줄. 버튼이 ‘불 끄고 듣기’로 바뀝니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" id="p2b" style="background:#07080f">
+        <div class="abs" style="left:0;right:0;top:0;height:844px;background:url(base/night-home.png) 0 0/390px 844px no-repeat;filter:brightness(.32) saturate(.7);-webkit-mask-image:linear-gradient(to bottom,transparent 205px,#000 285px,#000 445px,transparent 500px)"></div>
+        <div class="abs" style="left:0;right:0;top:64px;text-align:center;font-size:13px;letter-spacing:.14em;color:rgba(255,235,197,.55);font-weight:700">🌙 잠들기</div>
+        <div class="abs" style="left:0;right:0;top:92px;text-align:center;font-size:64px;font-weight:300;letter-spacing:-.02em;color:rgba(255,235,197,.72)">44:58</div>
+        <div class="abs" style="left:0;right:0;top:176px;text-align:center;font-size:14px;color:rgba(229,202,176,.6)">소리가 천천히 작아지고 있어요</div>
+        <div class="abs new" style="left:96px;top:300px;width:200px;height:150px;border-radius:20px;outline-color:rgba(229,146,47,.8)"></div>
+        <div class="abs" style="left:96px;top:458px;width:200px;text-align:center;font-size:11.5px;font-weight:700;color:#f0b56a">지금 그림을 어둡게 · 잠든 그림은 나중에</div>
+        <div class="pillx" style="left:88px;right:88px;top:540px;background:rgba(255,235,197,.07);color:rgba(255,235,197,.7)">🌧 창밖의 비 · 🔥 장작</div>
+        <div class="abs" style="left:0;right:0;top:700px;text-align:center;font-size:15px;font-weight:700;color:rgba(255,193,111,.6)">그만 듣기</div>
+        <div class="abs" style="left:0;right:0;top:770px;text-align:center;font-size:12px;color:rgba(197,184,186,.38)">화면은 1분 뒤 꺼져도 소리는 계속돼요</div>
+      </div></div>
+      <div class="cap">잠들기 화면<small>방과 친구를 어둡게만. 숫자·글자 밝기를 낮추고, 버튼은 하나.</small></div>
+    </div>
+    <div class="side">
+      <div class="note"><h4>판단 기준(예시 숫자)</h4><p>4주 동안 밤 사용자 중 <b>잠들기를 쓴 비율 20% 이상</b>, 한 번에 <b>평균 30분 이상</b>이면 같은 친구로 수면 앱(가칭 Deskmate Sleep)을 검토합니다. 낮으면 Deskmate의 작은 기능으로 남깁니다.</p></div>
+      <div class="note"><h4>재려면 집계가 필요함</h4><p>지금 앱은 사용 기록을 밖으로 보내지 않습니다. 이 판단에는 <b>익명 이벤트 두 개</b>(잠들기 시작, 들은 시간)가 필요하고, 넣으면 개인정보처리방침과 Play Console 데이터 보안 답변도 같이 고쳐야 합니다.</p></div>
+      <div class="note"><h4>그림은 아끼기</h4><p>잠든 친구 그림은 5명 × 1장입니다. 첫 버전은 지금 밤 그림을 어둡게만 하고, 기준을 넘으면 그때 그립니다. 재생은 이미 있는 <code>endAt</code> 끝 페이드를 늘려 씁니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 친구 방 소리 ============ -->
+<section class="board" id="b3">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 3 · 친구 방 소리</div>
+      <h1>친구를 들이면, 그 방의 소리가 함께 와요</h1>
+    </div>
+    <div class="prio">함께 · 새 상품 없음</div>
+  </div>
+  <p class="why">소리 팩을 <b>새 상품으로 팔지 않고</b>, 유료 친구 넷에 각자 방의 소리를 하나씩 넣습니다. 친구를 사는 이유가 “모습과 방”에서 “모습·방·소리”로 늘고, 모든 친구 묶음은 소리 4개를 모두 가집니다. Play Console 상품과 가격은 그대로입니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" id="p3a"></div></div>
+      <div class="cap">시트 아래 ‘친구 방 소리’<small>잠긴 소리도 미리 들을 수 있게(10초). 누르면 그 친구 소개로 갑니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(base/ko-2-locked-preview.png)"></div>
+        <div class="abs new" style="left:62px;right:62px;top:673px;height:26px;outline-offset:2px;border-radius:999px;background:#fbf0dc;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13.5px;font-weight:700;color:#6d5240">🌊 밤바다 파도 소리도 함께</div>
+      </div></div>
+      <div class="cap">친구 소개에 한 줄<small>지금 화면의 ‘필기와 휴식 동작’ 줄 자리에 소리 한 줄. 버튼과 가격은 그대로.</small></div>
+    </div>
+    <div class="side">
+      <div class="note"><h4>네 방, 네 소리</h4><p>🐧 펭귄 · 눈 내리는 오두막(바람과 난로)<br>🦦 해달 · 밤바다 파도<br>🐿 다람쥐 · 숲속 시냇물<br>🦊 사막여우 · 사막의 밤바람과 풀벌레<br>랫서팬더는 지금 ‘창밖의 비’가 그 방 소리입니다.</p></div>
+      <div class="note"><h4>왜 새 상품이 아닌가</h4><p>상품을 늘리면 가격표, 테스트, 복원이 모두 늘어납니다. 지금 친구 4명·광고 제거·묶음 구조에 <b>가치만 더하는 편</b>이 출시 전에 안전합니다. 소리가 많이 쓰이면 그때 따로 팝니다.</p></div>
+      <div class="note"><h4>준비할 것</h4><p>CC0 소리 4개와 출처 기록, 묶음 소개에 “방 소리 4개 포함” 한 줄. 친구를 고르면 그 방 소리를 <b>자동으로 켜지는 않습니다</b>. 고르는 건 사용자.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const tiles = [
+  {id:'rain',  nm:'창밖의 비',   img:'../../../assets/images/sound-rain.png'},
+  {id:'forest',nm:'숲의 바람',   img:'../../../assets/images/sound-forest.png'},
+  {id:'fire',  nm:'따뜻한 장작', img:'../../../assets/images/sound-fire.png'},
+  {id:'cafe',  nm:'조용한 카페', emoji:'☕', bg:'linear-gradient(140deg,#6b4a3a,#2f2430)', isNew:true},
+  {id:'pencil',nm:'연필 사각사각',emoji:'✏️', bg:'linear-gradient(140deg,#5d5a3b,#2b2a33)', isNew:true},
+  {id:'noise', nm:'낮은 백색소음',emoji:'〰', bg:'linear-gradient(140deg,#3d4a66,#262838)', isNew:true},
+];
+const x = `<svg class="x" viewBox="0 0 24 24" fill="none" stroke="#FFEBC5" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>`;
+function grid(sel, small){
+  return `<div class="grid">${tiles.map(t=>{
+    const on = sel.includes(t.id);
+    const art = t.img ? `background-image:url(${t.img})` : `background:${t.bg}`;
+    return `<div class="tile${on?' sel':''}${t.isNew&&!small?' new':''}" style="${t.isNew&&!small?'outline-offset:2px;border-radius:12px':''}">
+      <div class="art" style="${art};${small?'height:40px':''}">${t.emoji||''}</div>
+      ${t.isNew&&!small?'<div class="tag">새 소리</div>':''}
+      <div class="nm">${t.nm}</div>${on?'<div class="ck">✓</div>':''}</div>`;}).join('')}</div>`;
+}
+function mixRow(id,nm,pct){
+  const t = tiles.find(t=>t.id===id);
+  return `<div class="mix"><div class="th" style="background-image:url(${t.img})"></div><div class="n">${nm}</div>
+    <div class="tr"><i style="width:${pct}%"></i><b style="left:${pct}%"></b></div><div class="p">${pct}%</div></div>`;
+}
+function head(sub){
+  return `<div class="handle"></div><div class="stitle">집중 사운드${x}</div><div class="ssub">${sub}</div>`;
+}
+const bg = `<div class="shot" style="background-image:url(base/night-home.png)"></div><div class="scrim"></div>`;
+
+// 1b: mixer
+document.getElementById('p1b').innerHTML = bg + `<div class="sheet" style="top:150px">
+  ${head('최대 3개까지 섞을 수 있어요')}
+  ${grid(['rain','fire'])}
+  <div class="lbl new" style="outline-offset:6px;border-radius:10px">켜진 소리 <span>2 / 3</span></div>
+  ${mixRow('rain','창밖의 비',60)}
+  ${mixRow('fire','따뜻한 장작',30)}
+  <div class="lbl">끄는 시점</div>
+  <div class="chips"><div class="on">집중 끝나면</div><div>30분</div><div>60분</div><div>계속</div></div>
+  <div class="btn">선택 완료</div>
+</div>`;
+
+// 2a: sleep option inside the sheet
+document.getElementById('p2a').innerHTML = bg + `<div class="sheet" style="top:112px">
+  ${head('최대 3개까지 섞을 수 있어요')}
+  ${grid(['rain','fire'], true)}
+  <div class="lbl">켜진 소리 <span>2 / 3</span></div>
+  ${mixRow('rain','창밖의 비',60)}
+  ${mixRow('fire','따뜻한 장작',30)}
+  <div class="lbl">끄는 시점</div>
+  <div class="chips"><div>집중 끝나면</div><div>30분</div><div>60분</div><div>계속</div></div>
+  <div class="new" style="margin-top:14px;padding:10px 10px 11px;border-radius:14px;background:#1f1c26;outline-offset:2px">
+    <div style="font-size:15px;font-weight:800">🌙 잠들 때까지 <span style="font-weight:500;color:var(--muted);font-size:12.5px">· 밤 9시 이후</span></div>
+    <div class="chips" style="margin-top:8px"><div>30분</div><div class="on">45분</div><div>60분</div><div>90분</div></div>
+  </div>
+  <div class="btn new" style="outline-offset:3px">불 끄고 듣기 <span style="font-size:17px">🌙</span></div>
+</div>`;
+
+// 3a: friend room sounds
+const friends = [
+  ['penguin','눈 내리는 오두막','펭귄의 방 · 바람과 난로','펭귄'],
+  ['otter','밤바다 파도','해달의 방','해달'],
+  ['squirrel','숲속 시냇물','다람쥐의 방','다람쥐'],
+  ['fennec','사막의 밤바람','사막여우의 방 · 풀벌레','사막여우'],
+];
+document.getElementById('p3a').innerHTML = bg + `<div class="sheet" style="top:96px">
+  ${head('최대 3개까지 섞을 수 있어요')}
+  ${grid(['rain','fire'], true)}
+  <div class="new" style="margin-top:16px;padding:2px 0 0;outline-offset:6px">
+    <div class="lbl" style="margin-top:0">친구 방 소리 <span>🔒 4개</span></div>
+    ${friends.map(([id,nm,sub,r])=>`<div class="frow lock"><div class="th" style="background-image:url(../../../assets/images/friends/${id}-scene.png)"></div>
+      <div class="t"><b>${nm}</b><span>${sub}</span></div><div class="r">▶ 10초<br><span style="color:var(--muted);font-weight:600">🔒 ${r}</span></div></div>`).join('')}
+  </div>
+  <div class="btn">선택 완료</div>
+</div>`;
+
+const id = (location.hash||'#b1').slice(1);
+document.getElementById(id).classList.add('on');
+</script>
+</body>
+</html>

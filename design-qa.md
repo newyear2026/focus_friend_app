@@ -1,5 +1,15 @@
 # 랫서팬더 홈 · 필기 동작 구현 검증
 
+> 2026-11-07 앱 종료 팝업: [3번 시안 구현·실제 소형/중형 광고 검증](docs/design/app-exit-implementation-v1/design-qa.md) — final result: passed. 친구 인사 팝업, 두 네이티브 MediaView 배치, 광고 실패·동의·구매·타이머 보존, 관련 자동 테스트 83개와 독립 Android 에뮬레이터의 실제 Google 테스트 광고 표시를 확인했습니다.
+
+> 2026-11-06 시작 화면 모션 자연스러움 개선: [책 안기 v2 검증](docs/design/startup-book-hug-v2/design-qa.md) — final result: passed. 머리 비율·책 모양·어깨 고정을 유지하고 동작 시간과 표정을 부드럽게 연결했습니다. 전후 비교 및 실제 50fps 캡처, 관련 테스트 49개, 코드 분석과 Android debug APK 빌드를 통과했습니다. 후속 요청으로 에뮬레이터의 일반 앱 업데이트·실행·집중 기록 보존까지 확인했습니다.
+
+> 2026-11-06 책을 꼬옥 안는 시작 모션: [선택한 1번 구현·시각 검증](docs/design/startup-book-hug-v1/design-qa.md) — final result: passed. 책·팔 분리, 눈 감기·고개 끄덕임, 발·꼬리·바닥 고정과 루프 연결을 검증했습니다. 관련 테스트·캡처 48개, 코드 분석, Android debug APK 빌드를 통과했습니다. 기기에 설치하지 않았습니다.
+
+> 2026-11-06 시작 화면 캐릭터 모션: [호흡·눈 깜빡임 검증](docs/design/startup-motion-v1/design-qa.md) — final result: passed. 실제 앱의 6.4초 연속 캡처, 눈 영역·책 고정 픽셀 비교, 동작 줄이기·백그라운드 정지, 관련 테스트·캡처 42개, 코드 분석 및 Android debug APK 빌드를 확인했습니다. 기기에는 설치하지 않았습니다.
+
+> 2026-11-06 밝은 시작 로딩 화면: [선택한 3안 구현·시각 검증](docs/design/startup-screen-v2/design-qa.md) — final result: passed. 실제 Flutter의 같은 크기 전체 비교, 큰 글자·가로 화면·현지화, 로딩 점·오류 재시도·백그라운드 정지와 Android APK 빌드를 확인했습니다. 테스트·캡처 44개 통과. 이번 변경은 기기에 설치하지 않았습니다.
+
 > 2026-11-05 업데이트 소식: [선택 시안·실제 화면 비교](docs/design/update-news-v1/design-qa.md) — final result: passed. 크림색 하단 안내, 빌드별 1회 표시, 설정 재진입, 4개 언어·확대 글자, 전체 199개 테스트와 Android 통합 검증을 완료했습니다.
 
 > 최신 네 친구의 아침·낮·저녁·밤 적용: [friend-time-of-day-implementation/design-qa.md](docs/design/friend-time-of-day-implementation/design-qa.md) — final result: passed. 승인한 4단계 시안과 16개 실제 Flutter·Android 화면, 필기·휴식 유지, 시간대 전환·복귀, 전체 테스트 92개, 업데이트 후 저장 데이터 보존을 확인했습니다.

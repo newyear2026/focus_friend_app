@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'ads.dart';
 import 'android_bridge.dart';
 import 'session_engine.dart';
@@ -13,6 +14,7 @@ import 'goal_editor.dart';
 import 'l10n/app_localizations.dart';
 import 'language_sheet.dart';
 import 'native_ad_card.dart';
+import 'session_banner_ad.dart';
 import 'localized_names.dart';
 import 'purchase_sheet.dart';
 import 'purchases.dart';
@@ -23,6 +25,8 @@ import 'friend_picker.dart';
 import 'update_news.dart';
 import 'update_news_sheet.dart';
 import 'our_apps_screen.dart';
+import 'startup_screen.dart';
+import 'app_exit_dialog.dart';
 
 const ink = Color(0xFF50473D);
 const sage = Color(0xFF78856B);
@@ -142,6 +146,13 @@ class _FocusFriendAppState extends State<FocusFriendApp>
     supportedLocales: AppLocalizations.supportedLocales,
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     theme: buildDeskTheme(ThemeData(useMaterial3: true)),
+    builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: deskPaper,
+      ),
+      child: child ?? const SizedBox.shrink(),
+    ),
     home: RoomScreen(
       engine: widget.engine,
       alerts: widget.alerts,
@@ -218,6 +229,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     unawaited(_prepareUpdateNews());
     unawaited(_waitForNewsConsent());
     widget.purchases?.addListener(_purchasesChanged);
+    widget.ads?.addListener(_adsChanged);
     ticker = Timer.periodic(const Duration(milliseconds: 250), (_) {
       if (!ready || busy || !mounted || !foreground || error != null) return;
       _tryShowUpdateNews();
@@ -238,8 +250,14 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   void dispose() {
     ticker?.cancel();
     widget.purchases?.removeListener(_purchasesChanged);
+    widget.ads?.removeListener(_adsChanged);
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  /// Privacy options can withdraw ad consent; the banner slot follows it.
+  void _adsChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
@@ -469,99 +487,125 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    if (!ready || !widget.languageLoaded) {
+      return StartupScreen(
+        failed: error != null,
+        onRetry: busy ? null : _restore,
+      );
+    }
     final state = engine.state;
     final active = state.active;
     final homeVisible = active != null || page == 0;
     final completed = active?.status == SessionStatus.completed;
     final resting = active?.mode == SessionMode.rest;
     final paused = active?.status == SessionStatus.paused;
-    return Theme(
-      data: deskTheme(context),
-      child: Scaffold(
-        backgroundColor: deskPaper,
-        // Keep the room geometry fixed as controls change between sessions.
-        extendBody: homeVisible,
-        body: Stack(
-          children: [
-            if (homeVisible)
-              Positioned.fill(
-                child: DeskIllustration(
-                  friend: state.friend,
-                  unlocked: state.unlocks.keys.toSet(),
-                  ambience: RoomAmbience.at(
-                    DateTime.fromMillisecondsSinceEpoch(engine.clock()),
+    final sessionBanner = _hasSessionBanner(state);
+    return AppExitScope(
+      ads: widget.ads,
+      purchases: widget.purchases,
+      canExit: !busy,
+      timerRunning: active?.status == SessionStatus.running,
+      child: Theme(
+        data: deskTheme(context),
+        child: Scaffold(
+          backgroundColor: deskPaper,
+          // Keep the room geometry fixed as controls change between sessions.
+          extendBody: homeVisible,
+          body: Stack(
+            children: [
+              if (homeVisible)
+                Positioned.fill(
+                  child: DeskIllustration(
+                    friend: state.friend,
+                    unlocked: state.unlocks.keys.toSet(),
+                    ambience: RoomAmbience.at(
+                      DateTime.fromMillisecondsSinceEpoch(engine.clock()),
+                    ),
+                    studying: active != null && !resting && !completed,
+                    resting: resting,
+                    paused: paused,
+                    animate:
+                        active != null && !completed && !paused && foreground,
                   ),
-                  studying: active != null && !resting && !completed,
-                  resting: resting,
-                  paused: paused,
-                  animate:
-                      active != null && !completed && !paused && foreground,
+                ),
+              SafeArea(
+                bottom: !homeVisible,
+                child: Column(
+                  children: [
+                    if (error != null)
+                      MaterialBanner(
+                        content: Text(error!),
+                        actions: [
+                          TextButton(
+                            onPressed: busy ? null : _restore,
+                            child: Text(l10n.retryCheck),
+                          ),
+                        ],
+                      ),
+                    if (alertError != null)
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          alertError!,
+                          style: const TextStyle(color: deskInk),
+                        ),
+                      ),
+                    Expanded(
+                      child: active != null || page == 0
+                          ? _home(state)
+                          : page == 1
+                          ? FriendPicker(
+                              current: state.friend,
+                              unlocked: state.unlocks.keys.toSet(),
+                              purchases: widget.purchases,
+                              onApply: engine.saveFriend,
+                              onApplied: () => setState(() => page = 0),
+                            )
+                          : page == 2
+                          ? FocusRecords(
+                              state: state,
+                              now: DateTime.fromMillisecondsSinceEpoch(
+                                engine.clock(),
+                              ),
+                              footer: _nativeAd(AdUnits.nativeRecords),
+                            )
+                          : _settings(state),
+                    ),
+                  ],
                 ),
               ),
-            SafeArea(
-              bottom: !homeVisible,
-              child: Column(
-                children: [
-                  if (error != null)
-                    MaterialBanner(
-                      content: Text(error!),
-                      actions: [
-                        TextButton(
-                          onPressed: busy ? null : _restore,
-                          child: Text(l10n.retryCheck),
-                        ),
-                      ],
-                    ),
-                  if (alertError != null)
-                    Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(
-                        alertError!,
-                        style: const TextStyle(color: deskInk),
-                      ),
-                    ),
-                  Expanded(
-                    child: !ready
-                        ? Center(
-                            child: error == null
-                                ? const CircularProgressIndicator()
-                                : Text(l10n.restoringRoom),
-                          )
-                        : active != null || page == 0
-                        ? _home(state)
-                        : page == 1
-                        ? FriendPicker(
-                            current: state.friend,
-                            unlocked: state.unlocks.keys.toSet(),
-                            purchases: widget.purchases,
-                            onApply: engine.saveFriend,
-                            onApplied: () => setState(() => page = 0),
-                          )
-                        : page == 2
-                        ? FocusRecords(
-                            state: state,
-                            now: DateTime.fromMillisecondsSinceEpoch(
-                              engine.clock(),
-                            ),
-                            footer: _nativeAd(AdUnits.nativeRecords),
-                          )
-                        : _settings(state),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: Visibility(
-          visible: active == null,
-          maintainSize: true,
-          maintainAnimation: true,
-          maintainState: true,
-          child: DeskNavigation(
-            immersive: homeVisible,
-            selectedIndex: page,
-            onSelected: (index) => setState(() => page = index),
+            ],
           ),
+          bottomNavigationBar: sessionBanner
+              ? SizedBox(
+                  key: const ValueKey('session-banner-slot'),
+                  height:
+                      SessionBannerAd.height +
+                      MediaQuery.viewPaddingOf(context).bottom,
+                  child:
+                      foreground && ModalRoute.of(context)?.isCurrent != false
+                      ? SessionBannerAd(
+                          key: ValueKey(active!.id),
+                          adUnitId: AdUnits.sessionBanner,
+                          // The startup result never changes; consent given
+                          // later in privacy options must load the banner.
+                          ready: widget.ads!.canRequestAds == true
+                              ? Future.value(true)
+                              : widget.ads!.ready,
+                        )
+                      : const SizedBox.shrink(),
+                )
+              : Visibility(
+                  visible: active == null,
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  child: DeskNavigation(
+                    immersive: homeVisible,
+                    selectedIndex: page,
+                    onSelected: (index) => setState(() => page = index),
+                  ),
+                ),
         ),
       ),
     );
@@ -607,6 +651,9 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
     onSound: _showSound,
     onGoal: _showGoal,
     systemBottomInset: MediaQuery.viewPaddingOf(context).bottom,
+    bottomAdInset: _hasSessionBanner(s)
+        ? SessionBannerAd.height + MediaQuery.viewPaddingOf(context).bottom
+        : 0,
     onPauseResume: () {
       final a = engine.state.active!;
       _act(
@@ -1136,6 +1183,20 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
       SnackBar(behavior: SnackBarBehavior.floating, content: Text(text)),
     );
 
+  bool _hasSessionBanner(FocusState state) {
+    final active = state.active;
+    final padding = MediaQuery.viewPaddingOf(context);
+    final width = MediaQuery.sizeOf(context).width - padding.horizontal;
+    return ready &&
+        widget.ads != null &&
+        // Null while the startup consent check runs: keep the slot reserved.
+        widget.ads!.canRequestAds != false &&
+        widget.purchases?.adsRemoved != true &&
+        active?.live == true &&
+        active!.mode != SessionMode.demo &&
+        width >= SessionBannerAd.width;
+  }
+
   /// Null in tests, where there is no ad SDK, and once ads are bought off.
   Widget? _nativeAd(String adUnitId) => switch (widget.ads) {
     _ when widget.purchases?.adsRemoved == true => null,
@@ -1180,6 +1241,7 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
         SizedBox(
           height: 255,
           child: DeskIllustration(
+            friend: s.friend,
             unlocked: s.unlocks.keys.toSet(),
             ambience: RoomAmbience.at(
               DateTime.fromMillisecondsSinceEpoch(engine.clock()),
@@ -1224,6 +1286,41 @@ class _RoomScreenState extends State<RoomScreen> with WidgetsBindingObserver {
                             : l10n.unlockAfterMinutes(prop.unlockMinutes),
                         style: const TextStyle(fontSize: 12, color: deskMuted),
                       ),
+                      if (!prop.isAvailable(s.unlocks.keys) &&
+                          prop.unlockMinutes > 0) ...[
+                        const SizedBox(height: 7),
+                        Row(
+                          key: ValueKey('collection-progress-${prop.key}'),
+                          children: [
+                            Expanded(
+                              child: ExcludeSemantics(
+                                child: LinearProgressIndicator(
+                                  value: NextDeskGift(
+                                    prop,
+                                    s.completedMs,
+                                  ).progress,
+                                  minHeight: 5,
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: deskAccent,
+                                  backgroundColor: const Color(0x22000000),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              l10n.collectionProgress(
+                                NextDeskGift(prop, s.completedMs).doneMinutes,
+                                prop.unlockMinutes,
+                              ),
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: deskMuted,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ],
                   ),
                 ),

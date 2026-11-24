@@ -9,6 +9,21 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get exitAppTitle => 'また明日';
+
+  @override
+  String get exitAppConfirm => 'アプリを終了しますか？';
+
+  @override
+  String get exitAppAction => 'アプリ終了';
+
+  @override
+  String get exitTimerContinues => '実行中のタイマーは続きます。';
+
+  @override
+  String get adLabel => '広告';
+
+  @override
   String get appTitle => 'Deskmate';
 
   @override
@@ -32,6 +47,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get restoringRoom => '保存された部屋を確認しています。';
+
+  @override
+  String get startupLoading => '集中できる空間を準備しています。';
 
   @override
   String get errorSoundPlay => 'サウンドを再生できませんでした。サウンド設定からもう一度選んでください。';
@@ -728,7 +746,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get removeAdsTitle => '広告を消す';
 
   @override
-  String get removeAdsSubtitle => '記録と設定の広告を消します';
+  String get removeAdsSubtitle => '集中・休憩・記録・設定画面の広告を消します';
 
   @override
   String get restorePurchases => '購入を復元';
@@ -822,4 +840,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get ourAppsMultiCalDescription => '計算からチップ、\n単位の変換まで。';
+
+  @override
+  String nextGiftIn(String prop, String duration) {
+    return '$propまであと$duration';
+  }
+
+  @override
+  String nextGiftFirstFocus(String prop) {
+    return 'はじめての集中で$prop';
+  }
+
+  @override
+  String collectionProgress(int done, int total) {
+    return '$done/$total分';
+  }
 }

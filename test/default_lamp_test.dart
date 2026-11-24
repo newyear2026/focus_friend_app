@@ -47,13 +47,7 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        final lamp = find.byWidgetPredicate(
-          (widget) =>
-              widget is Image &&
-              widget.image is AssetImage &&
-              (widget.image as AssetImage).assetName ==
-                  'assets/images/immersive/reward-lamp.png',
-        );
+        final lamp = find.byKey(const ValueKey('desk-prop-lamp'));
         expect(lamp, findsOneWidget);
         await tester.tap(find.byKey(const ValueKey('desk-navigation-3')));
         await tester.pumpAndSettle();

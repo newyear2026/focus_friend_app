@@ -21,12 +21,21 @@ enum FocusFriend {
   bool get hasMotion => this == redpanda || hasRestMotion;
   String get motionDirectory => 'assets/images/friends/motion/$name';
 
+  String _roomStem(RoomAmbience ambience) {
+    final unlit =
+        !ambience.lampsOn &&
+        (this == otter ||
+            this == squirrel ||
+            (this == penguin && ambience == RoomAmbience.morning));
+    return '${ambience.assetName}${unlit ? '-unlit' : ''}';
+  }
+
   String restRoomAsset(RoomAmbience ambience) => hasWindowTeaMotion
-      ? '$motionDirectory/rooms/${ambience.assetName}.png'
+      ? '$motionDirectory/rooms/${_roomStem(ambience)}.png'
       : ambienceAsset(ambience);
 
   /// Motion friends use empty room plates; the other friends include the actor.
   String ambienceAsset(RoomAmbience ambience) => this == redpanda
       ? ambience.asset
-      : 'assets/images/friends/ambience/$name/${ambience.assetName}.png';
+      : 'assets/images/friends/ambience/$name/${hasWindowTeaMotion ? ambience.assetName : _roomStem(ambience)}.png';
 }

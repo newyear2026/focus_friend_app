@@ -9,6 +9,21 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get exitAppTitle => 'See you tomorrow';
+
+  @override
+  String get exitAppConfirm => 'Would you like to close the app?';
+
+  @override
+  String get exitAppAction => 'Exit app';
+
+  @override
+  String get exitTimerContinues => 'Your running timer will continue.';
+
+  @override
+  String get adLabel => 'Ad';
+
+  @override
   String get appTitle => 'Deskmate';
 
   @override
@@ -34,6 +49,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get restoringRoom => 'Checking your saved room.';
+
+  @override
+  String get startupLoading => 'Getting your focus space ready.';
 
   @override
   String get errorSoundPlay =>
@@ -752,7 +770,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removeAdsTitle => 'Remove ads';
 
   @override
-  String get removeAdsSubtitle => 'Turns off ads in Records and Settings';
+  String get removeAdsSubtitle =>
+      'Removes ads from Focus, Rest, Records and Settings';
 
   @override
   String get restorePurchases => 'Restore purchases';
@@ -853,4 +872,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ourAppsMultiCalDescription =>
       'Calculations, tips\nand unit conversions.';
+
+  @override
+  String nextGiftIn(String prop, String duration) {
+    return '$prop in $duration';
+  }
+
+  @override
+  String nextGiftFirstFocus(String prop) {
+    return '$prop after your first focus';
+  }
+
+  @override
+  String collectionProgress(int done, int total) {
+    return '$done/$total min';
+  }
 }

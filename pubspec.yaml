@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   intl: any
+  # Ad request gaps; follows fake time in widget tests.
+  clock: ^1.1.2
   google_mobile_ads: ^9.2.0
   in_app_purchase: ^3.3.1
   in_app_purchase_android: ^0.5.0
@@ -28,6 +30,14 @@ flutter:
   uses-material-design: true
   assets:
     # List files one by one: these folders also hold unused drafts and prompts.
+    - assets/images/startup/paper-background.png
+    - assets/images/startup/reading-companion.png
+    - assets/images/startup/reading-companion-blink.png
+    - assets/images/startup/reading-companion-half-blink.png
+    - assets/images/startup/reading-companion-nod.png
+    - assets/images/startup/hug-body-base.png
+    - assets/images/startup/hug-book-arms.png
+    - assets/images/startup/hug-feet.png
     - assets/apps/loopet.png
     - assets/apps/sobrita.png
     - assets/apps/randomfocus.png
@@ -40,6 +50,7 @@ flutter:
     - assets/images/immersive/reward-plant.png
     - assets/images/immersive/reward-mug.png
     - assets/images/immersive/reward-lamp.png
+    - assets/images/immersive/reward-lamp-unlit.png
     - assets/images/immersive/nav-desk.png
     - assets/images/immersive/nav-records.png
     - assets/images/immersive/nav-settings.png
@@ -54,12 +65,12 @@ flutter:
     - assets/images/friends/otter-scene.png
     - assets/images/friends/squirrel-scene.png
     - assets/images/friends/fennec-scene.png
-    - assets/images/friends/ambience/penguin/morning.png
+    - assets/images/friends/ambience/penguin/morning-unlit.png
     - assets/images/friends/ambience/penguin/day.png
     - assets/images/friends/ambience/penguin/evening.png
     - assets/images/friends/ambience/penguin/night.png
-    - assets/images/friends/ambience/otter/morning.png
-    - assets/images/friends/ambience/otter/day.png
+    - assets/images/friends/ambience/otter/morning-unlit.png
+    - assets/images/friends/ambience/otter/day-unlit.png
     - assets/images/friends/ambience/otter/evening.png
     - assets/images/friends/ambience/otter/night.png
     - assets/images/friends/ambience/squirrel/morning.png
@@ -84,11 +95,12 @@ flutter:
     - assets/images/friends/motion/fennec/rooms/night.png
     - assets/images/friends/motion/squirrel/rest.png
     - assets/images/friends/motion/squirrel/study.png
-    - assets/images/friends/motion/squirrel/rooms/morning.png
-    - assets/images/friends/motion/squirrel/rooms/day.png
+    - assets/images/friends/motion/squirrel/rooms/morning-unlit.png
+    - assets/images/friends/motion/squirrel/rooms/day-unlit.png
     - assets/images/friends/motion/squirrel/rooms/evening.png
     - assets/images/friends/motion/squirrel/rooms/night.png
     - assets/images/ui/session-stop-book-frame.png
+    - assets/images/ui/exit-friend-wave.png
     - assets/images/sound-rain.png
     - assets/images/sound-forest.png
     - assets/images/sound-fire.png

@@ -1,0 +1,16 @@
+Tool: built-in image_gen
+Source: reading-companion.png (edit target)
+
+Use case: background-extraction / precise-object-edit.
+Asset: a rigid book-and-arms animation layer for the supplied original character.
+Edit the attached 1254x1254 transparent PNG IN PLACE. Keep the full 1254x1254 canvas and original object registration. This is NOT a centered product illustration: the entire top half of the output should remain EMPTY TRANSPARENT and the extracted book/arms must stay in their original lower-right location. Do not resize, recenter, crop, scale, rotate, stylize or redraw the kept parts.
+
+KEEP ONLY:
+- the teal closed book, its cream pages, gold border, gold sprout emblem, spine, existing dark outline and texture;
+- the complete two orange arms and brown hands holding that book, with the left upper arm/shoulder through elbow to brown paw, and the right arm and brown hand, positioned exactly as in the reference.
+
+REMOVE to genuine transparent alpha:
+the entire head, ears, face, all torso/teal overalls and straps/buttons, both feet/legs, entire striped tail, ground shadow, and everything else. No black or white fill, no checkerboard, no text.
+
+Recover the few book areas currently occluded by the feet: extend the same planar rectangular front cover and gold border coherently into its full lower left and lower right corners, so this is one intact rigid book. Do not change book width, height, tilt, top edge or page lines. The book should still occupy approximately x592..986, y648..1112 in the 1254x1254 source coordinate system. Left orange arm remains around x390..716, y675..895, right hand around x940..1055,y718..863. Preserve the exact left shoulder alignment. Reconstruct only tiny portions of orange shoulder hidden by removed teal strap, keeping natural continuous anatomy. The moving overlay will sit over the original body and behind the original feet, so registration is crucial. No residual feet or torso outlines.
+Return ONE image, transparent background, matching the original shading, cream page color, teal book fabric, warm orange fur, brown paws and dark brown linework.

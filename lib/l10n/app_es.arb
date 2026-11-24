@@ -1,4 +1,9 @@
 {
+  "exitAppTitle": "Hasta mañana",
+  "exitAppConfirm": "¿Quieres cerrar la aplicación?",
+  "exitAppAction": "Salir",
+  "exitTimerContinues": "El temporizador seguirá en marcha.",
+  "adLabel": "Anuncio",
   "@@locale": "es",
   "appTitle": "Deskmate",
   "minutesShort": "{minutes} min",
@@ -7,6 +12,7 @@
   "errorAlerts": "No pudimos programar el aviso. El temporizador se recuperará cuando vuelvas.",
   "retryCheck": "Revisar de nuevo",
   "restoringRoom": "Revisando tu cuarto guardado.",
+  "startupLoading": "Preparando tu espacio para concentrarte.",
   "errorSoundPlay": "No pudimos reproducir el sonido. Elígelo otra vez en los ajustes de sonido.",
   "errorSoundStop": "No pudimos apagar el sonido. Inténtalo otra vez en los ajustes de sonido.",
   "errorSoundStatus": "No pudimos revisar el sonido. Elígelo otra vez.",
@@ -217,7 +223,7 @@
   "bundleNote": "Los amigos que lleguen después se venden por separado.",
   "bundleBuy": "Obtener todo · {price}",
   "removeAdsTitle": "Quitar anuncios",
-  "removeAdsSubtitle": "Quita los anuncios de Registros y Ajustes",
+  "removeAdsSubtitle": "Quita los anuncios de concentración, descanso, Registros y Ajustes",
   "restorePurchases": "Restaurar compras",
   "restoreSubtitle": "Si reinstalaste la app o cambiaste de teléfono",
   "restoreDone": "Tus compras están al día.",
@@ -248,5 +254,8 @@
   "ourAppsRandomFocusCategory": "Temporizador de concentración",
   "ourAppsRandomFocusDescription": "Gira la ruleta para elegir\ntu tiempo de concentración.",
   "ourAppsMultiCalCategory": "Calculadora",
-  "ourAppsMultiCalDescription": "Cálculos, propinas\ny conversión de unidades."
+  "ourAppsMultiCalDescription": "Cálculos, propinas\ny conversión de unidades.",
+  "nextGiftIn": "{prop}: faltan {duration}",
+  "nextGiftFirstFocus": "{prop} al completar tu primer enfoque",
+  "collectionProgress": "{done}/{total} min"
 }

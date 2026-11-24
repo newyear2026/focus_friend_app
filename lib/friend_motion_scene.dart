@@ -2,6 +2,8 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'focus_friend.dart';
+import 'desk_prop_layer.dart';
+import 'friend_desk_mug.dart';
 import 'friend_motion_clock.dart';
 import 'room_ambience.dart';
 
@@ -15,8 +17,10 @@ class FriendMotionScene extends StatefulWidget {
     required this.resting,
     required this.paused,
     this.ambience = RoomAmbience.evening,
+    this.unlocked = const {},
   });
   final FocusFriend friend;
+  final Set<String> unlocked;
   final RoomAmbience ambience;
   final bool animate, studying, resting, paused;
   @override
@@ -177,15 +181,6 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
 
   @override
   Widget build(BuildContext context) {
-    if (!ready) {
-      return Image.asset(
-        widget.friend.sceneAsset!,
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-        excludeFromSemantics: true,
-      );
-    }
     final elapsed = reduced || (!widget.studying && !widget.resting)
         ? Duration.zero
         : played;
@@ -195,30 +190,52 @@ class _FriendMotionSceneState extends State<FriendMotionScene>
         child: SizedBox(
           width: 853,
           height: 1844,
-          child: TweenAnimationBuilder<double>(
-            key: ValueKey((widget.friend, currentRoom)),
-            tween: Tween(begin: previousRoom == null ? 1 : 0, end: 1),
-            duration: reduced ? Duration.zero : const Duration(seconds: 2),
-            builder: (context, blend, child) => CustomPaint(
-              key: const ValueKey('friend-motion-cels'),
-              painter: FriendMotionScenePainter(
-                room: images[currentRoom]!.image,
-                previousRoom: images[previousRoom]?.image,
-                roomBlend: blend,
-                ambience: currentAmbience!,
-                previousAmbience: previousAmbience,
-                actor: FriendMotionPainter(
-                  friend: widget.friend,
-                  study: images['study']?.image,
-                  rest: images['rest']?.image,
-                  pose: FriendMotionClock.sample(
-                    elapsed,
-                    resting: widget.resting,
-                    friend: widget.friend,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (!ready)
+                // A full still scene contains the locked mug. Use the empty
+                // room until the connected actor is ready instead.
+                Image.asset(
+                  widget.friend.restRoomAsset(widget.ambience),
+                  fit: BoxFit.fill,
+                  excludeFromSemantics: true,
+                )
+              else
+                TweenAnimationBuilder<double>(
+                  key: ValueKey((widget.friend, currentRoom)),
+                  tween: Tween(begin: previousRoom == null ? 1 : 0, end: 1),
+                  duration: reduced
+                      ? Duration.zero
+                      : const Duration(seconds: 2),
+                  builder: (context, blend, child) => CustomPaint(
+                    key: const ValueKey('friend-motion-cels'),
+                    painter: FriendMotionScenePainter(
+                      room: images[currentRoom]!.image,
+                      showDeskMug: widget.unlocked.contains('mug'),
+                      previousRoom: images[previousRoom]?.image,
+                      roomBlend: blend,
+                      ambience: currentAmbience!,
+                      previousAmbience: previousAmbience,
+                      actor: FriendMotionPainter(
+                        friend: widget.friend,
+                        study: images['study']?.image,
+                        rest: images['rest']?.image,
+                        pose: FriendMotionClock.sample(
+                          elapsed,
+                          resting: widget.resting,
+                          friend: widget.friend,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
+              DeskPropLayer(
+                friend: widget.friend,
+                unlocked: widget.unlocked,
+                ambience: widget.ambience,
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -234,6 +251,7 @@ class FriendMotionScenePainter extends CustomPainter {
     this.roomBlend = 1,
     this.ambience = RoomAmbience.evening,
     this.previousAmbience,
+    this.showDeskMug = true,
   });
   final ui.Image room;
   final ui.Image? previousRoom;
@@ -241,6 +259,7 @@ class FriendMotionScenePainter extends CustomPainter {
   final RoomAmbience ambience;
   final RoomAmbience? previousAmbience;
   final FriendMotionPainter actor;
+  final bool showDeskMug;
   static const stage = Rect.fromLTWH(100, 570, 704, 704);
   static List<Color> _light(RoomAmbience ambience) => switch (ambience) {
     RoomAmbience.morning => const [Color(0xFFF1E4ED), Color(0xFFFFF3DF)],
@@ -248,17 +267,89 @@ class FriendMotionScenePainter extends CustomPainter {
     RoomAmbience.evening => const [Color(0xFFE6CBD3), Color(0xFFFFE9CA)],
     RoomAmbience.night => const [Color(0xFFC4B6C8), Color(0xFFF4D9B4)],
   };
-  static Path get foregroundBooks => Path()
-    ..moveTo(0, 1040)
-    ..lineTo(272, 1038)
-    ..lineTo(299, 1055)
-    ..lineTo(293, 1098)
-    ..lineTo(315, 1114)
-    ..lineTo(315, 1150)
-    ..lineTo(330, 1164)
-    ..lineTo(330, 1198)
-    ..lineTo(0, 1210)
-    ..close();
+
+  /// The room's left book stack, redrawn over the actor so the tail sits
+  /// behind it. Each room's stack is drawn at its own height and width, so the
+  /// outline traces that room's covers and stepped right ends. A loose outline
+  /// shows the tail over a cover (squirrel), lays a sofa strip over the tail
+  /// (fennec), or cuts a staircase into the notebook (penguin, otter).
+  static Path foregroundBooks(FocusFriend friend) =>
+      Path()..addPolygon(switch (friend) {
+        FocusFriend.penguin => const [
+          Offset(0, 1042),
+          Offset(80, 1034),
+          Offset(165, 1034),
+          Offset(280, 1047),
+          Offset(288, 1053),
+          Offset(290, 1080),
+          Offset(312, 1082),
+          Offset(319, 1088),
+          Offset(319, 1115),
+          Offset(330, 1120),
+          Offset(333, 1126),
+          Offset(333, 1155),
+          Offset(325, 1163),
+          Offset(330, 1198),
+          Offset(0, 1210),
+        ],
+        FocusFriend.otter => const [
+          Offset(0, 1046),
+          Offset(45, 1030),
+          Offset(160, 1030),
+          Offset(290, 1040),
+          Offset(294, 1046),
+          Offset(295, 1077),
+          Offset(314, 1079),
+          Offset(321, 1086),
+          Offset(321, 1110),
+          Offset(330, 1118),
+          Offset(335, 1124),
+          Offset(335, 1155),
+          Offset(330, 1162),
+          Offset(330, 1198),
+          Offset(0, 1210),
+        ],
+        FocusFriend.squirrel => const [
+          Offset(0, 1021),
+          Offset(165, 1013),
+          Offset(270, 1019),
+          Offset(282, 1024),
+          Offset(283, 1066),
+          Offset(296, 1068),
+          Offset(293, 1098),
+          Offset(315, 1114),
+          Offset(318, 1150),
+          Offset(330, 1164),
+          Offset(330, 1198),
+          Offset(0, 1210),
+        ],
+        FocusFriend.fennec => const [
+          Offset(0, 1058),
+          Offset(25, 1056),
+          Offset(110, 1051),
+          Offset(200, 1053),
+          Offset(289, 1060),
+          Offset(294, 1064),
+          Offset(295, 1095),
+          Offset(318, 1098),
+          Offset(320, 1132),
+          Offset(334, 1136),
+          Offset(335, 1172),
+          Offset(330, 1200),
+          Offset(0, 1210),
+        ],
+        _ => const [
+          Offset(0, 1040),
+          Offset(272, 1038),
+          Offset(299, 1055),
+          Offset(293, 1098),
+          Offset(315, 1114),
+          Offset(315, 1150),
+          Offset(330, 1164),
+          Offset(330, 1198),
+          Offset(0, 1210),
+        ],
+      }, true);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -285,7 +376,28 @@ class FriendMotionScenePainter extends CustomPainter {
     canvas.translate(stage.left, stage.top);
     final actorBounds = Offset.zero & stage.size;
     canvas.saveLayer(actorBounds, Paint());
+    canvas.save();
+    if (!showDeskMug && actor.pose.phase != FriendMotionPhase.tea) {
+      final mug = friendDeskMugMask(actor.friend).transform(
+        Matrix4.diagonal3Values(
+          stage.width / 512,
+          stage.height / 512,
+          1,
+        ).storage,
+      );
+      canvas.clipPath(
+        Path.combine(
+          PathOperation.difference,
+          Path()..addRect(actorBounds),
+          mug,
+        ),
+        doAntiAlias: false,
+      );
+    }
+    // During tea the held cup belongs to the activity, just as it does for
+    // the red panda. The stationary study mug follows the shared unlock.
     actor.paint(canvas, stage.size);
+    canvas.restore();
     final from = _light(previousAmbience ?? ambience);
     final to = _light(ambience);
     canvas.drawRect(
@@ -303,7 +415,7 @@ class FriendMotionScenePainter extends CustomPainter {
     canvas.restore();
     // The fixed foreground remains in front of the character and book.
     canvas.save();
-    canvas.clipPath(foregroundBooks, doAntiAlias: false);
+    canvas.clipPath(foregroundBooks(actor.friend), doAntiAlias: false);
     roomPlate();
     canvas.restore();
     canvas.restore();
@@ -311,6 +423,7 @@ class FriendMotionScenePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant FriendMotionScenePainter oldDelegate) =>
+      showDeskMug != oldDelegate.showDeskMug ||
       room != oldDelegate.room ||
       previousRoom != oldDelegate.previousRoom ||
       roomBlend != oldDelegate.roomBlend ||

@@ -55,6 +55,7 @@ void main() {
             matching: find.byType(FadeTransition),
           ),
         )
+        .where((fade) => fade.child?.key == const ValueKey(RoomAmbience.night))
         .toList();
     // Incoming night copies for the room, books and the pen cup in front of
     // the default lamp; outgoing evening copies stay opaque underneath.

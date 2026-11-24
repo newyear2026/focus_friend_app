@@ -1,4 +1,9 @@
 {
+  "exitAppTitle": "See you tomorrow",
+  "exitAppConfirm": "Would you like to close the app?",
+  "exitAppAction": "Exit app",
+  "exitTimerContinues": "Your running timer will continue.",
+  "adLabel": "Ad",
   "@@locale": "en",
   "appTitle": "Deskmate",
   "@appTitle": {
@@ -28,6 +33,10 @@
   "errorAlerts": "We couldn't schedule the reminder. The timer will recover when you come back.",
   "retryCheck": "Check again",
   "restoringRoom": "Checking your saved room.",
+  "startupLoading": "Getting your focus space ready.",
+  "@startupLoading": {
+    "description": "Shown on the startup screen while the saved room and language load."
+  },
   "errorSoundPlay": "We couldn't play the sound. Please pick it again in sound settings.",
   "errorSoundStop": "We couldn't turn the sound off. Please try again in sound settings.",
   "errorSoundStatus": "We couldn't check the sound. Please pick it again.",
@@ -445,7 +454,7 @@
     }
   },
   "removeAdsTitle": "Remove ads",
-  "removeAdsSubtitle": "Turns off ads in Records and Settings",
+  "removeAdsSubtitle": "Removes ads from Focus, Rest, Records and Settings",
   "restorePurchases": "Restore purchases",
   "restoreSubtitle": "After reinstalling or changing phones",
   "restoreDone": "Your purchases are up to date.",
@@ -476,5 +485,37 @@
   "ourAppsRandomFocusCategory": "Focus timer",
   "ourAppsRandomFocusDescription": "Spin the wheel to choose\nyour focus time.",
   "ourAppsMultiCalCategory": "Calculator",
-  "ourAppsMultiCalDescription": "Calculations, tips\nand unit conversions."
+  "ourAppsMultiCalDescription": "Calculations, tips\nand unit conversions.",
+  "nextGiftIn": "{prop} in {duration}",
+  "@nextGiftIn": {
+    "description": "Home/completion line: the next desk prop earned by finished focus time and the time still needed.",
+    "placeholders": {
+      "prop": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "nextGiftFirstFocus": "{prop} after your first focus",
+  "@nextGiftFirstFocus": {
+    "description": "Home line before the first finished focus: which prop it earns.",
+    "placeholders": {
+      "prop": {
+        "type": "String"
+      }
+    }
+  },
+  "collectionProgress": "{done}/{total} min",
+  "@collectionProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -1,4 +1,9 @@
 {
+  "exitAppTitle": "また明日",
+  "exitAppConfirm": "アプリを終了しますか？",
+  "exitAppAction": "アプリ終了",
+  "exitTimerContinues": "実行中のタイマーは続きます。",
+  "adLabel": "広告",
   "@@locale": "ja",
   "appTitle": "Deskmate",
   "minutesShort": "{minutes}分",
@@ -7,6 +12,7 @@
   "errorAlerts": "通知を予約できませんでした。アプリに戻るとタイマーは復元されます。",
   "retryCheck": "もう一度確認",
   "restoringRoom": "保存された部屋を確認しています。",
+  "startupLoading": "集中できる空間を準備しています。",
   "errorSoundPlay": "サウンドを再生できませんでした。サウンド設定からもう一度選んでください。",
   "errorSoundStop": "サウンドを止められませんでした。サウンド設定からもう一度お試しください。",
   "errorSoundStatus": "サウンドの状態を確認できませんでした。もう一度選んでください。",
@@ -217,7 +223,7 @@
   "bundleNote": "今後増える友だちは別売りです。",
   "bundleBuy": "{price}で全部そろえる",
   "removeAdsTitle": "広告を消す",
-  "removeAdsSubtitle": "記録と設定の広告を消します",
+  "removeAdsSubtitle": "集中・休憩・記録・設定画面の広告を消します",
   "restorePurchases": "購入を復元",
   "restoreSubtitle": "再インストールや機種変更のあとに",
   "restoreDone": "購入内容を読み込み直しました。",
@@ -248,5 +254,8 @@
   "ourAppsRandomFocusCategory": "集中タイマー",
   "ourAppsRandomFocusDescription": "ルーレットを回して\n集中する時間を決めます。",
   "ourAppsMultiCalCategory": "計算機",
-  "ourAppsMultiCalDescription": "計算からチップ、\n単位の変換まで。"
+  "ourAppsMultiCalDescription": "計算からチップ、\n単位の変換まで。",
+  "nextGiftIn": "{prop}まであと{duration}",
+  "nextGiftFirstFocus": "はじめての集中で{prop}",
+  "collectionProgress": "{done}/{total}分"
 }

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Deskmate 다음 기능 시안</title>
+<style>
+@font-face{
+  font-family:Pretendard;
+  src:url("../../../assets/fonts/PretendardVariable.ttf") format("truetype");
+  font-weight:100 900;
+}
+:root{
+  --navy:#1d2030; --navy2:#2a2e44; --cream:#fbf6ee; --ink:#2b2420; --ink2:#6d6158;
+  --orange:#f0b56a; --orange2:#e5922f; --teal:#3f9c94; --line:#e4d5bb;
+  --study:#e5922f; --work:#6f93d6; --read:#6aaa78;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#efe6d6;font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:var(--ink)}
+.board{display:none;width:1180px;padding:34px 40px 28px;background:#f6eedf}
+.board.on{display:block}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.kicker{font-weight:700;font-size:13px;letter-spacing:.12em;color:var(--orange2)}
+h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-top:6px}
+.why{margin-top:8px;font-size:15.5px;line-height:1.55;color:var(--ink2);max-width:920px}
+.why b{color:var(--ink);font-weight:700}
+.prio{flex:none;font-size:13px;font-weight:700;padding:8px 14px;border-radius:99px;background:var(--navy);color:var(--cream)}
+.row{display:flex;gap:26px;margin-top:22px;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.cap{font-size:15px;font-weight:800;text-align:center;letter-spacing:-.02em}
+.cap small{display:block;font-weight:500;color:var(--ink2);margin-top:3px;font-size:12.5px;line-height:1.45;max-width:318px}
+.wrap{width:318px;height:688px;position:relative;border-radius:32px;overflow:hidden;box-shadow:0 16px 34px rgba(60,40,20,.2),0 0 0 6px #2a2522}
+.phone{position:absolute;left:0;top:0;width:390px;height:844px;transform:scale(.8154);transform-origin:0 0;overflow:hidden;background:#1d2030}
+.shot{position:absolute;inset:0;background-size:390px 844px;background-repeat:no-repeat}
+.abs{position:absolute}
+.new{outline:2.5px dashed var(--orange2);outline-offset:3px;border-radius:16px}
+.side{flex:1;display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.note{background:#fffaf3;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.note h4{font-size:14px;margin-bottom:4px}
+.note p{font-size:13.5px;line-height:1.55;color:var(--ink2)}
+.notes{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pill{display:flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;background:rgba(29,32,48,.82);color:var(--cream);font-weight:700;font-size:14px}
+.chip{height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.bar{height:7px;border-radius:99px;background:rgba(255,255,255,.16);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--orange);border-radius:99px}
+.nav{position:absolute;left:0;right:0;bottom:0;height:78px;background:#1c1e2c;display:flex;color:#b7b1a6;font-size:11px;font-weight:700}
+.nav div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.nav .on{color:var(--orange)}
+.nav svg{width:22px;height:22px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;vertical-align:middle}
+.phone i{display:block}
+</style>
+</head>
+<body>
+
+<section class="board" id="b1">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 1 · 기록에 이유 붙이기</div>
+      <h1>무엇에 집중했는지, 한 줄로 남기기</h1>
+    </div>
+    <div class="prio">우선순위 1 · 작업 중간</div>
+  </div>
+  <p class="why">Forest의 태그, Focus Friend의 2025년 8월 태그 세션, Study Bunny의 색 태그, 열품타의 과목이 같은 역할을 합니다. Deskmate 기록은 <b>얼마나</b>만 있고 <b>무엇을</b>이 없습니다. 태그는 공부·작업·독서 셋, 한 줄 메모는 선택. 계정이나 할 일 목록으로 키우지 않습니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(../next-gift-progress-v1/home-25.png)"></div>
+        <div class="abs new pill" style="left:78px;right:78px;top:198px">
+          <span class="dot" style="background:var(--study)"></span> 공부 · 수학 3단원
+        </div>
+      </div></div>
+      <div class="cap">시작 전에 고르기<small>타이머 아래 한 줄. 비우면 태그 없음으로 시작해도 됩니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:#171924;color:var(--cream)">
+        <div style="padding:28px 22px 0">
+          <div style="font-size:26px;font-weight:800">차곡차곡 기록</div>
+          <div style="opacity:.65;font-size:13px;margin-top:2px">이번 주 · 예시 숫자</div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div style="flex:1;text-align:center;padding:8px 0;border-radius:12px;background:#2a2e42;color:#b7b1a6;font-weight:700">달력</div>
+            <div style="flex:1;text-align:center;padding:8px 0;border-radius:12px;background:var(--orange);color:#2b2420;font-weight:800">주간</div>
+            <div style="flex:1;text-align:center;padding:8px 0;border-radius:12px;background:#2a2e42;color:#b7b1a6;font-weight:700">월간</div>
+          </div>
+          <div style="margin-top:18px;font-size:13px;opacity:.7">이번 주</div>
+          <div style="font-size:28px;font-weight:800;letter-spacing:-.03em">6시간 35분</div>
+          <div class="new" style="margin-top:14px;padding:8px 8px 4px;border-radius:16px">
+            <div style="height:132px;display:flex;align-items:flex-end;gap:10px;padding:0 6px">
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:29px;background:var(--study)"></i><i style="height:15px;background:var(--work)"></i></div><span style="font-size:11px;opacity:.7">월</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:58px;background:var(--study)"></i><i style="height:29px;background:var(--work)"></i><i style="height:15px;background:var(--read)"></i></div><span style="font-size:11px;opacity:.7">화</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:36px;background:var(--study)"></i><i style="height:22px;background:var(--read)"></i></div><span style="font-size:11px;opacity:.7">수</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:72px;background:var(--study)"></i><i style="height:44px;background:var(--work)"></i><i style="height:14px;background:var(--read)"></i></div><span style="font-size:11px;opacity:.7">목</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:29px;background:var(--study)"></i><i style="height:58px;background:var(--work)"></i></div><span style="font-size:11px;opacity:.7">금</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:43px;background:var(--study)"></i><i style="height:58px;background:var(--read)"></i></div><span style="font-size:11px;opacity:.7">토</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px"><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:8px;overflow:hidden"><i style="height:22px;background:var(--study)"></i><i style="height:29px;background:var(--read)"></i></div><span style="font-size:11px;opacity:.7">일</span></div>
+            </div>
+          </div>
+          <div class="new" style="margin-top:14px;background:#232738;border-radius:16px;padding:12px 14px;font-size:14px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span><i class="dot" style="background:var(--study);margin-right:8px"></i>공부</span><b>3시간 20분</b></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span><i class="dot" style="background:var(--work);margin-right:8px"></i>작업</span><b>1시간 40분</b></div>
+            <div style="display:flex;justify-content:space-between"><span><i class="dot" style="background:var(--read);margin-right:8px"></i>독서</span><b>1시간 35분</b></div>
+          </div>
+        </div>
+        <div class="nav"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20H4z"/></svg>책상</div><div><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.2-3 3.6-4.5 7-4.5S17.8 16 19 19z"/></svg>친구</div><div class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>기록</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>설정</div></div>
+      </div></div>
+      <div class="cap">주간은 색으로 나누기<small>지금 주간 그래프 위에 태그를 쌓습니다. 달력 스탬프는 그대로 둡니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:#171924;color:var(--cream)">
+        <div style="padding:28px 22px 0">
+          <div style="font-size:13px;opacity:.65">2026년 11월 20일 금요일 · 예시</div>
+          <div style="font-size:26px;font-weight:800;margin-top:4px">오늘 1시간 40분</div>
+          <div style="font-size:13px;opacity:.65;margin-top:2px">3번 완료</div>
+          <div class="new" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;padding:4px">
+            <div style="background:#232738;border-radius:16px;padding:14px 14px;display:flex;gap:12px;align-items:center">
+              <div style="width:8px;align-self:stretch;border-radius:8px;background:var(--study)"></div>
+              <div style="flex:1"><div style="font-weight:800">25분 · 공부</div><div style="opacity:.65;font-size:13px;margin-top:2px">수학 3단원</div></div>
+              <div style="opacity:.55;font-size:13px">오전</div>
+            </div>
+            <div style="background:#232738;border-radius:16px;padding:14px 14px;display:flex;gap:12px;align-items:center">
+              <div style="width:8px;align-self:stretch;border-radius:8px;background:var(--work)"></div>
+              <div style="flex:1"><div style="font-weight:800">50분 · 작업</div><div style="opacity:.65;font-size:13px;margin-top:2px">제안서 초고</div></div>
+              <div style="opacity:.55;font-size:13px">오후</div>
+            </div>
+            <div style="background:#232738;border-radius:16px;padding:14px 14px;display:flex;gap:12px;align-items:center">
+              <div style="width:8px;align-self:stretch;border-radius:8px;background:var(--read)"></div>
+              <div style="flex:1"><div style="font-weight:800">25분 · 독서</div><div style="opacity:.65;font-size:13px;margin-top:2px">한 줄 없음</div></div>
+              <div style="opacity:.55;font-size:13px">저녁</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;font-size:13px;line-height:1.5;opacity:.6">한 줄은 그날 기록에만 남고, 최근 100개 상세와 함께 잘립니다. 태그별 합계는 일별 합계처럼 따로 유지합니다.</div>
+        </div>
+        <div class="nav"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20H4z"/></svg>책상</div><div><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.2-3 3.6-4.5 7-4.5S17.8 16 19 19z"/></svg>친구</div><div class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/></svg>기록</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/></svg>설정</div></div>
+      </div></div>
+      <div class="cap">고른 날의 목록<small>달력에서 날짜를 누르면 태그 색과 한 줄이 세션 옆에 붙습니다.</small></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note"><h4>비교에서 가져온 것</h4><p>과목·태그 통계는 집중 타이머의 기본에 가깝습니다. Deskmate에는 달력 스탬프와 주·월 합계가 이미 있어, 색을 얹는 쪽이 화면을 새로 만들지 않습니다.</p></div>
+    <div class="note"><h4>저장</h4><p>세션에 태그 id와 짧은 메모. 예전 기록은 태그 없음. 메모는 상세 100개와 수명이 같고, 태그 합계만 일별 합계처럼 남깁니다. 체험·휴식·중도 종료는 합계에서 제외합니다.</p></div>
+    <div class="note"><h4>일부러 안 하는 것</h4><p>할 일 앱, 플래시카드, 과목 무제한은 Study Bunny·열품타 영역입니다. 태그는 6개까지, 한 줄은 20자 안쪽으로 책상 문구처럼 둡니다.</p></div>
+  </div>
+</section>
+
+<section class="board" id="b2">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 2 · 앱 밖에 남은 시간</div>
+      <h1>집중 중 알림과 홈 화면 위젯</h1>
+    </div>
+    <div class="prio">우선순위 2 · 작업 중간</div>
+  </div>
+  <p class="why">Focus Friend는 2025년 5월에 위젯을 넣었고, 잠금 화면의 남은 시간은 그 앱의 대표 기능입니다. Deskmate는 <b>끝날 때 알림만</b> 있고, 소리를 켜야 재생 알림이 뜹니다. 집 화면으로 나가면 친구가 얼마나 남았는지 보이지 않습니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:#12131c">
+        <div class="shot" style="background-image:url(../competitive-review-2026-10-14/fresh/focusing.png);filter:blur(16px) brightness(.38);transform:scale(1.08)"></div>
+        <div class="abs" style="left:22px;right:22px;top:16px;color:#f3efe8;display:flex;justify-content:space-between;font-weight:700;font-size:15px"><span>17:24</span><span style="font-weight:500;opacity:.8">11월 20일 금</span></div>
+        <div class="abs new" style="left:16px;right:16px;top:118px;background:#2c3044;border-radius:22px;padding:14px 14px 12px;color:#f4efe8">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.75"><span style="width:18px;height:18px;border-radius:50%;background:var(--orange2)"></span>Deskmate · 집중 중</div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+            <div style="flex:1">
+              <div style="font-weight:800;font-size:16px">랫서팬더와 공부</div>
+              <div style="font-size:32px;font-weight:800;letter-spacing:-.03em;margin-top:2px">18:42 <span style="font-size:14px;font-weight:600;opacity:.6">남음</span></div>
+            </div>
+            <div style="width:64px;height:64px;border-radius:16px;background:url(../next-gift-progress-v1/home-25.png) -78px -250px / 250px 542px"></div>
+          </div>
+          <div class="bar" style="margin-top:10px"><i style="width:28%"></i></div>
+          <div style="margin-top:12px;text-align:center;background:#3c4158;border-radius:999px;padding:10px;font-weight:800">앱에서 보기</div>
+        </div>
+      </div></div>
+      <div class="cap">잠금 화면에 남은 시간<small>알림 하나로 카운트다운. 종료 버튼은 넣지 않아 실수로 끊기지 않습니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone" style="background:linear-gradient(165deg,#d9c6ef,#f3c7a4 62%,#f6e2cc)">
+        <div class="abs" style="left:22px;right:22px;top:16px;display:flex;justify-content:space-between;font-weight:700"><span>09:10</span><span>●●●</span></div>
+        <div class="abs new" style="left:18px;right:18px;top:58px;height:158px;border-radius:26px;background:#fffaf3;display:flex;overflow:hidden;box-shadow:0 10px 24px rgba(60,40,20,.16)">
+          <div style="width:132px;background:url(../next-gift-progress-v1/home-25.png) -86px -186px / 270px 584px"></div>
+          <div style="flex:1;padding:14px 14px 12px;display:flex;flex-direction:column">
+            <div style="font-size:12px;font-weight:700;color:var(--ink2)">오늘의 집중</div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.03em">1시간 15분</div>
+            <div style="font-size:12px;font-weight:700;color:var(--teal);margin-top:2px">5일째 · D-12 자격증</div>
+            <div style="margin-top:auto;background:var(--orange);border-radius:999px;text-align:center;font-weight:800;padding:8px 0;font-size:14px">25분 시작</div>
+          </div>
+        </div>
+        <div class="abs" style="left:22px;top:236px;display:grid;grid-template-columns:repeat(4,58px);gap:16px">
+          <div style="height:58px;border-radius:16px;background:rgba(255,255,255,.45)"></div>
+          <div style="height:58px;border-radius:16px;background:rgba(255,255,255,.45)"></div>
+          <div style="height:58px;border-radius:16px;background:rgba(255,255,255,.45)"></div>
+          <div style="height:58px;border-radius:16px;background:rgba(255,255,255,.45)"></div>
+        </div>
+        <div class="abs new" style="left:18px;top:328px;width:168px;height:168px;border-radius:28px;background:#262a3d;color:var(--cream);padding:14px;box-shadow:0 10px 24px rgba(60,40,20,.16)">
+          <div style="font-size:12px;opacity:.7">집중 중 · 공부</div>
+          <div style="width:104px;height:104px;margin:10px auto 0;border-radius:50%;background:conic-gradient(var(--orange) 0 72%, #3d4258 0);display:grid;place-items:center">
+            <div style="width:84px;height:84px;border-radius:50%;background:#262a3d;display:grid;place-items:center;font-weight:800;font-size:20px">18:42</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap">위젯 두 가지<small>쉬고 있을 때는 오늘 합계와 시작. 집중 중에는 남은 시간만.</small></div>
+    </div>
+    <div class="side">
+      <div class="note"><h4>지금과의 차이</h4><p>완료 알림과, 소리를 켰을 때의 재생 알림만 있습니다. 둘 다 남은 시간을 세어 보여 주지 않습니다. 알림을 끈 사람은 위젯만으로도 볼 수 있습니다.</p></div>
+      <div class="note"><h4>구현 메모</h4><p>알림은 <b>Chronometer 카운트다운</b>이라 매초 깨우지 않습니다. 위젯의 시작은 앱을 열기만 하고, 기록은 지금처럼 저장이 성공한 뒤에만 반영합니다. 위젯에 종료 버튼을 넣지 않습니다.</p></div>
+      <div class="note"><h4>범위</h4><p>Android 홈 위젯과 진행 알림까지. iOS 라이브 액티비티는 앱이 Android 우선이라 이번 제안에서 뺍니다. 재부팅 뒤 알림 복구는 기존 제한을 그대로 적습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="board" id="b3">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 3 · 하루의 리듬</div>
+      <h1>하루 목표, 연속 일수, 이어서 쉬는 세트</h1>
+    </div>
+    <div class="prio">우선순위 3 · 작업 작음~중간</div>
+  </div>
+  <p class="why">Forest는 연속 일수와 뽀모도로가 기본이고, Focus Friend도 휴식 타이머가 세션 사이에 있습니다. 열품타는 하루 목표 시간이 중심에 있습니다. Deskmate는 25·50분을 고른 뒤 <b>휴식과 다음 집중을 매번 직접 눌러야</b> 하고, 하루 목표 시간은 없습니다. D-day와 월간 최장 연속은 이미 있습니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(../next-gift-progress-v1/home-25.png)"></div>
+        <div class="abs new pill" style="left:46px;right:46px;top:198px">오늘 50/120분 · <span style="color:var(--orange)">5일째</span></div>
+        <div class="abs" style="left:22px;right:22px;top:592px;height:52px;display:flex;gap:8px">
+          <div class="chip" style="flex:1;background:#2a2e42;color:#f4efe8">25분</div>
+          <div class="chip new" style="flex:1.15;background:var(--orange);color:#2b2420;outline-offset:2px">40분</div>
+          <div class="chip" style="flex:1;background:#2a2e42;color:#f4efe8">50분</div>
+        </div>
+      </div></div>
+      <div class="cap">홈에 오늘의 양<small>D-day 옆에 하루 목표와 연속. 40분은 5분 단위로 고른 직접 시간입니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(../competitive-review-2026-10-14/fresh/focusing.png)"></div>
+        <div class="abs new" style="left:40px;right:40px;top:212px;background:#1d2030;color:var(--cream);border-radius:18px;padding:10px 12px 12px;text-align:center">
+          <div style="font-weight:800;font-size:14px">2 / 4 세트 · 끝나면 5분 휴식</div>
+          <div style="display:flex;gap:6px;justify-content:center;margin-top:8px">
+            <i style="width:36px;height:6px;border-radius:99px;background:#f0b56a"></i>
+            <i style="width:36px;height:6px;border-radius:99px;background:#f0b56a"></i>
+            <i style="width:36px;height:6px;border-radius:99px;background:#3d4258"></i>
+            <i style="width:36px;height:6px;border-radius:99px;background:#3d4258"></i>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap">세트는 선택<small>한 번 집중은 지금과 같습니다. 세트를 켠 날에만 칸이 보입니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(completed-clean.png)"></div>
+        <div class="abs new" style="left:16px;right:16px;top:220px;background:#fbf6ee;color:var(--ink);border-radius:16px;padding:11px 12px;text-align:center">
+          <div style="font-size:12px;font-weight:800;color:var(--orange2)">2 / 4 세트를 마쳤어요</div>
+          <div style="font-weight:800;font-size:15px;margin-top:2px">5분 뒤에 휴식이 시작돼요</div>
+        </div>
+        <div class="abs" style="left:22px;right:22px;top:598px;height:58px;border-radius:18px;background:#1d2030;color:#f4efe8;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px">여기서 마치기</div>
+      </div></div>
+      <div class="cap">쉼이 이어지고, 멈출 수 있음<small>자동으로 넘어가되 확인 버튼은 ‘여기서 마치기’로 남깁니다.</small></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note"><h4>하루 목표와 연속</h4><p>목표 시간은 설정에 하나. 채우지 못해도 문구만 남고 벌은 없습니다. 연속은 정상 완료가 있는 날만 세고, 월간 기록에 있는 최장 연속과 같은 기준입니다.</p></div>
+    <div class="note"><h4>직접 시간</h4><p>5분 단위, 10분에서 90분. 기본 시작은 그대로 25·50입니다. 1분 체험과 5·15분 연습은 설정의 지금 자리를 유지합니다.</p></div>
+    <div class="note"><h4>세트의 경계</h4><p>휴식은 기록·소품에 들어가지 않습니다. 세트 도중 앱을 지워도 진행 중 세션만 복구하면 되고, 남은 반복 횟수도 그 세션과 함께 저장합니다.</p></div>
+  </div>
+</section>
+
+<section class="board" id="b4">
+  <div class="head">
+    <div>
+      <div class="kicker">제안 4 · 방이 조금씩 달라지기</div>
+      <h1>소리와 함께 창이 변하고, 옷은 나중에</h1>
+    </div>
+    <div class="prio">우선순위 4 · 그림이 큼</div>
+  </div>
+  <p class="why">Focus Friend는 2025년에 옷, 정원, 거리까지 방을 늘렸습니다. Deskmate의 장면은 시간대 네 장과 소품 세 개에서 오래 머뭅니다. 먼저 할 것은 새 방이 아니라 <b>이미 있는 ‘창밖의 비’를 유리에 보여주는 것</b>입니다. 옷은 그다음 콘텐츠로, 팔지 않고 집중 시간으로만 엽니다.</p>
+  <div class="row">
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(rainy-home.png)"></div>
+        <div class="abs new pill" style="left:78px;right:78px;top:198px"><span class="dot" style="background:#9ec7e8"></span> 창밖의 비</div>
+      </div></div>
+      <div class="cap">비를 켜면 유리에 비가 내림<small>친구, 책상, 글자는 그대로. 창 풍경만 젖습니다.</small></div>
+    </div>
+    <div class="col">
+      <div class="wrap"><div class="phone">
+        <div class="shot" style="background-image:url(../next-gift-progress-v1/home-25.png)"></div>
+        <div class="abs" style="left:0;right:0;top:0;height:360px;background:linear-gradient(to bottom, rgba(12,14,22,0) 40%, rgba(12,14,22,.45))"></div>
+        <div class="abs" style="left:0;right:0;bottom:0;top:348px;background:#171924;border-radius:28px 28px 0 0;color:var(--cream);padding:18px 20px 0">
+          <div style="width:42px;height:4px;border-radius:4px;background:#3a3e52;margin:0 auto 12px"></div>
+          <div style="font-size:20px;font-weight:800">작은 옷장</div>
+          <div style="font-size:13px;opacity:.65;margin:4px 0 12px">집중한 시간으로만 열려요. 판매하지 않아요.</div>
+          <div class="new" style="background:#232738;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;margin-bottom:8px">
+            <div style="width:52px;height:52px;border-radius:14px;background:#3a2a2e;display:grid;place-items:center"><div style="width:30px;height:16px;border-radius:8px;background:repeating-linear-gradient(90deg,#f0b56a 0 6px,#f7efe4 6px 10px)"></div></div>
+            <div style="flex:1"><div style="font-weight:800">줄무늬 목도리</div><div style="font-size:12px;opacity:.65;margin-top:2px">3시간 · 목 위에만 얹음</div></div>
+            <div style="font-size:12px;font-weight:800;color:#b7e0bf">해금</div>
+          </div>
+          <div style="background:#232738;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;margin-bottom:8px;opacity:.8">
+            <div style="width:52px;height:52px;border-radius:14px;background:#2a2e42;display:flex;align-items:center;justify-content:center;gap:3px"><span style="width:13px;height:13px;border:2px solid #e6e0d6;border-radius:50%"></span><span style="width:5px;height:2px;background:#e6e0d6"></span><span style="width:13px;height:13px;border:2px solid #e6e0d6;border-radius:50%"></span></div>
+            <div style="flex:1"><div style="font-weight:800">동그란 안경</div><div style="font-size:12px;opacity:.65;margin-top:2px">10시간</div></div>
+            <div style="font-size:12px;font-weight:700;color:var(--orange)">4시간 남음</div>
+          </div>
+          <div style="background:#232738;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;opacity:.55">
+            <div style="width:52px;height:52px;border-radius:14px;background:#2a2e42;display:grid;place-items:center"><div style="width:12px;height:12px;background:#f0b56a;transform:rotate(45deg)"></div></div>
+            <div style="flex:1"><div style="font-weight:800">연필 브로치</div><div style="font-size:12px;opacity:.7;margin-top:2px">30시간</div></div>
+            <div style="font-size:12px">잠김</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap">옷은 다음 콘텐츠<small>필기 원화를 다시 그리지 않고, 목·얼굴 장식만 레이어로 올립니다.</small></div>
+    </div>
+    <div class="side">
+      <div class="note"><h4>비부터인 이유</h4><p>소리 이름과 방이 어긋나 있습니다. ‘창밖의 비’를 켜도 창은 맑습니다. 시간대 배경 네 장 위에 비 레이어만 얹으면 친구 동작 원화는 그대로입니다. 숲의 잎, 장작의 불빛은 그다음입니다.</p></div>
+      <div class="note"><h4>옷은 서두르지 않음</h4><p>Focus Friend의 옷·새 방은 체류의 핵이지만, 다섯 친구의 필기·넘김·휴식을 옷마다 다시 그리면 그림 비용이 폭증합니다. 랫서팬더 장식 레이어 두세 개가 상한입니다.</p></div>
+      <div class="note"><h4>팔지 않는 이유</h4><p>소품은 집중으로만 받는 결정을 이미 내렸습니다. 옷도 같은 규칙입니다. 친구 네 명의 구매와 광고 제거는 지금 상점을 유지합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+function show(){
+  var id = (location.hash || '#b1').slice(1);
+  document.querySelectorAll('.board').forEach(function(b){
+    b.classList.toggle('on', b.id === id);
+  });
+}
+show();
+</script>
+</body>
+</html>

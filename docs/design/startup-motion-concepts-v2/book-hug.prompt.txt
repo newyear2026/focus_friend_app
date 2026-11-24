@@ -1,0 +1,13 @@
+Use case: illustration-story / ui-mockup motion study.
+Create a production-quality motion concept storyboard for the existing Deskmate mobile loading screen. ONE motion concept only, shown as THREE sequential key poses of the SAME character in a single wide image, 1536 x 1024 target dimensions. This is a still storyboard, not three competing designs.
+
+Input image: the attached approved loading screen is the exact visual and character identity reference. Preserve the adorable orange red panda, cream face patches, pink cheeks, glossy brown eyes, teal overalls, ringed fluffy tail, short brown paws, and teal closed book with gold border and sprout emblem. Retain the warm cream paper texture, subtle soft leaf shadows at upper left, chocolate brown typography, and teal accents. Faithful polished storybook illustration. Do not invent a different animal or change the outfit/book design.
+
+Concept title, exactly: "책을 꼬옥 안기"
+Three keyframes left to right, large and clearly readable, same scale and seated floor baseline:
+- Left: the reference neutral seated pose, both paws holding the teal book, eyes open warmly. Caption "준비".
+- Middle: both paws pull the book visibly a little higher and closer to the chest, chin gently nestles near its top edge, eyes softly closed with happy crescent lids, shoulders subtly hunch in a loving little squeeze. Caption "꼬옥".
+- Right: while hugging the book, head gives a small calm downward nod, smile, then body starts relaxing toward neutral. Make this a clearly distinct nod pose with the head tucked a little. Caption "끄덕".
+The book remains securely held with anatomically coherent paws, all feet remain on the same floor, no jumping. Motion should feel cozy and calm, a roughly 4-second loop. Small tasteful teal directional arrows between poses clarify sequence; no motion smearing, no duplicated limbs, no extra objects or hearts.
+
+Layout: quiet editorial motion study on one continuous cream paper surface, generous negative space, three evenly spaced large illustrations across the center. At the top a small "Deskmate" wordmark then the Korean concept title. Below each illustration the short caption in dark brown. At the bottom centered text exactly "집중할 공간을 준비하고 있어요." and three teal loading dots. No other copy. Keep type crisp and Korean text accurate. No cards, device frames, phone chrome, menus or watermarks. Avoid cutting off ears, feet or tails.

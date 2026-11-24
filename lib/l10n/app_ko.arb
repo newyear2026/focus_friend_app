@@ -1,4 +1,9 @@
 {
+  "exitAppTitle": "내일 또 만나요",
+  "exitAppConfirm": "앱을 종료할까요?",
+  "exitAppAction": "앱 종료",
+  "exitTimerContinues": "진행 중인 타이머는 계속 이어집니다.",
+  "adLabel": "광고",
   "@@locale": "ko",
   "appTitle": "Deskmate",
   "minutesShort": "{minutes}분",
@@ -7,6 +12,7 @@
   "errorAlerts": "알림을 예약하지 못했어요. 앱에 돌아오면 타이머는 복구됩니다.",
   "retryCheck": "다시 확인",
   "restoringRoom": "저장된 방을 확인하고 있어요.",
+  "startupLoading": "집중할 공간을 준비하고 있어요.",
   "errorSoundPlay": "소리를 재생하지 못했어요. 사운드 설정에서 다시 선택해 주세요.",
   "errorSoundStop": "소리를 끄지 못했어요. 사운드 설정에서 다시 시도해 주세요.",
   "errorSoundStatus": "사운드 상태를 확인하지 못했어요. 다시 선택해 주세요.",
@@ -217,7 +223,7 @@
   "bundleNote": "앞으로 나올 친구는 따로 판매해요.",
   "bundleBuy": "{price}에 모두 가지기",
   "removeAdsTitle": "광고 제거",
-  "removeAdsSubtitle": "기록과 설정의 광고를 꺼요",
+  "removeAdsSubtitle": "집중·휴식·기록·설정 화면의 광고를 꺼요",
   "restorePurchases": "구매 복원",
   "restoreSubtitle": "다시 설치했거나 기기를 바꿨을 때",
   "restoreDone": "구매 내역을 다시 불러왔어요.",
@@ -248,5 +254,8 @@
   "ourAppsRandomFocusCategory": "집중 타이머",
   "ourAppsRandomFocusDescription": "룰렛으로 집중\n시간을 정해요",
   "ourAppsMultiCalCategory": "계산기",
-  "ourAppsMultiCalDescription": "계산부터 팁·\n단위 변환까지"
+  "ourAppsMultiCalDescription": "계산부터 팁·\n단위 변환까지",
+  "nextGiftIn": "{prop}까지 {duration}",
+  "nextGiftFirstFocus": "첫 집중을 마치면 {prop}",
+  "collectionProgress": "{done}/{total}분"
 }

@@ -1,0 +1,12 @@
+Tool: built-in image_gen
+Source: reading-companion.png (edit target), docs/design/startup-motion-concepts-v2/book-hug.png (resting eyelid reference only)
+
+Use case: precise-object-edit.
+Asset type: aligned transparent eye-expression variant for a Flutter character animation.
+Edit target: Image 1, the transparent 1254 x 1254 original orange red panda holding a teal book.
+Supporting expression reference: Image 2, the book-hug storyboard. ONLY the closed relaxed eyelid shape in the RIGHTMOST nod pose is relevant; do not copy that pose, layout, labels, or background.
+
+Required output: exactly one full original character in the SAME 1254 x 1254 canvas, identical original placement, silhouette, head angle, body pose, paws, feet, book, tail, colors, soft shadow, and transparent background.
+Change ONLY the two open eyes in Image 1 to relaxed gently CLOSED RESTING eyes: two clean dark brown curved eyelid strokes like shallow U-shaped smiles, with their centers lower than their endpoints, gently curving DOWN, matching the peaceful resting eyes in the rightmost storyboard pose. No visible irises, pupils, white sclera, duplicate eye contours, eyebrows, lashes, or tears. Place each closed lid centered within that same original eye region and matching the original face tilt.
+Crucial invariants: do NOT nod or rotate the head, do NOT raise the book, do NOT move the arms, do NOT change the mouth, cheeks, face fur markings or ears. Main app will animate the nod and hug itself and only samples your two eye patches. Preserve registration tightly.
+Warm polished storybook shading, smooth dark brown outlines, cream face patches and orange fur exactly as the original. Real transparent alpha outside character, no opaque fill, checkerboard, backdrop, text, UI or extra objects.
