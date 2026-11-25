@@ -95,6 +95,7 @@ void main() {
           Future<List<int>> render(
             bool earnedMug, {
             required bool resting,
+            bool roomOnly = false,
           }) async {
             final recorder = ui.PictureRecorder();
             FriendMotionScenePainter(
@@ -103,7 +104,7 @@ void main() {
               showDeskMug: earnedMug,
               actor: FriendMotionPainter(
                 friend: friend,
-                study: scene.actor.study,
+                study: roomOnly ? null : scene.actor.study,
                 rest: scene.actor.rest,
                 pose: FriendMotionClock.sample(
                   const Duration(seconds: 4),
@@ -123,11 +124,33 @@ void main() {
             return pixels;
           }
 
+          final locked = await render(false, resting: false);
+          final room = await render(false, resting: false, roomOnly: true);
+          final (x, paperY, coverY) = switch (friend) {
+            FocusFriend.penguin => (340, 376, 389),
+            FocusFriend.otter => (336, 402, 408),
+            FocusFriend.squirrel => (377, 377, 392),
+            FocusFriend.fennec => (375, 386, 399),
+            FocusFriend.redpanda => throw StateError('Separate notebook art'),
+          };
+          // Both sample points were bare tabletop when the mug was clipped.
+          final stage = FriendMotionScenePainter.stage;
+          for (final y in [paperY, coverY]) {
+            final col = ((stage.left + x * stage.width / 512) * 427 / 853)
+                .floor();
+            final row = ((stage.top + y * stage.height / 512) / 2).floor();
+            final i = (row * 427 + col) * 4;
+            final difference = [
+              for (var c = 0; c < 3; c++) (locked[i + c] - room[i + c]).abs(),
+            ];
+            expect(
+              difference.reduce((a, b) => a + b),
+              greaterThan(30),
+              reason: '${friend.name} lost its notebook at $x,$y',
+            );
+          }
           expect(
-            listEquals(
-              await render(false, resting: false),
-              await render(true, resting: false),
-            ),
+            listEquals(locked, await render(true, resting: false)),
             isFalse,
             reason: 'Earning the mug must visibly change the study scene',
           );

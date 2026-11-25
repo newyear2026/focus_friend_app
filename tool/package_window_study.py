@@ -1,7 +1,8 @@
-"""Slice, register and pack authored study cels; never paint or warp parts."""
+"""Register the authored study cels and pack the timed page-turn bridges."""
 from pathlib import Path
 import json
 import sys
+from window_page_bridges import bake_page_bridges
 from PIL import Image, ImageDraw, ImageChops, ImageStat, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -98,7 +99,8 @@ def package(friend, publish=False):
         cels.append(cel)
         source_name = 'writing cel 1 return bridge' if i == 22 else f'authored cel {i}'
         report.append({'cel':i,'phase':phase,'source':source_name,**registration})
-    atlas = Image.new('RGBA',(1536,2304))
+    cels.extend(bake_page_bridges(friend, cels))
+    atlas = Image.new('RGBA',(1536,384*((len(cels)+3)//4)))
     for i,cel in enumerate(cels):
         cel.save(OUT/'cels'/f'{friend}-{i:02d}.png')
         atlas.paste(cel.resize((384,384),Image.Resampling.LANCZOS),(i%4*384,i//4*384))
@@ -115,7 +117,7 @@ def package(friend, publish=False):
         draw.text((x+10,y+516),f'{friend} cel {i}',fill='#382b26')
     contact.save(OUT/f'{friend}-contact.jpg',quality=95)
     (OUT/f'{friend}-registration.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(f'{friend}: packed 24 authored study cels')
+    print(f'{friend}: packed {len(cels)} study cels')
 
 
 if __name__ == '__main__':

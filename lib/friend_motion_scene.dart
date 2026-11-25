@@ -378,6 +378,13 @@ class FriendMotionScenePainter extends CustomPainter {
     canvas.saveLayer(actorBounds, Paint());
     canvas.save();
     if (!showDeskMug && actor.pose.phase != FriendMotionPhase.tea) {
+      final study = actor.study;
+      if (study != null) {
+        canvas.save();
+        canvas.scale(stage.width / 512, stage.height / 512);
+        paintUncoveredBookCorner(canvas, study, actor.friend);
+        canvas.restore();
+      }
       final mug = friendDeskMugMask(actor.friend).transform(
         Matrix4.diagonal3Values(
           stage.width / 512,
@@ -556,7 +563,8 @@ class FriendMotionPainter extends CustomPainter {
       ..addPolygon([
         for (final (x, y) in points) Offset(x.toDouble(), y.toDouble()),
       ], true);
-    if (turningPage && cel >= 14 && cel <= 20) {
+    if (turningPage &&
+        ((cel >= 14 && cel <= 20) || cel >= FriendMotionClock.liftBridge)) {
       moving.addRect(
         friend == FocusFriend.squirrel
             ? const Rect.fromLTRB(245, 280, 360, 380)

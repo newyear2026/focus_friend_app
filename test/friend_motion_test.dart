@@ -31,12 +31,14 @@ void main() {
     );
     for (final friend in FocusFriend.values) {
       final turn = FriendMotionClock.pageTurnTimelineFor(friend);
-      // Reordered drawings only: same cels, same ticks, same rest endpoints.
+      // The extra drawings share the existing page-turn time.
       expect(turn.length, FriendMotionClock.pageTurnTimeline.length);
-      expect(
-        [...turn]..sort(),
-        [...FriendMotionClock.pageTurnTimeline]..sort(),
-      );
+      if (friend.hasWindowTeaMotion) {
+        final crossing = turn.skipWhile((cel) => cel != 15).take(18).toList();
+        expect(crossing, [
+          for (final cel in [15, 24, 25, 16, 26, 27, 17, 28, 29]) ...[cel, cel],
+        ]);
+      }
       expect((turn.first, turn.last), (0, 0));
     }
     expect(
@@ -259,7 +261,9 @@ void main() {
 
             final base = await render(0);
             var movement = 0;
-            for (final cel in FriendMotionClock.pageTurnTimeline.toSet()) {
+            for (final cel in FriendMotionClock.pageTurnTimelineFor(
+              friend,
+            ).toSet()) {
               final pixels = await render(cel);
               var fixedChanges = 0;
               for (final rect in [

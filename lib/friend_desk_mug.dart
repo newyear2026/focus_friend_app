@@ -84,3 +84,63 @@ Path friendDeskMugMask(FocusFriend friend) {
   };
   return Path()..addPolygon([for (final (x, y) in points) Offset(x, y)], true);
 }
+
+/// Extend the exposed paper, page block and cover underneath the locked mug
+/// using the adjacent strip of the same drawing. Coordinates are in cel space.
+void paintUncoveredBookCorner(Canvas canvas, Image atlas, FocusFriend friend) {
+  final corner = switch (friend) {
+    FocusFriend.penguin => (321.0, 356.0, 356.0, 377.0, 390.5, .09),
+    FocusFriend.otter => (326.0, 393.0, 344.0, 403.0, 411.0, .04),
+    FocusFriend.squirrel => (358.0, 359.5, 393.0, 377.0, 392.0, .13),
+    FocusFriend.fennec => (359.0, 373.0, 383.0, 386.0, 402.5, .05),
+    FocusFriend.redpanda => null,
+  };
+  if (corner == null) return;
+  final (join, top, tip, paper, bottom, slope) = corner;
+  final outline = Path()
+    ..moveTo(join - 2, top - 1)
+    ..lineTo(tip - 1, paper - 1)
+    ..quadraticBezierTo(tip, paper, tip, paper + 1)
+    ..lineTo(tip + 1, bottom - 1)
+    ..quadraticBezierTo(tip + 1, bottom, tip - 1, bottom)
+    ..lineTo(join - 2, bottom + (tip - join + 2) * slope)
+    ..close();
+  canvas.save();
+  canvas.clipPath(outline);
+  // Reflect nearby paper into the gap. Cancel the reflected cover's slope
+  // so that the line of the binding continues through the join.
+  final span = tip - join + 3;
+  final scale = atlas.width / (4 * 512);
+  final strip = Rect.fromLTRB(join - span, top - 2, join + 2, bottom + 12);
+  final src = Rect.fromLTRB(
+    strip.left * scale,
+    strip.top * scale,
+    strip.right * scale,
+    strip.bottom * scale,
+  );
+  canvas.save();
+  canvas.translate(join, 0);
+  canvas.skew(0, -2 * slope);
+  canvas.scale(-1, 1);
+  canvas.drawImageRect(
+    atlas,
+    src,
+    strip.shift(Offset(-join, 0)),
+    Paint()..filterQuality = FilterQuality.medium,
+  );
+  canvas.restore();
+  final edge = Path()
+    ..moveTo(join - 1, top - .5)
+    ..lineTo(tip - 1, paper - 1)
+    ..quadraticBezierTo(tip, paper, tip, paper + 1)
+    ..lineTo(tip + 1, bottom - 1)
+    ..quadraticBezierTo(tip + 1, bottom, tip - 1, bottom);
+  canvas.drawPath(
+    edge,
+    Paint()
+      ..color = const Color(0xFF583F30)
+      ..strokeWidth = 2.3
+      ..style = PaintingStyle.stroke,
+  );
+  canvas.restore();
+}

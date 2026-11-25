@@ -213,17 +213,55 @@ abstract final class FriendMotionClock {
       (cel, 3),
     (0, 2),
   ]);
-  // The window friends' drawings were authored out of order: the fennec's
-  // cel 12 holds the page lower than 10 and 11, and the squirrel's cel 18
-  // stands the falling page taller than 17. Same drawings and ticks.
-  static List<int> _pageTurn(List<int> cels) =>
-      _exposures([(0, 1), for (final cel in cels) (cel, 3), (0, 2)]);
-  static final List<int> fennecPageTurnTimeline = _pageTurn([
-    6, 8, 9, 12, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, //
+  // Six in-between poses carry the gripping paw and page through the spine.
+  // Keep the original 54 ticks, spending more of them on the crossing.
+  static const liftBridge = 24,
+      beforeSpine = 25,
+      afterSpine = 26,
+      releaseBridge = 27,
+      settlingPage = 28,
+      landingPage = 29;
+
+  static List<int> _windowPageTurn(List<int> lift) => _exposures([
+    (0, 1),
+    for (final cel in lift) (cel, 3),
+    (15, 2),
+    (liftBridge, 2),
+    (beforeSpine, 2),
+    (16, 2),
+    (afterSpine, 2),
+    (releaseBridge, 2),
+    (17, 2),
+    (settlingPage, 2),
+    (landingPage, 2),
+    (20, 3),
+    (21, 2),
+    (22, 2),
+    (23, 2),
+    (0, 2),
   ]);
-  static final List<int> squirrelPageTurnTimeline = _pageTurn([
-    6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 17, 19, 20, 21, 22, 23, //
+
+  static final fennecPageTurnTimeline = _windowPageTurn([
+    6,
+    8,
+    9,
+    12,
+    10,
+    11,
+    13,
+    14,
   ]);
+  static final squirrelPageTurnTimeline = _windowPageTurn([
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+  ]);
+
   static List<int> pageTurnTimelineFor(FocusFriend friend) => switch (friend) {
     FocusFriend.fennec => fennecPageTurnTimeline,
     FocusFriend.squirrel => squirrelPageTurnTimeline,
